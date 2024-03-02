@@ -24,7 +24,7 @@ public:
     * @brief Displays the Main Menu options.
     *
     * @details This method prints the Main Menu options to the console, allowing users to choose from different
-    * functionalities. Users input a single character corresponding to their desired option (1-3 for sections, 'q' to exit).
+    * functionalities. Users input a single character corresponding to their desired option (1-7 for sections, 'q' to exit).
     * The method provides a visual representation of the Main Menu and prompts the user to enter their choice.
     */
     void display() const override;

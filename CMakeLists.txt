@@ -14,4 +14,5 @@ add_executable(Water_Supply_Analysis_System main.cpp
         DeliverySite.cpp
         Pipe.cpp
         States/MainMenuState.cpp
-        States/State.cpp)
+        States/State.cpp
+        States/MaxFlow/MaxFlowMenuState.cpp)
