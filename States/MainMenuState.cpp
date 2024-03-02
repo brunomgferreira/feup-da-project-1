@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MainMenuState.h"
 #include "States/MaxFlow/MaxFlowMenuState.h"
+#include "States/PumpingStationImpact/PumpingStationImpactMenuState.h"
 
 MainMenuState::MainMenuState() {}
 
@@ -45,7 +46,7 @@ void MainMenuState::handleInput(App* app) {
                 app->setState(this);
                 break;
             case '6':
-                app->setState(this);
+                app->setState(new PumpingStationImpactMenuState());
                 break;
             case '7':
                 app->setState(this);
