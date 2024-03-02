@@ -1,6 +1,20 @@
-#include <iostream>
+#include "App.h"
+#include "Data.h"
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+using namespace std;
+
+int main()
+{
+    App* app = App::getInstance();
+
+    // Display the main menu
+    while(app->getState() != nullptr) {
+        app->display();
+        app->handleInput();
+    }
+
+    // Cleanup
+    delete app;
+
     return 0;
 }
