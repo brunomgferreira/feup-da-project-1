@@ -29,36 +29,51 @@ void MainMenuState::handleInput(App* app) {
     cin >> choice;
 
     if (choice.size() == 1) {
-        switch (choice[0]) {
-            case '1':
-                app->setState(new MaxFlowMenuState());
-                break;
-            case '2':
-                app->setState(this);
-                break;
-            case '3':
-                app->setState(this);
-                break;
-            case '4':
-                app->setState(this);
-                break;
-            case '5':
-                app->setState(this);
-                break;
-            case '6':
-                app->setState(new PumpingStationImpactMenuState());
-                break;
-            case '7':
-                app->setState(this);
-                break;
-            case 'q':
-                cout << "Exiting the program..." << endl;
-                app->setState(nullptr);
-                break;
-            default:
-                cout << "\033[31m" << "Invalid choice. Please try again." << "\033[0m"  << endl;
+        if(app->getData() == nullptr) {
+            switch (choice[0]) {
+                case '1':
+                    app->setState(this);
+                    break;
+                case 'q':
+                    cout << "Exiting the program..." << endl;
+                    app->setState(nullptr);
+                    break;
+                default:
+                    cout << "\033[31m" << "No water network loaded. Please load a water network first." << "\033[0m" << endl;
+            }
         }
-    } else  {
+        else {
+                switch (choice[0]) {
+                    case '1':
+                        app->setState(this);
+                        break;
+                    case '2':
+                        app->setState(new MaxFlowMenuState());
+                        break;
+                    case '3':
+                        app->setState(this);
+                        break;
+                    case '4':
+                        app->setState(this);
+                        break;
+                    case '5':
+                        app->setState(this);
+                        break;
+                    case '6':
+                        app->setState(new PumpingStationImpactMenuState());
+                        break;
+                    case '7':
+                        app->setState(this);
+                        break;
+                    case 'q':
+                        cout << "Exiting the program..." << endl;
+                        app->setState(nullptr);
+                        break;
+                    default:
+                        cout << "\033[31m" << "Invalid choice. Please try again." << "\033[0m" << endl;
+                }
+            }
+    } else {
         cout << "\033[31m";
         cout << "Invalid input. Please enter a single character." << endl;
         cout << "\033[0m";
