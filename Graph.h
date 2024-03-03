@@ -16,7 +16,7 @@ class Edge;
 
 /************************* Vertex  **************************/
 
-enum class VertexType { WaterReservoir, PumpingStation, DeliveryStation };
+enum class VertexType { WaterReservoir, PumpingStation, DeliverySite };
 
 class Vertex {
 private:
@@ -56,7 +56,7 @@ public:
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
     void setPath(Edge *path);
-    Edge * addEdge(Vertex *dest, double c, string code = nullptr);
+    Edge * addEdge(Vertex *dest, unsigned long c);
     bool removeEdge(string code);
     void removeOutgoingEdges();
 };
@@ -65,9 +65,8 @@ public:
 
 class Edge {
 private:
-    string code; // pipe code
     Vertex *dest; // destination vertex
-    double capacity; // edge capacity
+    unsigned long capacity; // edge capacity
 
     // auxiliary fields
     bool selected = false;
@@ -76,21 +75,21 @@ private:
     Vertex *orig;
     Edge *reverse = nullptr;
 
-    double flow; // for flow-related problems
+    unsigned long flow; // for flow-related problems
 
 public:
-    Edge(string code, Vertex *orig, Vertex *dest, double capacity);
+    Edge(Vertex *orig, Vertex *dest, unsigned long capacity);
 
     Vertex * getDest() const;
-    double getCapacity() const;
+    unsigned long getCapacity() const;
     bool isSelected() const;
     Vertex * getOrig() const;
     Edge *getReverse() const;
-    double getFlow() const;
+    unsigned long getFlow() const;
 
     void setSelected(bool selected);
     void setReverse(Edge *reverse);
-    void setFlow(double flow);
+    void setFlow(unsigned long flow);
 };
 
 /********************** Graph  ****************************/
@@ -115,9 +114,9 @@ public:
      * destination vertices and the edge capacity (c).
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const string &sourc, const string &dest, double c);
+    bool addEdge(const string &sourc, const string &dest, unsigned long c);
     bool removeEdge(const string &source, const string &dest);
-    bool addBidirectionalEdge(const string &sourc, const string &dest, double c);
+    bool addBidirectionalEdge(const string &sourc, const string &dest, unsigned long c);
 
     int getNumVertex() const;
     unordered_map<string, Vertex *> getVertexSet() const;

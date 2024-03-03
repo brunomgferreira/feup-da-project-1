@@ -62,6 +62,15 @@ public:
     Data *getData();
 
     /**
+    * @brief Sets the data of the application.
+    *
+    * @details This method sets the data of the application to the water network in the given path.
+    *
+    * @param dir_path A path to the water network files.
+    */
+    void setData(const filesystem::path &dir_path);
+
+    /**
     * @brief Displays the current state of the application.
     */
     void display() const;

@@ -88,8 +88,8 @@ void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-Edge * Vertex::addEdge(Vertex *dest, double c, string code) {
-    auto newEdge = new Edge(code, this, dest, c);
+Edge * Vertex::addEdge(Vertex *dest, unsigned long c) {
+    auto newEdge = new Edge(this, dest, c);
     adj.push_back(newEdge);
     dest->incoming.push_back(newEdge);
     return newEdge;
@@ -125,13 +125,13 @@ void Vertex::removeOutgoingEdges() {
 
 /********************** Edge  ****************************/
 
-Edge::Edge(string code, Vertex *orig, Vertex *dest, double capacity) : code(code), orig(orig), dest(dest), capacity(capacity) {}
+Edge::Edge(Vertex *orig, Vertex *dest, unsigned long capacity) : orig(orig), dest(dest), capacity(capacity) {}
 
 Vertex * Edge::getDest() const {
     return this->dest;
 }
 
-double Edge::getCapacity() const {
+unsigned long Edge::getCapacity() const {
     return this->capacity;
 }
 
@@ -147,7 +147,7 @@ Edge *Edge::getReverse() const {
     return this->reverse;
 }
 
-double Edge::getFlow() const {
+unsigned long Edge::getFlow() const {
     return this->flow;
 }
 
@@ -159,7 +159,7 @@ void Edge::setReverse(Edge *reverse) {
     this->reverse = reverse;
 }
 
-void Edge::setFlow(double flow) {
+void Edge::setFlow(unsigned long flow) {
     this->flow = flow;
 }
 
@@ -183,7 +183,7 @@ bool Graph::addVertex(const string &code, const VertexType &type) {
     return false;
 }
 
-bool Graph::addEdge(const string &sourc, const string &dest, double c) {
+bool Graph::addEdge(const string &sourc, const string &dest, unsigned long c) {
     Vertex *originVertex = findVertex(sourc);
     Vertex *destVertex = findVertex(dest);
 
@@ -203,7 +203,7 @@ bool Graph::removeEdge(const string &source, const string &dest) {
     return srcVertex->removeEdge(dest);
 }
 
-bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double c) {
+bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, unsigned long c) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
@@ -223,16 +223,39 @@ unordered_map<string, Vertex *> Graph::getVertexSet() const {
     return this->vertices;
 }
 
-vector<string> Graph::dfs() const {}
+// TODO - Dont know if this methods are needed
+vector<string> Graph::dfs() const {
+    vector<string> res;
+    return res;
+}
 
-vector<string> Graph::dfs(const string & source) const {}
+// TODO - Dont know if this methods are needed
+vector<string> Graph::dfs(const string & source) const {
+    vector<string> res;
+    return res;
+}
 
+// TODO - Dont know if this methods are needed
 void Graph::dfsVisit(Vertex *v,  vector<string> & res) const {}
 
-vector<string> Graph::bfs(const string & source) const {}
+// TODO - Dont know if this methods are needed
+vector<string> Graph::bfs(const string & source) const {
+    vector<string> res;
+    return res;
+}
 
-bool Graph::isDAG() const {}
+// TODO - Dont know if this methods are needed
+bool Graph::isDAG() const {
+    return false;
+}
 
-bool Graph::dfsIsDAG(Vertex *v) const {}
+// TODO - Dont know if this methods are needed
+bool Graph::dfsIsDAG(Vertex *v) const {
+    return false;
+}
 
-vector<string> Graph::topsort() const {}
+// TODO - Dont know if this methods are needed
+vector<string> Graph::topsort() const {
+    vector<string> res;
+    return res;
+}

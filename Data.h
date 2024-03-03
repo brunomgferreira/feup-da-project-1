@@ -6,6 +6,10 @@ using namespace std;
 
 #include <iostream>
 #include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <filesystem>
 #include "Graph.h"
 #include "WaterReservoir.h"
 #include "PumpingStation.h"
@@ -33,15 +37,15 @@ public:
     */
     Data();
 
-    void readFiles();
+    void readFiles(const filesystem::path &dir_path);
 
-    void readFileReservoir();
+    void readFileReservoir(ifstream &file);
 
-    void readFileStations();
+    void readFileStations(ifstream &file);
 
-    void readFileCities();
+    void readFileCities(ifstream &file);
 
-    void readFilePipes();
+    void readFilePipes(ifstream &file);
 };
 
 

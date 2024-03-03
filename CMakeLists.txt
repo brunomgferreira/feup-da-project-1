@@ -16,4 +16,7 @@ add_executable(Water_Supply_Analysis_System main.cpp
         States/MainMenuState.cpp
         States/State.cpp
         States/MaxFlow/MaxFlowMenuState.cpp
-        States/PumpingStationImpact/PumpingStationImpactMenuState.cpp)
+        States/PumpingStationImpact/PumpingStationImpactMenuState.cpp
+        States/Utils/GetFilesPathState.cpp
+        States/Utils/TryAgainState.cpp
+        States/Utils/DataLoadError.cpp)

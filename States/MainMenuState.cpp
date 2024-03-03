@@ -2,6 +2,7 @@
 #include "MainMenuState.h"
 #include "States/MaxFlow/MaxFlowMenuState.h"
 #include "States/PumpingStationImpact/PumpingStationImpactMenuState.h"
+#include "States/Utils/GetFilesPathState.h"
 
 MainMenuState::MainMenuState() {}
 
@@ -32,7 +33,11 @@ void MainMenuState::handleInput(App* app) {
         if(app->getData() == nullptr) {
             switch (choice[0]) {
                 case '1':
-                    app->setState(this);
+                    app->setState(new GetFilesPathState(this, [&](App *app) {
+                        cout << "Network loaded successfully! " << endl;
+                        PressEnterToContinue(1);
+                        app->setState(this);
+                    }));
                     break;
                 case 'q':
                     cout << "Exiting the program..." << endl;
