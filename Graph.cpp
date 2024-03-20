@@ -1,5 +1,5 @@
 #include "Graph.h"
-
+#include "Algorithms.h"
 
 /************************* Vertex  **************************/
 
@@ -58,6 +58,14 @@ Edge *Vertex::getPath() const {
 
 vector<Edge *> Vertex::getIncoming() const {
     return this->incoming;
+}
+
+unsigned long Vertex::getFlow() const {
+    return this->flow;
+}
+
+void Vertex::setFlow(unsigned long value) {
+    this->flow = value;
 }
 
 void Vertex::setCode(string code) {
@@ -258,4 +266,64 @@ bool Graph::dfsIsDAG(Vertex *v) const {
 vector<string> Graph::topsort() const {
     vector<string> res;
     return res;
+}
+
+void Graph::createMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
+    this->addVertex(code, VertexType::MainSource);
+
+    for (auto& pair : *waterReservoirs) {
+        string wrCode = pair.first;
+        WaterReservoir* wr = pair.second;
+        unsigned long maxDelivery = wr->getMaxDelivery();
+
+        this->addEdge(code, wrCode, maxDelivery);
+    }
+}
+
+void Graph::deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
+    this->addVertex(code, VertexType::MainSource);
+
+    for (auto& pair : *waterReservoirs) {
+        string wrCode = pair.first;
+        WaterReservoir* wr = pair.second;
+        unsigned long maxDelivery = wr->getMaxDelivery();
+
+        this->addEdge(code, wrCode, maxDelivery);
+    }
+
+    auto it = vertices.find(code);
+    this->vertices.erase(it);
+}
+
+void Graph::createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
+    this->addVertex(code, VertexType::MainTarget);
+
+    for (auto& pair : *deliverySites) {
+        string dsCode = pair.first;
+        this->addEdge(dsCode, code, INT_FAST32_MAX);
+    }
+}
+
+void Graph::deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
+    for (auto& pair : *deliverySites) {
+        string dsCode = pair.first;
+        this->addEdge(dsCode, code, INT_FAST32_MAX);
+        this->removeEdge(dsCode, code);
+    }
+
+    auto it = vertices.find(code);
+    this->vertices.erase(it);
+}
+
+void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    createMainSource(mainSourceCode, waterReservoirs);
+    createMainTarget(mainTargetCode, deliverySites);
+
+    edmondsKarp(this, mainSourceCode, mainTargetCode);
+
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
 }

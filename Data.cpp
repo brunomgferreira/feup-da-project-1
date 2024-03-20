@@ -156,3 +156,94 @@ void Data::readFilePipes(ifstream &file) {
     }
 }
 
+// Confirm Existence
+
+bool Data::deliverySiteExists(const string &code) {
+    auto it = deliverySites.find(code);
+    if (it != deliverySites.end()) return true;
+    return false;
+}
+
+
+// Max Flow
+
+void Data::cityMaxFlow(const string &code) {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    auto it = deliverySites.find(code);
+
+    DeliverySite *ds = (*it).second;
+
+    string cityName = ds->getCity();
+    unsigned long demand = ds->getDemand();
+    unsigned long flow = g.findVertex(code)->getFlow();
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Specific City Max Flow: " << endl;
+    cout << "City name: " << cityName << endl;
+    cout << "Code: " << code << endl;
+    cout << "Demand: " << demand << " m3/sec" << endl;
+    cout << "Flow value: " << flow << " m3/sec" << endl;
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+void Data::allCitiesMaxFlow() {
+
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
+    // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "max_flow_data.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> All Cities Max Flow: " << endl;
+
+    if(outputFileIsOpen) outputFile << "City,Code,Demand,Flow Value" << endl;
+
+    cout << setw(24) << left << "City";
+    cout << setw(10) << left << "Code";
+    cout << setw(11) << left << "Demand";
+    cout << setw(15) << left << "Flow Value" << endl << endl;
+
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        unsigned long demand = ds->getDemand();
+        unsigned long flow = g.findVertex(code)->getFlow();
+
+        cout << setw(24) << left << cityName + ",";
+        cout << setw(10) << left << code + ",";
+        cout << setw(11) << left << to_string(demand) + ",";
+        cout << setw(15) << left << to_string(flow) << endl;
+
+        if(outputFileIsOpen) outputFile << cityName << "," << code << "," << demand << "," << flow << endl;
+    }
+    cout << endl;
+
+    if(outputFileIsOpen) cout << ">> Output file is at: ./output/max_flow_data.txt" << endl;
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+

@@ -29,6 +29,10 @@ public:
     * @param code The unique code assigned to the pumping station.
     */
     DeliverySite(string city, unsigned long id, string code, unsigned long demand, unsigned long population);
+
+    string getCity();
+
+    unsigned long getDemand();
 };
 
 

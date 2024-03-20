@@ -32,6 +32,8 @@ public:
     * @param maxDelivery The maximum delivery of water reservoir in m³/sec.
     */
     WaterReservoir(string name, string municipality, unsigned long id, string code, unsigned long maxDelivery = 0);
+
+    unsigned long getMaxDelivery();
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H

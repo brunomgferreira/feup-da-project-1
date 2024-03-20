@@ -7,6 +7,8 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include "WaterReservoir.h"
+#include "DeliverySite.h"
 
 using namespace std;
 
@@ -16,13 +18,15 @@ class Edge;
 
 /************************* Vertex  **************************/
 
-enum class VertexType { WaterReservoir, PumpingStation, DeliverySite };
+enum class VertexType { WaterReservoir, PumpingStation, DeliverySite, MainSource, MainTarget };
 
 class Vertex {
 private:
     string code;            // code of the node
     VertexType type;        // type of the node
     vector<Edge *> adj;  // outgoing edges
+
+    unsigned long flow = 0;
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
@@ -48,6 +52,9 @@ public:
     double getDist() const;
     Edge *getPath() const;
     vector<Edge *> getIncoming() const;
+
+    unsigned long getFlow() const;
+    void setFlow(unsigned long value);
 
     void setCode(string code);
     void setType(VertexType type);
@@ -129,6 +136,12 @@ public:
     bool isDAG() const;
     bool dfsIsDAG(Vertex *v) const;
     vector<string> topsort() const;
+
+    void maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
+    void createMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
+    void deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
+    void createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
+    void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

@@ -36,3 +36,6 @@ vendor/
 *.suo
 *.userprefs
 *.sln.docstates
+
+# Output files
+output/
