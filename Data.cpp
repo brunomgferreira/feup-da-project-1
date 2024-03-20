@@ -191,15 +191,27 @@ void Data::cityMaxFlow(const string &code) {
     cout << "\033[0m";
 }
 
-// TODO - output as a file aswell
 void Data::allCitiesMaxFlow() {
+
     g.maxFlow(&waterReservoirs, &deliverySites);
+
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
+    // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "max_flow_data.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Cities Max Flow: " << endl;
-    // cout << "(City, Code, Demand, Flow Value)" << endl;
+
+    if(outputFileIsOpen) outputFile << "City,Code,Demand,Flow Value" << endl;
+
     cout << setw(24) << left << "City";
     cout << setw(10) << left << "Code";
     cout << setw(11) << left << "Demand";
@@ -218,7 +230,16 @@ void Data::allCitiesMaxFlow() {
         cout << setw(10) << left << code + ",";
         cout << setw(11) << left << to_string(demand) + ",";
         cout << setw(15) << left << to_string(flow) << endl;
-        // cout << "(" << cityName << ", " << code << ", " << demand << ", " << flow << ")" << endl;
+
+        if(outputFileIsOpen) outputFile << cityName << "," << code << "," << demand << "," << flow << endl;
+    }
+    cout << endl;
+
+    if(outputFileIsOpen) cout << ">> Output file is at: ./output/max_flow_data.txt" << endl;
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
