@@ -84,8 +84,9 @@ void edmondsKarp(Graph *g, string source, string target) {
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
     // Initialize flow on all edges to 0
-    for (auto v : g->getVertexSet()) {
-        for (auto e: v.second->getAdj()) {
+    for (auto pair : g->getVertexSet()) {
+        Vertex *v = pair.second;
+        for (auto e: v->getAdj()) {
             e->setFlow(0);
         }
     }
@@ -93,5 +94,15 @@ void edmondsKarp(Graph *g, string source, string target) {
     while( findAugmentingPath(g, s, t) ) {
         unsigned long f = findMinResidualAlongPath(s, t);
         augmentFlowAlongPath(s, t, f);
+    }
+
+    // Calculate and save incoming flow for each vertex
+    for (auto pair : g->getVertexSet()) {
+        Vertex *v = pair.second;
+        unsigned long incomingFlow = 0;
+        for (auto e: v->getIncoming()) {
+            incomingFlow += e->getFlow();
+        }
+        v->setFlow(incomingFlow);
     }
 }

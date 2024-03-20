@@ -176,7 +176,7 @@ void Data::cityMaxFlow(const string &code) {
 
     string cityName = ds->getCity();
     unsigned long demand = ds->getDemand();
-    unsigned long flow = 10;
+    unsigned long flow = g.findVertex(code)->getFlow();
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
