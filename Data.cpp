@@ -181,10 +181,46 @@ void Data::cityMaxFlow(const string &code) {
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
-    cout << ">> City name: " << cityName << endl;
-    cout << ">> Code: " << code << endl;
-    cout << ">> Demand: " << demand << " m3/sec" << endl;
-    cout << ">> Flow value: " << flow << " m3/sec" << endl;
+    cout << ">> Specific City Max Flow: " << endl;
+    cout << "City name: " << cityName << endl;
+    cout << "Code: " << code << endl;
+    cout << "Demand: " << demand << " m3/sec" << endl;
+    cout << "Flow value: " << flow << " m3/sec" << endl;
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+// TODO - output as a file aswell
+void Data::allCitiesMaxFlow() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> All Cities Max Flow: " << endl;
+    // cout << "(City, Code, Demand, Flow Value)" << endl;
+    cout << setw(24) << left << "City";
+    cout << setw(10) << left << "Code";
+    cout << setw(11) << left << "Demand";
+    cout << setw(15) << left << "Flow Value" << endl << endl;
+
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        unsigned long demand = ds->getDemand();
+        unsigned long flow = g.findVertex(code)->getFlow();
+
+        cout << setw(24) << left << cityName + ",";
+        cout << setw(10) << left << code + ",";
+        cout << setw(11) << left << to_string(demand) + ",";
+        cout << setw(15) << left << to_string(flow) << endl;
+        // cout << "(" << cityName << ", " << code << ", " << demand << ", " << flow << ")" << endl;
+    }
+
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";

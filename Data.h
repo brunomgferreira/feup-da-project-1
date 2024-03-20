@@ -50,6 +50,8 @@ public:
     bool deliverySiteExists(const string &code);
 
     void cityMaxFlow(const string &code);
+
+    void allCitiesMaxFlow();
 };
 
 

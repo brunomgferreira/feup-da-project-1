@@ -33,7 +33,8 @@ void MaxFlowMenuState::handleInput(App* app) {
                 }));
                 break;
             case '2':
-                app->setState(this);
+                app->getData()->allCitiesMaxFlow();
+                PressEnterToContinue();
                 break;
             case 'q':
                 app->setState(new MainMenuState());
