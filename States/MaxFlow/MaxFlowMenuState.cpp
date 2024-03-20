@@ -1,6 +1,7 @@
 #include <iostream>
 #include "States/MainMenuState.h"
 #include "MaxFlowMenuState.h"
+#include "States/Utils/GetCityState.h"
 
 MaxFlowMenuState::MaxFlowMenuState() {}
 
@@ -25,7 +26,11 @@ void MaxFlowMenuState::handleInput(App* app) {
     if (choice.size() == 1) {
         switch (choice[0]) {
             case '1':
-                app->setState(this);
+                app->setState(new GetCityState(this, [&](App *app, const string& code) {
+                    app->getData()->cityMaxFlow(code);
+                    PressEnterToContinue(1);
+                    app->setState(this);
+                }));
                 break;
             case '2':
                 app->setState(this);

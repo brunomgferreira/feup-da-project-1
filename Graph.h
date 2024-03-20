@@ -7,6 +7,8 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include "WaterReservoir.h"
+#include "DeliverySite.h"
 
 using namespace std;
 
@@ -16,7 +18,7 @@ class Edge;
 
 /************************* Vertex  **************************/
 
-enum class VertexType { WaterReservoir, PumpingStation, DeliverySite };
+enum class VertexType { WaterReservoir, PumpingStation, DeliverySite, MainSource, MainTarget };
 
 class Vertex {
 private:
@@ -129,6 +131,8 @@ public:
     bool isDAG() const;
     bool dfsIsDAG(Vertex *v) const;
     vector<string> topsort() const;
+
+    void maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

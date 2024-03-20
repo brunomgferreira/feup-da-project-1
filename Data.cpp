@@ -156,3 +156,37 @@ void Data::readFilePipes(ifstream &file) {
     }
 }
 
+// Confirm Existence
+
+bool Data::deliverySiteExists(const string &code) {
+    auto it = deliverySites.find(code);
+    if (it != deliverySites.end()) return true;
+    return false;
+}
+
+
+// Max Flow
+
+void Data::cityMaxFlow(const string &code) {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    auto it = deliverySites.find(code);
+
+    DeliverySite *ds = (*it).second;
+
+    string cityName = ds->getCity();
+    unsigned long demand = ds->getDemand();
+    unsigned long flow = 10;
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> City name: " << cityName << endl;
+    cout << ">> Code: " << code << endl;
+    cout << ">> Demand: " << demand << " m3/sec" << endl;
+    cout << ">> Flow value: " << flow << " m3/sec" << endl;
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+

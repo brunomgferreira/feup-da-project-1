@@ -1,5 +1,5 @@
 #include "Graph.h"
-
+#include "Algorithms.h"
 
 /************************* Vertex  **************************/
 
@@ -258,4 +258,29 @@ bool Graph::dfsIsDAG(Vertex *v) const {
 vector<string> Graph::topsort() const {
     vector<string> res;
     return res;
+}
+
+
+void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    this->addVertex(mainSourceCode, VertexType::MainSource);
+    this->addVertex(mainTargetCode, VertexType::MainTarget);
+
+    for (auto& pair : *waterReservoirs) {
+        string wrCode = pair.first;
+        WaterReservoir* wr = pair.second;
+        unsigned long maxDelivery = wr->getMaxDelivery();
+
+        this->addEdge(mainSourceCode, wrCode, maxDelivery);
+    }
+
+    for (auto& pair : *deliverySites) {
+        string dsCode = pair.first;
+
+        this->addEdge(dsCode, mainTargetCode, INT_FAST32_MAX);
+    }
+
+    edmondsKarp(this, mainSourceCode, mainTargetCode);
 }

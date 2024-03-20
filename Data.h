@@ -46,6 +46,10 @@ public:
     void readFileCities(ifstream &file);
 
     void readFilePipes(ifstream &file);
+
+    bool deliverySiteExists(const string &code);
+
+    void cityMaxFlow(const string &code);
 };
 
 
