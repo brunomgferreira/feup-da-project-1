@@ -229,6 +229,7 @@ void Data::allCitiesMaxFlow() {
     cout << setw(11) << left << "Demand";
     cout << setw(15) << left << "Flow Value" << endl << endl;
 
+    unsigned long maxFlow = 0;
 
     for(auto &pair : deliverySites) {
         const string code = pair.first;
@@ -238,6 +239,8 @@ void Data::allCitiesMaxFlow() {
         unsigned long demand = ds->getDemand();
         unsigned long flow = g.findVertex(code)->getFlow();
 
+        maxFlow += flow;
+
         cout << setw(24) << left << cityName + ",";
         cout << setw(10) << left << code + ",";
         cout << setw(11) << left << to_string(demand) + ",";
@@ -246,6 +249,7 @@ void Data::allCitiesMaxFlow() {
         if(outputFileIsOpen) outputFile << cityName << "," << code << "," << demand << "," << flow << endl;
     }
     cout << endl;
+    cout << "Max Flow: " << to_string(maxFlow) << " m3/s" << endl << endl;
 
     if(outputFileIsOpen) cout << ">> Output file is at: ./output/max_flow_data.txt" << endl;
     else {
