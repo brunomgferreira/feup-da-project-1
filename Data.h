@@ -54,6 +54,8 @@ public:
     void allCitiesMaxFlow();
 
     void verifyWaterSupply();
+
+    void loadOptimization();
 };
 
 

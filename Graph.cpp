@@ -1,3 +1,4 @@
+#include <valarray>
 #include "Graph.h"
 #include "Algorithms.h"
 
@@ -326,4 +327,56 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
 
     deleteMainSource(mainSourceCode, waterReservoirs);
     deleteMainTarget(mainTargetCode, deliverySites);
+}
+
+void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference) {
+
+    int numberOfPipes = 0;
+
+    double absoluteSum = 0;
+    double relativeSum = 0;
+
+    // Determine average
+    for(auto &pair : vertices) {
+        const Vertex *v = pair.second;
+
+        for(auto e : v->getAdj()) {
+            double absoluteDifference = e->getCapacity() - e->getFlow();
+            double relativeDifference = ( e->getCapacity() - e->getFlow() ) / e->getCapacity();
+
+            if(absoluteDifference > absoluteMaxDifference) absoluteMaxDifference = absoluteDifference;
+            if(relativeDifference > relativeMaxDifference) relativeMaxDifference = relativeDifference;
+
+            // Sum all differences
+            absoluteSum += absoluteDifference;
+            relativeSum += relativeDifference;
+
+            numberOfPipes++;
+        }
+    }
+
+    // Divide by the number of pipes and get the average of all differences
+    absoluteAverage = absoluteSum / numberOfPipes;
+    relativeAverage = relativeSum / numberOfPipes;
+
+    absoluteSum = 0;
+    relativeSum = 0;
+
+    // Determine variance
+    for(auto &pair : vertices) {
+        const Vertex *v = pair.second;
+
+        for(auto e : v->getAdj()) {
+            double absoluteDifference = e->getCapacity() - e->getFlow();
+            double relativeDifference = ( e->getCapacity() - e->getFlow() ) / e->getCapacity();
+
+            // Sum all variance steps
+            absoluteSum += pow(absoluteDifference - absoluteAverage, 2);
+            relativeSum += pow(relativeDifference - relativeDifference, 2);
+        }
+    }
+
+    // Divide by the number of pipes and get the variance
+    absoluteVariance = absoluteSum / numberOfPipes;
+    relativeVariance = relativeSum / numberOfPipes;
 }

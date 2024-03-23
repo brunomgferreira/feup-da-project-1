@@ -142,6 +142,8 @@ public:
     void deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
     void createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
     void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
+
+    void calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

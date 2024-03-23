@@ -344,3 +344,30 @@ void Data::verifyWaterSupply() {
     cout << "\033[0m";
 }
 
+void Data::loadOptimization() {
+    // Absolute metrics
+    double initialAbsoluteAverage;
+    double initialAbsoluteVariance;
+    double initialAbsoluteMaxDifference;
+
+    // Relative metrics
+    double initialRelativeAverage;
+    double initialRelativeVariance;
+    double initialRelativeMaxDifference;
+
+    g.calculateMetrics(initialAbsoluteAverage, initialAbsoluteVariance, initialAbsoluteMaxDifference, initialRelativeAverage, initialRelativeVariance, initialRelativeMaxDifference);
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Load Optimization: " << endl << endl;
+
+    cout << "- Initial Metrics: " << endl;
+    cout << "Absolute Average: " << initialAbsoluteAverage << endl;
+    cout << "Absolute Variance: " << initialAbsoluteVariance << endl;
+    cout << "Absolute Max Difference: " << initialAbsoluteMaxDifference << endl << endl;
+
+    cout << "Relative Average: " << initialRelativeAverage << endl;
+    cout << "Relative Variance: " << initialRelativeVariance << endl;
+    cout << "Relative Max Difference: " << initialRelativeMaxDifference << endl << endl;
+}
