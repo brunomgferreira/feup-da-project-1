@@ -64,6 +64,9 @@ void Data::readFileReservoir(ifstream &file) {
     getline(file,line);
 
     while(getline(file,line)) {
+        // Remove carriage return characters if present
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+
         string reservoir, municipality, code;
         unsigned long id, maxDelivery;
         stringstream ss(line);
@@ -88,6 +91,9 @@ void Data::readFileStations(ifstream &file) {
     getline(file,line);
 
     while(getline(file,line)) {
+        // Remove carriage return characters if present
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+
         string code;
         unsigned long id;
         stringstream ss(line);
@@ -108,6 +114,9 @@ void Data::readFileCities(ifstream &file) {
     getline(file,line);
 
     while(getline(file,line)) {
+        // Remove carriage return characters if present
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+
         string city, code;
         unsigned long id, demand, population;
         stringstream ss(line);
@@ -133,6 +142,9 @@ void Data::readFilePipes(ifstream &file) {
     getline(file,line);
 
     while(getline(file,line)) {
+        // Remove carriage return characters if present
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+
         string servicePointA, servicePointB;
         unsigned long capacity, direction;
         stringstream ss(line);
