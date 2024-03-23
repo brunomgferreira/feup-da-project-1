@@ -251,7 +251,10 @@ void Data::allCitiesMaxFlow() {
     cout << endl;
     cout << "Max Flow: " << to_string(maxFlow) << " m3/s" << endl << endl;
 
-    if(outputFileIsOpen) cout << ">> Output file is at: ./output/max_flow_data.txt" << endl;
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/verify_water_supply.txt" << endl;
+    }
     else {
         cout << "\033[31m";
         cout << "There was an error creating/writing the output file." << endl;
@@ -267,6 +270,16 @@ void Data::verifyWaterSupply() {
 
     g.maxFlow(&waterReservoirs, &deliverySites);
 
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
+    // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "verify_water_supply.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
     unsigned long totalDemand = 0;
     unsigned long totalWaterSupplied = 0;
 
@@ -274,6 +287,8 @@ void Data::verifyWaterSupply() {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Cities lacking desired water rate level: " << endl;
+
+    if(outputFileIsOpen) outputFile << "City,Code,Deficit Value" << endl;
 
     cout << setw(24) << left << "City";
     cout << setw(10) << left << "Code";
@@ -292,9 +307,13 @@ void Data::verifyWaterSupply() {
 
         if (demand <= flow) continue;
 
+        unsigned long difference = demand-flow;
+
         cout << setw(24) << left << cityName + ",";
         cout << setw(10) << left << code + ",";
-        cout << setw(11) << left << to_string(demand-flow) << endl;
+        cout << setw(11) << left << to_string(difference) << endl;
+
+        if(outputFileIsOpen) outputFile << cityName << "," << code << "," << difference << endl;
     }
 
     cout << endl;
@@ -308,6 +327,16 @@ void Data::verifyWaterSupply() {
     }
     else {
         cout << "The network can meet the water needs!" << endl << endl;
+    }
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/verify_water_supply.txt" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
