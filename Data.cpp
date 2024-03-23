@@ -263,3 +263,55 @@ void Data::allCitiesMaxFlow() {
     cout << "\033[0m";
 }
 
+void Data::verifyWaterSupply() {
+
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    unsigned long totalDemand = 0;
+    unsigned long totalWaterSupplied = 0;
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Cities lacking desired water rate level: " << endl;
+
+    cout << setw(24) << left << "City";
+    cout << setw(10) << left << "Code";
+    cout << setw(11) << left << "Deficit Value" << endl << endl;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        unsigned long demand = ds->getDemand();
+        unsigned long flow = g.findVertex(code)->getFlow();
+
+        totalWaterSupplied += flow;
+        totalDemand += demand;
+
+        if (demand <= flow) continue;
+
+        cout << setw(24) << left << cityName + ",";
+        cout << setw(10) << left << code + ",";
+        cout << setw(11) << left << to_string(demand-flow) << endl;
+    }
+
+    cout << endl;
+    cout << "Total Demand: " << to_string(totalDemand) << " m3/s" << endl;
+    cout << "Total Water Supplied: " << to_string(totalWaterSupplied) << " m3/s" << endl;
+
+    if(totalDemand>totalWaterSupplied) {
+        cout << "\033[31m";
+        cout << "The network cannot meet the water needs!" << endl << endl;
+        cout << "\033[0m";
+    }
+    else {
+        cout << "The network can meet the water needs!" << endl << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+

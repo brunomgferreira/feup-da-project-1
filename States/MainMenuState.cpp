@@ -56,7 +56,8 @@ void MainMenuState::handleInput(App* app) {
                         app->setState(new MaxFlowMenuState());
                         break;
                     case '3':
-                        app->setState(this);
+                        app->getData()->verifyWaterSupply();
+                        PressEnterToContinue();
                         break;
                     case '4':
                         app->setState(this);

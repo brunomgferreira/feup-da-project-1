@@ -52,6 +52,8 @@ public:
     void cityMaxFlow(const string &code);
 
     void allCitiesMaxFlow();
+
+    void verifyWaterSupply();
 };
 
 
