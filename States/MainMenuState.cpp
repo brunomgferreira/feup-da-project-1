@@ -60,7 +60,8 @@ void MainMenuState::handleInput(App* app) {
                         PressEnterToContinue();
                         break;
                     case '4':
-                        app->setState(this);
+                        app->getData()->loadOptimization();
+                        PressEnterToContinue();
                         break;
                     case '5':
                         app->setState(this);

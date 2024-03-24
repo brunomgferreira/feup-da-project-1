@@ -138,10 +138,17 @@ public:
     vector<string> topsort() const;
 
     void maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
+
     void createMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
     void deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
+
     void createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
+    void createMainTargetWithDemandLimit(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
     void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
+
+    void calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference);
+
+    void optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

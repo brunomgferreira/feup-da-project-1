@@ -10,6 +10,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 #include <filesystem>
+#include <cmath>
 #include "Graph.h"
 #include "WaterReservoir.h"
 #include "PumpingStation.h"
@@ -54,6 +55,8 @@ public:
     void allCitiesMaxFlow();
 
     void verifyWaterSupply();
+
+    void loadOptimization();
 };
 
 
