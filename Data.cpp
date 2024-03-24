@@ -68,7 +68,7 @@ void Data::readFileReservoir(ifstream &file) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
 
         string reservoir, municipality, code;
-        unsigned long id, maxDelivery;
+        double id, maxDelivery;
         stringstream ss(line);
         getline(ss,reservoir,',');
         getline(ss,municipality,',');
@@ -95,7 +95,7 @@ void Data::readFileStations(ifstream &file) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
 
         string code;
-        unsigned long id;
+        double id;
         stringstream ss(line);
         ss >> id;
         ss.ignore();
@@ -118,7 +118,7 @@ void Data::readFileCities(ifstream &file) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
 
         string city, code;
-        unsigned long id, demand, population;
+        double id, demand, population;
         stringstream ss(line);
         getline(ss, city,',');
         ss >> id;
@@ -146,7 +146,7 @@ void Data::readFilePipes(ifstream &file) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
 
         string servicePointA, servicePointB;
-        unsigned long capacity, direction;
+        double capacity, direction;
         stringstream ss(line);
         getline(ss, servicePointA,',');
         getline(ss, servicePointB,',');
@@ -187,8 +187,8 @@ void Data::cityMaxFlow(const string &code) {
     DeliverySite *ds = (*it).second;
 
     string cityName = ds->getCity();
-    unsigned long demand = ds->getDemand();
-    unsigned long flow = g.findVertex(code)->getFlow();
+    double demand = ds->getDemand();
+    double flow = g.findVertex(code)->getFlow();
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
@@ -196,8 +196,8 @@ void Data::cityMaxFlow(const string &code) {
     cout << ">> Specific City Max Flow: " << endl;
     cout << "City name: " << cityName << endl;
     cout << "Code: " << code << endl;
-    cout << "Demand: " << demand << " m3/sec" << endl;
-    cout << "Flow value: " << flow << " m3/sec" << endl;
+    cout << "Demand: " << fixed << setprecision(0) << demand << " m3/sec" << endl;
+    cout << "Flow value: " << fixed << setprecision(0) << flow << " m3/sec" << endl;
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
@@ -229,27 +229,30 @@ void Data::allCitiesMaxFlow() {
     cout << setw(11) << left << "Demand";
     cout << setw(15) << left << "Flow Value" << endl << endl;
 
-    unsigned long maxFlow = 0;
+    double maxFlow = 0;
 
     for(auto &pair : deliverySites) {
         const string code = pair.first;
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
-        unsigned long demand = ds->getDemand();
-        unsigned long flow = g.findVertex(code)->getFlow();
+        double demand = ds->getDemand();
+        double flow = g.findVertex(code)->getFlow();
 
         maxFlow += flow;
 
+        ostringstream ss;
+        ss << fixed << setprecision(0) << demand;
+
         cout << setw(24) << left << cityName + ",";
         cout << setw(10) << left << code + ",";
-        cout << setw(11) << left << to_string(demand) + ",";
-        cout << setw(15) << left << to_string(flow) << endl;
+        cout << setw(11) << left << ss.str() + ",";
+        cout << setw(15) << left << fixed << setprecision(0) << flow << endl;
 
         if(outputFileIsOpen) outputFile << cityName << "," << code << "," << demand << "," << flow << endl;
     }
     cout << endl;
-    cout << "Max Flow: " << to_string(maxFlow) << " m3/s" << endl << endl;
+    cout << "Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl << endl;
 
     if(outputFileIsOpen) {
         outputFile.close();
@@ -280,8 +283,8 @@ void Data::verifyWaterSupply() {
 
     bool outputFileIsOpen = outputFile.is_open();
 
-    unsigned long totalDemand = 0;
-    unsigned long totalWaterSupplied = 0;
+    double totalDemand = 0;
+    double totalWaterSupplied = 0;
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
@@ -299,26 +302,26 @@ void Data::verifyWaterSupply() {
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
-        unsigned long demand = ds->getDemand();
-        unsigned long flow = g.findVertex(code)->getFlow();
+        double demand = ds->getDemand();
+        double flow = g.findVertex(code)->getFlow();
 
         totalWaterSupplied += flow;
         totalDemand += demand;
 
         if (demand <= flow) continue;
 
-        unsigned long difference = demand-flow;
+        double difference = demand-flow;
 
-        cout << setw(24) << left << cityName + ",";
-        cout << setw(10) << left << code + ",";
-        cout << setw(11) << left << to_string(difference) << endl;
+        cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
+        cout << setw(10) << left << fixed << setprecision(0) << code + ",";
+        cout << setw(11) << left << fixed << setprecision(0) << difference << endl;
 
         if(outputFileIsOpen) outputFile << cityName << "," << code << "," << difference << endl;
     }
 
     cout << endl;
-    cout << "Total Demand: " << to_string(totalDemand) << " m3/s" << endl;
-    cout << "Total Water Supplied: " << to_string(totalWaterSupplied) << " m3/s" << endl;
+    cout << "Total Demand: " << fixed << setprecision(0) << totalDemand << " m3/s" << endl;
+    cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
 
     if(totalDemand>totalWaterSupplied) {
         cout << "\033[31m";
@@ -364,15 +367,15 @@ void Data::loadOptimization() {
     double finalRelativeMaxDifference;
 
     // Total Flow
-    unsigned long initialTotalWaterSupplied = 0;
-    unsigned long finalTotalWaterSupplied = 0;
+    double initialTotalWaterSupplied = 0;
+    double finalTotalWaterSupplied = 0;
 
     g.maxFlow(&waterReservoirs, &deliverySites);
     g.calculateMetrics(initialAbsoluteAverage, initialAbsoluteVariance, initialAbsoluteMaxDifference, initialRelativeAverage, initialRelativeVariance, initialRelativeMaxDifference);
 
     for(auto &pair : deliverySites) {
         const string code = pair.first;
-        unsigned long flow = g.findVertex(code)->getFlow();
+        double flow = g.findVertex(code)->getFlow();
         initialTotalWaterSupplied += flow;
     }
 
@@ -381,7 +384,7 @@ void Data::loadOptimization() {
 
     for(auto &pair : deliverySites) {
         const string code = pair.first;
-        unsigned long flow = g.findVertex(code)->getFlow();
+        double flow = g.findVertex(code)->getFlow();
         finalTotalWaterSupplied += flow;
     }
 
@@ -402,7 +405,7 @@ void Data::loadOptimization() {
     cout << "   Variance:           " << fixed << setprecision(5) << initialRelativeVariance << " / " << finalRelativeVariance << endl;
     cout << "   Standard deviation: " << fixed << setprecision(5) << sqrt(initialRelativeVariance) << " / " << sqrt(finalRelativeVariance) << endl << endl;
 
-    cout << "> Total Max Flow:      " << setprecision(5) << initialTotalWaterSupplied << " / " << finalTotalWaterSupplied << endl;
+    cout << "> Total Max Flow:      " << setprecision(0) << initialTotalWaterSupplied << " / " << finalTotalWaterSupplied << endl;
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;

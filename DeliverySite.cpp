@@ -1,12 +1,12 @@
 #include "DeliverySite.h"
 
-DeliverySite::DeliverySite(string city, unsigned long id, string code, unsigned long demand, unsigned long population)
+DeliverySite::DeliverySite(string city, double id, string code, double demand, double population)
     : city(city), id(id), code(code), demand(demand), population(population) {}
 
 string DeliverySite::getCity() {
     return city;
 }
 
-unsigned long DeliverySite::getDemand() {
+double DeliverySite::getDemand() {
     return demand;
 }

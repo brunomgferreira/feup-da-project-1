@@ -61,11 +61,11 @@ vector<Edge *> Vertex::getIncoming() const {
     return this->incoming;
 }
 
-unsigned long Vertex::getFlow() const {
+double Vertex::getFlow() const {
     return this->flow;
 }
 
-void Vertex::setFlow(unsigned long value) {
+void Vertex::setFlow(double value) {
     this->flow = value;
 }
 
@@ -97,7 +97,7 @@ void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-Edge * Vertex::addEdge(Vertex *dest, unsigned long c) {
+Edge * Vertex::addEdge(Vertex *dest, double c) {
     auto newEdge = new Edge(this, dest, c);
     newEdge->setFlow(0);
     adj.push_back(newEdge);
@@ -135,13 +135,13 @@ void Vertex::removeOutgoingEdges() {
 
 /********************** Edge  ****************************/
 
-Edge::Edge(Vertex *orig, Vertex *dest, unsigned long capacity) : orig(orig), dest(dest), capacity(capacity) {}
+Edge::Edge(Vertex *orig, Vertex *dest, double capacity) : orig(orig), dest(dest), capacity(capacity) {}
 
 Vertex * Edge::getDest() const {
     return this->dest;
 }
 
-unsigned long Edge::getCapacity() const {
+double Edge::getCapacity() const {
     return this->capacity;
 }
 
@@ -157,7 +157,7 @@ Edge *Edge::getReverse() const {
     return this->reverse;
 }
 
-unsigned long Edge::getFlow() const {
+double Edge::getFlow() const {
     return this->flow;
 }
 
@@ -169,7 +169,7 @@ void Edge::setReverse(Edge *reverse) {
     this->reverse = reverse;
 }
 
-void Edge::setFlow(unsigned long flow) {
+void Edge::setFlow(double flow) {
     this->flow = flow;
 }
 
@@ -193,7 +193,7 @@ bool Graph::addVertex(const string &code, const VertexType &type) {
     return false;
 }
 
-bool Graph::addEdge(const string &sourc, const string &dest, unsigned long c) {
+bool Graph::addEdge(const string &sourc, const string &dest, double c) {
     Vertex *originVertex = findVertex(sourc);
     Vertex *destVertex = findVertex(dest);
 
@@ -213,7 +213,7 @@ bool Graph::removeEdge(const string &source, const string &dest) {
     return srcVertex->removeEdge(dest);
 }
 
-bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, unsigned long c) {
+bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double c) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
@@ -276,7 +276,7 @@ void Graph::createMainSource(const string &code, const unordered_map<string, Wat
     for (auto& pair : *waterReservoirs) {
         string wrCode = pair.first;
         WaterReservoir* wr = pair.second;
-        unsigned long maxDelivery = wr->getMaxDelivery();
+        double maxDelivery = wr->getMaxDelivery();
 
         this->addEdge(code, wrCode, maxDelivery);
     }
@@ -288,7 +288,7 @@ void Graph::deleteMainSource(const string &code, const unordered_map<string, Wat
     for (auto& pair : *waterReservoirs) {
         string wrCode = pair.first;
         WaterReservoir* wr = pair.second;
-        unsigned long maxDelivery = wr->getMaxDelivery();
+        double maxDelivery = wr->getMaxDelivery();
 
         this->addEdge(code, wrCode, maxDelivery);
     }
@@ -312,7 +312,7 @@ void Graph::createMainTargetWithDemandLimit(const string &code, const unordered_
     for (auto& pair : *deliverySites) {
         string dsCode = pair.first;
         DeliverySite* ds = pair.second;
-        unsigned long demand = ds->getDemand();
+        double demand = ds->getDemand();
 
         this->addEdge(dsCode, code, demand);
     }

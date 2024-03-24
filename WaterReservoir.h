@@ -13,9 +13,9 @@ class WaterReservoir {
 private :
     string name;
     string municipality;
-    unsigned long id;
+    double id;
     string code;
-    unsigned long maxDelivery;
+    double maxDelivery;
 
 public:
 
@@ -31,9 +31,9 @@ public:
     * @param code The unique code assigned to the water reservoir.
     * @param maxDelivery The maximum delivery of water reservoir in m³/sec.
     */
-    WaterReservoir(string name, string municipality, unsigned long id, string code, unsigned long maxDelivery = 0);
+    WaterReservoir(string name, string municipality, double id, string code, double maxDelivery = 0);
 
-    unsigned long getMaxDelivery();
+    double getMaxDelivery();
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H

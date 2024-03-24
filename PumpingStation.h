@@ -11,7 +11,7 @@ using namespace std;
 
 class PumpingStation {
 private :
-    unsigned long id;
+    double id;
     string code;
 
 public:
@@ -25,7 +25,7 @@ public:
     * @param id The id of the pumping station.
     * @param code The unique code assigned to the pumping station.
     */
-    PumpingStation(unsigned long id, string code);
+    PumpingStation(double id, string code);
 };
 
 

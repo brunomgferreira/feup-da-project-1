@@ -2,7 +2,7 @@
 
 
 // Function to test the given vertex 'w' and visit it if conditions are met
-void testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, unsigned long residual) {
+void testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual) {
     // Check if the vertex 'w' is not visited and there is residual capacity
     if (! w->isVisited() && residual > 0) {
         // Mark 'w' as visited, set the path through which it was reached, and enqueue it
@@ -40,8 +40,8 @@ bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t) {
 }
 
 // Function to find the minimum residual capacity along the augmenting path
-unsigned long findMinResidualAlongPath(Vertex *s, Vertex *t) {
-    unsigned long f = INF;
+double findMinResidualAlongPath(Vertex *s, Vertex *t) {
+    double f = INF;
     // Traverse the augmenting path to find the minimum residual capacity
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -59,11 +59,11 @@ unsigned long findMinResidualAlongPath(Vertex *s, Vertex *t) {
 }
 
 // Function to augment flow along the augmenting path with the given flow value
-void augmentFlowAlongPath(Vertex *s, Vertex *t, unsigned long f) {
+void augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     // Traverse the augmenting path and update the flow values accordingly
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
-        unsigned long flow = e->getFlow();
+        double flow = e->getFlow();
         if (e->getDest() == v) {
             e->setFlow(flow + f);
             v = e->getOrig();
@@ -93,14 +93,14 @@ void edmondsKarp(Graph *g, string source, string target) {
     }
     // While there is an augmenting path, augment the flow along the path
     while( findAugmentingPath(g, s, t) ) {
-        unsigned long f = findMinResidualAlongPath(s, t);
+        double f = findMinResidualAlongPath(s, t);
         augmentFlowAlongPath(s, t, f);
     }
 
     // Calculate and save incoming flow for each vertex
     for (auto pair : g->getVertexSet()) {
         Vertex *v = pair.second;
-        unsigned long incomingFlow = 0;
+        double incomingFlow = 0;
         for (auto e: v->getIncoming()) {
             incomingFlow += e->getFlow();
         }
@@ -136,8 +136,8 @@ bool optimizedFindAugmentingPath(Graph *g, Vertex *s, Vertex *t, double smallest
 }
 
 // Function to find the minimum residual capacity along the augmenting path
-unsigned long optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity) {
-    unsigned long f = INF;
+double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity) {
+    double f = INF;
     // Traverse the augmenting path to find the minimum residual capacity
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -156,11 +156,11 @@ unsigned long optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double sma
 }
 
 // Function to augment flow along the augmenting path with the given flow value
-void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, unsigned long f) {
+void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
     // Traverse the augmenting path and update the flow values accordingly
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
-        unsigned long flow = e->getFlow();
+        double flow = e->getFlow();
         if (e->getDest() == v) {
             e->setFlow(flow + f);
             v = e->getOrig();
@@ -188,7 +188,7 @@ void optimizedEdmondsKarp(Graph *g, const string source, const string target, co
     while (i <= biggestCapacity / smallestCapacity) {
         double temp = 0;
         while( optimizedFindAugmentingPath(g, s, t, smallestCapacity, i) ) {
-            unsigned long f = optimizedFindMinResidualAlongPath(s, t, smallestCapacity);
+            double f = optimizedFindMinResidualAlongPath(s, t, smallestCapacity);
             optimizedAugmentFlowAlongPath(s, t, f);
             temp++;
         }
@@ -200,7 +200,7 @@ void optimizedEdmondsKarp(Graph *g, const string source, const string target, co
     // Calculate and save incoming flow for each vertex
     for (auto pair : g->getVertexSet()) {
         Vertex *v = pair.second;
-        unsigned long incomingFlow = 0;
+        double incomingFlow = 0;
         for (auto e: v->getIncoming()) {
             incomingFlow += e->getFlow();
         }

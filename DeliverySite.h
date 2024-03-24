@@ -12,10 +12,10 @@ using namespace std;
 class DeliverySite {
 private :
     string city;
-    unsigned long id;
+    double id;
     string code;
-    unsigned long demand;
-    unsigned long population;
+    double demand;
+    double population;
 
 public:
 
@@ -28,11 +28,11 @@ public:
     * @param id The id of the pumping station.
     * @param code The unique code assigned to the pumping station.
     */
-    DeliverySite(string city, unsigned long id, string code, unsigned long demand, unsigned long population);
+    DeliverySite(string city, double id, string code, double demand, double population);
 
     string getCity();
 
-    unsigned long getDemand();
+    double getDemand();
 };
 
 

@@ -4,15 +4,15 @@
 
 #include "Graph.h"
 
-void testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, unsigned long residual);
+void testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual);
 bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t);
-unsigned long findMinResidualAlongPath(Vertex *s, Vertex *t);
-void augmentFlowAlongPath(Vertex *s, Vertex *t, unsigned long f);
+double findMinResidualAlongPath(Vertex *s, Vertex *t);
+void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 void edmondsKarp(Graph *g, string source, string target);
 
 bool optimizedFindAugmentingPath(Graph *g, Vertex *s, Vertex *t, double smallestCapacity, double i);
-unsigned long optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity);
-void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, unsigned long f);
+double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity);
+void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 void optimizedEdmondsKarp(Graph *g, const string source, const string target, const double biggestCapacity, const double smallestCapacity, double *iterationCount);
 
 

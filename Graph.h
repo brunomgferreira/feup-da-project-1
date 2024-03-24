@@ -26,7 +26,7 @@ private:
     VertexType type;        // type of the node
     vector<Edge *> adj;  // outgoing edges
 
-    unsigned long flow = 0;
+    double flow = 0;
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
@@ -53,8 +53,8 @@ public:
     Edge *getPath() const;
     vector<Edge *> getIncoming() const;
 
-    unsigned long getFlow() const;
-    void setFlow(unsigned long value);
+    double getFlow() const;
+    void setFlow(double value);
 
     void setCode(string code);
     void setType(VertexType type);
@@ -63,7 +63,7 @@ public:
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
     void setPath(Edge *path);
-    Edge * addEdge(Vertex *dest, unsigned long c);
+    Edge * addEdge(Vertex *dest, double c);
     bool removeEdge(string code);
     void removeOutgoingEdges();
 };
@@ -73,7 +73,7 @@ public:
 class Edge {
 private:
     Vertex *dest; // destination vertex
-    unsigned long capacity; // edge capacity
+    double capacity; // edge capacity
 
     // auxiliary fields
     bool selected = false;
@@ -82,21 +82,21 @@ private:
     Vertex *orig;
     Edge *reverse = nullptr;
 
-    unsigned long flow; // for flow-related problems
+    double flow; // for flow-related problems
 
 public:
-    Edge(Vertex *orig, Vertex *dest, unsigned long capacity);
+    Edge(Vertex *orig, Vertex *dest, double capacity);
 
     Vertex * getDest() const;
-    unsigned long getCapacity() const;
+    double getCapacity() const;
     bool isSelected() const;
     Vertex * getOrig() const;
     Edge *getReverse() const;
-    unsigned long getFlow() const;
+    double getFlow() const;
 
     void setSelected(bool selected);
     void setReverse(Edge *reverse);
-    void setFlow(unsigned long flow);
+    void setFlow(double flow);
 };
 
 /********************** Graph  ****************************/
@@ -121,9 +121,9 @@ public:
      * destination vertices and the edge capacity (c).
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const string &sourc, const string &dest, unsigned long c);
+    bool addEdge(const string &sourc, const string &dest, double c);
     bool removeEdge(const string &source, const string &dest);
-    bool addBidirectionalEdge(const string &sourc, const string &dest, unsigned long c);
+    bool addBidirectionalEdge(const string &sourc, const string &dest, double c);
 
     int getNumVertex() const;
     unordered_map<string, Vertex *> getVertexSet() const;
