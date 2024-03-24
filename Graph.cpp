@@ -99,6 +99,7 @@ void Vertex::setPath(Edge *path) {
 
 Edge * Vertex::addEdge(Vertex *dest, unsigned long c) {
     auto newEdge = new Edge(this, dest, c);
+    newEdge->setFlow(0);
     adj.push_back(newEdge);
     dest->incoming.push_back(newEdge);
     return newEdge;
@@ -305,6 +306,18 @@ void Graph::createMainTarget(const string &code, const unordered_map<string, Del
     }
 }
 
+void Graph::createMainTargetWithDemandLimit(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
+    this->addVertex(code, VertexType::MainTarget);
+
+    for (auto& pair : *deliverySites) {
+        string dsCode = pair.first;
+        DeliverySite* ds = pair.second;
+        unsigned long demand = ds->getDemand();
+
+        this->addEdge(dsCode, code, demand);
+    }
+}
+
 void Graph::deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
     for (auto& pair : *deliverySites) {
         string dsCode = pair.first;
@@ -372,11 +385,55 @@ void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, 
 
             // Sum all variance steps
             absoluteSum += pow(absoluteDifference - absoluteAverage, 2);
-            relativeSum += pow(relativeDifference - relativeDifference, 2);
+            relativeSum += pow(relativeDifference - relativeAverage, 2);
         }
     }
 
     // Divide by the number of pipes and get the variance
     absoluteVariance = absoluteSum / numberOfPipes;
     relativeVariance = relativeSum / numberOfPipes;
+}
+
+void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
+
+    // CREATE AUX FUNCTION - SET ALL FLOW TO 0
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setFlow(0);
+        for(auto e : v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    createMainSource(mainSourceCode, waterReservoirs);
+    createMainTargetWithDemandLimit(mainTargetCode, deliverySites);
+
+    double biggestCapacity = -INF;
+    double smallestCapacity = INF;
+    // CREATE AUX FUNCTION - SET ALL FLOW TO 0
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setFlow(0);
+        for(auto e : v->getAdj()) {
+            e->setFlow(0);
+            double capacity = e->getCapacity();
+            if(capacity < smallestCapacity) smallestCapacity = capacity;
+            if(capacity > biggestCapacity) biggestCapacity = capacity;
+        }
+    }
+
+    double c = 0;
+
+    optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
+
+    deleteMainTarget(mainTargetCode, deliverySites);
+    createMainTarget(mainTargetCode, deliverySites);
+
+    optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
+
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
 }
