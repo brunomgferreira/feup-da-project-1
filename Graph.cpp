@@ -97,9 +97,9 @@ void Vertex::setPath(Edge *path) {
     this->path = path;
 }
 
-Edge * Vertex::addEdge(Vertex *dest, double c) {
+Edge * Vertex::addEdge(Vertex *dest, double c, double f) {
     auto newEdge = new Edge(this, dest, c);
-    newEdge->setFlow(0);
+    newEdge->setFlow(f);
     adj.push_back(newEdge);
     dest->incoming.push_back(newEdge);
     return newEdge;
@@ -193,12 +193,12 @@ bool Graph::addVertex(const string &code, const VertexType &type) {
     return false;
 }
 
-bool Graph::addEdge(const string &sourc, const string &dest, double c) {
+bool Graph::addEdge(const string &sourc, const string &dest, double c, double f) {
     Vertex *originVertex = findVertex(sourc);
     Vertex *destVertex = findVertex(dest);
 
     if (originVertex && destVertex) {
-        originVertex->addEdge(destVertex, c);
+        originVertex->addEdge(destVertex, c, f);
         return true;
     }
 
@@ -278,19 +278,18 @@ void Graph::createMainSource(const string &code, const unordered_map<string, Wat
         WaterReservoir* wr = pair.second;
         double maxDelivery = wr->getMaxDelivery();
 
-        this->addEdge(code, wrCode, maxDelivery);
+        auto it = this->findVertex(wrCode);
+        double f = (*it).getFlow();
+
+        this->addEdge(code, wrCode, maxDelivery, f);
+
     }
 }
 
 void Graph::deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
-    this->addVertex(code, VertexType::MainSource);
-
     for (auto& pair : *waterReservoirs) {
         string wrCode = pair.first;
-        WaterReservoir* wr = pair.second;
-        double maxDelivery = wr->getMaxDelivery();
-
-        this->addEdge(code, wrCode, maxDelivery);
+        this->removeEdge(code, wrCode);
     }
 
     auto it = vertices.find(code);
@@ -302,26 +301,19 @@ void Graph::createMainTarget(const string &code, const unordered_map<string, Del
 
     for (auto& pair : *deliverySites) {
         string dsCode = pair.first;
-        this->addEdge(dsCode, code, INT_FAST32_MAX);
-    }
-}
-
-void Graph::createMainTargetWithDemandLimit(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
-    this->addVertex(code, VertexType::MainTarget);
-
-    for (auto& pair : *deliverySites) {
-        string dsCode = pair.first;
         DeliverySite* ds = pair.second;
         double demand = ds->getDemand();
 
-        this->addEdge(dsCode, code, demand);
+        auto it = this->findVertex(dsCode);
+        double f = (*it).getFlow();
+
+        this->addEdge(dsCode, code, demand, f);
     }
 }
 
 void Graph::deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
     for (auto& pair : *deliverySites) {
         string dsCode = pair.first;
-        this->addEdge(dsCode, code, INT_FAST32_MAX);
         this->removeEdge(dsCode, code);
     }
 
@@ -335,6 +327,9 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
 
     createMainSource(mainSourceCode, waterReservoirs);
     createMainTarget(mainTargetCode, deliverySites);
+
+    this->setAllEdgesFlow(0);
+    this->setAllVerticesFlow(0);
 
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
@@ -396,29 +391,24 @@ void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, 
 
 void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
 
-    // CREATE AUX FUNCTION - SET ALL FLOW TO 0
-    for(auto &pair : vertices) {
-        Vertex *v = pair.second;
-        v->setFlow(0);
-        for(auto e : v->getAdj()) {
-            e->setFlow(0);
-        }
-    }
+    this->setAllEdgesFlow(0);
+    this->setAllVerticesFlow(0);
 
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
     createMainSource(mainSourceCode, waterReservoirs);
-    createMainTargetWithDemandLimit(mainTargetCode, deliverySites);
+    createMainTarget(mainTargetCode, deliverySites);
 
     double biggestCapacity = -INF;
     double smallestCapacity = INF;
-    // CREATE AUX FUNCTION - SET ALL FLOW TO 0
+
+    this->setAllEdgesFlow(0);
+    this->setAllVerticesFlow(0);
+
     for(auto &pair : vertices) {
         Vertex *v = pair.second;
-        v->setFlow(0);
         for(auto e : v->getAdj()) {
-            e->setFlow(0);
             double capacity = e->getCapacity();
             if(capacity < smallestCapacity) smallestCapacity = capacity;
             if(capacity > biggestCapacity) biggestCapacity = capacity;
@@ -429,11 +419,133 @@ void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *wate
 
     optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
 
-    deleteMainTarget(mainTargetCode, deliverySites);
-    createMainTarget(mainTargetCode, deliverySites);
-
-    optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
+    this->updateAllVerticesFlow();
 
     deleteMainSource(mainSourceCode, waterReservoirs);
     deleteMainTarget(mainTargetCode, deliverySites);
+}
+
+void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    createMainSource(mainSourceCode, waterReservoirs);
+    createMainTarget(mainTargetCode, deliverySites);
+
+    edmondsKarp(this, mainSourceCode, mainTargetCode);
+
+    Vertex *wr = findVertex(*code);
+
+    while (wr->hasFlow()) {
+        this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
+    }
+
+    this->updateAllVerticesFlow();
+
+    cout << findVertex(*code)->getFlow() << endl;
+
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
+
+}
+
+bool Vertex::hasFlow() {
+    double inFlow = 0;
+    double outFlow = 0;
+
+    for (auto e: this->getIncoming()) inFlow += e->getFlow();
+    for (auto e: this->getAdj()) outFlow += e->getFlow();
+
+    if((inFlow > 0) || (outFlow > 0)) return true;
+    return false;
+}
+
+
+void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+    Vertex *mainTarget = findVertex(mainTargetCode);
+
+    for(auto pair : vertices) {
+        Vertex *v = pair.second;
+        v->setVisited(false);
+    }
+
+    queue<Vertex *> q;
+    q.push(deactivatedVertex);
+    deactivatedVertex->setVisited(true);
+
+    while (!q.empty()) {
+        Vertex *u = q.front();
+        q.pop();
+        for (Edge *e: u->getAdj()) {
+            Vertex *w = e->getDest();
+            if (!w->isVisited() && e->getFlow() > 0) {
+                q.push(w);
+                w->setVisited(true);
+                w->setPath(e);
+            }
+        }
+    }
+
+    q.push(deactivatedVertex);
+    deactivatedVertex->setVisited(true);
+
+    while (!q.empty()) {
+        Vertex *u = q.front();
+        q.pop();
+        for (Edge *e: u->getIncoming()) {
+            Vertex *w = e->getOrig();
+            if (!w->isVisited() && e->getFlow() > 0) {
+                q.push(w);
+                w->setVisited(true);
+                u->setPath(e);
+            }
+        }
+    }
+
+    double f = INF;
+    // Traverse the augmenting path to find the minimum residual capacity
+    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+        auto e = v->getPath();
+        f = std::min(f, e->getFlow());
+        v = e->getOrig();
+    }
+
+    // Traverse the augmenting path and update the flow values accordingly
+    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+        auto e = v->getPath();
+        double flow = e->getFlow();
+        e->setFlow(flow - f);
+        v = e->getOrig();
+    }
+}
+
+void Graph::setAllEdgesFlow(double f) {
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        for(auto e : v->getAdj()) {
+            e->setFlow(f);
+        }
+    }
+}
+
+void Graph::setAllVerticesFlow(double f) {
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setFlow(0);
+    }
+}
+
+void Graph::updateAllVerticesFlow() {
+    for (auto pair : vertices) {
+        Vertex *v = pair.second;
+        v->updateFlow();
+    }
+}
+
+void Vertex::updateFlow() {
+    double incomingFlow = 0;
+    for (auto e: this->incoming) {
+        incomingFlow += e->getFlow();
+    }
+    this->flow = incomingFlow;
 }

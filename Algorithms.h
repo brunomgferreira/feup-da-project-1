@@ -15,6 +15,4 @@ double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCa
 void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 void optimizedEdmondsKarp(Graph *g, const string source, const string target, const double biggestCapacity, const double smallestCapacity, double *iterationCount);
 
-
-
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_ALGORITHMS_H

@@ -50,6 +50,8 @@ public:
 
     bool deliverySiteExists(const string &code);
 
+    bool waterReservoirExists(const string &code);
+
     void cityMaxFlow(const string &code);
 
     void allCitiesMaxFlow();
@@ -57,6 +59,8 @@ public:
     void verifyWaterSupply();
 
     void loadOptimization();
+
+    void reservoirImpact(const string &code);
 };
 
 
