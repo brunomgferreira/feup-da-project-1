@@ -18,10 +18,12 @@ bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t) {
     for(auto v : g->getVertexSet()) {
         v.second->setVisited(false);
     }
+
     // Mark the source vertex as visited and enqueue it
     s->setVisited(true);
     std::queue<Vertex *> q;
     q.push(s);
+
     // BFS to find an augmenting path
     while( ! q.empty() && ! t->isVisited()) {
         auto v = q.front();
@@ -35,6 +37,7 @@ bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t) {
             testAndVisit(q, e, e->getOrig(), e->getFlow());
         }
     }
+
     // Return true if a path to the target is found, false otherwise
     return t->isVisited();
 }
@@ -42,6 +45,7 @@ bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t) {
 // Function to find the minimum residual capacity along the augmenting path
 double findMinResidualAlongPath(Vertex *s, Vertex *t) {
     double f = INF;
+
     // Traverse the augmenting path to find the minimum residual capacity
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -54,6 +58,7 @@ double findMinResidualAlongPath(Vertex *s, Vertex *t) {
             v = e->getDest();
         }
     }
+
     // Return the minimum residual capacity
     return f;
 }
@@ -80,17 +85,11 @@ void edmondsKarp(Graph *g, string source, string target) {
     // Find source and target vertices in the graph
     Vertex* s = g->findVertex(source);
     Vertex* t = g->findVertex(target);
+
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
-    // Initialize flow on all edges to 0
-    for (auto pair : g->getVertexSet()) {
-        Vertex *v = pair.second;
-        v->setFlow(0);
-        for (auto e : v->getAdj()) {
-            e->setFlow(0);
-        }
-    }
+
     // While there is an augmenting path, augment the flow along the path
     while( findAugmentingPath(g, s, t) ) {
         double f = findMinResidualAlongPath(s, t);
@@ -114,23 +113,25 @@ bool optimizedFindAugmentingPath(Graph *g, Vertex *s, Vertex *t, double smallest
     for(auto v : g->getVertexSet()) {
         v.second->setVisited(false);
     }
+
     // Mark the source vertex as visited and enqueue it
     s->setVisited(true);
     std::queue<Vertex *> q;
     q.push(s);
+
     // BFS to find an augmenting path
     while( ! q.empty() && ! t->isVisited()) {
         auto v = q.front();
         q.pop();
+
         // Process outgoing edges
-        for(auto e: v->getAdj()) {
+        for(auto e: v->getAdj())
             if(e->getFlow() <= smallestCapacity*i) testAndVisit(q, e, e->getDest(), e->getCapacity() - e->getFlow());
-        }
         // Process incoming edges
-        for(auto e: v->getIncoming()) {
+        for(auto e: v->getIncoming())
             if(e->getFlow() <= smallestCapacity*i) testAndVisit(q, e, e->getOrig(), e->getFlow());
-        }
     }
+
     // Return true if a path to the target is found, false otherwise
     return t->isVisited();
 }
@@ -138,6 +139,7 @@ bool optimizedFindAugmentingPath(Graph *g, Vertex *s, Vertex *t, double smallest
 // Function to find the minimum residual capacity along the augmenting path
 double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity) {
     double f = INF;
+
     // Traverse the augmenting path to find the minimum residual capacity
     for (auto v = t; v != s; ) {
         auto e = v->getPath();
@@ -177,6 +179,7 @@ void optimizedEdmondsKarp(Graph *g, const string source, const string target, co
     // Find source and target vertices in the graph
     Vertex* s = g->findVertex(source);
     Vertex* t = g->findVertex(target);
+
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
@@ -195,16 +198,6 @@ void optimizedEdmondsKarp(Graph *g, const string source, const string target, co
         i++;
         if(temp > 0) iterationCounter++;
         if(iterationCounter != i) break;
-    }
-
-    // Calculate and save incoming flow for each vertex
-    for (auto pair : g->getVertexSet()) {
-        Vertex *v = pair.second;
-        double incomingFlow = 0;
-        for (auto e: v->getIncoming()) {
-            incomingFlow += e->getFlow();
-        }
-        v->setFlow(incomingFlow);
     }
 
     *iterationCount = iterationCounter;

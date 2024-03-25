@@ -6,3 +6,7 @@ WaterReservoir::WaterReservoir(string name, string municipality, double id, stri
 double WaterReservoir::getMaxDelivery() {
     return this->maxDelivery;
 }
+
+string WaterReservoir::getName() {
+    return this->name;
+}

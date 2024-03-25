@@ -55,6 +55,8 @@ public:
 
     double getFlow() const;
     void setFlow(double value);
+    void updateFlow();
+    bool hasFlow();
 
     void setCode(string code);
     void setType(VertexType type);
@@ -63,7 +65,7 @@ public:
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
     void setPath(Edge *path);
-    Edge * addEdge(Vertex *dest, double c);
+    Edge * addEdge(Vertex *dest, double c, double f = 0);
     bool removeEdge(string code);
     void removeOutgoingEdges();
 };
@@ -121,7 +123,7 @@ public:
      * destination vertices and the edge capacity (c).
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const string &sourc, const string &dest, double c);
+    bool addEdge(const string &sourc, const string &dest, double c, double f = 0);
     bool removeEdge(const string &source, const string &dest);
     bool addBidirectionalEdge(const string &sourc, const string &dest, double c);
 
@@ -143,12 +145,20 @@ public:
     void deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs);
 
     void createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
-    void createMainTargetWithDemandLimit(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
     void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
 
     void calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference);
 
     void optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
+
+    void reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code);
+
+    void deactivateVertex(Vertex *v, const string mainSourceCode, const string mainTargetCode);
+
+    void setAllEdgesFlow(double f);
+    void setAllVerticesFlow(double f);
+
+    void updateAllVerticesFlow();
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

@@ -34,6 +34,7 @@ public:
     WaterReservoir(string name, string municipality, double id, string code, double maxDelivery = 0);
 
     double getMaxDelivery();
+    string getName();
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H
