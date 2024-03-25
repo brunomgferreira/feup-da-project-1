@@ -436,9 +436,7 @@ void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir 
 
     Vertex *wr = findVertex(*code);
 
-    while (wr->hasFlow()) {
-        this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
-    }
+    this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
 
     this->updateAllVerticesFlow();
 
@@ -464,58 +462,60 @@ bool Vertex::hasFlow() {
 void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
     Vertex *mainTarget = findVertex(mainTargetCode);
 
-    for(auto pair : vertices) {
-        Vertex *v = pair.second;
-        v->setVisited(false);
-    }
+    while(deactivatedVertex->hasFlow()) {
+        for(auto pair : vertices) {
+            Vertex *v = pair.second;
+            v->setVisited(false);
+        }
 
-    queue<Vertex *> q;
-    q.push(deactivatedVertex);
-    deactivatedVertex->setVisited(true);
+        queue<Vertex *> q;
+        q.push(deactivatedVertex);
+        deactivatedVertex->setVisited(true);
 
-    while (!q.empty()) {
-        Vertex *u = q.front();
-        q.pop();
-        for (Edge *e: u->getAdj()) {
-            Vertex *w = e->getDest();
-            if (!w->isVisited() && e->getFlow() > 0) {
-                q.push(w);
-                w->setVisited(true);
-                w->setPath(e);
+        while (!q.empty()) {
+            Vertex *u = q.front();
+            q.pop();
+            for (Edge *e: u->getAdj()) {
+                Vertex *w = e->getDest();
+                if (!w->isVisited() && e->getFlow() > 0) {
+                    q.push(w);
+                    w->setVisited(true);
+                    w->setPath(e);
+                }
             }
         }
-    }
 
-    q.push(deactivatedVertex);
-    deactivatedVertex->setVisited(true);
+        q.push(deactivatedVertex);
+        deactivatedVertex->setVisited(true);
 
-    while (!q.empty()) {
-        Vertex *u = q.front();
-        q.pop();
-        for (Edge *e: u->getIncoming()) {
-            Vertex *w = e->getOrig();
-            if (!w->isVisited() && e->getFlow() > 0) {
-                q.push(w);
-                w->setVisited(true);
-                u->setPath(e);
+        while (!q.empty()) {
+            Vertex *u = q.front();
+            q.pop();
+            for (Edge *e: u->getIncoming()) {
+                Vertex *w = e->getOrig();
+                if (!w->isVisited() && e->getFlow() > 0) {
+                    q.push(w);
+                    w->setVisited(true);
+                    u->setPath(e);
+                }
             }
         }
-    }
 
-    double f = INF;
-    // Traverse the augmenting path to find the minimum residual capacity
-    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
-        auto e = v->getPath();
-        f = std::min(f, e->getFlow());
-        v = e->getOrig();
-    }
+        double f = INF;
+        // Traverse the augmenting path to find the minimum residual capacity
+        for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+            auto e = v->getPath();
+            f = std::min(f, e->getFlow());
+            v = e->getOrig();
+        }
 
-    // Traverse the augmenting path and update the flow values accordingly
-    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
-        auto e = v->getPath();
-        double flow = e->getFlow();
-        e->setFlow(flow - f);
-        v = e->getOrig();
+        // Traverse the augmenting path and update the flow values accordingly
+        for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+            auto e = v->getPath();
+            double flow = e->getFlow();
+            e->setFlow(flow - f);
+            v = e->getOrig();
+        }
     }
 }
 
