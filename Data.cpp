@@ -581,3 +581,53 @@ void Data::pumpingStationImpact(const std::string &code) {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
 }
+
+void Data::allPumpingStationsImpact() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> All Pumping Stations Impact: " << endl;
+    cout << "Pumping Station Code > (City Code, Deficit Value)" << endl << endl;
+
+    for(auto &pair : pumpingStations) {
+        string psCode = pair.first;
+
+        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+
+        cout << psCode << "\t >  ";
+
+        for(auto &pair : deliverySites) {
+            const string code = pair.first;
+            DeliverySite *ds = pair.second;
+
+            string cityName = ds->getCity();
+            double demand = ds->getDemand();
+            double flow = g.findVertex(code)->getFlow();
+
+            if (demand <= flow) continue;
+
+            double difference = demand-flow;
+
+            cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}

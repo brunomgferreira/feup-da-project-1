@@ -39,6 +39,8 @@ void PumpingStationImpactMenuState::handleInput(App* app) {
                 }));
                 break;
             case '3':
+                app->getData()->allPumpingStationsImpact();
+                PressEnterToContinue();
                 app->setState(this);
                 break;
             case 'q':
