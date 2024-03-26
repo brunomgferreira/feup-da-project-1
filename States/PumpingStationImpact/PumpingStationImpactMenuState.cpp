@@ -33,7 +33,7 @@ void PumpingStationImpactMenuState::handleInput(App* app) {
                 break;
             case '2':
                 app->setState(new GetPumpingStationState(this, [&](App *app, const string& code) {
-                    //app->getData()->pumpingStationImpact(code);
+                    app->getData()->pumpingStationImpact(code);
                     PressEnterToContinue(1);
                     app->setState(this);
                 }));

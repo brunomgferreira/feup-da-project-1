@@ -10,14 +10,14 @@ void GetPumpingStationState::display() const {
 }
 
 void GetPumpingStationState::handleInput(App* app) {
-    string reservoirCode;
+    string pumpingStationCode;
     std::cin.ignore();
-    std::getline(std::cin, reservoirCode);
+    std::getline(std::cin, pumpingStationCode);
 
-    bool reservoirExists = app->getData()->waterReservoirExists(reservoirCode);
+    bool pumpingStationExists = app->getData()->pumpingStationExists(pumpingStationCode);
 
-    if (reservoirExists) {
-        nextStateCallback(app, reservoirCode);
+    if (pumpingStationExists) {
+        nextStateCallback(app, pumpingStationCode);
     } else {
         cout << "\033[31m";
         cout << "Pumping Station does not exist." << endl;
