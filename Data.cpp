@@ -539,9 +539,24 @@ void Data::notEssentialPumpingStations() {
 }
 
 void Data::pumpingStationImpact(const std::string &code) {
+
+    double maxFlow = 0;
+    double totalDemand = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+        double demand = ds->getDemand();
+
+        maxFlow += flow;
+        totalDemand += demand;
+    }
+
     g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &code);
 
-    double totalDemand = 0;
     double totalWaterSupplied = 0;
 
     cout << "\033[32m";
@@ -564,7 +579,6 @@ void Data::pumpingStationImpact(const std::string &code) {
         double flow = g.findVertex(code)->getFlow();
 
         totalWaterSupplied += flow;
-        totalDemand += demand;
 
         if (demand <= flow) continue;
 
@@ -577,15 +591,25 @@ void Data::pumpingStationImpact(const std::string &code) {
 
     cout << endl;
     cout << "Total Demand: " << fixed << setprecision(0) << totalDemand << " m3/s" << endl;
+    cout << "Current Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
     cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
 
     if(totalDemand > totalWaterSupplied) {
         cout << "\033[31m";
-        cout << "Without this pumping station the network cannot meet the water needs!" << endl << endl;
+        cout << "> Without this pumping station the network cannot meet the water needs!" << endl;
         cout << "\033[0m";
     }
     else {
-        cout << "Without this pumping station the network can meet the water needs!" << endl << endl;
+        cout << "> Without this pumping station the network can meet the water needs!" << endl;
+    }
+
+    if(maxFlow == totalWaterSupplied) {
+        cout << "> This pumping station is not essential to maintain the current max flow!" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "> This pumping station is essential to maintain the current max flow!" << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
