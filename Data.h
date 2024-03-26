@@ -61,6 +61,8 @@ public:
     void loadOptimization();
 
     void reservoirImpact(const string &code);
+
+    void notEssentialPumpingStations();
 };
 
 

@@ -159,6 +159,11 @@ public:
     void setAllVerticesFlow(double f);
 
     void updateAllVerticesFlow();
+
+    void pumpingStationOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code);
+
+    bool detectAndDeactivateFlowCycles(Vertex *deactivatedVertex);
+    void findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

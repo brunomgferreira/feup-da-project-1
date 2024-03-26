@@ -15,4 +15,10 @@ double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCa
 void optimizedAugmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 void optimizedEdmondsKarp(Graph *g, const string source, const string target, const double biggestCapacity, const double smallestCapacity, double *iterationCount);
 
+void testAndVisitWithDeactivatedVertex(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, Vertex *deactivatedVertex);
+bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Vertex *deactivatedVertex);
+double findMinResidualAlongPathWithDeactivatedVertex(Vertex *s, Vertex *t);
+void augmentFlowAlongPathWithDeactivatedVertex(Vertex *s, Vertex *t, double f);
+void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const string target, const string deactivated);
+
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_ALGORITHMS_H

@@ -26,6 +26,8 @@ void PumpingStationImpactMenuState::handleInput(App* app) {
     if (choice.size() == 1) {
         switch (choice[0]) {
             case '1':
+                app->getData()->notEssentialPumpingStations();
+                PressEnterToContinue();
                 app->setState(this);
                 break;
             case '2':

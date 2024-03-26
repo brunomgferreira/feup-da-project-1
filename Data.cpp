@@ -479,3 +479,44 @@ void Data::reservoirImpact(const string &code) {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
 }
+
+void Data::notEssentialPumpingStations() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Not Essential Pumping Stations: " << endl;
+
+    for(auto &pair : pumpingStations) {
+        string psCode = pair.first;
+
+        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+
+        double totalWaterSupplied = 0;
+        for(auto &pair : deliverySites) {
+            const string dsCode = pair.first;
+            double flow = g.findVertex(dsCode)->getFlow();
+            totalWaterSupplied += flow;
+        }
+
+        if(totalWaterSupplied == maxFlow)
+            cout << left << setw(10) << "" << psCode << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
