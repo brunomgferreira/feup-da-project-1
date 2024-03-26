@@ -506,6 +506,8 @@ void Data::notEssentialPumpingStations() {
     cout << "\033[0m";
     cout << ">> Not Essential Pumping Stations: " << endl;
 
+    unsigned int count = 0;
+
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
@@ -518,10 +520,19 @@ void Data::notEssentialPumpingStations() {
             totalWaterSupplied += flow;
         }
 
-        if(totalWaterSupplied == maxFlow)
-            cout << left << setw(10) << "" << psCode << endl;
+        if(totalWaterSupplied == maxFlow) {
+            cout << setw(10) << "" << psCode << endl;
+            count++;
+        }
     }
-
+    cout << endl;
+    if(count == 0)
+        cout << "All pumping stations are essential to " << endl
+             << "maintain the current max flow!" << endl;
+    else {
+        cout << "Note: A pumping station is essential when it is " << endl
+             << "necessary to maintain the current max flow." << endl;
+    }
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
