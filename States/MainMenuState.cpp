@@ -2,6 +2,7 @@
 #include "MainMenuState.h"
 #include "States/MaxFlow/MaxFlowMenuState.h"
 #include "States/PumpingStationImpact/PumpingStationImpactMenuState.h"
+#include "States/PipelineImpact/PipelineImpactMenuState.h"
 #include "States/Utils/GetFilesPathState.h"
 #include "States/Utils/GetReservoirState.h"
 
@@ -75,7 +76,7 @@ void MainMenuState::handleInput(App* app) {
                         app->setState(new PumpingStationImpactMenuState());
                         break;
                     case '7':
-                        app->setState(this);
+                        app->setState(new PipelineImpactMenuState());
                         break;
                     case 'q':
                         cout << "Exiting the program..." << endl;
