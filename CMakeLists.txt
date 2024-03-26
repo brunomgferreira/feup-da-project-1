@@ -22,4 +22,5 @@ add_executable(Water_Supply_Analysis_System main.cpp
         States/Utils/DataLoadError.cpp
         Algorithms.cpp
         States/Utils/GetCityState.cpp
-        States/Utils/GetReservoirState.cpp)
+        States/Utils/GetReservoirState.cpp
+        States/Utils/GetPumpingStationState.cpp)

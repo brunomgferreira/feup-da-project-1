@@ -52,6 +52,8 @@ public:
 
     bool waterReservoirExists(const string &code);
 
+    bool pumpingStationExists(const string &code);
+
     void cityMaxFlow(const string &code);
 
     void allCitiesMaxFlow();
@@ -61,6 +63,12 @@ public:
     void loadOptimization();
 
     void reservoirImpact(const string &code);
+
+    void notEssentialPumpingStations();
+
+    void pumpingStationImpact(const string &code);
+
+    void allPumpingStationsImpact();
 };
 
 

@@ -182,6 +182,12 @@ bool Data::waterReservoirExists(const string &code) {
     return false;
 }
 
+bool Data::pumpingStationExists(const string &code) {
+    auto it = pumpingStations.find(code);
+    if (it != pumpingStations.end()) return true;
+    return false;
+}
+
 
 // Max Flow
 
@@ -473,6 +479,187 @@ void Data::reservoirImpact(const string &code) {
     }
     else {
         cout << "Without this reservoir the network can meet the water needs!" << endl << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+void Data::notEssentialPumpingStations() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Not Essential Pumping Stations: " << endl;
+
+    unsigned int count = 0;
+
+    for(auto &pair : pumpingStations) {
+        string psCode = pair.first;
+
+        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+
+        double totalWaterSupplied = 0;
+        for(auto &pair : deliverySites) {
+            const string dsCode = pair.first;
+            double flow = g.findVertex(dsCode)->getFlow();
+            totalWaterSupplied += flow;
+        }
+
+        if(totalWaterSupplied == maxFlow) {
+            cout << setw(10) << "" << psCode << endl;
+            count++;
+        }
+    }
+    cout << endl;
+    if(count == 0)
+        cout << "All pumping stations are essential to " << endl
+             << "maintain the current max flow!" << endl;
+    else {
+        cout << "Note: A pumping station is essential when it is " << endl
+             << "necessary to maintain the current max flow." << endl;
+    }
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+void Data::pumpingStationImpact(const std::string &code) {
+
+    double maxFlow = 0;
+    double totalDemand = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+        double demand = ds->getDemand();
+
+        maxFlow += flow;
+        totalDemand += demand;
+    }
+
+    g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &code);
+
+    double totalWaterSupplied = 0;
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Pumping Station out of commission: " << endl;
+    cout << "Code: " << code << endl << endl;
+    cout << "> Cities lacking desired water rate level: " << endl;
+
+    cout << setw(24) << left << "City";
+    cout << setw(10) << left << "Code";
+    cout << setw(11) << left << "Deficit Value" << endl << endl;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double demand = ds->getDemand();
+        double flow = g.findVertex(code)->getFlow();
+
+        totalWaterSupplied += flow;
+
+        if (demand <= flow) continue;
+
+        double difference = demand-flow;
+
+        cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
+        cout << setw(10) << left << fixed << setprecision(0) << code + ",";
+        cout << setw(11) << left << fixed << setprecision(0) << difference << endl;
+    }
+
+    cout << endl;
+    cout << "Total Demand: " << fixed << setprecision(0) << totalDemand << " m3/s" << endl;
+    cout << "Current Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
+    cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
+
+    if(totalDemand > totalWaterSupplied) {
+        cout << "\033[31m";
+        cout << "> Without this pumping station the network cannot meet the water needs!" << endl;
+        cout << "\033[0m";
+    }
+    else {
+        cout << "> Without this pumping station the network can meet the water needs!" << endl;
+    }
+
+    if(maxFlow == totalWaterSupplied) {
+        cout << "> This pumping station is not essential to maintain the current max flow!" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "> This pumping station is essential to maintain the current max flow!" << endl;
+        cout << "\033[0m";
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+void Data::allPumpingStationsImpact() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> All Pumping Stations Impact: " << endl;
+    cout << "Pumping Station Code > (City Code, Deficit Value)" << endl << endl;
+
+    for(auto &pair : pumpingStations) {
+        string psCode = pair.first;
+
+        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+
+        cout << psCode << "\t >  ";
+
+        for(auto &pair : deliverySites) {
+            const string code = pair.first;
+            DeliverySite *ds = pair.second;
+
+            string cityName = ds->getCity();
+            double demand = ds->getDemand();
+            double flow = g.findVertex(code)->getFlow();
+
+            if (demand <= flow) continue;
+
+            double difference = demand-flow;
+
+            cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
+        }
+        cout << endl;
     }
 
     cout << "\033[32m";

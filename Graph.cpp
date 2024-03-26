@@ -440,8 +440,6 @@ void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir 
 
     this->updateAllVerticesFlow();
 
-    cout << findVertex(*code)->getFlow() << endl;
-
     deleteMainSource(mainSourceCode, waterReservoirs);
     deleteMainTarget(mainTargetCode, deliverySites);
 
@@ -458,64 +456,145 @@ bool Vertex::hasFlow() {
     return false;
 }
 
+bool Graph::detectAndDeactivateFlowCycles(Vertex *deactivatedVertex) {
 
-void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+    // Initialize the vertices
+    for(auto const &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setVisited(false);
+        v->setPath(nullptr);
+    }
+
+    queue<Vertex *> q;
+    q.push(deactivatedVertex);
+    deactivatedVertex->setVisited(true);
+    bool cycleFound = false;
+
+    while (!q.empty()) {
+
+        if(cycleFound) break;
+
+        Vertex *u = q.front();
+        q.pop();
+
+        for (Edge *e: u->getAdj()) {
+            Vertex *w = e->getDest();
+            if (w->getCode() == deactivatedVertex->getCode() && e->getFlow() > 0) {
+                w->setPath(e);
+                cycleFound = true;
+                break;
+            }
+            if (!w->isVisited() && e->getFlow() > 0) {
+                q.push(w);
+                w->setVisited(true);
+                w->setPath(e);
+            }
+        }
+    }
+
+    // No cycles found
+    if(!cycleFound) return false;
+
+    double f = INF;
+
+    // Traverse the path to find the minimum residual capacity
+    Vertex *v = deactivatedVertex;
+    while (true) {
+        auto e = v->getPath();
+        f = std::min(f, e->getFlow());
+        v = e->getOrig();
+        if(v->getCode() == deactivatedVertex->getCode())
+            break;
+    }
+
+    // Traverse the path and update the flow values accordingly
+    v = deactivatedVertex;
+    while (true) {
+        auto e = v->getPath();
+        double flow = e->getFlow();
+        e->setFlow(flow - f);
+        v = e->getOrig();
+        if(v->getCode() == deactivatedVertex->getCode())
+            break;
+    }
+
+    // Found a cycle
+    return true;
+}
+
+void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+    Vertex *mainSource = findVertex(mainSourceCode);
     Vertex *mainTarget = findVertex(mainTargetCode);
 
+    // Initialize the vertices
+    for(auto const &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setVisited(false);
+        v->setPath(nullptr);
+    }
+
+    queue<Vertex *> q;
+
+    // Find a path from the deactivated vertex to the target
+    q.push(deactivatedVertex);
+    deactivatedVertex->setVisited(true);
+    while (!q.empty()) {
+        Vertex *u = q.front();
+        q.pop();
+        for (Edge *e: u->getAdj()) {
+            Vertex *w = e->getDest();
+            if (!w->isVisited() && e->getFlow() > 0) {
+                q.push(w);
+                w->setVisited(true);
+                w->setPath(e);
+            }
+        }
+    }
+
+    // Find a path from the source to the deactivated vertex
+    q.push(mainSource);
+    deactivatedVertex->setVisited(false);
+    mainSource->setVisited(true);
+    while (!q.empty()) {
+        Vertex *u = q.front();
+        q.pop();
+        for (Edge *e: u->getAdj()) {
+            Vertex *w = e->getDest();
+            if (!w->isVisited() && e->getFlow() > 0) {
+                q.push(w);
+                w->setVisited(true);
+                w->setPath(e);
+            }
+        }
+    }
+
+    double f = INF;
+    // Traverse the path to find the minimum residual capacity
+    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+        auto e = v->getPath();
+        if(v->getCode() != mainSourceCode && e == nullptr)
+            break;
+        f = std::min(f, e->getFlow());
+        v = e->getOrig();
+    }
+
+    // Traverse the path and update the flow values accordingly
+    for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
+        auto e = v->getPath();
+        if(v->getCode() != mainSourceCode && e == nullptr)
+            break;
+        double flow = e->getFlow();
+        e->setFlow(flow - f);
+        v = e->getOrig();
+    }
+}
+
+void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
     while(deactivatedVertex->hasFlow()) {
-        for(auto pair : vertices) {
-            Vertex *v = pair.second;
-            v->setVisited(false);
-        }
-
-        queue<Vertex *> q;
-        q.push(deactivatedVertex);
-        deactivatedVertex->setVisited(true);
-
-        while (!q.empty()) {
-            Vertex *u = q.front();
-            q.pop();
-            for (Edge *e: u->getAdj()) {
-                Vertex *w = e->getDest();
-                if (!w->isVisited() && e->getFlow() > 0) {
-                    q.push(w);
-                    w->setVisited(true);
-                    w->setPath(e);
-                }
-            }
-        }
-
-        q.push(deactivatedVertex);
-        deactivatedVertex->setVisited(true);
-
-        while (!q.empty()) {
-            Vertex *u = q.front();
-            q.pop();
-            for (Edge *e: u->getIncoming()) {
-                Vertex *w = e->getOrig();
-                if (!w->isVisited() && e->getFlow() > 0) {
-                    q.push(w);
-                    w->setVisited(true);
-                    u->setPath(e);
-                }
-            }
-        }
-
-        double f = INF;
-        // Traverse the augmenting path to find the minimum residual capacity
-        for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
-            auto e = v->getPath();
-            f = std::min(f, e->getFlow());
-            v = e->getOrig();
-        }
-
-        // Traverse the augmenting path and update the flow values accordingly
-        for (Vertex *v = mainTarget; v->getCode() != mainSourceCode; ) {
-            auto e = v->getPath();
-            double flow = e->getFlow();
-            e->setFlow(flow - f);
-            v = e->getOrig();
-        }
+        // Check for flow cycles
+        if(detectAndDeactivateFlowCycles(deactivatedVertex)) continue;
+        // Find a path between the Master Source and the Master Target that passes through the Deactivated Vertex
+        findAndDeactivateFlowPath(deactivatedVertex, mainSourceCode, mainTargetCode);
     }
 }
 
@@ -548,4 +627,25 @@ void Vertex::updateFlow() {
         incomingFlow += e->getFlow();
     }
     this->flow = incomingFlow;
+}
+
+void Graph::pumpingStationOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    createMainSource(mainSourceCode, waterReservoirs);
+    createMainTarget(mainTargetCode, deliverySites);
+
+    edmondsKarp(this, mainSourceCode, mainTargetCode);
+
+    Vertex *ps = findVertex(*code);
+
+    this->deactivateVertex(ps, mainSourceCode, mainTargetCode);
+
+    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+
+    this->updateAllVerticesFlow();
+
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
 }
