@@ -55,6 +55,8 @@ void Data::readFiles(const filesystem::path &dir_path) {
         readFileCities(citiesFile);
         readFilePipes(pipesFile);
 
+        g.maxFlow(&waterReservoirs, &deliverySites);
+
     } catch (const exception& e) {
         throw;
     }
@@ -207,8 +209,6 @@ bool Data::pipelineExists(const string &code) {
 // Max Flow
 
 void Data::cityMaxFlow(const string &code) {
-    g.maxFlow(&waterReservoirs, &deliverySites);
-
     auto it = deliverySites.find(code);
 
     DeliverySite *ds = (*it).second;
@@ -231,8 +231,6 @@ void Data::cityMaxFlow(const string &code) {
 }
 
 void Data::allCitiesMaxFlow() {
-
-    g.maxFlow(&waterReservoirs, &deliverySites);
 
     filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
     // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
@@ -297,8 +295,6 @@ void Data::allCitiesMaxFlow() {
 }
 
 void Data::verifyWaterSupply() {
-
-    g.maxFlow(&waterReservoirs, &deliverySites);
 
     filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
     // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
@@ -397,7 +393,6 @@ void Data::loadOptimization() {
     double initialTotalWaterSupplied = 0;
     double finalTotalWaterSupplied = 0;
 
-    g.maxFlow(&waterReservoirs, &deliverySites);
     g.calculateMetrics(initialAbsoluteAverage, initialAbsoluteVariance, initialAbsoluteMaxDifference, initialRelativeAverage, initialRelativeVariance, initialRelativeMaxDifference);
 
     for(auto &pair : deliverySites) {
@@ -406,12 +401,14 @@ void Data::loadOptimization() {
         initialTotalWaterSupplied += flow;
     }
 
-    g.optimizedMaxFlow(&waterReservoirs, &deliverySites);
-    g.calculateMetrics(finalAbsoluteAverage, finalAbsoluteVariance, finalAbsoluteMaxDifference, finalRelativeAverage, finalRelativeVariance, finalRelativeMaxDifference);
+    Graph *newGraph = g.copyGraph();
+
+    newGraph->optimizedMaxFlow(&waterReservoirs, &deliverySites);
+    newGraph->calculateMetrics(finalAbsoluteAverage, finalAbsoluteVariance, finalAbsoluteMaxDifference, finalRelativeAverage, finalRelativeVariance, finalRelativeMaxDifference);
 
     for(auto &pair : deliverySites) {
         const string code = pair.first;
-        double flow = g.findVertex(code)->getFlow();
+        double flow = newGraph->findVertex(code)->getFlow();
         finalTotalWaterSupplied += flow;
     }
 
@@ -440,7 +437,9 @@ void Data::loadOptimization() {
 }
 
 void Data::reservoirImpact(const string &code) {
-    g.reservoirOutOfCommission(&waterReservoirs, &deliverySites, &code);
+    Graph *newGraph = g.copyGraph();
+
+    newGraph->reservoirOutOfCommission(&waterReservoirs, &deliverySites, &code);
 
     auto it = waterReservoirs.find(code);
 
@@ -469,7 +468,7 @@ void Data::reservoirImpact(const string &code) {
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = g.findVertex(code)->getFlow();
+        double flow = newGraph->findVertex(code)->getFlow();
 
         totalWaterSupplied += flow;
         totalDemand += demand;
@@ -502,8 +501,6 @@ void Data::reservoirImpact(const string &code) {
 }
 
 void Data::notEssentialPumpingStations() {
-    g.maxFlow(&waterReservoirs, &deliverySites);
-
     double maxFlow = 0;
 
     for(auto &pair : deliverySites) {
@@ -523,15 +520,17 @@ void Data::notEssentialPumpingStations() {
 
     unsigned int count = 0;
 
+    Graph *newGraph = g.copyGraph();
+
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+        newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
 
         double totalWaterSupplied = 0;
         for(auto &pair : deliverySites) {
             const string dsCode = pair.first;
-            double flow = g.findVertex(dsCode)->getFlow();
+            double flow = newGraph->findVertex(dsCode)->getFlow();
             totalWaterSupplied += flow;
         }
 
@@ -570,7 +569,9 @@ void Data::pumpingStationImpact(const std::string &code) {
         totalDemand += demand;
     }
 
-    g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &code);
+    Graph *newGraph = g.copyGraph();
+
+    newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &code);
 
     double totalWaterSupplied = 0;
 
@@ -591,7 +592,7 @@ void Data::pumpingStationImpact(const std::string &code) {
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = g.findVertex(code)->getFlow();
+        double flow = newGraph->findVertex(code)->getFlow();
 
         totalWaterSupplied += flow;
 
@@ -633,8 +634,6 @@ void Data::pumpingStationImpact(const std::string &code) {
 }
 
 void Data::allPumpingStationsImpact() {
-    g.maxFlow(&waterReservoirs, &deliverySites);
-
     double maxFlow = 0;
 
     for(auto &pair : deliverySites) {
@@ -653,10 +652,12 @@ void Data::allPumpingStationsImpact() {
     cout << ">> All Pumping Stations Impact: " << endl;
     cout << "Pumping Station Code > (City Code, Deficit Value)" << endl << endl;
 
+    Graph *newGraph = g.copyGraph();
+
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        g.pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+        newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
 
         cout << psCode << "\t >  ";
 
@@ -666,7 +667,7 @@ void Data::allPumpingStationsImpact() {
 
             string cityName = ds->getCity();
             double demand = ds->getDemand();
-            double flow = g.findVertex(code)->getFlow();
+            double flow = newGraph->findVertex(code)->getFlow();
 
             if (demand <= flow) continue;
 
@@ -684,8 +685,6 @@ void Data::allPumpingStationsImpact() {
 
 void Data::essentialPipelines() {
     unordered_map<string, set<string>> cityToEssentialPipelines;
-
-    g.maxFlow(&waterReservoirs, &deliverySites);
 
     double maxFlow = 0;
 
@@ -772,9 +771,6 @@ void Data::pipelineImpact(const string &code) {
     bool unidirectional = pipe->getUnidirectional();
     double capacity = pipe->getCapacity();
 
-
-    g.maxFlow(&waterReservoirs, &deliverySites);
-
     double maxFlow = 0;
 
     for(auto &pair : deliverySites) {
@@ -826,8 +822,6 @@ void Data::pipelineImpact(const string &code) {
 }
 
 void Data::allPipelinesImpact() {
-    g.maxFlow(&waterReservoirs, &deliverySites);
-
     double maxFlow = 0;
 
     for(auto &pair : deliverySites) {

@@ -351,8 +351,8 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
 
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
+    // deleteMainSource(mainSourceCode, waterReservoirs);
+    // deleteMainTarget(mainTargetCode, deliverySites);
 }
 
 void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference) {
@@ -415,9 +415,6 @@ void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *wate
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
-    createMainSource(mainSourceCode, waterReservoirs);
-    createMainTarget(mainTargetCode, deliverySites);
-
     double biggestCapacity = -INF;
     double smallestCapacity = INF;
 
@@ -438,17 +435,11 @@ void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *wate
     optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
 
     this->updateAllVerticesFlow();
-
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
 }
 
 void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
-
-    createMainSource(mainSourceCode, waterReservoirs);
-    createMainTarget(mainTargetCode, deliverySites);
 
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
@@ -457,10 +448,6 @@ void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir 
     this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
 
     this->updateAllVerticesFlow();
-
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
-
 }
 
 bool Vertex::hasFlow() {
@@ -658,9 +645,6 @@ void Graph::pumpingStationOutOfCommission(const unordered_map<string, WaterReser
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
-    createMainSource(mainSourceCode, waterReservoirs);
-    createMainTarget(mainTargetCode, deliverySites);
-
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
     Vertex *ps = findVertex(*code);
@@ -670,9 +654,6 @@ void Graph::pumpingStationOutOfCommission(const unordered_map<string, WaterReser
     edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
 
     this->updateAllVerticesFlow();
-
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
 }
 
 Graph *Graph::copyGraph() {
@@ -708,9 +689,6 @@ void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
-    createMainSource(mainSourceCode, waterReservoirs);
-    createMainTarget(mainTargetCode, deliverySites);
-
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
     Vertex *origin = findVertex(*servicePointA);
@@ -724,7 +702,4 @@ void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *
     edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB, unidirectional);
 
     this->updateAllVerticesFlow();
-
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
 }
