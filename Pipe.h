@@ -34,6 +34,7 @@ public:
     string getServicePointA();
     string getServicePointB();
     bool getUnidirectional();
+    double getCapacity();
 };
 
 

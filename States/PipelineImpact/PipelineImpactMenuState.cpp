@@ -33,11 +33,10 @@ void PipelineImpactMenuState::handleInput(App* app) {
                 break;
             case '2':
                 app->setState(new GetPipelineState(this, [&](App *app, const string& code) {
-                    //app->getData()->pipelineImpact(code);
+                    app->getData()->pipelineImpact(code);
                     PressEnterToContinue(1);
                     app->setState(this);
                 }));
-                app->setState(this);
                 break;
             case '3':
                 app->getData()->allPipelinesImpact();

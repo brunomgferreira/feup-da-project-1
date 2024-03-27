@@ -14,3 +14,7 @@ string Pipe::getServicePointB() {
 bool Pipe::getUnidirectional() {
     return this->unidirectional;
 }
+
+double Pipe::getCapacity() {
+    return this->capacity;
+}

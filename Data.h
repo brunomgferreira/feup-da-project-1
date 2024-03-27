@@ -74,6 +74,8 @@ public:
 
     void essentialPipelines();
 
+    void pipelineImpact(const string &code);
+
     void allPipelinesImpact();
 };
 

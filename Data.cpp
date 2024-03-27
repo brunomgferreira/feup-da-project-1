@@ -757,6 +757,74 @@ void Data::essentialPipelines() {
     cout << "\033[0m";
 }
 
+void Data::pipelineImpact(const string &code) {
+
+    auto it = pipes.find(code);
+    if (it == pipes.end()) {
+        size_t dashPos = code.find('-');
+        it = pipes.find(code.substr(dashPos + 1)+"-"+code.substr(0, dashPos));
+    }
+
+    string pipeCode = (*it).first;
+    Pipe *pipe = (*it).second;
+    string servicePointA = pipe->getServicePointA();
+    string servicePointB = pipe->getServicePointB();
+    bool unidirectional = pipe->getUnidirectional();
+    double capacity = pipe->getCapacity();
+
+
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string dsCode = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(dsCode)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Pipeline Impact: " << endl;
+    cout << "Code: " << code << endl;
+    cout << "Capacity: " << capacity << endl;
+    if(unidirectional) cout << "Unidirectional" << endl << endl;
+    else cout << "Bidirectional" << endl << endl;
+
+    cout << "> Cities lacking desired water rate level: " << endl;
+    cout << "(Code, Name, Deficit Value)" << endl << endl;
+
+    Graph *newGraph = g.copyGraph();
+
+    newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
+
+    for(auto &pair : deliverySites) {
+        const string dsCode = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double demand = ds->getDemand();
+
+        double vertexCurrentFlow = newGraph->findVertex(dsCode)->getFlow();
+
+        double difference = demand - vertexCurrentFlow;
+
+        if(difference > 0) cout << "(" << dsCode << "," << cityName << "," << difference << ")" << endl;
+    }
+
+    cout << endl;
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+
+}
+
 void Data::allPipelinesImpact() {
     g.maxFlow(&waterReservoirs, &deliverySites);
 
@@ -775,7 +843,7 @@ void Data::allPipelinesImpact() {
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
-    cout << ">> Essential Pipelines for each city: " << endl;
+    cout << ">> All Pipelines Impact: " << endl;
     cout << "(Pipeline Code) > (City Code, City Name, Deficit Value)" << endl << endl;
 
     Graph *newGraph = g.copyGraph();
