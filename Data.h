@@ -54,6 +54,8 @@ public:
 
     bool pumpingStationExists(const string &code);
 
+    bool pipelineExists(const string &code);
+
     void cityMaxFlow(const string &code);
 
     void allCitiesMaxFlow();
@@ -69,6 +71,12 @@ public:
     void pumpingStationImpact(const string &code);
 
     void allPumpingStationsImpact();
+
+    void essentialPipelines();
+
+    void pipelineImpact(const string &code);
+
+    void allPipelinesImpact();
 };
 
 

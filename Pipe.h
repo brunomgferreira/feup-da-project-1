@@ -30,6 +30,11 @@ public:
     * @param unidirectional Boolean indicating whether the connection between source service and target service is undirected or bidirected
     */
     Pipe(string servicePointA, string servicePointB, double capacity, bool unidirectional);
+
+    string getServicePointA();
+    string getServicePointB();
+    bool getUnidirectional();
+    double getCapacity();
 };
 
 
