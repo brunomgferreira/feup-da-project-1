@@ -693,8 +693,9 @@ void Data::essentialPipelines() {
 
         string servicePointA = pipeline->getServicePointA();
         string servicePointB = pipeline->getServicePointB();
+        bool unidirectional = pipeline->getUnidirectional();
 
-        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB);
+        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
 
         for(auto &pair : deliverySites) {
             const string code = pair.first;

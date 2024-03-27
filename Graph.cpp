@@ -704,7 +704,7 @@ Graph *Graph::copyGraph() {
     return newGraph;
 }
 
-void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB) {
+void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional) {
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
@@ -714,10 +714,14 @@ void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
     Vertex *origin = findVertex(*servicePointA);
+    Vertex *dest = findVertex(*servicePointB);
 
     this->deactivateVertex(origin, mainSourceCode, mainTargetCode);
 
-    edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB);
+    if(!unidirectional)
+        this->deactivateVertex(dest, mainSourceCode, mainTargetCode);
+
+    edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB, unidirectional);
 
     this->updateAllVerticesFlow();
 

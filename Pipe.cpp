@@ -10,3 +10,7 @@ string Pipe::getServicePointA() {
 string Pipe::getServicePointB() {
     return this->servicePointB;
 }
+
+bool Pipe::getUnidirectional() {
+    return this->unidirectional;
+}

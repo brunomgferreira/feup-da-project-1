@@ -168,7 +168,7 @@ public:
 
     Graph *copyGraph();
 
-    void pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB);
+    void pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H
