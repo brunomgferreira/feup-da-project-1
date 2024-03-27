@@ -1,3 +1,4 @@
+#include <set>
 #include "Data.h"
 
 Data::Data() {}
@@ -659,6 +660,80 @@ void Data::allPumpingStationsImpact() {
 
             cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
         }
+        cout << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
+void Data::essentialPipelines() {
+    unordered_map<string, set<string>> cityToEssentialPipelines;
+
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    Graph *newGraph = g.copyGraph();
+
+    for(auto &pair : pipes) {
+        string pipeCode = pair.first;
+        Pipe *pipeline = pair.second;
+
+        string servicePointA = pipeline->getServicePointA();
+        string servicePointB = pipeline->getServicePointB();
+
+        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB);
+
+        for(auto &pair : deliverySites) {
+            const string code = pair.first;
+            DeliverySite *ds = pair.second;
+
+            string cityName = ds->getCity();
+            double vertexMaxFlow = g.findVertex(code)->getFlow();
+
+            double vertexCurrentFlow = newGraph->findVertex(code)->getFlow();
+
+            if(vertexCurrentFlow != vertexMaxFlow) {
+                auto it = cityToEssentialPipelines.find(code);
+
+                if(it == cityToEssentialPipelines.end()) {
+                    cityToEssentialPipelines.insert({code, {pipeCode}});
+                }
+                else {
+                    (*it).second.insert(pipeCode);
+                }
+            }
+        }
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Essential Pipelines for each city: " << endl;
+    cout << "(City Code, City Name) > (Pipeline Code)" << endl << endl;
+
+    for(auto pair : cityToEssentialPipelines) {
+        string code = pair.first;
+        DeliverySite *ds = deliverySites.at(code);
+
+        cout << "(" << code << "," << ds->getCity() << ")  >  ";
+
+        for(string pipeCode : pair.second) {
+            cout << "(" << pipeCode << ") ";
+        }
+
         cout << endl;
     }
 

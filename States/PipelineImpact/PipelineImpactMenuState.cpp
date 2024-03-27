@@ -26,7 +26,7 @@ void PipelineImpactMenuState::handleInput(App* app) {
     if (choice.size() == 1) {
         switch (choice[0]) {
             case '1':
-                // app->getData()->essentialPipelines();
+                app->getData()->essentialPipelines();
                 PressEnterToContinue();
                 app->setState(this);
                 break;

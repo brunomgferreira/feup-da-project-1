@@ -66,6 +66,7 @@ public:
     void setDist(double dist);
     void setPath(Edge *path);
     Edge * addEdge(Vertex *dest, double c, double f = 0);
+    Edge * findEdge(Vertex *destVertex);
     bool removeEdge(string code);
     void removeOutgoingEdges();
 };
@@ -125,7 +126,7 @@ public:
      */
     bool addEdge(const string &sourc, const string &dest, double c, double f = 0);
     bool removeEdge(const string &source, const string &dest);
-    bool addBidirectionalEdge(const string &sourc, const string &dest, double c);
+    bool addBidirectionalEdge(const string &sourc, const string &dest, double c, double flow = 0, double reverseFlow = 0);
 
     int getNumVertex() const;
     unordered_map<string, Vertex *> getVertexSet() const;
@@ -164,6 +165,10 @@ public:
 
     bool detectAndDeactivateFlowCycles(Vertex *deactivatedVertex);
     void findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode);
+
+    Graph *copyGraph();
+
+    void pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H

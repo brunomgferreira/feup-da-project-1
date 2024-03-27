@@ -105,6 +105,16 @@ Edge * Vertex::addEdge(Vertex *dest, double c, double f) {
     return newEdge;
 }
 
+Edge * Vertex::findEdge(Vertex *destVertex) {
+    for(auto e : adj) {
+        Vertex *dest = e->getDest();
+        if(dest->getCode() == destVertex->getCode()) {
+            return e;
+        }
+    }
+    return nullptr;
+}
+
 bool Vertex::removeEdge(string code) {
     bool removedEdge = false;
     auto it = adj.begin();
@@ -198,7 +208,15 @@ bool Graph::addEdge(const string &sourc, const string &dest, double c, double f)
     Vertex *destVertex = findVertex(dest);
 
     if (originVertex && destVertex) {
-        originVertex->addEdge(destVertex, c, f);
+        auto e1 = originVertex->addEdge(destVertex, c, f);
+        auto e2 = destVertex->findEdge(originVertex);
+
+        if(e2 != nullptr) {
+            if(e1->getCapacity() == e2->getCapacity()) {
+                e1->setReverse(e2);
+                e2->setReverse(e1);
+            }
+        }
         return true;
     }
 
@@ -213,13 +231,13 @@ bool Graph::removeEdge(const string &source, const string &dest) {
     return srcVertex->removeEdge(dest);
 }
 
-bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double c) {
+bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double c, double flow, double reverseFlow) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
         return false;
-    auto e1 = v1->addEdge(v2, c);
-    auto e2 = v2->addEdge(v1, c);
+    auto e1 = v1->addEdge(v2, c, flow);
+    auto e2 = v2->addEdge(v1, c, reverseFlow);
     e1->setReverse(e2);
     e2->setReverse(e1);
     return true;
@@ -623,8 +641,15 @@ void Graph::updateAllVerticesFlow() {
 
 void Vertex::updateFlow() {
     double incomingFlow = 0;
-    for (auto e: this->incoming) {
-        incomingFlow += e->getFlow();
+    if(this->incoming.size() == 0) {
+        for (auto e: this->adj) {
+            incomingFlow += e->getFlow();
+        }
+    }
+    else {
+        for (auto e: this->incoming) {
+            incomingFlow += e->getFlow();
+        }
     }
     this->flow = incomingFlow;
 }
@@ -643,6 +668,56 @@ void Graph::pumpingStationOutOfCommission(const unordered_map<string, WaterReser
     this->deactivateVertex(ps, mainSourceCode, mainTargetCode);
 
     edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+
+    this->updateAllVerticesFlow();
+
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
+}
+
+Graph *Graph::copyGraph() {
+    Graph *newGraph = new Graph();
+
+    // Copy vertices
+    for(auto &pair : vertices) {
+        string code = pair.first;
+        Vertex *v = pair.second;
+
+        newGraph->addVertex(code, v->getType());
+    }
+
+    // Copy edges
+    for(auto &pair : vertices) {
+        string code = pair.first;
+        Vertex *v = pair.second;
+
+        for(auto e : v->getAdj()) {
+            string origin = e->getOrig()->getCode();
+            string dest = e->getDest()->getCode();
+            double capacity = e->getCapacity();
+            double flow = e->getFlow();
+
+            newGraph->addEdge(origin, dest, capacity, flow);
+        }
+    }
+    newGraph->updateAllVerticesFlow();
+    return newGraph;
+}
+
+void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB) {
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
+    createMainSource(mainSourceCode, waterReservoirs);
+    createMainTarget(mainTargetCode, deliverySites);
+
+    edmondsKarp(this, mainSourceCode, mainTargetCode);
+
+    Vertex *origin = findVertex(*servicePointA);
+
+    this->deactivateVertex(origin, mainSourceCode, mainTargetCode);
+
+    edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB);
 
     this->updateAllVerticesFlow();
 

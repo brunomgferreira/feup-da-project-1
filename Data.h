@@ -69,6 +69,8 @@ public:
     void pumpingStationImpact(const string &code);
 
     void allPumpingStationsImpact();
+
+    void essentialPipelines();
 };
 
 
