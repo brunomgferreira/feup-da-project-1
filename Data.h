@@ -71,6 +71,8 @@ public:
     void allPumpingStationsImpact();
 
     void essentialPipelines();
+
+    void allPipelinesImpact();
 };
 
 

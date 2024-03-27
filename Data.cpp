@@ -742,3 +742,60 @@ void Data::essentialPipelines() {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
 }
+
+void Data::allPipelinesImpact() {
+    g.maxFlow(&waterReservoirs, &deliverySites);
+
+    double maxFlow = 0;
+
+    for(auto &pair : deliverySites) {
+        const string code = pair.first;
+        DeliverySite *ds = pair.second;
+
+        string cityName = ds->getCity();
+        double flow = g.findVertex(code)->getFlow();
+
+        maxFlow += flow;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Essential Pipelines for each city: " << endl;
+    cout << "(Pipeline Code) > (City Code, City Name, Deficit Value)" << endl << endl;
+
+    Graph *newGraph = g.copyGraph();
+
+    for(auto &pair : pipes) {
+        string pipeCode = pair.first;
+        Pipe *pipeline = pair.second;
+
+        string servicePointA = pipeline->getServicePointA();
+        string servicePointB = pipeline->getServicePointB();
+        bool unidirectional = pipeline->getUnidirectional();
+
+        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
+
+        cout << "(" << pipeCode << ")  >  ";
+
+        for(auto &pair : deliverySites) {
+            const string code = pair.first;
+            DeliverySite *ds = pair.second;
+
+            string cityName = ds->getCity();
+            double demand = ds->getDemand();
+
+            double vertexCurrentFlow = newGraph->findVertex(code)->getFlow();
+
+            double difference = demand - vertexCurrentFlow;
+
+            if(difference > 0) cout << "(" << code << "," << cityName << "," << difference << ") ";
+        }
+
+        cout << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}

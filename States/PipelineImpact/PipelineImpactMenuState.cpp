@@ -41,7 +41,7 @@ void PipelineImpactMenuState::handleInput(App* app) {
                 app->setState(this);
                 break;
             case '3':
-                // app->getData()->allPipelinesImpact();
+                app->getData()->allPipelinesImpact();
                 PressEnterToContinue();
                 app->setState(this);
                 break;
