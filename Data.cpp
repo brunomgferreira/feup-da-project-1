@@ -189,6 +189,20 @@ bool Data::pumpingStationExists(const string &code) {
     return false;
 }
 
+bool Data::pipelineExists(const string &code) {
+    auto it = pipes.find(code);
+    if (it != pipes.end()) return true;
+    size_t dashPos = code.find('-');
+    if (dashPos != string::npos) {
+        string serviceStationA = code.substr(0, dashPos);
+        string serviceStationB = code.substr(dashPos + 1);
+
+        it = pipes.find(serviceStationB+"-"+serviceStationA);
+        if (it != pipes.end() && !(*it).second->getUnidirectional()) return true;
+    }
+    return false;
+}
+
 
 // Max Flow
 
