@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "WaterReservoir.h"
 #include "DeliverySite.h"
+#include "GraphMetrics.h"
 
 using namespace std;
 
@@ -148,7 +149,7 @@ public:
     void createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
     void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
 
-    void calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference);
+    GraphMetrics calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites);
 
     void optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
 

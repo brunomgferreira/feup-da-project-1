@@ -355,12 +355,36 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
     // deleteMainTarget(mainTargetCode, deliverySites);
 }
 
-void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, double &absoluteMaxDifference, double &relativeAverage, double &relativeVariance, double &relativeMaxDifference) {
+GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites) {
 
+    // Absolute metrics
+    double absoluteAverage;
+    double absoluteVariance;
+    double absoluteStandardDeviation;
+    double absoluteMaxDifference = 0;
+
+    // Relative metrics
+    double relativeAverage;
+    double relativeVariance;
+    double relativeStandardDeviation;
+    double relativeMaxDifference = 0;
+
+    // Total Flow
+    double maxFlow = 0;
+    double totalDemand = 0;
+
+    // Aux variables
     int numberOfPipes = 0;
-
     double absoluteSum = 0;
     double relativeSum = 0;
+
+    // Determine total demand and the max flow
+    for(auto &pair : *deliverySites) {
+        const string code = pair.first;
+        double flow = this->findVertex(code)->getFlow();
+        maxFlow += flow;
+        totalDemand += pair.second->getDemand();
+    }
 
     // Determine average
     for(auto &pair : vertices) {
@@ -405,6 +429,24 @@ void Graph::calculateMetrics(double &absoluteAverage, double &absoluteVariance, 
     // Divide by the number of pipes and get the variance
     absoluteVariance = absoluteSum / numberOfPipes;
     relativeVariance = relativeSum / numberOfPipes;
+
+    // Sqrt the variance ang get the standard deviation
+    absoluteStandardDeviation = sqrt(absoluteVariance);
+    relativeStandardDeviation = sqrt(relativeVariance);
+
+    GraphMetrics metrics(
+        absoluteAverage,
+        absoluteVariance,
+        absoluteStandardDeviation,
+        absoluteMaxDifference,
+        relativeAverage,
+        relativeVariance,
+        relativeStandardDeviation,
+        relativeMaxDifference,
+        maxFlow,
+        totalDemand);
+
+    return metrics;
 }
 
 void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {

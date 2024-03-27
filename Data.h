@@ -28,6 +28,7 @@ private:
     unordered_map<string, DeliverySite *> deliverySites;
     unordered_map<string, Pipe *> pipes;
     Graph g;
+    GraphMetrics metrics;
 public:
     /**
     * @brief Default constructor for the Data class.

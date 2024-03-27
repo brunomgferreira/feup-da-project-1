@@ -25,4 +25,5 @@ add_executable(Water_Supply_Analysis_System main.cpp
         States/Utils/GetReservoirState.cpp
         States/Utils/GetPumpingStationState.cpp
         States/PipelineImpact/PipelineImpactMenuState.cpp
-        States/Utils/GetPipelineState.cpp)
+        States/Utils/GetPipelineState.cpp
+        GraphMetrics.cpp)

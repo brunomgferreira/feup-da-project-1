@@ -56,7 +56,7 @@ void Data::readFiles(const filesystem::path &dir_path) {
         readFilePipes(pipesFile);
 
         g.maxFlow(&waterReservoirs, &deliverySites);
-
+        metrics = g.calculateMetrics(&deliverySites);
     } catch (const exception& e) {
         throw;
     }
@@ -371,46 +371,9 @@ void Data::verifyWaterSupply() {
 }
 
 void Data::loadOptimization() {
-    // Absolute metrics
-    double initialAbsoluteAverage;
-    double initialAbsoluteVariance;
-    double initialAbsoluteMaxDifference;
-
-    double finalAbsoluteAverage;
-    double finalAbsoluteVariance;
-    double finalAbsoluteMaxDifference;
-
-    // Relative metrics
-    double initialRelativeAverage;
-    double initialRelativeVariance;
-    double initialRelativeMaxDifference;
-
-    double finalRelativeAverage;
-    double finalRelativeVariance;
-    double finalRelativeMaxDifference;
-
-    // Total Flow
-    double initialTotalWaterSupplied = 0;
-    double finalTotalWaterSupplied = 0;
-
-    g.calculateMetrics(initialAbsoluteAverage, initialAbsoluteVariance, initialAbsoluteMaxDifference, initialRelativeAverage, initialRelativeVariance, initialRelativeMaxDifference);
-
-    for(auto &pair : deliverySites) {
-        const string code = pair.first;
-        double flow = g.findVertex(code)->getFlow();
-        initialTotalWaterSupplied += flow;
-    }
-
     Graph *newGraph = g.copyGraph();
-
     newGraph->optimizedMaxFlow(&waterReservoirs, &deliverySites);
-    newGraph->calculateMetrics(finalAbsoluteAverage, finalAbsoluteVariance, finalAbsoluteMaxDifference, finalRelativeAverage, finalRelativeVariance, finalRelativeMaxDifference);
-
-    for(auto &pair : deliverySites) {
-        const string code = pair.first;
-        double flow = newGraph->findVertex(code)->getFlow();
-        finalTotalWaterSupplied += flow;
-    }
+    GraphMetrics finalMetrics = newGraph->calculateMetrics(&deliverySites);
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
@@ -418,18 +381,18 @@ void Data::loadOptimization() {
     cout << ">> Load Optimization: " << endl;
     cout << "(initial metrics / final metrics) " << endl << endl;
     cout << "> Absolute: "<< endl;
-    cout << "   Average:            " << setprecision(5) << initialAbsoluteAverage << " / " << finalAbsoluteAverage << endl;
-    cout << "   Max Difference:     " << setprecision(5) << initialAbsoluteMaxDifference << " / " << finalAbsoluteMaxDifference << endl;
-    cout << "   Variance:           " << setprecision(5) << initialAbsoluteVariance << " / " << finalAbsoluteVariance << endl;
-    cout << "   Standard deviation: " << setprecision(5) << sqrt(initialAbsoluteVariance) << " / " << sqrt(finalAbsoluteVariance) << endl << endl;
+    cout << "   Average:            " << setprecision(5) << metrics.getAbsoluteAverage() << " / " << finalMetrics.getAbsoluteAverage() << endl;
+    cout << "   Max Difference:     " << setprecision(5) << metrics.getAbsoluteMaxDifference() << " / " << finalMetrics.getAbsoluteMaxDifference() << endl;
+    cout << "   Variance:           " << setprecision(5) << metrics.getAbsoluteVariance() << " / " << finalMetrics.getAbsoluteVariance() << endl;
+    cout << "   Standard deviation: " << setprecision(5) << metrics.getAbsoluteStandardDeviation() << " / " << finalMetrics.getAbsoluteStandardDeviation() << endl << endl;
 
     cout << "> Relative: " << endl;
-    cout << "   Average:            " << fixed << setprecision(5) << initialRelativeAverage << " / " << finalRelativeAverage << endl;
-    cout << "   Max Difference:     " << fixed << setprecision(5) << initialRelativeMaxDifference << " / " << finalRelativeMaxDifference << endl;
-    cout << "   Variance:           " << fixed << setprecision(5) << initialRelativeVariance << " / " << finalRelativeVariance << endl;
-    cout << "   Standard deviation: " << fixed << setprecision(5) << sqrt(initialRelativeVariance) << " / " << sqrt(finalRelativeVariance) << endl << endl;
+    cout << "   Average:            " << fixed << setprecision(5) << metrics.getRelativeAverage() << " / " << finalMetrics.getRelativeAverage() << endl;
+    cout << "   Max Difference:     " << fixed << setprecision(5) << metrics.getRelativeMaxDifference() << " / " << finalMetrics.getRelativeMaxDifference() << endl;
+    cout << "   Variance:           " << fixed << setprecision(5) << metrics.getRelativeVariance() << " / " << finalMetrics.getRelativeVariance() << endl;
+    cout << "   Standard deviation: " << fixed << setprecision(5) << metrics.getRelativeStandardDeviation() << " / " << finalMetrics.getRelativeStandardDeviation() << endl << endl;
 
-    cout << "> Total Max Flow:      " << setprecision(0) << initialTotalWaterSupplied << " / " << finalTotalWaterSupplied << endl;
+    cout << "> Total Max Flow:      " << setprecision(0) << metrics.getMaxFlow() << " / " << finalMetrics.getMaxFlow() << endl;
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
