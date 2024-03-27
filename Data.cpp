@@ -407,7 +407,8 @@ void Data::reservoirImpact(const string &code) {
     double maxDelivery = wr->getMaxDelivery();
 
     double totalDemand = metrics.getTotalDemand();
-    double totalWaterSupplied = metrics.getMaxFlow();
+    double maxFlow = metrics.getMaxFlow();
+    double totalWaterSupplied = 0;
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
@@ -428,6 +429,8 @@ void Data::reservoirImpact(const string &code) {
         double demand = ds->getDemand();
         double flow = newGraph->findVertex(code)->getFlow();
 
+        totalWaterSupplied+=flow;
+
         if (demand <= flow) continue;
 
         double difference = demand-flow;
@@ -439,6 +442,7 @@ void Data::reservoirImpact(const string &code) {
 
     cout << endl;
     cout << "Total Demand: " << fixed << setprecision(0) << totalDemand << " m3/s" << endl;
+    cout << "Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
     cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
 
     if(totalDemand > totalWaterSupplied) {
