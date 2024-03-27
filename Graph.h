@@ -150,6 +150,7 @@ public:
     void deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites);
 
     GraphMetrics calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites);
+    pair<double, double> getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites);
 
     void optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
 

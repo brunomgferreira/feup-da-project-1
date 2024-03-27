@@ -369,22 +369,15 @@ GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *>
     double relativeStandardDeviation;
     double relativeMaxDifference = 0;
 
-    // Total Flow
-    double maxFlow = 0;
-    double totalDemand = 0;
-
     // Aux variables
     int numberOfPipes = 0;
     double absoluteSum = 0;
     double relativeSum = 0;
 
     // Determine total demand and the max flow
-    for(auto &pair : *deliverySites) {
-        const string code = pair.first;
-        double flow = this->findVertex(code)->getFlow();
-        maxFlow += flow;
-        totalDemand += pair.second->getDemand();
-    }
+    auto totalDemandAndMaxFlow = getTotalDemandAndMaxFlow(deliverySites);
+    double totalDemand = totalDemandAndMaxFlow.first;
+    double maxFlow = totalDemandAndMaxFlow.second;
 
     // Determine average
     for(auto &pair : vertices) {
@@ -447,6 +440,21 @@ GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *>
         totalDemand);
 
     return metrics;
+}
+
+// Determine total demand and the max flow
+pair<double, double> Graph::getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites) {
+    double maxFlow = 0;
+    double totalDemand = 0;
+
+    for(auto &pair : *deliverySites) {
+        const string code = pair.first;
+        double flow = this->findVertex(code)->getFlow();
+        maxFlow += flow;
+        totalDemand += pair.second->getDemand();
+    }
+
+    return {totalDemand, maxFlow};
 }
 
 void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
