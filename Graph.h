@@ -152,7 +152,9 @@ public:
     GraphMetrics calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites);
     pair<double, double> getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites);
 
-    void optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
+    void optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySites);
+    vector<vector<Edge *>> getPaths(const string sourc, const string dest);
+    void dfs(const string current, const string dest, vector<Edge *> &path, vector<vector<Edge *>> &paths);
 
     void reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code);
 

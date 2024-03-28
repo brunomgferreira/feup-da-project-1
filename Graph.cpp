@@ -379,11 +379,17 @@ GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *>
     double totalDemand = totalDemandAndMaxFlow.first;
     double maxFlow = totalDemandAndMaxFlow.second;
 
+    string mainSourceCode = "mainSource";
+    string mainTargetCode = "mainTarget";
+
     // Determine average
     for(auto &pair : vertices) {
         const Vertex *v = pair.second;
 
         for(auto e : v->getAdj()) {
+            // Ignore auxiliary edges
+            if(e->getOrig()->getCode() == mainSourceCode || e->getDest()->getCode() == mainTargetCode) continue;
+
             double absoluteDifference = e->getCapacity() - e->getFlow();
             double relativeDifference = ( e->getCapacity() - e->getFlow() ) / e->getCapacity();
 
@@ -457,34 +463,101 @@ pair<double, double> Graph::getTotalDemandAndMaxFlow(const unordered_map<string,
     return {totalDemand, maxFlow};
 }
 
-void Graph::optimizedMaxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
+void Graph::optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySites) {
+    GraphMetrics initialMetrics = this->calculateMetrics(deliverySites);
+    GraphMetrics finalMetrics = initialMetrics;
 
-    this->setAllEdgesFlow(0);
-    this->setAllVerticesFlow(0);
+    vector<Edge *> edges;
 
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
-
-    double biggestCapacity = -INF;
-    double smallestCapacity = INF;
-
-    this->setAllEdgesFlow(0);
-    this->setAllVerticesFlow(0);
-
-    for(auto &pair : vertices) {
+    for (auto &pair : vertices) {
         Vertex *v = pair.second;
-        for(auto e : v->getAdj()) {
-            double capacity = e->getCapacity();
-            if(capacity < smallestCapacity) smallestCapacity = capacity;
-            if(capacity > biggestCapacity) biggestCapacity = capacity;
+        for (Edge *e : v->getAdj()) {
+            edges.push_back(e);
         }
     }
 
-    double c = 0;
+    int iterations = 0;
 
-    optimizedEdmondsKarp(this, mainSourceCode, mainTargetCode, biggestCapacity, smallestCapacity, &c);
+    do {
+        sort(edges.begin(), edges.end(), [](Edge *a, Edge *b) {
+            double differenceA = (a->getCapacity() - a->getFlow())/a->getCapacity();
+            double differenceB = (b->getCapacity() - b->getFlow())/b->getCapacity();
 
+            if(differenceA == differenceB) return a->getFlow() > b->getFlow();
+            return differenceA < differenceB;
+        });
+
+        for(Edge *edge : edges) {
+            vector<Edge *> path;
+            vector<vector<Edge *>> paths;
+
+            if(edge->getFlow() == 0) break;
+
+            paths = this->getPaths(edge->getOrig()->getCode(), edge->getDest()->getCode());
+
+            if(paths.empty()) continue;
+
+            double maxDiff = -1;
+
+            for(vector<Edge *> p : paths) {
+                double minDiff = INF;
+                for(Edge *e : p) {
+                    minDiff = min(minDiff, e->getCapacity() - e->getFlow());
+                }
+                if(minDiff > maxDiff) {
+                    maxDiff = minDiff;
+                    path = p;
+                }
+            }
+
+            if(edge->getFlow() < maxDiff) maxDiff = edge->getFlow();
+            edge->setFlow(edge->getFlow() - maxDiff);
+            for(auto e : path) e->setFlow(e->getFlow() + maxDiff);
+        }
+
+        initialMetrics = finalMetrics;
+        finalMetrics = this->calculateMetrics(deliverySites);
+        iterations++;
+    } while((finalMetrics.getAbsoluteVariance() < initialMetrics.getAbsoluteVariance()
+            || finalMetrics.getRelativeVariance() < initialMetrics.getRelativeVariance()
+            || finalMetrics.getAbsoluteAverage() < initialMetrics.getAbsoluteAverage()
+            || finalMetrics.getRelativeAverage() < initialMetrics.getRelativeAverage())
+            && iterations < edges.size());
     this->updateAllVerticesFlow();
+}
+
+void Graph::dfs(const string current, const string dest, vector<Edge *> &path, vector<vector<Edge *>> &paths) {
+    Vertex *sourc = findVertex(current);
+    sourc->setVisited(true);
+
+    if(current == dest) {
+        paths.push_back(path);
+    }
+    else {
+        for(auto e : sourc->getAdj()) {
+            Vertex *u = e->getDest();
+            if(!u->isVisited() && e->getCapacity() - e->getFlow() > 0) {
+                path.push_back(e);
+                dfs(u->getCode(), dest, path, paths);
+                path.pop_back();
+            }
+        }
+    }
+}
+
+vector<vector<Edge *>> Graph::getPaths(const string sourc, const string dest) {
+    vector<vector<Edge *>> paths;
+    vector<Edge *> path;
+
+    for(auto pair : vertices) {
+        Vertex *v = pair.second;
+        v->setVisited(false);
+    }
+
+    dfs(sourc, dest, path, paths);
+
+
+    return paths;
 }
 
 void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
