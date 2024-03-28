@@ -367,7 +367,7 @@ void Data::verifyWaterSupply() {
 
 void Data::loadOptimization() {
     Graph *newGraph = g.copyGraph();
-    newGraph->optimizedMaxFlow(&waterReservoirs, &deliverySites);
+    newGraph->optimizeLoad(&deliverySites);
     GraphMetrics finalMetrics = newGraph->calculateMetrics(&deliverySites);
 
     cout << "\033[32m";
@@ -567,8 +567,6 @@ void Data::pumpingStationImpact(const std::string &code) {
 }
 
 void Data::allPumpingStationsImpact() {
-    double maxFlow = metrics.getMaxFlow();
-
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";

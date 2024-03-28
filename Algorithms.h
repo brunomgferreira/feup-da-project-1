@@ -10,10 +10,6 @@ double findMinResidualAlongPath(Vertex *s, Vertex *t);
 void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 void edmondsKarp(Graph *g, string source, string target);
 
-bool optimizedFindAugmentingPath(Graph *g, Vertex *s, Vertex *t, double smallestCapacity, double i);
-double optimizedFindMinResidualAlongPath(Vertex *s, Vertex *t, double smallestCapacity);
-void optimizedEdmondsKarp(Graph *g, const string source, const string target, const double biggestCapacity, const double smallestCapacity, double *iterationCount);
-
 void testAndVisitWithDeactivatedVertex(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, Vertex *deactivatedVertex);
 bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Vertex *deactivatedVertex);
 void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const string target, const string deactivated);
