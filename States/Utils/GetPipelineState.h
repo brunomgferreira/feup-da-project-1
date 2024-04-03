@@ -5,7 +5,7 @@
 #include "States/State.h"
 
 /**
-* @brief Class representing a state for obtaining the network pipelines.
+* @brief Class that represents a state for obtaining the network pipelines.
 */
 
 class GetPipelineState : public State {

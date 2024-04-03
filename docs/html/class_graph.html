@@ -78,109 +78,1008 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6d08c48629578407e852d2d8dcadbbd4" id="r_a6d08c48629578407e852d2d8dcadbbd4"><td class="memItemLeft" align="right" valign="top"><a id="a6d08c48629578407e852d2d8dcadbbd4" name="a6d08c48629578407e852d2d8dcadbbd4"></a>
-<a class="el" href="class_vertex.html">Vertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findVertex</b> (const string &amp;code) const</td></tr>
+<tr class="memitem:a6d08c48629578407e852d2d8dcadbbd4" id="r_a6d08c48629578407e852d2d8dcadbbd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a6d08c48629578407e852d2d8dcadbbd4">findVertex</a> (const string &amp;code) const</td></tr>
+<tr class="memdesc:a6d08c48629578407e852d2d8dcadbbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliary function to find a vertex in the graph, given its content.  <br /></td></tr>
 <tr class="separator:a6d08c48629578407e852d2d8dcadbbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cd653d89f9fbddcbab4a9ba1b70dcc7" id="r_a2cd653d89f9fbddcbab4a9ba1b70dcc7"><td class="memItemLeft" align="right" valign="top"><a id="a2cd653d89f9fbddcbab4a9ba1b70dcc7" name="a2cd653d89f9fbddcbab4a9ba1b70dcc7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addVertex</b> (const string &amp;code, const VertexType &amp;type)</td></tr>
+<tr class="memitem:a2cd653d89f9fbddcbab4a9ba1b70dcc7" id="r_a2cd653d89f9fbddcbab4a9ba1b70dcc7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a2cd653d89f9fbddcbab4a9ba1b70dcc7">addVertex</a> (const string &amp;code, const VertexType &amp;type)</td></tr>
+<tr class="memdesc:a2cd653d89f9fbddcbab4a9ba1b70dcc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a vertex with a given content or info (in) to a graph (this).  <br /></td></tr>
 <tr class="separator:a2cd653d89f9fbddcbab4a9ba1b70dcc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a468356cdc05db0745b855cd09b6364a6" id="r_a468356cdc05db0745b855cd09b6364a6"><td class="memItemLeft" align="right" valign="top"><a id="a468356cdc05db0745b855cd09b6364a6" name="a468356cdc05db0745b855cd09b6364a6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (const string &amp;sourc, const string &amp;dest, double c, double f=0)</td></tr>
+<tr class="memitem:a468356cdc05db0745b855cd09b6364a6" id="r_a468356cdc05db0745b855cd09b6364a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a468356cdc05db0745b855cd09b6364a6">addEdge</a> (const string &amp;sourc, const string &amp;dest, double c, double f=0)</td></tr>
+<tr class="memdesc:a468356cdc05db0745b855cd09b6364a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c).  <br /></td></tr>
 <tr class="separator:a468356cdc05db0745b855cd09b6364a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a680b7db2b868494868aeb2227f24ecbd" id="r_a680b7db2b868494868aeb2227f24ecbd"><td class="memItemLeft" align="right" valign="top"><a id="a680b7db2b868494868aeb2227f24ecbd" name="a680b7db2b868494868aeb2227f24ecbd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeEdge</b> (const string &amp;source, const string &amp;dest)</td></tr>
+<tr class="memitem:a680b7db2b868494868aeb2227f24ecbd" id="r_a680b7db2b868494868aeb2227f24ecbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a680b7db2b868494868aeb2227f24ecbd">removeEdge</a> (const string &amp;source, const string &amp;dest)</td></tr>
+<tr class="memdesc:a680b7db2b868494868aeb2227f24ecbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an edge from the graph, given the source and destination vertices.  <br /></td></tr>
 <tr class="separator:a680b7db2b868494868aeb2227f24ecbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38724e5e998e7528bd525c047eb93bd6" id="r_a38724e5e998e7528bd525c047eb93bd6"><td class="memItemLeft" align="right" valign="top"><a id="a38724e5e998e7528bd525c047eb93bd6" name="a38724e5e998e7528bd525c047eb93bd6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addBidirectionalEdge</b> (const string &amp;sourc, const string &amp;dest, double c, double flow=0, double reverseFlow=0)</td></tr>
+<tr class="memitem:a38724e5e998e7528bd525c047eb93bd6" id="r_a38724e5e998e7528bd525c047eb93bd6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a38724e5e998e7528bd525c047eb93bd6">addBidirectionalEdge</a> (const string &amp;sourc, const string &amp;dest, double c, double flow=0, double reverseFlow=0)</td></tr>
+<tr class="memdesc:a38724e5e998e7528bd525c047eb93bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c).  <br /></td></tr>
 <tr class="separator:a38724e5e998e7528bd525c047eb93bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb5e0517e2979c54eebdafc2a9875e8f" id="r_abb5e0517e2979c54eebdafc2a9875e8f"><td class="memItemLeft" align="right" valign="top"><a id="abb5e0517e2979c54eebdafc2a9875e8f" name="abb5e0517e2979c54eebdafc2a9875e8f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumVertex</b> () const</td></tr>
-<tr class="separator:abb5e0517e2979c54eebdafc2a9875e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7c6157baf3250a0780c7a9a34ffde7c" id="r_af7c6157baf3250a0780c7a9a34ffde7c"><td class="memItemLeft" align="right" valign="top"><a id="af7c6157baf3250a0780c7a9a34ffde7c" name="af7c6157baf3250a0780c7a9a34ffde7c"></a>
 unordered_map&lt; string, <a class="el" href="class_vertex.html">Vertex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getVertexSet</b> () const</td></tr>
 <tr class="separator:af7c6157baf3250a0780c7a9a34ffde7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa308f44877153162a3f9fa1a958ba025" id="r_aa308f44877153162a3f9fa1a958ba025"><td class="memItemLeft" align="right" valign="top"><a id="aa308f44877153162a3f9fa1a958ba025" name="aa308f44877153162a3f9fa1a958ba025"></a>
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dfs</b> () const</td></tr>
-<tr class="separator:aa308f44877153162a3f9fa1a958ba025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02b1590f5622c439e8e74d4001b76e04" id="r_a02b1590f5622c439e8e74d4001b76e04"><td class="memItemLeft" align="right" valign="top"><a id="a02b1590f5622c439e8e74d4001b76e04" name="a02b1590f5622c439e8e74d4001b76e04"></a>
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dfs</b> (const string &amp;source) const</td></tr>
-<tr class="separator:a02b1590f5622c439e8e74d4001b76e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4ab8b425feff7a73eb4062a72cc01d9" id="r_ad4ab8b425feff7a73eb4062a72cc01d9"><td class="memItemLeft" align="right" valign="top"><a id="ad4ab8b425feff7a73eb4062a72cc01d9" name="ad4ab8b425feff7a73eb4062a72cc01d9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dfsVisit</b> (<a class="el" href="class_vertex.html">Vertex</a> *v, vector&lt; string &gt; &amp;res) const</td></tr>
-<tr class="separator:ad4ab8b425feff7a73eb4062a72cc01d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2573f7e51a9bbd62aa40618b829fe7e" id="r_af2573f7e51a9bbd62aa40618b829fe7e"><td class="memItemLeft" align="right" valign="top"><a id="af2573f7e51a9bbd62aa40618b829fe7e" name="af2573f7e51a9bbd62aa40618b829fe7e"></a>
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bfs</b> (const string &amp;source) const</td></tr>
-<tr class="separator:af2573f7e51a9bbd62aa40618b829fe7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c636eb91a3e8e51c4fdc02734bbed79" id="r_a4c636eb91a3e8e51c4fdc02734bbed79"><td class="memItemLeft" align="right" valign="top"><a id="a4c636eb91a3e8e51c4fdc02734bbed79" name="a4c636eb91a3e8e51c4fdc02734bbed79"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDAG</b> () const</td></tr>
-<tr class="separator:a4c636eb91a3e8e51c4fdc02734bbed79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03ef8f6e2f6ecbecc6068a5a5dc1f7c7" id="r_a03ef8f6e2f6ecbecc6068a5a5dc1f7c7"><td class="memItemLeft" align="right" valign="top"><a id="a03ef8f6e2f6ecbecc6068a5a5dc1f7c7" name="a03ef8f6e2f6ecbecc6068a5a5dc1f7c7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dfsIsDAG</b> (<a class="el" href="class_vertex.html">Vertex</a> *v) const</td></tr>
-<tr class="separator:a03ef8f6e2f6ecbecc6068a5a5dc1f7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9bc1160d202d60e0b615cb93525e9a3" id="r_ae9bc1160d202d60e0b615cb93525e9a3"><td class="memItemLeft" align="right" valign="top"><a id="ae9bc1160d202d60e0b615cb93525e9a3" name="ae9bc1160d202d60e0b615cb93525e9a3"></a>
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>topsort</b> () const</td></tr>
-<tr class="separator:ae9bc1160d202d60e0b615cb93525e9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9f8981fc2b4d9b9c802e2c5a4d2c8d0" id="r_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"><td class="memItemLeft" align="right" valign="top"><a id="aa9f8981fc2b4d9b9c802e2c5a4d2c8d0" name="aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>maxFlow</b> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:aa9f8981fc2b4d9b9c802e2c5a4d2c8d0" id="r_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa9f8981fc2b4d9b9c802e2c5a4d2c8d0">maxFlow</a> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the maximum flow in the graph using the Edmonds-Karp algorithm.  <br /></td></tr>
 <tr class="separator:aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a216cc41e4e05a3a14d93c3396c214090" id="r_a216cc41e4e05a3a14d93c3396c214090"><td class="memItemLeft" align="right" valign="top"><a id="a216cc41e4e05a3a14d93c3396c214090" name="a216cc41e4e05a3a14d93c3396c214090"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>createMainSource</b> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs)</td></tr>
+<tr class="memitem:a216cc41e4e05a3a14d93c3396c214090" id="r_a216cc41e4e05a3a14d93c3396c214090"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a216cc41e4e05a3a14d93c3396c214090">createMainSource</a> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs)</td></tr>
+<tr class="memdesc:a216cc41e4e05a3a14d93c3396c214090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a main source vertex and connects it to water reservoirs.  <br /></td></tr>
 <tr class="separator:a216cc41e4e05a3a14d93c3396c214090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c86ae8cbd3e7544baf412a99d53ec62" id="r_a4c86ae8cbd3e7544baf412a99d53ec62"><td class="memItemLeft" align="right" valign="top"><a id="a4c86ae8cbd3e7544baf412a99d53ec62" name="a4c86ae8cbd3e7544baf412a99d53ec62"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMainSource</b> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs)</td></tr>
+<tr class="memitem:a4c86ae8cbd3e7544baf412a99d53ec62" id="r_a4c86ae8cbd3e7544baf412a99d53ec62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4c86ae8cbd3e7544baf412a99d53ec62">deleteMainSource</a> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs)</td></tr>
+<tr class="memdesc:a4c86ae8cbd3e7544baf412a99d53ec62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the main source vertex and its connections to water reservoirs.  <br /></td></tr>
 <tr class="separator:a4c86ae8cbd3e7544baf412a99d53ec62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e7000975456c01fd12ce94cfa00e723" id="r_a4e7000975456c01fd12ce94cfa00e723"><td class="memItemLeft" align="right" valign="top"><a id="a4e7000975456c01fd12ce94cfa00e723" name="a4e7000975456c01fd12ce94cfa00e723"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>createMainTarget</b> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:a4e7000975456c01fd12ce94cfa00e723" id="r_a4e7000975456c01fd12ce94cfa00e723"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4e7000975456c01fd12ce94cfa00e723">createMainTarget</a> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:a4e7000975456c01fd12ce94cfa00e723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a main target vertex and its connections to delivery sites.  <br /></td></tr>
 <tr class="separator:a4e7000975456c01fd12ce94cfa00e723"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2098d8f6a5d1a7031645f512aafaebb2" id="r_a2098d8f6a5d1a7031645f512aafaebb2"><td class="memItemLeft" align="right" valign="top"><a id="a2098d8f6a5d1a7031645f512aafaebb2" name="a2098d8f6a5d1a7031645f512aafaebb2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMainTarget</b> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:a2098d8f6a5d1a7031645f512aafaebb2" id="r_a2098d8f6a5d1a7031645f512aafaebb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a2098d8f6a5d1a7031645f512aafaebb2">deleteMainTarget</a> (const string &amp;code, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:a2098d8f6a5d1a7031645f512aafaebb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the main target vertex and its connections to delivery sites.  <br /></td></tr>
 <tr class="separator:a2098d8f6a5d1a7031645f512aafaebb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f4522e8e26a13194b45365b33694925" id="r_a5f4522e8e26a13194b45365b33694925"><td class="memItemLeft" align="right" valign="top"><a id="a5f4522e8e26a13194b45365b33694925" name="a5f4522e8e26a13194b45365b33694925"></a>
-<a class="el" href="class_graph_metrics.html">GraphMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calculateMetrics</b> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:a5f4522e8e26a13194b45365b33694925" id="r_a5f4522e8e26a13194b45365b33694925"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph_metrics.html">GraphMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a5f4522e8e26a13194b45365b33694925">calculateMetrics</a> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:a5f4522e8e26a13194b45365b33694925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates various metrics for the graph.  <br /></td></tr>
 <tr class="separator:a5f4522e8e26a13194b45365b33694925"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef19aa26d9028434a791ad134e9541a5" id="r_aef19aa26d9028434a791ad134e9541a5"><td class="memItemLeft" align="right" valign="top"><a id="aef19aa26d9028434a791ad134e9541a5" name="aef19aa26d9028434a791ad134e9541a5"></a>
-pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getTotalDemandAndMaxFlow</b> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:aef19aa26d9028434a791ad134e9541a5" id="r_aef19aa26d9028434a791ad134e9541a5"><td class="memItemLeft" align="right" valign="top">pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aef19aa26d9028434a791ad134e9541a5">getTotalDemandAndMaxFlow</a> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:aef19aa26d9028434a791ad134e9541a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates total demand and maximum flow in the graph.  <br /></td></tr>
 <tr class="separator:aef19aa26d9028434a791ad134e9541a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a488e6f0af66b7961d836fbdfcd775477" id="r_a488e6f0af66b7961d836fbdfcd775477"><td class="memItemLeft" align="right" valign="top"><a id="a488e6f0af66b7961d836fbdfcd775477" name="a488e6f0af66b7961d836fbdfcd775477"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>optimizeLoad</b> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memitem:a488e6f0af66b7961d836fbdfcd775477" id="r_a488e6f0af66b7961d836fbdfcd775477"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a488e6f0af66b7961d836fbdfcd775477">optimizeLoad</a> (const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites)</td></tr>
+<tr class="memdesc:a488e6f0af66b7961d836fbdfcd775477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimizes the load distribution in the graph.  <br /></td></tr>
 <tr class="separator:a488e6f0af66b7961d836fbdfcd775477"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a263fbd1ef0856c950f4f808e39911998" id="r_a263fbd1ef0856c950f4f808e39911998"><td class="memItemLeft" align="right" valign="top"><a id="a263fbd1ef0856c950f4f808e39911998" name="a263fbd1ef0856c950f4f808e39911998"></a>
-vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPaths</b> (const string sourc, const string dest)</td></tr>
+<tr class="memitem:a263fbd1ef0856c950f4f808e39911998" id="r_a263fbd1ef0856c950f4f808e39911998"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a263fbd1ef0856c950f4f808e39911998">getPaths</a> (const string sourc, const string dest)</td></tr>
+<tr class="memdesc:a263fbd1ef0856c950f4f808e39911998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds all paths between two vertices of the graph.  <br /></td></tr>
 <tr class="separator:a263fbd1ef0856c950f4f808e39911998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5debe9ab02325dde555684db2e5dc4" id="r_a4e5debe9ab02325dde555684db2e5dc4"><td class="memItemLeft" align="right" valign="top"><a id="a4e5debe9ab02325dde555684db2e5dc4" name="a4e5debe9ab02325dde555684db2e5dc4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dfs</b> (const string current, const string dest, vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &amp;path, vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt; &amp;paths)</td></tr>
+<tr class="memitem:a4e5debe9ab02325dde555684db2e5dc4" id="r_a4e5debe9ab02325dde555684db2e5dc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4e5debe9ab02325dde555684db2e5dc4">dfs</a> (const string current, const string dest, vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &amp;path, vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt; &amp;paths)</td></tr>
+<tr class="memdesc:a4e5debe9ab02325dde555684db2e5dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs depth-first search (DFS) to find all paths from a source to a destination vertex.  <br /></td></tr>
 <tr class="separator:a4e5debe9ab02325dde555684db2e5dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a073798f9b7177dd5a1f3055bb2dca37a" id="r_a073798f9b7177dd5a1f3055bb2dca37a"><td class="memItemLeft" align="right" valign="top"><a id="a073798f9b7177dd5a1f3055bb2dca37a" name="a073798f9b7177dd5a1f3055bb2dca37a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reservoirOutOfCommission</b> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *code)</td></tr>
+<tr class="memitem:a073798f9b7177dd5a1f3055bb2dca37a" id="r_a073798f9b7177dd5a1f3055bb2dca37a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a073798f9b7177dd5a1f3055bb2dca37a">reservoirOutOfCommission</a> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *code)</td></tr>
+<tr class="memdesc:a073798f9b7177dd5a1f3055bb2dca37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks a water reservoir as out of commission and adjusts the flow in the graph.  <br /></td></tr>
 <tr class="separator:a073798f9b7177dd5a1f3055bb2dca37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65577e05b1094ef77cd4fffdea8ba40" id="r_ae65577e05b1094ef77cd4fffdea8ba40"><td class="memItemLeft" align="right" valign="top"><a id="ae65577e05b1094ef77cd4fffdea8ba40" name="ae65577e05b1094ef77cd4fffdea8ba40"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deactivateVertex</b> (<a class="el" href="class_vertex.html">Vertex</a> *v, const string mainSourceCode, const string mainTargetCode)</td></tr>
+<tr class="memitem:ae65577e05b1094ef77cd4fffdea8ba40" id="r_ae65577e05b1094ef77cd4fffdea8ba40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ae65577e05b1094ef77cd4fffdea8ba40">deactivateVertex</a> (<a class="el" href="class_vertex.html">Vertex</a> *v, const string mainSourceCode, const string mainTargetCode)</td></tr>
+<tr class="memdesc:ae65577e05b1094ef77cd4fffdea8ba40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deactivates a vertex and adjusts the flow in the graph.  <br /></td></tr>
 <tr class="separator:ae65577e05b1094ef77cd4fffdea8ba40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe593ef28d5fed82f4e6118d53473b15" id="r_abe593ef28d5fed82f4e6118d53473b15"><td class="memItemLeft" align="right" valign="top"><a id="abe593ef28d5fed82f4e6118d53473b15" name="abe593ef28d5fed82f4e6118d53473b15"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAllEdgesFlow</b> (double f)</td></tr>
+<tr class="memitem:abe593ef28d5fed82f4e6118d53473b15" id="r_abe593ef28d5fed82f4e6118d53473b15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#abe593ef28d5fed82f4e6118d53473b15">setAllEdgesFlow</a> (double f)</td></tr>
+<tr class="memdesc:abe593ef28d5fed82f4e6118d53473b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets flow on all edges in the graph to the specified value.  <br /></td></tr>
 <tr class="separator:abe593ef28d5fed82f4e6118d53473b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e5f0d564741c6541d1f0db43df676f2" id="r_a2e5f0d564741c6541d1f0db43df676f2"><td class="memItemLeft" align="right" valign="top"><a id="a2e5f0d564741c6541d1f0db43df676f2" name="a2e5f0d564741c6541d1f0db43df676f2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAllVerticesFlow</b> (double f)</td></tr>
+<tr class="memitem:a2e5f0d564741c6541d1f0db43df676f2" id="r_a2e5f0d564741c6541d1f0db43df676f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a2e5f0d564741c6541d1f0db43df676f2">setAllVerticesFlow</a> (double f)</td></tr>
+<tr class="memdesc:a2e5f0d564741c6541d1f0db43df676f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets flow on all vertices in the graph to the specified value.  <br /></td></tr>
 <tr class="separator:a2e5f0d564741c6541d1f0db43df676f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ffc84f05075b2492edc7c581bd8e883" id="r_a9ffc84f05075b2492edc7c581bd8e883"><td class="memItemLeft" align="right" valign="top"><a id="a9ffc84f05075b2492edc7c581bd8e883" name="a9ffc84f05075b2492edc7c581bd8e883"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateAllVerticesFlow</b> ()</td></tr>
+<tr class="memitem:a9ffc84f05075b2492edc7c581bd8e883" id="r_a9ffc84f05075b2492edc7c581bd8e883"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a9ffc84f05075b2492edc7c581bd8e883">updateAllVerticesFlow</a> ()</td></tr>
+<tr class="memdesc:a9ffc84f05075b2492edc7c581bd8e883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates flow on all vertices in the graph.  <br /></td></tr>
 <tr class="separator:a9ffc84f05075b2492edc7c581bd8e883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77574cfe09127322dc746ab814d47bc4" id="r_a77574cfe09127322dc746ab814d47bc4"><td class="memItemLeft" align="right" valign="top"><a id="a77574cfe09127322dc746ab814d47bc4" name="a77574cfe09127322dc746ab814d47bc4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pumpingStationOutOfCommission</b> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *code)</td></tr>
+<tr class="memitem:a77574cfe09127322dc746ab814d47bc4" id="r_a77574cfe09127322dc746ab814d47bc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a77574cfe09127322dc746ab814d47bc4">pumpingStationOutOfCommission</a> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *code)</td></tr>
+<tr class="memdesc:a77574cfe09127322dc746ab814d47bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks a pumping station as out of commission and adjusts the flow in the graph.  <br /></td></tr>
 <tr class="separator:a77574cfe09127322dc746ab814d47bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aead61bcc1a44b6440713b34c9a6cff99" id="r_aead61bcc1a44b6440713b34c9a6cff99"><td class="memItemLeft" align="right" valign="top"><a id="aead61bcc1a44b6440713b34c9a6cff99" name="aead61bcc1a44b6440713b34c9a6cff99"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>detectAndDeactivateFlowCycles</b> (<a class="el" href="class_vertex.html">Vertex</a> *deactivatedVertex)</td></tr>
+<tr class="memitem:aead61bcc1a44b6440713b34c9a6cff99" id="r_aead61bcc1a44b6440713b34c9a6cff99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aead61bcc1a44b6440713b34c9a6cff99">detectAndDeactivateFlowCycles</a> (<a class="el" href="class_vertex.html">Vertex</a> *deactivatedVertex)</td></tr>
+<tr class="memdesc:aead61bcc1a44b6440713b34c9a6cff99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detects and deactivates flow cycles containing the specified vertex.  <br /></td></tr>
 <tr class="separator:aead61bcc1a44b6440713b34c9a6cff99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c27b7ef06e98c6bec2b9a3f9bfa0302" id="r_a5c27b7ef06e98c6bec2b9a3f9bfa0302"><td class="memItemLeft" align="right" valign="top"><a id="a5c27b7ef06e98c6bec2b9a3f9bfa0302" name="a5c27b7ef06e98c6bec2b9a3f9bfa0302"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>findAndDeactivateFlowPath</b> (<a class="el" href="class_vertex.html">Vertex</a> *deactivatedVertex, const string mainSourceCode, const string mainTargetCode)</td></tr>
+<tr class="memitem:a5c27b7ef06e98c6bec2b9a3f9bfa0302" id="r_a5c27b7ef06e98c6bec2b9a3f9bfa0302"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a5c27b7ef06e98c6bec2b9a3f9bfa0302">findAndDeactivateFlowPath</a> (<a class="el" href="class_vertex.html">Vertex</a> *deactivatedVertex, const string mainSourceCode, const string mainTargetCode)</td></tr>
+<tr class="memdesc:a5c27b7ef06e98c6bec2b9a3f9bfa0302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and deactivates a flow path passing through the specified deactivated vertex.  <br /></td></tr>
 <tr class="separator:a5c27b7ef06e98c6bec2b9a3f9bfa0302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0ece00411674a2d73696555cf494daf" id="r_aa0ece00411674a2d73696555cf494daf"><td class="memItemLeft" align="right" valign="top"><a id="aa0ece00411674a2d73696555cf494daf" name="aa0ece00411674a2d73696555cf494daf"></a>
-<a class="el" href="class_graph.html">Graph</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>copyGraph</b> ()</td></tr>
+<tr class="memitem:aa0ece00411674a2d73696555cf494daf" id="r_aa0ece00411674a2d73696555cf494daf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph.html">Graph</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa0ece00411674a2d73696555cf494daf">copyGraph</a> ()</td></tr>
+<tr class="memdesc:aa0ece00411674a2d73696555cf494daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a deep copy of the graph.  <br /></td></tr>
 <tr class="separator:aa0ece00411674a2d73696555cf494daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ced6e908502a917f32febfc6da50453" id="r_a4ced6e908502a917f32febfc6da50453"><td class="memItemLeft" align="right" valign="top"><a id="a4ced6e908502a917f32febfc6da50453" name="a4ced6e908502a917f32febfc6da50453"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pipelineOutOfCommission</b> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional)</td></tr>
+<tr class="memitem:a4ced6e908502a917f32febfc6da50453" id="r_a4ced6e908502a917f32febfc6da50453"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4ced6e908502a917f32febfc6da50453">pipelineOutOfCommission</a> (const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *waterReservoirs, const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional)</td></tr>
+<tr class="memdesc:a4ced6e908502a917f32febfc6da50453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks a pipeline as out of commission and adjusts the flow in the graph.  <br /></td></tr>
 <tr class="separator:a4ced6e908502a917f32febfc6da50453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a38724e5e998e7528bd525c047eb93bd6" name="a38724e5e998e7528bd525c047eb93bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38724e5e998e7528bd525c047eb93bd6">&#9670;&#160;</a></span>addBidirectionalEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::addBidirectionalEdge </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>sourc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>flow</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>reverseFlow</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c). </p>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourc</td><td>The source vertex of the edge. </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination vertex of the edge. </td></tr>
+    <tr><td class="paramname">c</td><td>The capacity of the edge. </td></tr>
+    <tr><td class="paramname">flow</td><td>The flow of the edge. Default is 0. </td></tr>
+    <tr><td class="paramname">reverseFlow</td><td>The flow of the reverse edge. Default is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the edge was successfully added, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a468356cdc05db0745b855cd09b6364a6" name="a468356cdc05db0745b855cd09b6364a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a468356cdc05db0745b855cd09b6364a6">&#9670;&#160;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::addEdge </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>sourc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>f</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c). </p>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourc</td><td>The source vertex of the edge. </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination vertex of the edge. </td></tr>
+    <tr><td class="paramname">c</td><td>The capacity of the edge. </td></tr>
+    <tr><td class="paramname">f</td><td>The flow of the edge. Default is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if the source or destination vertex does not exist. </dd></dl>
+
+</div>
+</div>
+<a id="a2cd653d89f9fbddcbab4a9ba1b70dcc7" name="a2cd653d89f9fbddcbab4a9ba1b70dcc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd653d89f9fbddcbab4a9ba1b70dcc7">&#9670;&#160;</a></span>addVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::addVertex </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertexType &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a vertex with a given content or info (in) to a graph (this). </p>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Content of the vertex. </td></tr>
+    <tr><td class="paramname">type</td><td>Type of the vertex (e.g. <a class="el" href="class_water_reservoir.html" title="Class representing a water reservoir entity in the water supply analysis system.">WaterReservoir</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if a vertex with that content already exists. </dd></dl>
+
+</div>
+</div>
+<a id="a5f4522e8e26a13194b45365b33694925" name="a5f4522e8e26a13194b45365b33694925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f4522e8e26a13194b45365b33694925">&#9670;&#160;</a></span>calculateMetrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graph_metrics.html">GraphMetrics</a> Graph::calculateMetrics </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates various metrics for the graph. </p>
+<p>This function calculates metrics including absolute and relative average, variance, standard deviation and maximum difference in capacity and flow for edges in the graph.</p>
+<p>Time complexity: O(V * E). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an '<a class="el" href="class_graph_metrics.html" title="Class to save the metrics of a given graph.">GraphMetrics</a>' object containing all calculated metrics. </dd></dl>
+
+</div>
+</div>
+<a id="aa0ece00411674a2d73696555cf494daf" name="aa0ece00411674a2d73696555cf494daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ece00411674a2d73696555cf494daf">&#9670;&#160;</a></span>copyGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graph.html">Graph</a> * Graph::copyGraph </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a deep copy of the graph. </p>
+<p>Time complexity: O(V + E). </p><dl class="section return"><dt>Returns</dt><dd>A pointer to the created copy of the graph. </dd></dl>
+
+</div>
+</div>
+<a id="a216cc41e4e05a3a14d93c3396c214090" name="a216cc41e4e05a3a14d93c3396c214090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216cc41e4e05a3a14d93c3396c214090">&#9670;&#160;</a></span>createMainSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::createMainSource </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a main source vertex and connects it to water reservoirs. </p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Content of the main source vertex. </td></tr>
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e7000975456c01fd12ce94cfa00e723" name="a4e7000975456c01fd12ce94cfa00e723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e7000975456c01fd12ce94cfa00e723">&#9670;&#160;</a></span>createMainTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::createMainTarget </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a main target vertex and its connections to delivery sites. </p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Content of the main target vertex. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae65577e05b1094ef77cd4fffdea8ba40" name="ae65577e05b1094ef77cd4fffdea8ba40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65577e05b1094ef77cd4fffdea8ba40">&#9670;&#160;</a></span>deactivateVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::deactivateVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>mainSourceCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>mainTargetCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deactivates a vertex and adjusts the flow in the graph. </p>
+<p>Time complexity: O(V + E). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td><a class="el" href="class_vertex.html">Vertex</a> to be deactivated. </td></tr>
+    <tr><td class="paramname">mainSourceCode</td><td>Content of the main source vertex. </td></tr>
+    <tr><td class="paramname">mainTargetCode</td><td>Content of the main target vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c86ae8cbd3e7544baf412a99d53ec62" name="a4c86ae8cbd3e7544baf412a99d53ec62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c86ae8cbd3e7544baf412a99d53ec62">&#9670;&#160;</a></span>deleteMainSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::deleteMainSource </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes the main source vertex and its connections to water reservoirs. </p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Content of the main source vertex. </td></tr>
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2098d8f6a5d1a7031645f512aafaebb2" name="a2098d8f6a5d1a7031645f512aafaebb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2098d8f6a5d1a7031645f512aafaebb2">&#9670;&#160;</a></span>deleteMainTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::deleteMainTarget </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deletes the main target vertex and its connections to delivery sites. </p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Content of the main target vertex. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aead61bcc1a44b6440713b34c9a6cff99" name="aead61bcc1a44b6440713b34c9a6cff99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aead61bcc1a44b6440713b34c9a6cff99">&#9670;&#160;</a></span>detectAndDeactivateFlowCycles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::detectAndDeactivateFlowCycles </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>deactivatedVertex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detects and deactivates flow cycles containing the specified vertex. </p>
+<p>Time complexity: O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deactivatedVertex</td><td>The vertex to be deactivated. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a flow cycle is found and deactivated, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a4e5debe9ab02325dde555684db2e5dc4" name="a4e5debe9ab02325dde555684db2e5dc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5debe9ab02325dde555684db2e5dc4">&#9670;&#160;</a></span>dfs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::dfs </td>
+          <td>(</td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paths</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs depth-first search (DFS) to find all paths from a source to a destination vertex. </p>
+<p>Time complexity: O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current</td><td>Content of the current vertex. </td></tr>
+    <tr><td class="paramname">dest</td><td>Content of the destination vertex. </td></tr>
+    <tr><td class="paramname">path</td><td>Vector containing the current path being explored. </td></tr>
+    <tr><td class="paramname">paths</td><td>Vector of vectors to store all found paths. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5c27b7ef06e98c6bec2b9a3f9bfa0302" name="a5c27b7ef06e98c6bec2b9a3f9bfa0302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c27b7ef06e98c6bec2b9a3f9bfa0302">&#9670;&#160;</a></span>findAndDeactivateFlowPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::findAndDeactivateFlowPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>deactivatedVertex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>mainSourceCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>mainTargetCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds and deactivates a flow path passing through the specified deactivated vertex. </p>
+<p>Time complexity: O(V + E). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deactivatedVertex</td><td>The vertex to be deactivated. </td></tr>
+    <tr><td class="paramname">mainSourceCode</td><td>Content of the main source vertex. </td></tr>
+    <tr><td class="paramname">mainTargetCode</td><td>Content of the main target vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d08c48629578407e852d2d8dcadbbd4" name="a6d08c48629578407e852d2d8dcadbbd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d08c48629578407e852d2d8dcadbbd4">&#9670;&#160;</a></span>findVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vertex.html">Vertex</a> * Graph::findVertex </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auxiliary function to find a vertex in the graph, given its content. </p>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The content of the vertex to be found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the vertex if found, nullptr otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a263fbd1ef0856c950f4f808e39911998" name="a263fbd1ef0856c950f4f808e39911998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a263fbd1ef0856c950f4f808e39911998">&#9670;&#160;</a></span>getPaths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; &gt; Graph::getPaths </td>
+          <td>(</td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>sourc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds all paths between two vertices of the graph. </p>
+<p>Time complexity: O(V + P), 'P' is the number of paths. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourc</td><td>Content of the source vertex. </td></tr>
+    <tr><td class="paramname">dest</td><td>Content of the destination vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of vectors containing all found paths. </dd></dl>
+
+</div>
+</div>
+<a id="aef19aa26d9028434a791ad134e9541a5" name="aef19aa26d9028434a791ad134e9541a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef19aa26d9028434a791ad134e9541a5">&#9670;&#160;</a></span>getTotalDemandAndMaxFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pair&lt; double, double &gt; Graph::getTotalDemandAndMaxFlow </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates total demand and maximum flow in the graph. </p>
+<p>Time complexity: O(m), 'm' is the number of delivery sites. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a pair containing the total demand and the maximum flow. </dd></dl>
+
+</div>
+</div>
+<a id="aa9f8981fc2b4d9b9c802e2c5a4d2c8d0" name="aa9f8981fc2b4d9b9c802e2c5a4d2c8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f8981fc2b4d9b9c802e2c5a4d2c8d0">&#9670;&#160;</a></span>maxFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::maxFlow </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the maximum flow in the graph using the Edmonds-Karp algorithm. </p>
+<p>Time complexity: O(V E^2). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a488e6f0af66b7961d836fbdfcd775477" name="a488e6f0af66b7961d836fbdfcd775477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488e6f0af66b7961d836fbdfcd775477">&#9670;&#160;</a></span>optimizeLoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::optimizeLoad </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optimizes the load distribution in the graph. </p>
+<p>Time complexity: O(E * (P + Q)), 'P' is the number of paths and 'Q' is the maximum number of edges in a path. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ced6e908502a917f32febfc6da50453" name="a4ced6e908502a917f32febfc6da50453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ced6e908502a917f32febfc6da50453">&#9670;&#160;</a></span>pipelineOutOfCommission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::pipelineOutOfCommission </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string const *&#160;</td>
+          <td class="paramname"><em>servicePointA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string const *&#160;</td>
+          <td class="paramname"><em>servicePointB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>unidirectional</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Marks a pipeline as out of commission and adjusts the flow in the graph. </p>
+<p>Time complexity: O(V E^2). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+    <tr><td class="paramname">servicePointA</td><td>Code of the first service point of the pipeline to be marked as out of commission. </td></tr>
+    <tr><td class="paramname">servicePointB</td><td>Code of the second service point of the pipeline to be marked as out of commission. </td></tr>
+    <tr><td class="paramname">unidirectional</td><td>A flag indicating if the pipeline is unidirectional. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a77574cfe09127322dc746ab814d47bc4" name="a77574cfe09127322dc746ab814d47bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77574cfe09127322dc746ab814d47bc4">&#9670;&#160;</a></span>pumpingStationOutOfCommission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::pumpingStationOutOfCommission </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string const *&#160;</td>
+          <td class="paramname"><em>code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Marks a pumping station as out of commission and adjusts the flow in the graph. </p>
+<p>Time complexity: O(V E^2). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+    <tr><td class="paramname">code</td><td>The code of the pumping station. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a680b7db2b868494868aeb2227f24ecbd" name="a680b7db2b868494868aeb2227f24ecbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a680b7db2b868494868aeb2227f24ecbd">&#9670;&#160;</a></span>removeEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::removeEdge </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes an edge from the graph, given the source and destination vertices. </p>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source vertex of the edge. </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination vertex of the edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the edge was successfully removed, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a073798f9b7177dd5a1f3055bb2dca37a" name="a073798f9b7177dd5a1f3055bb2dca37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073798f9b7177dd5a1f3055bb2dca37a">&#9670;&#160;</a></span>reservoirOutOfCommission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::reservoirOutOfCommission </td>
+          <td>(</td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_water_reservoir.html">WaterReservoir</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>waterReservoirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unordered_map&lt; string, <a class="el" href="class_delivery_site.html">DeliverySite</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>deliverySites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string const *&#160;</td>
+          <td class="paramname"><em>code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Marks a water reservoir as out of commission and adjusts the flow in the graph. </p>
+<p>Time complexity: O(V E^2). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">waterReservoirs</td><td>unordered_map containing water reservoirs. </td></tr>
+    <tr><td class="paramname">deliverySites</td><td>unordered_map containing delivery sites. </td></tr>
+    <tr><td class="paramname">code</td><td>The code of the reservoir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abe593ef28d5fed82f4e6118d53473b15" name="abe593ef28d5fed82f4e6118d53473b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe593ef28d5fed82f4e6118d53473b15">&#9670;&#160;</a></span>setAllEdgesFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::setAllEdgesFlow </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets flow on all edges in the graph to the specified value. </p>
+<p>Time complexity: O(V + E). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>The flow value to be set on all edges. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2e5f0d564741c6541d1f0db43df676f2" name="a2e5f0d564741c6541d1f0db43df676f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5f0d564741c6541d1f0db43df676f2">&#9670;&#160;</a></span>setAllVerticesFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::setAllVerticesFlow </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets flow on all vertices in the graph to the specified value. </p>
+<p>Time complexity: O(V). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>The flow value to be set on all vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9ffc84f05075b2492edc7c581bd8e883" name="a9ffc84f05075b2492edc7c581bd8e883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ffc84f05075b2492edc7c581bd8e883">&#9670;&#160;</a></span>updateAllVerticesFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::updateAllVerticesFlow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates flow on all vertices in the graph. </p>
+<p>Time complexity: O(V). </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>D:/feup-da-project-1/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
 <li>D:/feup-da-project-1/<b>Graph.cpp</b></li>

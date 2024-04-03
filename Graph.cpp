@@ -243,49 +243,8 @@ bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double
     return true;
 }
 
-int Graph::getNumVertex() const {
-    return this->vertices.size();
-}
-
 unordered_map<string, Vertex *> Graph::getVertexSet() const {
     return this->vertices;
-}
-
-// TODO - Dont know if this methods are needed
-vector<string> Graph::dfs() const {
-    vector<string> res;
-    return res;
-}
-
-// TODO - Dont know if this methods are needed
-vector<string> Graph::dfs(const string & source) const {
-    vector<string> res;
-    return res;
-}
-
-// TODO - Dont know if this methods are needed
-void Graph::dfsVisit(Vertex *v,  vector<string> & res) const {}
-
-// TODO - Dont know if this methods are needed
-vector<string> Graph::bfs(const string & source) const {
-    vector<string> res;
-    return res;
-}
-
-// TODO - Dont know if this methods are needed
-bool Graph::isDAG() const {
-    return false;
-}
-
-// TODO - Dont know if this methods are needed
-bool Graph::dfsIsDAG(Vertex *v) const {
-    return false;
-}
-
-// TODO - Dont know if this methods are needed
-vector<string> Graph::topsort() const {
-    vector<string> res;
-    return res;
 }
 
 void Graph::createMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
@@ -351,8 +310,8 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
 
     edmondsKarp(this, mainSourceCode, mainTargetCode);
 
-    // deleteMainSource(mainSourceCode, waterReservoirs);
-    // deleteMainTarget(mainTargetCode, deliverySites);
+    deleteMainSource(mainSourceCode, waterReservoirs);
+    deleteMainTarget(mainTargetCode, deliverySites);
 }
 
 GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites) {

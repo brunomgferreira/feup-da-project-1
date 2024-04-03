@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Class representing a state for obtaining the network pipelines.  
+<p>Class that represents a state for obtaining the network pipelines.  
  <a href="class_get_pipeline_state.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_get_pipeline_state_8h_source.html">GetPipelineState.h</a>&gt;</code></p>
@@ -93,7 +93,7 @@ Inheritance diagram for GetPipelineState:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9f6c7bc118892fc49790c5a189d15861" id="r_a9f6c7bc118892fc49790c5a189d15861"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_get_pipeline_state.html#a9f6c7bc118892fc49790c5a189d15861">GetPipelineState</a> (<a class="el" href="class_state.html">State</a> *backState, function&lt; void(<a class="el" href="class_app.html">App</a> *, const string &amp;)&gt; nextStateCallback)</td></tr>
-<tr class="memdesc:a9f6c7bc118892fc49790c5a189d15861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of <a class="el" href="class_get_pipeline_state.html" title="Class representing a state for obtaining the network pipelines.">GetPipelineState</a> with specified back state and callback function.  <br /></td></tr>
+<tr class="memdesc:a9f6c7bc118892fc49790c5a189d15861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of <a class="el" href="class_get_pipeline_state.html" title="Class that represents a state for obtaining the network pipelines.">GetPipelineState</a> with specified back state and callback function.  <br /></td></tr>
 <tr class="separator:a9f6c7bc118892fc49790c5a189d15861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa20181dcf36ec33214e05a978b2fc45a" id="r_aa20181dcf36ec33214e05a978b2fc45a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_get_pipeline_state.html#aa20181dcf36ec33214e05a978b2fc45a">display</a> () const override</td></tr>
 <tr class="memdesc:aa20181dcf36ec33214e05a978b2fc45a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a prompt for inserting a pipeline code.  <br /></td></tr>
@@ -107,7 +107,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5cc910b45294b877032ada4cbc90c213 inherit pub_methods_class_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class representing a state for obtaining the network pipelines. </p>
+<div class="textblock"><p>Class that represents a state for obtaining the network pipelines. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9f6c7bc118892fc49790c5a189d15861" name="a9f6c7bc118892fc49790c5a189d15861"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9f6c7bc118892fc49790c5a189d15861">&#9670;&#160;</a></span>GetPipelineState()</h2>
@@ -135,8 +135,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs an instance of <a class="el" href="class_get_pipeline_state.html" title="Class representing a state for obtaining the network pipelines.">GetPipelineState</a> with specified back state and callback function. </p>
-<p>This constructor initializes an instance of the <a class="el" href="class_get_pipeline_state.html" title="Class representing a state for obtaining the network pipelines.">GetPipelineState</a> class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing the pipeline code from user input and proceeding to the next state with the captured information.</p>
+<p>Constructs an instance of <a class="el" href="class_get_pipeline_state.html" title="Class that represents a state for obtaining the network pipelines.">GetPipelineState</a> with specified back state and callback function. </p>
+<p>This constructor initializes an instance of the <a class="el" href="class_get_pipeline_state.html" title="Class that represents a state for obtaining the network pipelines.">GetPipelineState</a> class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing the pipeline code from user input and proceeding to the next state with the captured information.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">backState</td><td>A pointer to the state to which the application should return when the user chooses to go back. </td></tr>
