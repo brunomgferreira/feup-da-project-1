@@ -3,8 +3,8 @@
 #include "States/MaxFlow/MaxFlowMenuState.h"
 #include "States/PumpingStationImpact/PumpingStationImpactMenuState.h"
 #include "States/PipelineImpact/PipelineImpactMenuState.h"
+#include "States/ReservoirImpact/ReservoirImpactMenuState.h"
 #include "States/Utils/GetFilesPathState.h"
-#include "States/Utils/GetReservoirState.h"
 
 MainMenuState::MainMenuState() {}
 
@@ -66,11 +66,7 @@ void MainMenuState::handleInput(App* app) {
                         PressEnterToContinue();
                         break;
                     case '5':
-                        app->setState(new GetReservoirState(this, [&](App *app, const string& code) {
-                            app->getData()->reservoirImpact(code);
-                            PressEnterToContinue(1);
-                            app->setState(this);
-                        }));
+                        app->setState(new ReservoirImpactMenuState());
                         break;
                     case '6':
                         app->setState(new PumpingStationImpactMenuState());

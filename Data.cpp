@@ -459,6 +459,44 @@ void Data::reservoirImpact(const string &code) {
     cout << "\033[0m";
 }
 
+void Data::allReservoirsImpact() {
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> All Reservoirs Impact: " << endl;
+    cout << "Reservoir Code > (City Code, Deficit Value)" << endl << endl;
+
+    Graph *newGraph = g.copyGraph();
+
+    for(auto &pair : waterReservoirs) {
+        string psCode = pair.first;
+
+        newGraph->reservoirOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+
+        cout << psCode << "\t >  ";
+
+        for(auto &pair : deliverySites) {
+            const string code = pair.first;
+            DeliverySite *ds = pair.second;
+
+            string cityName = ds->getCity();
+            double demand = ds->getDemand();
+            double flow = newGraph->findVertex(code)->getFlow();
+
+            if (demand <= flow) continue;
+
+            double difference = demand-flow;
+
+            cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
 void Data::notEssentialPumpingStations() {
     double maxFlow = metrics.getMaxFlow();
 

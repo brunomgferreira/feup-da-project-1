@@ -7,6 +7,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <unordered_map>
 #include "WaterReservoir.h"
 #include "DeliverySite.h"
 #include "GraphMetrics.h"

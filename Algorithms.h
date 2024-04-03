@@ -6,6 +6,7 @@
 
 /**
  * @brief Tests the given vertex 'w' and visits it if conditions are met.
+ * @details Time complexity: O(1).
  * @param q The queue used for Breadth-First Search.
  * @param e The edge connecting the current vertex to 'w'.
  * @param w The vertex to be tested and visited.
@@ -15,6 +16,7 @@ void testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual);
 
 /**
  * @brief Finds an augmenting path using Breadth-First Search.
+ * @details Time complexity: O(V + E).
  * @param g Pointer to the graph.
  * @param s Pointer to the source vertex.
  * @param t Pointer to the target vertex.
@@ -24,6 +26,7 @@ bool findAugmentingPath(Graph *g, Vertex *s, Vertex *t);
 
 /**
  * @brief Finds the minimum residual capacity along the augmenting path.
+ * @details Time complexity: O(V).
  * @param s Pointer to the source vertex.
  * @param t Pointer to the target vertex.
  * @return The minimum residual capacity along the augmenting path.
@@ -32,6 +35,7 @@ double findMinResidualAlongPath(Vertex *s, Vertex *t);
 
 /**
  * @brief Augments flow along the augmenting path with the given flow value
+ * @details Time complexity: O(V).
  * @param s Pointer to the source vertex.
  * @param t Pointer to the target vertex.
  * @param f The amount by which to augment the flow.
@@ -40,6 +44,7 @@ void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
 
 /**
  * @brief Implements the Edmonds-Karp algorithm for maximum flow.
+ * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
  * @param source The code of the source vertex.
  * @param target The code of the target vertex.
@@ -60,6 +65,7 @@ void testAndVisitWithDeactivatedVertex(std::queue< Vertex*> &q, Edge *e, Vertex 
 
 /**
  * @brief Finds an augmenting path using Breadth-First Search, now with a deactivated vertex.
+ * @details Time complexity: O(V + E).
  * @param g Pointer to the graph.
  * @param s Pointer to the source vertex.
  * @param t Pointer to the target vertex.
@@ -70,6 +76,7 @@ bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Ver
 
 /**
  * @brief Implements the Edmonds-Karp algorithm for maximum flow, now with a deactivated vertex.
+ * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
  * @param source Pointer to the source vertex.
  * @param target Pointer to the target vertex.
@@ -92,6 +99,7 @@ void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w
 
 /**
  * @brief Finds an augmenting path using Breadth-First Search, now with a deactivated edge.
+ * @details Time complexity: O(V + E).
  * @param g Pointer to the graph.
  * @param s Pointer to the source vertex.
  * @param t Pointer to the target vertex.
@@ -104,6 +112,7 @@ bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const
 
 /**
  * @brief Implements the Edmonds-Karp algorithm for maximum flow, now with a deactivated edge.
+ * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
  * @param source Pointer to the source vertex.
  * @param target Pointer to the target vertex.

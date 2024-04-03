@@ -63,6 +63,7 @@ public:
      * @brief Reads data from the specified input file stream and processes it as station information.
      * @details This method reads data from the file stream and extracts station information from each line
      * of the file, and then creates a PumpingStation object and adds it to the graph.
+     * @details Time complexity: O(n).
      * @param file The input file stream containing station information.
      */
     void readFileStations(ifstream &file);
@@ -71,6 +72,7 @@ public:
      * @brief Reads data from the specified input file stream and processes it as city information.
      * @details This method reads data from the file stream and extracts city information from each line
      * of the file, and then creates a DeliverySite object and adds it to the graph.
+     * @details Time complexity: O(n).
      * @param file The input file stream containing city information.
      */
     void readFileCities(ifstream &file);
@@ -79,12 +81,14 @@ public:
      * @brief Reads data from the specified input file stream and processes it as pipe information.
      * @details This method reads data from the file stream and extracts pipe information from each line
      * of the file, and then creates a Pipe object and adds it to the graph.
+     * @details Time complexity: O(n).
      * @param file The input file stream containing pipe information.
      */
     void readFilePipes(ifstream &file);
 
     /**
      * @brief Check if a delivery site with the given code exists.
+     * @details Time complexity: O(1).
      * @param code The code of the delivery site to check.
      * @return true if the delivery site exists, false otherwise.
      */
@@ -92,6 +96,7 @@ public:
 
     /**
      * @brief Check if a water reservoir with the given code exists.
+     * @details Time complexity: O(1).
      * @param code The code of the water reservoir to check.
      * @return true if the water reservoir exists, false otherwise.
      */
@@ -99,6 +104,7 @@ public:
 
     /**
      * @brief Check if a pumping station with the given code exists.
+     * @details Time complexity: O(1).
      * @param code The code of the pumping station to check.
      * @return true if the pumping station exists, false otherwise.
      */
@@ -106,6 +112,7 @@ public:
 
     /**
      * @brief Check if a pipeline with the given code exists.
+     * @details Time complexity: O(1).
      * @param code The code of the pipeline to check.
      * @return true if the pipeline exists, false otherwise.
      */
@@ -124,6 +131,7 @@ public:
 
     /**
      * @brief Displays information about the water supply status.
+     * @details Time complexity: O(n).
      */
     void verifyWaterSupply();
 
@@ -137,6 +145,11 @@ public:
      * @param code The code of the water reservoir to put out of commission.
      */
     void reservoirImpact(const string &code);
+
+    /**
+     * @brief Simulates the impact of putting each reservoir out of commission and displays the information.
+     */
+    void allReservoirsImpact();
 
     /**
      * @brief Displays information about pumping stations that are not essential to maintain the current maximum flow.
