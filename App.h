@@ -6,7 +6,7 @@
 class State;
 
 /**
-* @brief Singleton class representing the main application controller for the flight management system.
+* @brief Singleton class representing the main application controller for the water supply analysis system.
 */
 
 class App {
