@@ -75,6 +75,11 @@ $(function() {
   <div class="headertitle"><div class="title">GetCityState Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that represents a state for obtaining the network cities.  
+ <a href="class_get_city_state.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_get_city_state_8h_source.html">GetCityState.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GetCityState:</div>
 <div class="dyncontent">
@@ -88,7 +93,7 @@ Inheritance diagram for GetCityState:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac34e52e8cb0668b90905f794100351f9" id="r_ac34e52e8cb0668b90905f794100351f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_get_city_state.html#ac34e52e8cb0668b90905f794100351f9">GetCityState</a> (<a class="el" href="class_state.html">State</a> *backState, function&lt; void(<a class="el" href="class_app.html">App</a> *, const string &amp;)&gt; nextStateCallback)</td></tr>
-<tr class="memdesc:ac34e52e8cb0668b90905f794100351f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of <a class="el" href="class_get_city_state.html">GetCityState</a> with specified back state and callback function.  <br /></td></tr>
+<tr class="memdesc:ac34e52e8cb0668b90905f794100351f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of <a class="el" href="class_get_city_state.html" title="Class that represents a state for obtaining the network cities.">GetCityState</a> with specified back state and callback function.  <br /></td></tr>
 <tr class="separator:ac34e52e8cb0668b90905f794100351f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1264aa11a7b50d76423200dde5147a6" id="r_aa1264aa11a7b50d76423200dde5147a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_get_city_state.html#aa1264aa11a7b50d76423200dde5147a6">display</a> () const override</td></tr>
 <tr class="memdesc:aa1264aa11a7b50d76423200dde5147a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a prompt for inserting a city code/name.  <br /></td></tr>
@@ -101,7 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5cc910b45294b877032ada4cbc90c213 inherit pub_methods_class_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for user to press ENTER to continue execution.  <br /></td></tr>
 <tr class="separator:a5cc910b45294b877032ada4cbc90c213 inherit pub_methods_class_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that represents a state for obtaining the network cities. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac34e52e8cb0668b90905f794100351f9" name="ac34e52e8cb0668b90905f794100351f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac34e52e8cb0668b90905f794100351f9">&#9670;&#160;</a></span>GetCityState()</h2>
 
@@ -128,8 +135,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs an instance of <a class="el" href="class_get_city_state.html">GetCityState</a> with specified back state and callback function. </p>
-<p>This constructor initializes an instance of the <a class="el" href="class_get_city_state.html">GetCityState</a> class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing an city code or name from user input and proceeding to the next state with the captured information.</p>
+<p>Constructs an instance of <a class="el" href="class_get_city_state.html" title="Class that represents a state for obtaining the network cities.">GetCityState</a> with specified back state and callback function. </p>
+<p>This constructor initializes an instance of the <a class="el" href="class_get_city_state.html" title="Class that represents a state for obtaining the network cities.">GetCityState</a> class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing an city code or name from user input and proceeding to the next state with the captured information.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">backState</td><td>A pointer to the state to which the application should return when the user chooses to go back. </td></tr>

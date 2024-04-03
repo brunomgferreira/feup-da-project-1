@@ -120,9 +120,8 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>allCitiesMaxFlow</b> ()</td></tr>
 <tr class="memdesc:a49ee53f49927f8f8e05522c6e5515a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays information about the maximum flow for all cities. <br /></td></tr>
 <tr class="separator:a49ee53f49927f8f8e05522c6e5515a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fcd83652fc0e46d1d99330b7b1ee9b6" id="r_a3fcd83652fc0e46d1d99330b7b1ee9b6"><td class="memItemLeft" align="right" valign="top"><a id="a3fcd83652fc0e46d1d99330b7b1ee9b6" name="a3fcd83652fc0e46d1d99330b7b1ee9b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>verifyWaterSupply</b> ()</td></tr>
-<tr class="memdesc:a3fcd83652fc0e46d1d99330b7b1ee9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays information about the water supply status. <br /></td></tr>
+<tr class="memitem:a3fcd83652fc0e46d1d99330b7b1ee9b6" id="r_a3fcd83652fc0e46d1d99330b7b1ee9b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data.html#a3fcd83652fc0e46d1d99330b7b1ee9b6">verifyWaterSupply</a> ()</td></tr>
+<tr class="memdesc:a3fcd83652fc0e46d1d99330b7b1ee9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays information about the water supply status.  <br /></td></tr>
 <tr class="separator:a3fcd83652fc0e46d1d99330b7b1ee9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af486c4151d67d15c6b41016357773329" id="r_af486c4151d67d15c6b41016357773329"><td class="memItemLeft" align="right" valign="top"><a id="af486c4151d67d15c6b41016357773329" name="af486c4151d67d15c6b41016357773329"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>loadOptimization</b> ()</td></tr>
@@ -131,6 +130,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>loadOptimization</b> 
 <tr class="memitem:a8fc1de8e08dc768cd6d687efec0cdb1c" id="r_a8fc1de8e08dc768cd6d687efec0cdb1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data.html#a8fc1de8e08dc768cd6d687efec0cdb1c">reservoirImpact</a> (const string &amp;code)</td></tr>
 <tr class="memdesc:a8fc1de8e08dc768cd6d687efec0cdb1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the impact of putting a water reservoir out of commission and displays the information.  <br /></td></tr>
 <tr class="separator:a8fc1de8e08dc768cd6d687efec0cdb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3672f82d9f7119d040100e48af910c7" id="r_ae3672f82d9f7119d040100e48af910c7"><td class="memItemLeft" align="right" valign="top"><a id="ae3672f82d9f7119d040100e48af910c7" name="ae3672f82d9f7119d040100e48af910c7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>allReservoirsImpact</b> ()</td></tr>
+<tr class="memdesc:ae3672f82d9f7119d040100e48af910c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the impact of putting each reservoir out of commission and displays the information. <br /></td></tr>
+<tr class="separator:ae3672f82d9f7119d040100e48af910c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae96672fc873f346ffcf86740c2fef61b" id="r_ae96672fc873f346ffcf86740c2fef61b"><td class="memItemLeft" align="right" valign="top"><a id="ae96672fc873f346ffcf86740c2fef61b" name="ae96672fc873f346ffcf86740c2fef61b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>notEssentialPumpingStations</b> ()</td></tr>
 <tr class="memdesc:ae96672fc873f346ffcf86740c2fef61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays information about pumping stations that are not essential to maintain the current maximum flow. <br /></td></tr>
@@ -222,7 +225,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Check if a delivery site with the given code exists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The code of the delivery site to check. </td></tr>
   </table>
@@ -249,7 +252,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Check if a pipeline with the given code exists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The code of the pipeline to check. </td></tr>
   </table>
@@ -302,7 +305,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Check if a pumping station with the given code exists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The code of the pumping station to check. </td></tr>
   </table>
@@ -355,7 +358,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Reads data from the specified input file stream and processes it as city information. </p>
-<p>This method reads data from the file stream and extracts city information from each line of the file, and then creates a <a class="el" href="class_delivery_site.html" title="Class representing a delivery site entity in the water supply analysis system.">DeliverySite</a> object and adds it to the graph. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This method reads data from the file stream and extracts city information from each line of the file, and then creates a <a class="el" href="class_delivery_site.html" title="Class representing a delivery site entity in the water supply analysis system.">DeliverySite</a> object and adds it to the graph.</p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td>The input file stream containing city information. </td></tr>
   </table>
@@ -381,7 +385,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Reads data from the specified input file stream and processes it as pipe information. </p>
-<p>This method reads data from the file stream and extracts pipe information from each line of the file, and then creates a <a class="el" href="class_pipe.html" title="Class representing a pipe entity in the water supply analysis system.">Pipe</a> object and adds it to the graph. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This method reads data from the file stream and extracts pipe information from each line of the file, and then creates a <a class="el" href="class_pipe.html" title="Class representing a pipe entity in the water supply analysis system.">Pipe</a> object and adds it to the graph.</p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td>The input file stream containing pipe information. </td></tr>
   </table>
@@ -466,7 +471,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Reads data from the specified input file stream and processes it as station information. </p>
-<p>This method reads data from the file stream and extracts station information from each line of the file, and then creates a <a class="el" href="class_pumping_station.html" title="Class representing a pumping station entity in the water supply analysis system.">PumpingStation</a> object and adds it to the graph. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This method reads data from the file stream and extracts station information from each line of the file, and then creates a <a class="el" href="class_pumping_station.html" title="Class representing a pumping station entity in the water supply analysis system.">PumpingStation</a> object and adds it to the graph.</p>
+<p>Time complexity: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td>The input file stream containing station information. </td></tr>
   </table>
@@ -501,6 +507,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 
 </div>
 </div>
+<a id="a3fcd83652fc0e46d1d99330b7b1ee9b6" name="a3fcd83652fc0e46d1d99330b7b1ee9b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fcd83652fc0e46d1d99330b7b1ee9b6">&#9670;&#160;</a></span>verifyWaterSupply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Data::verifyWaterSupply </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displays information about the water supply status. </p>
+<p>Time complexity: O(n). </p>
+
+</div>
+</div>
 <a id="a2c868977f513554adae07db7b21d9a88" name="a2c868977f513554adae07db7b21d9a88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c868977f513554adae07db7b21d9a88">&#9670;&#160;</a></span>waterReservoirExists()</h2>
 
@@ -518,7 +544,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>allPipelinesImpact</b
 </div><div class="memdoc">
 
 <p>Check if a water reservoir with the given code exists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The code of the water reservoir to check. </td></tr>
   </table>

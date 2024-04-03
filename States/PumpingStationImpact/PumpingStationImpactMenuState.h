@@ -5,7 +5,7 @@
 #include "States/State.h"
 
 /**
-* @brief Class representing the Pumping Station Impact Menu state of the water supply analysis system..
+* @brief Class representing the Pumping Station Impact Menu state of the water supply analysis system.
 */
 
 class PumpingStationImpactMenuState : public State {

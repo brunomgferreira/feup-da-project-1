@@ -5,7 +5,7 @@
 #include "States/State.h"
 
 /**
-* @brief Class representing the Find Max Water Flow Menu state of the water supply analysis system..
+* @brief Class representing the Find Max Water Flow Menu state of the water supply analysis system.
 */
 
 class MaxFlowMenuState : public State {

@@ -2,7 +2,6 @@
 #define WATER_SUPPLY_ANALYSIS_SYSTEM_TRYAGAINSTATE_H
 
 
-#include <functional>
 #include "States/State.h"
 
 /**

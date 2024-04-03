@@ -85,30 +85,29 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define WATER_SUPPLY_ANALYSIS_SYSTEM_TRYAGAINSTATE_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;States/State.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_try_again_state.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_try_again_state.html">TryAgainState</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_state.html">State</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;States/State.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_try_again_state.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_try_again_state.html">TryAgainState</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_state.html">State</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_state.html">State</a> *backState;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_state.html">State</a> *currentState;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="class_try_again_state.html">TryAgainState</a>(<a class="code hl_class" href="class_state.html">State</a> *backState, <a class="code hl_class" href="class_state.html">State</a> *currentState);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_try_again_state.html#a2b8612db5038083dc4bb80e7b1dd46f8">display</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_try_again_state.html#a8dc71bc7136f5afcbe0a0097920a4813">handleInput</a>(<a class="code hl_class" href="class_app.html">App</a>* app) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_class" href="class_state.html">State</a> *backState;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_state.html">State</a> *currentState;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="class_try_again_state.html">TryAgainState</a>(<a class="code hl_class" href="class_state.html">State</a> *backState, <a class="code hl_class" href="class_state.html">State</a> *currentState);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_try_again_state.html#a2b8612db5038083dc4bb80e7b1dd46f8">display</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_try_again_state.html#a8dc71bc7136f5afcbe0a0097920a4813">handleInput</a>(<a class="code hl_class" href="class_app.html">App</a>* app) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
 </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif </span><span class="comment">//WATER_SUPPLY_ANALYSIS_SYSTEM_TRYAGAINSTATE_H</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">//WATER_SUPPLY_ANALYSIS_SYSTEM_TRYAGAINSTATE_H</span></div>
 <div class="ttc" id="aclass_app_html"><div class="ttname"><a href="class_app.html">App</a></div><div class="ttdoc">Singleton class representing the main application controller for the water supply analysis system.</div><div class="ttdef"><b>Definition</b> App.h:12</div></div>
-<div class="ttc" id="aclass_state_html"><div class="ttname"><a href="class_state.html">State</a></div><div class="ttdoc">Abstract base class representing an app state within the water supply analysis system.</div><div class="ttdef"><b>Definition</b> State.h:11</div></div>
-<div class="ttc" id="aclass_try_again_state_html"><div class="ttname"><a href="class_try_again_state.html">TryAgainState</a></div><div class="ttdoc">Class representing a state that prompts the user to try an action again.</div><div class="ttdef"><b>Definition</b> TryAgainState.h:12</div></div>
+<div class="ttc" id="aclass_state_html"><div class="ttname"><a href="class_state.html">State</a></div><div class="ttdoc">Abstract base class representing an app state within the water supply analysis system.</div><div class="ttdef"><b>Definition</b> State.h:12</div></div>
+<div class="ttc" id="aclass_try_again_state_html"><div class="ttname"><a href="class_try_again_state.html">TryAgainState</a></div><div class="ttdoc">Class representing a state that prompts the user to try an action again.</div><div class="ttdef"><b>Definition</b> TryAgainState.h:11</div></div>
 <div class="ttc" id="aclass_try_again_state_html_a2b8612db5038083dc4bb80e7b1dd46f8"><div class="ttname"><a href="class_try_again_state.html#a2b8612db5038083dc4bb80e7b1dd46f8">TryAgainState::display</a></div><div class="ttdeci">void display() const override</div><div class="ttdoc">Displays the options for retrying or navigating back in a TryAgainState.</div><div class="ttdef"><b>Definition</b> TryAgainState.cpp:8</div></div>
 <div class="ttc" id="aclass_try_again_state_html_a8dc71bc7136f5afcbe0a0097920a4813"><div class="ttname"><a href="class_try_again_state.html#a8dc71bc7136f5afcbe0a0097920a4813">TryAgainState::handleInput</a></div><div class="ttdeci">void handleInput(App *app) override</div><div class="ttdoc">Handles user input in a TryAgainState.</div><div class="ttdef"><b>Definition</b> TryAgainState.cpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->

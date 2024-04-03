@@ -5,7 +5,7 @@
 #include "State.h"
 
 /**
-* @brief Class representing the main menu state of the water supply analysis system..
+* @brief Class representing the main menu state of the water supply analysis system.
 */
 
 class MainMenuState : public State {

@@ -1,7 +1,12 @@
 #ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_GETCITYSTATE_H
 #define WATER_SUPPLY_ANALYSIS_SYSTEM_GETCITYSTATE_H
 
+
 #include "States/State.h"
+
+/**
+* @brief Class that represents a state for obtaining the network cities.
+*/
 
 class GetCityState : public State {
 private:

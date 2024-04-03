@@ -3,6 +3,10 @@
 
 #include "States/State.h"
 
+/**
+* @brief Class representing the Reservoir Impact Menu state of the water supply analysis system.
+*/
+
 class ReservoirImpactMenuState : public State {
 public:
 
@@ -10,7 +14,7 @@ public:
     * @brief Default constructor for ReservoirImpactMenuState.
     *
     * @details This constructor initializes an instance of the ReservoirImpactMenuState class. It doesn't require any parameters,
-    * as it represents the Pipeline Impact Menu state of the application, allowing users to navigate to different
+    * as it represents the Reservoir Impact Menu state of the application, allowing users to navigate to different
     * functionalities and sections of the program.
     */
     ReservoirImpactMenuState();

@@ -1,7 +1,12 @@
 #ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_GETRESERVOIRSTATE_H
 #define WATER_SUPPLY_ANALYSIS_SYSTEM_GETRESERVOIRSTATE_H
 
+
 #include "States/State.h"
+
+/**
+* @brief Class that represents a state for obtaining the network reservoirs.
+*/
 
 class GetReservoirState : public State {
 private:

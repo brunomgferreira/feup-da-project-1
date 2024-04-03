@@ -87,28 +87,28 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;States/State.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_get_pipeline_state.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_get_pipeline_state.html">GetPipelineState</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_state.html">State</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_class" href="class_state.html">State</a>* backState;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    function&lt;void(<a class="code hl_class" href="class_app.html">App</a>*, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp;)&gt; nextStateCallback;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="class_get_pipeline_state.html">GetPipelineState</a>(<a class="code hl_class" href="class_state.html">State</a>* backState, function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="class_app.html">App</a>*, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp;)&gt; nextStateCallback);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_get_pipeline_state.html#aa20181dcf36ec33214e05a978b2fc45a">display</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_get_pipeline_state.html#a4c8568d2225acbb791e1e1e4480eeb6a">handleInput</a>(<a class="code hl_class" href="class_app.html">App</a>* app) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_get_pipeline_state.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_get_pipeline_state.html">GetPipelineState</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_state.html">State</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_class" href="class_state.html">State</a>* backState;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    function&lt;void(<a class="code hl_class" href="class_app.html">App</a>*, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp;)&gt; nextStateCallback;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="class_get_pipeline_state.html">GetPipelineState</a>(<a class="code hl_class" href="class_state.html">State</a>* backState, function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="class_app.html">App</a>*, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp;)&gt; nextStateCallback);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_get_pipeline_state.html#aa20181dcf36ec33214e05a978b2fc45a">display</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_get_pipeline_state.html#a4c8568d2225acbb791e1e1e4480eeb6a">handleInput</a>(<a class="code hl_class" href="class_app.html">App</a>* app) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">//WATER_SUPPLY_ANALYSIS_SYSTEM_GETPIPELINESTATE_H</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif </span><span class="comment">//WATER_SUPPLY_ANALYSIS_SYSTEM_GETPIPELINESTATE_H</span></div>
 <div class="ttc" id="aclass_app_html"><div class="ttname"><a href="class_app.html">App</a></div><div class="ttdoc">Singleton class representing the main application controller for the water supply analysis system.</div><div class="ttdef"><b>Definition</b> App.h:12</div></div>
-<div class="ttc" id="aclass_get_pipeline_state_html"><div class="ttname"><a href="class_get_pipeline_state.html">GetPipelineState</a></div><div class="ttdef"><b>Definition</b> GetPipelineState.h:7</div></div>
+<div class="ttc" id="aclass_get_pipeline_state_html"><div class="ttname"><a href="class_get_pipeline_state.html">GetPipelineState</a></div><div class="ttdoc">Class representing a state for obtaining the network pipelines.</div><div class="ttdef"><b>Definition</b> GetPipelineState.h:11</div></div>
 <div class="ttc" id="aclass_get_pipeline_state_html_a4c8568d2225acbb791e1e1e4480eeb6a"><div class="ttname"><a href="class_get_pipeline_state.html#a4c8568d2225acbb791e1e1e4480eeb6a">GetPipelineState::handleInput</a></div><div class="ttdeci">void handleInput(App *app) override</div><div class="ttdoc">Handles user input for obtaining a pipeline code.</div><div class="ttdef"><b>Definition</b> GetPipelineState.cpp:12</div></div>
 <div class="ttc" id="aclass_get_pipeline_state_html_aa20181dcf36ec33214e05a978b2fc45a"><div class="ttname"><a href="class_get_pipeline_state.html#aa20181dcf36ec33214e05a978b2fc45a">GetPipelineState::display</a></div><div class="ttdeci">void display() const override</div><div class="ttdoc">Displays a prompt for inserting a pipeline code.</div><div class="ttdef"><b>Definition</b> GetPipelineState.cpp:8</div></div>
-<div class="ttc" id="aclass_state_html"><div class="ttname"><a href="class_state.html">State</a></div><div class="ttdoc">Abstract base class representing an app state within the water supply analysis system.</div><div class="ttdef"><b>Definition</b> State.h:11</div></div>
+<div class="ttc" id="aclass_state_html"><div class="ttname"><a href="class_state.html">State</a></div><div class="ttdoc">Abstract base class representing an app state within the water supply analysis system.</div><div class="ttdef"><b>Definition</b> State.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -4,6 +4,10 @@
 
 #include "States/State.h"
 
+/**
+* @brief Class representing a state for obtaining the network pipelines.
+*/
+
 class GetPipelineState : public State {
 private:
     State* backState;

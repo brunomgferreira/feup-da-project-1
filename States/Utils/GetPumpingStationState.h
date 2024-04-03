@@ -1,7 +1,12 @@
 #ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_GETPUMPINGSTATIONSTATE_H
 #define WATER_SUPPLY_ANALYSIS_SYSTEM_GETPUMPINGSTATIONSTATE_H
 
+
 #include "States/State.h"
+
+/**
+* @brief Class that represents a state for obtaining the network pumping stations.
+*/
 
 class GetPumpingStationState : public State {
 private:
