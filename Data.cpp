@@ -397,7 +397,7 @@ void Data::loadOptimization() {
 void Data::reservoirImpact(const string &code) {
     Graph *newGraph = g.copyGraph();
 
-    newGraph->reservoirOutOfCommission(&waterReservoirs, &deliverySites, &code);
+    newGraph->reservoirOutOfCommission(&code);
 
     auto it = waterReservoirs.find(code);
 
@@ -415,29 +415,35 @@ void Data::reservoirImpact(const string &code) {
     cout << "\033[0m";
     cout << ">> Water Reservoir out of commission: " << endl;
     cout << "Code: " << code  << ", Name: " << name << ", Max Delivery: " << maxDelivery << endl << endl;
-    cout << "> Cities lacking desired water rate level: " << endl;
+    cout << "> Cities with affected water flow: " << endl;
 
     cout << setw(24) << left << "City";
     cout << setw(10) << left << "Code";
-    cout << setw(11) << left << "Deficit Value" << endl << endl;
+    cout << setw(10) << left << "Demand";
+    cout << setw(12) << left << "Old Flow";
+    cout << setw(1) << left << "New Flow" << endl << endl;
 
     for(auto &pair : deliverySites) {
-        const string code = pair.first;
+        const string cityCode = pair.first;
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = newGraph->findVertex(code)->getFlow();
+        double oldFlow = g.findVertex(cityCode)->getFlow();
+        double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-        totalWaterSupplied+=flow;
+        totalWaterSupplied+=newFlow;
 
-        if (demand <= flow) continue;
+        if (oldFlow == newFlow) continue;
 
-        double difference = demand-flow;
-
+        ostringstream ssDemand, ssOldFlow;
+        ssDemand << fixed << setprecision(0) << demand;
+        ssOldFlow << fixed << setprecision(0) << oldFlow;
         cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
-        cout << setw(10) << left << fixed << setprecision(0) << code + ",";
-        cout << setw(11) << left << fixed << setprecision(0) << difference << endl;
+        cout << setw(10) << left << fixed << setprecision(0) << cityCode + ",";
+        cout << setw(10) << left << ssDemand.str() + ",";
+        cout << setw(10) << left << ssOldFlow.str() + ",";
+        cout << setw(10) << left << fixed << setprecision(0) << newFlow << endl;
     }
 
     cout << endl;
@@ -464,30 +470,32 @@ void Data::allReservoirsImpact() {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Reservoirs Impact: " << endl;
-    cout << "Reservoir Code > (City Code, Deficit Value)" << endl << endl;
+    cout << "Reservoir Code > (City Code, Demand, Old Flow, New Flow)" << endl << endl;
 
     Graph *newGraph = g.copyGraph();
 
     for(auto &pair : waterReservoirs) {
-        string psCode = pair.first;
+        string code = pair.first;
 
-        newGraph->reservoirOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+        newGraph->reservoirOutOfCommission(&code);
 
-        cout << psCode << "\t >  ";
+        cout << code << "\t >  ";
 
-        for(auto &pair : deliverySites) {
-            const string code = pair.first;
-            DeliverySite *ds = pair.second;
+        for(auto &dsPair : deliverySites) {
+            const string cityCode = dsPair.first;
+            DeliverySite *ds = dsPair.second;
 
             string cityName = ds->getCity();
             double demand = ds->getDemand();
-            double flow = newGraph->findVertex(code)->getFlow();
+            double oldFlow = g.findVertex(cityCode)->getFlow();
+            double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            if (demand <= flow) continue;
+            if (oldFlow == newFlow) continue;
 
-            double difference = demand-flow;
-
-            cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
+            cout << "(" << cityCode + ", "
+                << fixed << setprecision(0) << demand << ", "
+                << fixed << setprecision(0) << oldFlow << ", "
+                << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
     }
