@@ -714,6 +714,9 @@ void Data::essentialPipelines() {
 
 void Data::pipelineImpact(const string &code) {
 
+    double maxFlow = metrics.getMaxFlow();
+    double totalDemand = metrics.getTotalDemand();
+
     auto it = pipes.find(code);
     if (it == pipes.end()) {
         size_t dashPos = code.find('-');
@@ -747,6 +750,8 @@ void Data::pipelineImpact(const string &code) {
 
     newGraph->pipelineOutOfCommission(&servicePointA, &servicePointB, unidirectional);
 
+    double totalWaterSupplied = 0;
+
     for(auto &dsPair : deliverySites) {
         const string cityCode = dsPair.first;
         DeliverySite *ds = dsPair.second;
@@ -755,6 +760,8 @@ void Data::pipelineImpact(const string &code) {
         double demand = ds->getDemand();
         double oldFlow = g.findVertex(cityCode)->getFlow();
         double newFlow = newGraph->findVertex(cityCode)->getFlow();
+
+        totalWaterSupplied += newFlow;
 
         if (oldFlow == newFlow) continue;
 
@@ -766,6 +773,27 @@ void Data::pipelineImpact(const string &code) {
     }
 
     cout << endl;
+    cout << "Total Demand: " << fixed << setprecision(0) << totalDemand << " m3/s" << endl;
+    cout << "Current Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
+    cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
+
+    if(totalDemand > totalWaterSupplied) {
+        cout << "\033[31m";
+        cout << "> Without this pipeline the network cannot meet the water needs!" << endl;
+        cout << "\033[0m";
+    }
+    else {
+        cout << "> Without this pipeline the network can meet the water needs!" << endl;
+    }
+
+    if(maxFlow == totalWaterSupplied) {
+        cout << "> This pipeline is not essential to maintain the current max flow!" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "> This pipeline is essential to maintain the current max flow!" << endl;
+        cout << "\033[0m";
+    }
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
