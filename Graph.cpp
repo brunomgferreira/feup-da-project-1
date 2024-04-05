@@ -474,7 +474,7 @@ vector<vector<Edge *>> Graph::getPaths(const string sourc, const string dest) {
     return paths;
 }
 
-void Graph::reservoirOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
+void Graph::reservoirOutOfCommission(string const *code) {
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
