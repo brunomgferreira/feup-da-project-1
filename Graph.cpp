@@ -680,7 +680,7 @@ void Vertex::updateFlow() {
     this->flow = incomingFlow;
 }
 
-void Graph::pumpingStationOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code) {
+void Graph::pumpingStationOutOfCommission(string const *code) {
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 
