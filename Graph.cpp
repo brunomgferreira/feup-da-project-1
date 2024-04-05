@@ -724,7 +724,7 @@ Graph *Graph::copyGraph() {
     return newGraph;
 }
 
-void Graph::pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional) {
+void Graph::pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional) {
     string mainSourceCode = "mainSource";
     string mainTargetCode = "mainTarget";
 

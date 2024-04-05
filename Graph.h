@@ -320,7 +320,7 @@ public:
      * @param servicePointB Code of the second service point of the pipeline to be marked as out of commission.
      * @param unidirectional A flag indicating if the pipeline is unidirectional.
      */
-    void pipelineOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *servicePointA, string const *servicePointB, bool unidirectional);
+    void pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H
