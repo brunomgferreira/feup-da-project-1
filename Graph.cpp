@@ -484,6 +484,8 @@ void Graph::reservoirOutOfCommission(string const *code) {
 
     this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
 
+    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+
     this->updateAllVerticesFlow();
 }
 
