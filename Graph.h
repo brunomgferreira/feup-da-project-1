@@ -285,7 +285,7 @@ public:
      * @param deliverySites unordered_map containing delivery sites.
      * @param code The code of the pumping station.
      */
-    void pumpingStationOutOfCommission(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites, string const *code);
+    void pumpingStationOutOfCommission(string const *code);
 
     /**
      * @brief Detects and deactivates flow cycles containing the specified vertex.

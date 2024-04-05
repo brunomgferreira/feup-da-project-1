@@ -520,7 +520,7 @@ void Data::notEssentialPumpingStations() {
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+        newGraph->pumpingStationOutOfCommission(&psCode);
 
         // Get current max flow
         double totalWaterSupplied = newGraph->getTotalDemandAndMaxFlow(&deliverySites).second;
@@ -550,7 +550,7 @@ void Data::pumpingStationImpact(const std::string &code) {
 
     Graph *newGraph = g.copyGraph();
 
-    newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &code);
+    newGraph->pumpingStationOutOfCommission(&code);
 
     double totalWaterSupplied = 0;
 
@@ -559,29 +559,32 @@ void Data::pumpingStationImpact(const std::string &code) {
     cout << "\033[0m";
     cout << ">> Pumping Station out of commission: " << endl;
     cout << "Code: " << code << endl << endl;
-    cout << "> Cities lacking desired water rate level: " << endl;
+    cout << "> Cities with affected water flow: " << endl;
 
     cout << setw(24) << left << "City";
     cout << setw(10) << left << "Code";
-    cout << setw(11) << left << "Deficit Value" << endl << endl;
+    cout << setw(10) << left << "Demand";
+    cout << setw(10) << left << "Old Flow";
+    cout << setw(10) << left << "New Flow" << endl << endl;
 
     for(auto &pair : deliverySites) {
-        const string code = pair.first;
+        const string cityCode = pair.first;
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = newGraph->findVertex(code)->getFlow();
+        double oldFlow = g.findVertex(cityCode)->getFlow();
+        double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-        totalWaterSupplied += flow;
+        totalWaterSupplied += newFlow;
 
-        if (demand <= flow) continue;
+        if (oldFlow == newFlow) continue;
 
-        double difference = demand-flow;
-
-        cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
-        cout << setw(10) << left << fixed << setprecision(0) << code + ",";
-        cout << setw(11) << left << fixed << setprecision(0) << difference << endl;
+        cout << setw(24) << cityName
+             << setw(10) << cityCode
+             << setw(10) << fixed << setprecision(0) << demand
+             << setw(10) << fixed << setprecision(0) << oldFlow
+             << setw(10) << fixed << setprecision(0) << newFlow << endl;
     }
 
     cout << endl;
@@ -624,23 +627,25 @@ void Data::allPumpingStationsImpact() {
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&waterReservoirs, &deliverySites, &psCode);
+        newGraph->pumpingStationOutOfCommission(&psCode);
 
         cout << psCode << "\t >  ";
 
-        for(auto &pair : deliverySites) {
-            const string code = pair.first;
-            DeliverySite *ds = pair.second;
+        for(auto &dsPair : deliverySites) {
+            const string cityCode = dsPair.first;
+            DeliverySite *ds = dsPair.second;
 
             string cityName = ds->getCity();
             double demand = ds->getDemand();
-            double flow = newGraph->findVertex(code)->getFlow();
+            double oldFlow = g.findVertex(cityCode)->getFlow();
+            double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            if (demand <= flow) continue;
+            if (oldFlow == newFlow) continue;
 
-            double difference = demand-flow;
-
-            cout << "(" << code + ", " << fixed << setprecision(0) << difference << ")\t";
+            cout << "(" << cityCode << ", "
+                 << fixed << setprecision(0) << demand << ", "
+                 << fixed << setprecision(0) << oldFlow << ", "
+                 << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
     }
