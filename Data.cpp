@@ -617,7 +617,7 @@ void Data::allPumpingStationsImpact() {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Pumping Stations Impact: " << endl;
-    cout << "Pumping Station Code > (City Code, Deficit Value)" << endl << endl;
+    cout << "Pumping Station Code > (City Code, Demand, Old Flow, New Flow)" << endl << endl;
 
     Graph *newGraph = g.copyGraph();
 
@@ -665,26 +665,25 @@ void Data::essentialPipelines() {
         string servicePointB = pipeline->getServicePointB();
         bool unidirectional = pipeline->getUnidirectional();
 
-        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
+        newGraph->pipelineOutOfCommission(&servicePointA, &servicePointB, unidirectional);
 
-        for(auto &pair : deliverySites) {
-            const string code = pair.first;
-            DeliverySite *ds = pair.second;
+        for(auto &dsPair : deliverySites) {
+            const string cityCode = dsPair.first;
+            DeliverySite *ds = dsPair.second;
 
             string cityName = ds->getCity();
-            double vertexMaxFlow = g.findVertex(code)->getFlow();
+            double oldFlow = g.findVertex(cityCode)->getFlow();
+            double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            double vertexCurrentFlow = newGraph->findVertex(code)->getFlow();
+            if(oldFlow == newFlow) continue;
 
-            if(vertexCurrentFlow != vertexMaxFlow) {
-                auto it = cityToEssentialPipelines.find(code);
+            auto it = cityToEssentialPipelines.find(cityCode);
 
-                if(it == cityToEssentialPipelines.end()) {
-                    cityToEssentialPipelines.insert({code, {pipeCode}});
-                }
-                else {
-                    (*it).second.insert(pipeCode);
-                }
+            if(it == cityToEssentialPipelines.end()) {
+                cityToEssentialPipelines.insert({cityCode, {pipeCode}});
+            }
+            else {
+                (*it).second.insert(pipeCode);
             }
         }
     }
@@ -737,25 +736,33 @@ void Data::pipelineImpact(const string &code) {
     if(unidirectional) cout << "Unidirectional" << endl << endl;
     else cout << "Bidirectional" << endl << endl;
 
-    cout << "> Cities lacking desired water rate level: " << endl;
-    cout << "(Code, Name, Deficit Value)" << endl << endl;
+    cout << "> Cities with affected water flow: " << endl;
+    cout << setw(24) << left << "City" << " ";
+    cout << setw(10) << left << "Code" << " ";
+    cout << setw(10) << left << "Demand" << " ";
+    cout << setw(10) << left << "Old Flow" << " ";
+    cout << setw(10) << left << "New Flow" << endl << endl;
 
     Graph *newGraph = g.copyGraph();
 
-    newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
+    newGraph->pipelineOutOfCommission(&servicePointA, &servicePointB, unidirectional);
 
-    for(auto &pair : deliverySites) {
-        const string dsCode = pair.first;
-        DeliverySite *ds = pair.second;
+    for(auto &dsPair : deliverySites) {
+        const string cityCode = dsPair.first;
+        DeliverySite *ds = dsPair.second;
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
+        double oldFlow = g.findVertex(cityCode)->getFlow();
+        double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-        double vertexCurrentFlow = newGraph->findVertex(dsCode)->getFlow();
+        if (oldFlow == newFlow) continue;
 
-        double difference = demand - vertexCurrentFlow;
-
-        if(difference > 0) cout << "(" << dsCode << "," << cityName << "," << difference << ")" << endl;
+        cout << setw(24) << left << fixed << setprecision(0) << cityName << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << cityCode << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << demand << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << oldFlow << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << newFlow << endl;
     }
 
     cout << endl;
@@ -772,7 +779,7 @@ void Data::allPipelinesImpact() {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Pipelines Impact: " << endl;
-    cout << "(Pipeline Code) > (City Code, City Name, Deficit Value)" << endl << endl;
+    cout << "(Pipeline Code) > (City Code, Demand, Old Flow, New Flow)" << endl << endl;
 
     Graph *newGraph = g.copyGraph();
 
@@ -784,24 +791,26 @@ void Data::allPipelinesImpact() {
         string servicePointB = pipeline->getServicePointB();
         bool unidirectional = pipeline->getUnidirectional();
 
-        newGraph->pipelineOutOfCommission(&waterReservoirs, &deliverySites, &servicePointA, &servicePointB, unidirectional);
+        newGraph->pipelineOutOfCommission(&servicePointA, &servicePointB, unidirectional);
 
         cout << "(" << pipeCode << ")  >  ";
 
-        for(auto &pair : deliverySites) {
-            const string code = pair.first;
-            DeliverySite *ds = pair.second;
+        for(auto &dsPair : deliverySites) {
+            const string cityCode = dsPair.first;
+            DeliverySite *ds = dsPair.second;
 
             string cityName = ds->getCity();
             double demand = ds->getDemand();
+            double oldFlow = g.findVertex(cityCode)->getFlow();
+            double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            double vertexCurrentFlow = newGraph->findVertex(code)->getFlow();
+            if (oldFlow == newFlow) continue;
 
-            double difference = demand - vertexCurrentFlow;
-
-            if(difference > 0) cout << "(" << code << "," << cityName << "," << difference << ") ";
+            cout << "(" << cityCode << ", "
+                 << fixed << setprecision(0) << demand << ", "
+                 << fixed << setprecision(0) << oldFlow << ", "
+                 << fixed << setprecision(0) << newFlow << ")   ";
         }
-
         cout << endl;
     }
 
