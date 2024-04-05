@@ -417,11 +417,11 @@ void Data::reservoirImpact(const string &code) {
     cout << "Code: " << code  << ", Name: " << name << ", Max Delivery: " << maxDelivery << endl << endl;
     cout << "> Cities with affected water flow: " << endl;
 
-    cout << setw(24) << left << "City";
-    cout << setw(10) << left << "Code";
-    cout << setw(10) << left << "Demand";
-    cout << setw(12) << left << "Old Flow";
-    cout << setw(1) << left << "New Flow" << endl << endl;
+    cout << setw(24) << left << "City" << " ";
+    cout << setw(10) << left << "Code" << " ";
+    cout << setw(10) << left << "Demand" << " ";
+    cout << setw(10) << left << "Old Flow" << " ";
+    cout << setw(10) << left << "New Flow" << endl << endl;
 
     for(auto &pair : deliverySites) {
         const string cityCode = pair.first;
@@ -436,13 +436,10 @@ void Data::reservoirImpact(const string &code) {
 
         if (oldFlow == newFlow) continue;
 
-        ostringstream ssDemand, ssOldFlow;
-        ssDemand << fixed << setprecision(0) << demand;
-        ssOldFlow << fixed << setprecision(0) << oldFlow;
-        cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
-        cout << setw(10) << left << fixed << setprecision(0) << cityCode + ",";
-        cout << setw(10) << left << ssDemand.str() + ",";
-        cout << setw(10) << left << ssOldFlow.str() + ",";
+        cout << setw(24) << left << fixed << setprecision(0) << cityName << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << cityCode << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << demand << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << oldFlow << " ";
         cout << setw(10) << left << fixed << setprecision(0) << newFlow << endl;
     }
 
@@ -561,10 +558,10 @@ void Data::pumpingStationImpact(const std::string &code) {
     cout << "Code: " << code << endl << endl;
     cout << "> Cities with affected water flow: " << endl;
 
-    cout << setw(24) << left << "City";
-    cout << setw(10) << left << "Code";
-    cout << setw(10) << left << "Demand";
-    cout << setw(10) << left << "Old Flow";
+    cout << setw(24) << left << "City" << " ";
+    cout << setw(10) << left << "Code" << " ";
+    cout << setw(10) << left << "Demand" << " ";
+    cout << setw(10) << left << "Old Flow" << " ";
     cout << setw(10) << left << "New Flow" << endl << endl;
 
     for(auto &pair : deliverySites) {
@@ -580,11 +577,11 @@ void Data::pumpingStationImpact(const std::string &code) {
 
         if (oldFlow == newFlow) continue;
 
-        cout << setw(24) << cityName
-             << setw(10) << cityCode
-             << setw(10) << fixed << setprecision(0) << demand
-             << setw(10) << fixed << setprecision(0) << oldFlow
-             << setw(10) << fixed << setprecision(0) << newFlow << endl;
+        cout << setw(24) << left << fixed << setprecision(0) << cityName << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << cityCode << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << demand << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << oldFlow << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << newFlow << endl;
     }
 
     cout << endl;
