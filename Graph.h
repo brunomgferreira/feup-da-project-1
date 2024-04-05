@@ -32,8 +32,6 @@ private:
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
-    bool processing = false; // used by isDAG (in addition to the visited attribute)
-    unsigned int indegree; // used by topsort
     double dist = 0;
     Edge *path = nullptr;
 
@@ -49,9 +47,6 @@ public:
     VertexType getType() const;
     vector<Edge *> getAdj() const;
     bool isVisited() const;
-    bool isProcessing() const;
-    unsigned int getIndegree() const;
-    double getDist() const;
     Edge *getPath() const;
     vector<Edge *> getIncoming() const;
 
@@ -69,14 +64,10 @@ public:
     void setCode(string code);
     void setType(VertexType type);
     void setVisited(bool visited);
-    void setProcesssing(bool processing);
-    void setIndegree(unsigned int indegree);
-    void setDist(double dist);
     void setPath(Edge *path);
     Edge * addEdge(Vertex *dest, double c, double f = 0);
     Edge * findEdge(Vertex *destVertex);
     bool removeEdge(string code);
-    void removeOutgoingEdges();
 };
 
 /********************** Edge  ****************************/
@@ -85,9 +76,6 @@ class Edge {
 private:
     Vertex *dest; // destination vertex
     double capacity; // edge capacity
-
-    // auxiliary fields
-    bool selected = false;
 
     // used for bidirectional edges
     Vertex *orig;
@@ -100,12 +88,10 @@ public:
 
     Vertex * getDest() const;
     double getCapacity() const;
-    bool isSelected() const;
     Vertex * getOrig() const;
     Edge *getReverse() const;
     double getFlow() const;
 
-    void setSelected(bool selected);
     void setReverse(Edge *reverse);
     void setFlow(double flow);
 };

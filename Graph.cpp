@@ -41,18 +41,6 @@ bool Vertex::isVisited() const {
     return this->visited;
 }
 
-bool Vertex::isProcessing() const {
-    return this->processing;
-}
-
-unsigned int Vertex::getIndegree() const {
-    return this->indegree;
-}
-
-double Vertex::getDist() const {
-    return this->dist;
-}
-
 Edge *Vertex::getPath() const {
     return this->path;
 }
@@ -79,18 +67,6 @@ void Vertex::setType(VertexType type) {
 
 void Vertex::setVisited(bool visited) {
     this->visited = visited;
-}
-
-void Vertex::setProcesssing(bool processing) {
-    this->processing = processing;
-}
-
-void Vertex::setIndegree(unsigned int indegree) {
-    this->indegree = indegree;
-}
-
-void Vertex::setDist(double dist) {
-    this->dist = dist;
 }
 
 void Vertex::setPath(Edge *path) {
@@ -133,16 +109,6 @@ bool Vertex::removeEdge(string code) {
     return removedEdge;
 }
 
-void Vertex::removeOutgoingEdges() {
-    auto it = adj.begin();
-    while (it != adj.end()) {
-        Edge *edge = *it;
-        it = adj.erase(it);
-        deleteEdge(edge);
-    }
-}
-
-
 /********************** Edge  ****************************/
 
 Edge::Edge(Vertex *orig, Vertex *dest, double capacity) : orig(orig), dest(dest), capacity(capacity) {}
@@ -155,10 +121,6 @@ double Edge::getCapacity() const {
     return this->capacity;
 }
 
-bool Edge::isSelected() const {
-    return this->selected;
-}
-
 Vertex * Edge::getOrig() const {
     return this->orig;
 }
@@ -169,10 +131,6 @@ Edge *Edge::getReverse() const {
 
 double Edge::getFlow() const {
     return this->flow;
-}
-
-void Edge::setSelected(bool selected) {
-    this->selected = selected;
 }
 
 void Edge::setReverse(Edge *reverse) {
@@ -309,9 +267,6 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
     this->setAllVerticesFlow(0);
 
     edmondsKarp(this, mainSourceCode, mainTargetCode);
-
-    deleteMainSource(mainSourceCode, waterReservoirs);
-    deleteMainTarget(mainTargetCode, deliverySites);
 }
 
 GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites) {
