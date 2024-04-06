@@ -1,9 +1,8 @@
-#include <iostream>
 #include "States/MainMenuState.h"
 #include "PipelineImpactMenuState.h"
 #include "States/Utils/GetPipelineState.h"
 
-PipelineImpactMenuState::PipelineImpactMenuState() {}
+PipelineImpactMenuState::PipelineImpactMenuState() = default;
 
 void PipelineImpactMenuState::display() const {
     cout << "\033[32m";

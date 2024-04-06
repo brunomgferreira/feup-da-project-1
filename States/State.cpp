@@ -1,8 +1,6 @@
-#include <iostream>
-#include <limits>
 #include "State.h"
 
-void State::PressEnterToContinue(int numPresses) const {
+void State::PressEnterToContinue(int numPresses) {
     cout << "Press ENTER to continue... ";
 
     for (int i = 0; i < numPresses; ++i)

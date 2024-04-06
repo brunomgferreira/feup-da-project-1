@@ -1,4 +1,3 @@
-#include <iostream>
 #include "TryAgainState.h"
 #include "States/MainMenuState.h"
 

@@ -3,6 +3,8 @@
 
 
 #include "App.h"
+#include <iostream>
+#include <limits>
 #include <functional>
 
 /**
@@ -45,7 +47,7 @@ public:
     *
     * @param numPresses Number of times the user must press ENTER. Defaults to 2 if not specified.
     */
-    void PressEnterToContinue(int numPresses = 2) const;
+    static void PressEnterToContinue(int numPresses = 2) ;
 };
 
 

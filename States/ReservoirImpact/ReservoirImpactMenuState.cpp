@@ -1,9 +1,8 @@
-#include <iostream>
 #include "States/MainMenuState.h"
 #include "ReservoirImpactMenuState.h"
 #include "States/Utils/GetReservoirState.h"
 
-ReservoirImpactMenuState::ReservoirImpactMenuState() {}
+ReservoirImpactMenuState::ReservoirImpactMenuState() = default;
 
 void ReservoirImpactMenuState::display() const {
     cout << "\033[32m";

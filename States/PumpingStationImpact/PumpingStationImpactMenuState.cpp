@@ -1,9 +1,8 @@
-#include <iostream>
 #include "States/MainMenuState.h"
 #include "PumpingStationImpactMenuState.h"
 #include "States/Utils/GetPumpingStationState.h"
 
-PumpingStationImpactMenuState::PumpingStationImpactMenuState() {}
+PumpingStationImpactMenuState::PumpingStationImpactMenuState() = default;
 
 void PumpingStationImpactMenuState::display() const {
     cout << "\033[32m";

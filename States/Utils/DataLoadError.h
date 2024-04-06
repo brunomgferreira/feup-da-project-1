@@ -1,5 +1,5 @@
-#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_DATALOADERROR_H
-#define WATER_SUPPLY_ANALYSIS_SYSTEM_DATALOADERROR_H
+#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_DATA_LOAD_ERROR_H
+#define WATER_SUPPLY_ANALYSIS_SYSTEM_DATA_LOAD_ERROR_H
 
 
 #include <stdexcept>
@@ -10,8 +10,8 @@
 
 class DataLoadError : public std::runtime_error {
 public:
-    DataLoadError(const std::string& message);
+    explicit DataLoadError(const std::string& message);
 };
 
 
-#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_DATALOADERROR_H
+#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_DATA_LOAD_ERROR_H
