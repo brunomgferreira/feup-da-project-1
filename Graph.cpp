@@ -228,16 +228,6 @@ void Graph::createMainSource(const unordered_map<string, WaterReservoir *> *wate
     }
 }
 
-void Graph::deleteMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs) {
-    for (auto& pair : *waterReservoirs) {
-        string wrCode = pair.first;
-        this->removeEdge(mainSourceCode, wrCode);
-    }
-
-    auto it = vertices.find(mainSourceCode);
-    this->vertices.erase(it);
-}
-
 void Graph::createMainTarget(const unordered_map<string, DeliverySite *> *deliverySites) {
     this->addVertex(mainTargetCode, VertexType::MainTarget);
 
@@ -251,16 +241,6 @@ void Graph::createMainTarget(const unordered_map<string, DeliverySite *> *delive
 
         this->addEdge(dsCode, mainTargetCode, demand, f);
     }
-}
-
-void Graph::deleteMainTarget(const unordered_map<string, DeliverySite *> *deliverySites) {
-    for (auto& pair : *deliverySites) {
-        string dsCode = pair.first;
-        this->removeEdge(dsCode, mainTargetCode);
-    }
-
-    auto it = vertices.find(mainTargetCode);
-    this->vertices.erase(it);
 }
 
 void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {

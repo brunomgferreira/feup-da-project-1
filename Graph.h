@@ -178,25 +178,11 @@ public:
     void createMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs);
 
     /**
-     * @brief Deletes the main source vertex and its connections to water reservoirs.
-     * @details Time complexity: O(n).
-     * @param waterReservoirs unordered_map containing water reservoirs.
-     */
-    void deleteMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs);
-
-    /**
      * @brief Creates a main target vertex and its connections to delivery sites.
      * @details Time complexity: O(n).
      * @param deliverySites unordered_map containing delivery sites.
      */
     void createMainTarget(const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Deletes the main target vertex and its connections to delivery sites.
-     * @details Time complexity: O(n).
-     * @param deliverySites unordered_map containing delivery sites.
-     */
-    void deleteMainTarget(const unordered_map<string, DeliverySite *> *deliverySites);
 
     /**
      * @brief Calculates various metrics for the graph
