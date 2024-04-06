@@ -37,37 +37,32 @@ private:
 
     vector<Edge *> incoming; // incoming edges
 
-    void deleteEdge(Edge *edge);
-
 public:
     Vertex(string code, VertexType type);
     bool operator<(Vertex & vertex) const;
 
-    string getCode() const;
-    VertexType getType() const;
-    vector<Edge *> getAdj() const;
-    bool isVisited() const;
-    Edge *getPath() const;
-    vector<Edge *> getIncoming() const;
-
-    double getFlow() const;
-    void setFlow(double value);
-    void updateFlow();
+    [[nodiscard]] string getCode() const;
+    [[nodiscard]] VertexType getType() const;
+    [[nodiscard]] vector<Edge *> getAdj() const;
+    [[nodiscard]] bool isVisited() const;
+    [[nodiscard]] Edge *getPath() const;
+    [[nodiscard]] vector<Edge *> getIncoming() const;
+    [[nodiscard]] double getFlow() const;
 
     /**
      * @brief Checks if the vertex has flow.
      * @details Time complexity: O(E).
      * @return true if the vertex has flow, false otherwise.
      */
-    bool hasFlow();
+    [[nodiscard]] bool hasFlow() const;
 
-    void setCode(string code);
-    void setType(VertexType type);
-    void setVisited(bool visited);
-    void setPath(Edge *path);
+    void setFlow(double value);
+    void updateFlow();
+
+    void setVisited(bool isVisited);
+    void setPath(Edge *newPath);
     Edge * addEdge(Vertex *dest, double c, double f = 0);
     Edge * findEdge(Vertex *destVertex);
-    bool removeEdge(string code);
 };
 
 /********************** Edge  ****************************/
@@ -81,16 +76,16 @@ private:
     Vertex *orig;
     Edge *reverse = nullptr;
 
-    double flow; // for flow-related problems
+    double flow{}; // for flow-related problems
 
 public:
     Edge(Vertex *orig, Vertex *dest, double capacity);
 
-    Vertex * getDest() const;
-    double getCapacity() const;
-    Vertex * getOrig() const;
-    Edge *getReverse() const;
-    double getFlow() const;
+    [[nodiscard]] Vertex * getDest() const;
+    [[nodiscard]] double getCapacity() const;
+    [[nodiscard]] Vertex * getOrig() const;
+    [[nodiscard]] Edge *getReverse() const;
+    [[nodiscard]] double getFlow() const;
 
     void setReverse(Edge *reverse);
     void setFlow(double flow);
@@ -106,7 +101,33 @@ private:
 
 public:
 
+    /**
+     * @brief Creates a deep copy of the graph.
+     * @details Time complexity: O(V + E).
+     * @return A pointer to the created copy of the graph.
+     */
+    Graph *copyGraph();
+
+    /**
+     * @brief Calculates various metrics for the graph
+     * @details This function calculates metrics including absolute and relative average, variance, standard
+     * deviation and maximum difference in capacity and flow for edges in the graph.
+     * @details Time complexity: O(V * E).
+     * @param deliverySites unordered_map containing delivery sites.
+     * @return an 'GraphMetrics' object containing all calculated metrics.
+     */
+    GraphMetrics calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites);
+
+    /**
+     * @brief Calculates total demand and maximum flow in the graph.
+     * @details Time complexity: O(m), 'm' is the number of delivery sites.
+     * @param deliverySites unordered_map containing delivery sites.
+     * @return a pair containing the total demand and the maximum flow.
+     */
+    pair<double, double> getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites) const;
+
     string getMainSourceCode();
+
     string getMainTargetCode();
 
     /**
@@ -130,111 +151,28 @@ public:
      * @brief Adds an edge to a graph (this), given the contents of the source and
      * destination vertices and the edge capacity (c).
      * @details Time complexity: O(1).
-     * @param sourc The source vertex of the edge.
+     * @param source The source vertex of the edge.
      * @param dest The destination vertex of the edge.
      * @param c The capacity of the edge.
      * @param f The flow of the edge. Default is 0.
      * @return true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const string &sourc, const string &dest, double c, double f = 0);
-
-    /**
-     * @brief Removes an edge from the graph, given the source and destination vertices.
-     * @details Time complexity: O(1).
-     * @param source The source vertex of the edge.
-     * @param dest The destination vertex of the edge.
-     * @return true if the edge was successfully removed, false otherwise.
-     */
-    bool removeEdge(const string &source, const string &dest);
+    bool addEdge(const string &source, const string &dest, double c, double f = 0) const;
 
     /**
      * @brief Adds an bidirectional edge to the graph, given the source and destination
      * vertices and the edge capacity (c).
      * @details Time complexity: O(1).
-     * @param sourc The source vertex of the edge.
+     * @param source The source vertex of the edge.
      * @param dest The destination vertex of the edge.
      * @param c The capacity of the edge.
      * @param flow The flow of the edge. Default is 0.
      * @param reverseFlow The flow of the reverse edge. Default is 0.
      * @return true if the edge was successfully added, false otherwise.
      */
-    bool addBidirectionalEdge(const string &sourc, const string &dest, double c, double flow = 0, double reverseFlow = 0);
+    bool addBidirectionalEdge(const string &source, const string &dest, double c, double flow = 0, double reverseFlow = 0) const;
 
     unordered_map<string, Vertex *> getVertexSet() const;
-
-    /**
-     * @brief Computes the maximum flow in the graph using the Edmonds-Karp algorithm.
-     * @details Time complexity: O(V E^2).
-     * @param waterReservoirs unordered_map containing water reservoirs.
-     * @param deliverySites unordered_map containing delivery sites.
-     */
-    void maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Creates a main source vertex and connects it to water reservoirs.
-     * @details Time complexity: O(n).
-     * @param waterReservoirs unordered_map containing water reservoirs.
-     */
-    void createMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs);
-
-    /**
-     * @brief Creates a main target vertex and its connections to delivery sites.
-     * @details Time complexity: O(n).
-     * @param deliverySites unordered_map containing delivery sites.
-     */
-    void createMainTarget(const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Calculates various metrics for the graph
-     * @details This function calculates metrics including absolute and relative average, variance, standard
-     * deviation and maximum difference in capacity and flow for edges in the graph.
-     * @details Time complexity: O(V * E).
-     * @param deliverySites unordered_map containing delivery sites.
-     * @return an 'GraphMetrics' object containing all calculated metrics.
-     */
-    GraphMetrics calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Calculates total demand and maximum flow in the graph.
-     * @details Time complexity: O(m), 'm' is the number of delivery sites.
-     * @param deliverySites unordered_map containing delivery sites.
-     * @return a pair containing the total demand and the maximum flow.
-     */
-    pair<double, double> getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Optimizes the load distribution in the graph.
-     * @details Time complexity: O(E * (P + Q)), 'P' is the number of paths and 'Q' is the
-     * maximum number of edges in a path.
-     * @param deliverySites unordered_map containing delivery sites.
-     */
-    void optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySites);
-
-    /**
-     * @brief Finds all paths between two vertices of the graph.
-     * @details Time complexity: O(V + P), 'P' is the number of paths.
-     * @param sourc Content of the source vertex.
-     * @param dest Content of the destination vertex.
-     * @return Vector of vectors containing all found paths.
-     */
-    vector<vector<Edge *>> getPaths(const string sourc, const string dest);
-
-    /**
-     * @brief Performs depth-first search (DFS) to find all paths from a source to a destination vertex.
-     * @details Time complexity: O(V + E)
-     * @param current Content of the current vertex.
-     * @param dest Content of the destination vertex.
-     * @param path Vector containing the current path being explored.
-     * @param paths Vector of vectors to store all found paths.
-     */
-    void dfs(const string current, const string dest, vector<Edge *> &path, vector<vector<Edge *>> &paths);
-
-    /**
-     * @brief Deactivates a vertex and adjusts the flow in the graph.
-     * @details Time complexity: O(V + E).
-     * @param v Vertex to be deactivated.
-     */
-    void deactivateVertex(Vertex *v);
 
     /**
      * @brief Sets flow on all edges in the graph to the specified value.
@@ -257,11 +195,79 @@ public:
     void updateAllVerticesFlow();
 
     /**
+     * @brief Creates a main source vertex and connects it to water reservoirs.
+     * @details Time complexity: O(n).
+     * @param waterReservoirs unordered_map containing water reservoirs.
+     */
+    void createMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs);
+
+    /**
+     * @brief Creates a main target vertex and its connections to delivery sites.
+     * @details Time complexity: O(n).
+     * @param deliverySites unordered_map containing delivery sites.
+     */
+    void createMainTarget(const unordered_map<string, DeliverySite *> *deliverySites);
+
+    /**
+     * @brief Computes the maximum flow in the graph using the Edmonds-Karp algorithm.
+     * @details Time complexity: O(V E^2).
+     * @param waterReservoirs unordered_map containing water reservoirs.
+     * @param deliverySites unordered_map containing delivery sites.
+     */
+    void maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites);
+
+
+    /**
+     * @brief Optimizes the load distribution in the graph.
+     * @details Time complexity: O(E * (P + Q)), 'P' is the number of paths and 'Q' is the
+     * maximum number of edges in a path.
+     * @param deliverySites unordered_map containing delivery sites.
+     */
+    void optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySites);
+
+    /**
+     * @brief Finds all paths between two vertices of the graph.
+     * @details Time complexity: O(V + P), 'P' is the number of paths.
+     * @param source Content of the source vertex.
+     * @param dest Content of the destination vertex.
+     * @return Vector of vectors containing all found paths.
+     */
+    vector<vector<Edge *>> getPaths(const string& source, const string &dest);
+
+    /**
+     * @brief Performs depth-first search (DFS) to find all paths from a source to a destination vertex.
+     * @details Time complexity: O(V + E)
+     * @param current Content of the current vertex.
+     * @param dest Content of the destination vertex.
+     * @param path Vector containing the current path being explored.
+     * @param paths Vector of vectors to store all found paths.
+     */
+    void dfs(const string &current, const string &dest, vector<Edge *> &path, vector<vector<Edge *>> &paths);
+
+    /**
      * @brief Marks a station as out of commission and adjusts the flow in the graph.
      * @details Time complexity: O(V E^2).
      * @param code The code of the pumping station.
      */
     void stationOutOfCommission(string const *code);
+
+    /**
+     * @brief Marks a pipeline as out of commission and adjusts the flow in the graph.
+     * @details Time complexity: O(V E^2).
+     * @param waterReservoirs unordered_map containing water reservoirs.
+     * @param deliverySites unordered_map containing delivery sites.
+     * @param servicePointA Code of the first service point of the pipeline to be marked as out of commission.
+     * @param servicePointB Code of the second service point of the pipeline to be marked as out of commission.
+     * @param unidirectional A flag indicating if the pipeline is unidirectional.
+     */
+    void pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional);
+
+    /**
+     * @brief Deactivates a vertex and adjusts the flow in the graph.
+     * @details Time complexity: O(V + E).
+     * @param v Vertex to be deactivated.
+     */
+    void deactivateVertex(Vertex *v);
 
     /**
      * @brief Detects and deactivates flow cycles containing the specified vertex.
@@ -277,24 +283,6 @@ public:
      * @param deactivatedVertex The vertex to be deactivated.
      */
     void findAndDeactivateFlowPath(Vertex *deactivatedVertex);
-
-    /**
-     * @brief Creates a deep copy of the graph.
-     * @details Time complexity: O(V + E).
-     * @return A pointer to the created copy of the graph.
-     */
-    Graph *copyGraph();
-
-    /**
-     * @brief Marks a pipeline as out of commission and adjusts the flow in the graph.
-     * @details Time complexity: O(V E^2).
-     * @param waterReservoirs unordered_map containing water reservoirs.
-     * @param deliverySites unordered_map containing delivery sites.
-     * @param servicePointA Code of the first service point of the pipeline to be marked as out of commission.
-     * @param servicePointB Code of the second service point of the pipeline to be marked as out of commission.
-     * @param unidirectional A flag indicating if the pipeline is unidirectional.
-     */
-    void pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional);
 };
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_H
