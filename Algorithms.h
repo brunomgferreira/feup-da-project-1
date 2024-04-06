@@ -78,7 +78,7 @@ bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Ver
  * @param g Pointer to the graph.
  * @param deactivated The vertex that should be excluded from consideration.
  */
-void edmondsKarpWithDeactivatedVertex(Graph *g, const string deactivated);
+void edmondsKarpWithDeactivatedVertex(Graph *g, const string &deactivated);
 
 
 /**
@@ -91,7 +91,7 @@ void edmondsKarpWithDeactivatedVertex(Graph *g, const string deactivated);
  * @param servicePointB The code of the second service point of the deactivated edge.
  * @param unidirectional Flag indicating if the edge is unidirectional.
  */
-void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, const string servicePointA, const string servicePointB, bool unidirectional);
+void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, const string &servicePointA, const string &servicePointB, bool unidirectional);
 
 /**
  * @brief Finds an augmenting path using Breadth-First Search, now with a deactivated edge.
@@ -104,7 +104,7 @@ void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w
  * @param unidirectional Flag indicating if the edge is unidirectional.
  * @return true if an augmenting path to the target is found, false otherwise.
  */
-bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const string servicePointA, const string servicePointB, bool unidirectional);
+bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const string &servicePointA, const string &servicePointB, bool unidirectional);
 
 /**
  * @brief Implements the Edmonds-Karp algorithm for maximum flow, now with a deactivated edge.
@@ -114,6 +114,6 @@ bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const
  * @param servicePointB The code of the second service point of the deactivated edge.
  * @param unidirectional Flag indicating if the edge is unidirectional.
  */
-void edmondsKarpWithDeactivatedEdge(Graph *g, const string servicePointA, const string servicePointB, bool unidirectional);
+void edmondsKarpWithDeactivatedEdge(Graph *g, const string &servicePointA, const string &servicePointB, bool unidirectional);
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_ALGORITHMS_H
