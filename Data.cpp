@@ -239,8 +239,7 @@ void Data::cityMaxFlow(const string &code) {
 }
 
 void Data::allCitiesMaxFlow() {
-    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
-    // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
 
     if (!filesystem::exists(dir_path))
         filesystem::create_directory(dir_path);
@@ -283,7 +282,7 @@ void Data::allCitiesMaxFlow() {
 
     if(outputFileIsOpen) {
         outputFile.close();
-        cout << ">> Output file is at: ./output/verify_water_supply.txt" << endl;
+        cout << ">> Output file is at: ./output/" << networkName << "/max_flow_data.txt" << endl;
     }
     else {
         cout << "\033[31m";
@@ -299,8 +298,7 @@ void Data::allCitiesMaxFlow() {
 // Verify Water Supply
 
 void Data::verifyWaterSupply() {
-    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
-    // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
 
     if (!filesystem::exists(dir_path))
         filesystem::create_directory(dir_path);
@@ -357,7 +355,7 @@ void Data::verifyWaterSupply() {
 
     if(outputFileIsOpen) {
         outputFile.close();
-        cout << ">> Output file is at: ./output/verify_water_supply.txt" << endl;
+        cout << ">> Output file is at: ./output/" << networkName << "/verify_water_supply.txt" << endl;
     }
     else {
         cout << "\033[31m";
