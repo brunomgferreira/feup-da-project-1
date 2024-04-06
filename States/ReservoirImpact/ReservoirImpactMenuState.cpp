@@ -8,8 +8,9 @@ void ReservoirImpactMenuState::display() const {
     cout << "\033[32m";
     cout << "======= RESERVOIR IMPACT =======" << endl;
     cout << "\033[0m";
-    cout << "   1. Specific Reservoir    " << endl;
-    cout << "   2. All Reservoirs      \n" << endl;
+    cout << "   1. Not Essential             " << endl;
+    cout << "   2. Specific Reservoir        " << endl;
+    cout << "   3. All Reservoirs            \n" << endl;
 
     cout << "   q. Main Menu              " << endl;
     cout << "\033[32m";
@@ -25,13 +26,18 @@ void ReservoirImpactMenuState::handleInput(App* app) {
     if (choice.size() == 1) {
         switch (choice[0]) {
             case '1':
+                app->getData()->notEssentialReservoirs();
+                PressEnterToContinue();
+                app->setState(this);
+                break;
+            case '2':
                 app->setState(new GetReservoirState(this, [&](App *app, const string& code) {
                     app->getData()->reservoirImpact(code);
                     PressEnterToContinue(1);
                     app->setState(this);
                 }));
                 break;
-            case '2':
+            case '3':
                 app->getData()->allReservoirsImpact();
                 PressEnterToContinue();
                 app->setState(this);
