@@ -1,8 +1,9 @@
-#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERYSITE_H
-#define WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERYSITE_H
+#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERY_SITE_H
+#define WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERY_SITE_H
 
 
 #include <string>
+#include <utility>
 using namespace std;
 
 /**
@@ -32,8 +33,8 @@ public:
 
     string getCity();
 
-    double getDemand();
+    [[nodiscard]] double getDemand() const;
 };
 
 
-#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERYSITE_H
+#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_DELIVERY_SITE_H
