@@ -11,5 +11,3 @@ Project grade: **? / 20**
 *Bruno Ferreira* (up202207863@fe.up.pt)
 
 *Gonçalo Ferros* (up202207592@fe.up.pt)
-
-*João Proença* (up?????????@fe.up.pt)
