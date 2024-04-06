@@ -244,7 +244,7 @@ void Data::allCitiesMaxFlow() {
     if (!filesystem::exists(dir_path))
         filesystem::create_directory(dir_path);
 
-    ofstream outputFile(dir_path / "max_flow_data.csv");
+    ofstream outputFile(dir_path / "max_flow.csv");
 
     bool outputFileIsOpen = outputFile.is_open();
 
@@ -282,7 +282,7 @@ void Data::allCitiesMaxFlow() {
 
     if(outputFileIsOpen) {
         outputFile.close();
-        cout << ">> Output file is at: ./output/" << networkName << "/max_flow_data.txt" << endl;
+        cout << ">> Output file is at: ./output/" << networkName << "/max_flow.csv" << endl;
     }
     else {
         cout << "\033[31m";
@@ -355,7 +355,7 @@ void Data::verifyWaterSupply() {
 
     if(outputFileIsOpen) {
         outputFile.close();
-        cout << ">> Output file is at: ./output/" << networkName << "/verify_water_supply.txt" << endl;
+        cout << ">> Output file is at: ./output/" << networkName << "/verify_water_supply.csv" << endl;
     }
     else {
         cout << "\033[31m";
@@ -477,7 +477,7 @@ void Data::allReservoirsImpact() {
     if (!filesystem::exists(dir_path))
         filesystem::create_directory(dir_path);
 
-    ofstream outputFile(dir_path / "reservoirs_impact_data.csv");
+    ofstream outputFile(dir_path / "reservoirs_impact.csv");
 
     bool outputFileIsOpen = outputFile.is_open();
 
@@ -521,7 +521,7 @@ void Data::allReservoirsImpact() {
 
     if(outputFileIsOpen) {
         outputFile.close();
-        cout << ">> Output file is at: ./output/" << networkName << "/reservoirs_impact_data.txt" << endl;
+        cout << ">> Output file is at: ./output/" << networkName << "/reservoirs_impact.csv" << endl;
     }
     else {
         cout << "\033[31m";
@@ -537,12 +537,23 @@ void Data::allReservoirsImpact() {
 // Pumping Station Impact
 
 void Data::notEssentialPumpingStations() {
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "not_essential_stations.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
     double maxFlow = metrics.getMaxFlow();
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Not Essential Pumping Stations: " << endl;
+
+    if(outputFileIsOpen) outputFile << "Station Code" << endl;
 
     unsigned int numNotEssentialPumpingStations = 0;
 
@@ -558,6 +569,7 @@ void Data::notEssentialPumpingStations() {
 
         if(totalWaterSupplied == maxFlow) {
             cout << setw(10) << "" << psCode << endl;
+            if(outputFileIsOpen) outputFile << psCode << endl;
             numNotEssentialPumpingStations++;
         }
     }
@@ -569,6 +581,19 @@ void Data::notEssentialPumpingStations() {
         cout << "Note: A pumping station is essential when it is " << endl
              << "necessary to maintain the current max flow." << endl;
     }
+
+    cout << endl;
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/" << networkName << "/not_essential_stations.csv" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
+    }
+
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
