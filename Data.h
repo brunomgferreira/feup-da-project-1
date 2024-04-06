@@ -27,6 +27,7 @@ private:
     unordered_map<string, PumpingStation *> pumpingStations;
     unordered_map<string, DeliverySite *> deliverySites;
     unordered_map<string, Pipe *> pipes;
+    string networkName;
     Graph g;
     GraphMetrics metrics;
 public:
@@ -38,6 +39,8 @@ public:
     * @details Time complexity: O(1)
     */
     Data();
+
+    string getNetworkName() const;
 
     /**
      * @brief Reads files from the specified directory path
