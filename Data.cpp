@@ -768,25 +768,48 @@ void Data::essentialPipelines() {
         }
     }
 
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "cities_not_essential_pipelines.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Essential Pipelines for each city: " << endl;
     cout << "(City Code, City Name) > (Pipeline Code)" << endl << endl;
 
+    if(outputFileIsOpen) outputFile << "City Code,City Name,Pipeline Code" << endl;
+
     for(const auto &pair : cityToEssentialPipelines) {
-        string code = pair.first;
-        DeliverySite *ds = deliverySites.at(code);
+        string cityCode = pair.first;
+        DeliverySite *ds = deliverySites.at(cityCode);
 
         string cityName = ds->getCity();
 
-        cout << "(" << code << ", " << cityName << ")  >  ";
+        cout << "(" << cityCode << ", " << cityName << ")  >  ";
 
         for(const string &pipelineCode : pair.second) {
             cout << "(" << pipelineCode << ") ";
+            if(outputFileIsOpen) outputFile << cityCode << "," << cityName << "," << pipelineCode << endl;
         }
 
         cout << endl;
+    }
+    cout << endl;
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/" << networkName << "/cities_not_essential_pipelines.csv" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
