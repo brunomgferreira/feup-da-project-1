@@ -506,14 +506,14 @@ void Data::allReservoirsImpact() {
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            if(outputFileIsOpen) outputFile << reservoirCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
-
             if (oldFlow == newFlow) continue;
 
             cout << "(" << cityCode + ", ";
             cout << fixed << setprecision(0) << demand << ", ";
             cout << fixed << setprecision(0) << oldFlow << ", ";
             cout << fixed << setprecision(0) << newFlow << ")   ";
+
+            if(outputFileIsOpen) outputFile << reservoirCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
         }
         cout << endl;
     }
@@ -705,14 +705,14 @@ void Data::allPumpingStationsImpact() {
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-            if(outputFileIsOpen) outputFile << psCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
-
             if (oldFlow == newFlow) continue;
 
             cout << "(" << cityCode << ", ";
             cout << fixed << setprecision(0) << demand << ", ";
             cout << fixed << setprecision(0) << oldFlow << ", ";
             cout << fixed << setprecision(0) << newFlow << ")   ";
+
+            if(outputFileIsOpen) outputFile << psCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
         }
         cout << endl;
     }
@@ -946,12 +946,12 @@ void Data::allPipelinesImpact() {
 
             if (oldFlow == newFlow) continue;
 
-            if(outputFileIsOpen) outputFile << pipelineCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
-
             cout << "(" << cityCode << ", "
                  << fixed << setprecision(0) << demand << ", "
                  << fixed << setprecision(0) << oldFlow << ", "
                  << fixed << setprecision(0) << newFlow << ")   ";
+
+            if(outputFileIsOpen) outputFile << pipelineCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
         }
         cout << endl;
     }
