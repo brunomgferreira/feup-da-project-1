@@ -1,5 +1,5 @@
-#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPHMETRICS_H
-#define WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPHMETRICS_H
+#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_METRICS_H
+#define WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_METRICS_H
 
 
 #include <string>
@@ -33,12 +33,12 @@ public:
     * @brief Constructs a graph metrics object with the provided details.
     *
     * @details This constructor initializes a graph metrics object with the specified values.
-    * The parameters represent essential information about a graph metrics, including its id and code AAAAAAAAAAA
+    * The parameters represent essential information about a graph metrics, including its id and code
     *
     * @param id The id of the pumping station.
     * @param code The unique code assigned to the pumping station.
     */
-    GraphMetrics(
+    explicit GraphMetrics(
         double absoluteAverage = 0,
         double absoluteVariance = 0,
         double absoluteStandardDeviation = 0,
@@ -50,17 +50,17 @@ public:
         double maxFlow = 0,
         double totalDemand = 0);
 
-    double getAbsoluteAverage() const;
-    double getAbsoluteVariance() const;
-    double getAbsoluteStandardDeviation() const;
-    double getAbsoluteMaxDifference() const;
-    double getRelativeAverage() const;
-    double getRelativeVariance() const;
-    double getRelativeStandardDeviation() const;
-    double getRelativeMaxDifference() const;
-    double getMaxFlow() const;
-    double getTotalDemand() const;
+    [[nodiscard]] double getAbsoluteAverage() const;
+    [[nodiscard]] double getAbsoluteVariance() const;
+    [[nodiscard]] double getAbsoluteStandardDeviation() const;
+    [[nodiscard]] double getAbsoluteMaxDifference() const;
+    [[nodiscard]] double getRelativeAverage() const;
+    [[nodiscard]] double getRelativeVariance() const;
+    [[nodiscard]] double getRelativeStandardDeviation() const;
+    [[nodiscard]] double getRelativeMaxDifference() const;
+    [[nodiscard]] double getMaxFlow() const;
+    [[nodiscard]] double getTotalDemand() const;
 };
 
 
-#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPHMETRICS_H
+#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_GRAPH_METRICS_H
