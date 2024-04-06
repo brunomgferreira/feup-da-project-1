@@ -45,7 +45,9 @@ void MainMenuState::handleInput(App* app) {
                     app->setState(nullptr);
                     break;
                 default:
-                    cout << "\033[31m" << "No water network loaded. Please load a water network first." << "\033[0m" << endl;
+                    cout << endl;
+                    cout << "\033[31m" << "> No water network loaded. Please load a network first." << "\033[0m" << endl << endl;
+                    PressEnterToContinue();
             }
         }
         else {
