@@ -671,11 +671,22 @@ void Data::pumpingStationImpact(const string &code) {
 }
 
 void Data::allPumpingStationsImpact() {
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "stations_impact.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Pumping Stations Impact: " << endl;
     cout << "Pumping Station Code > (City Code, Demand, Old Flow, New Flow)" << endl << endl;
+
+    if(outputFileIsOpen) outputFile << "Station Code,City Code,Demand,Old Flow,New Flow" << endl;
 
     Graph *newGraph = g.copyGraph();
 
@@ -694,6 +705,8 @@ void Data::allPumpingStationsImpact() {
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
+            if(outputFileIsOpen) outputFile << psCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
+
             if (oldFlow == newFlow) continue;
 
             cout << "(" << cityCode << ", ";
@@ -702,6 +715,17 @@ void Data::allPumpingStationsImpact() {
             cout << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
+    }
+    cout << endl;
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/" << networkName << "/stations_impact.csv" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
