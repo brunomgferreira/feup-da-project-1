@@ -244,13 +244,6 @@ public:
     void dfs(const string current, const string dest, vector<Edge *> &path, vector<vector<Edge *>> &paths);
 
     /**
-     * @brief Marks a water reservoir as out of commission and adjusts the flow in the graph.
-     * @details Time complexity: O(V E^2).
-     * @param code The code of the reservoir.
-     */
-    void reservoirOutOfCommission(string const *code);
-
-    /**
      * @brief Deactivates a vertex and adjusts the flow in the graph.
      * @details Time complexity: O(V + E).
      * @param v Vertex to be deactivated.
@@ -278,13 +271,11 @@ public:
     void updateAllVerticesFlow();
 
     /**
-     * @brief Marks a pumping station as out of commission and adjusts the flow in the graph.
+     * @brief Marks a station as out of commission and adjusts the flow in the graph.
      * @details Time complexity: O(V E^2).
-     * @param waterReservoirs unordered_map containing water reservoirs.
-     * @param deliverySites unordered_map containing delivery sites.
      * @param code The code of the pumping station.
      */
-    void pumpingStationOutOfCommission(string const *code);
+    void stationOutOfCommission(string const *code);
 
     /**
      * @brief Detects and deactivates flow cycles containing the specified vertex.

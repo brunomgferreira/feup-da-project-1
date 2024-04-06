@@ -397,7 +397,7 @@ void Data::loadOptimization() {
 void Data::reservoirImpact(const string &code) {
     Graph *newGraph = g.copyGraph();
 
-    newGraph->reservoirOutOfCommission(&code);
+    newGraph->stationOutOfCommission(&code);
 
     auto it = waterReservoirs.find(code);
 
@@ -474,7 +474,7 @@ void Data::allReservoirsImpact() {
     for(auto &pair : waterReservoirs) {
         string code = pair.first;
 
-        newGraph->reservoirOutOfCommission(&code);
+        newGraph->stationOutOfCommission(&code);
 
         cout << code << "\t >  ";
 
@@ -517,7 +517,7 @@ void Data::notEssentialPumpingStations() {
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&psCode);
+        newGraph->stationOutOfCommission(&psCode);
 
         // Get current max flow
         double totalWaterSupplied = newGraph->getTotalDemandAndMaxFlow(&deliverySites).second;
@@ -547,7 +547,7 @@ void Data::pumpingStationImpact(const std::string &code) {
 
     Graph *newGraph = g.copyGraph();
 
-    newGraph->pumpingStationOutOfCommission(&code);
+    newGraph->stationOutOfCommission(&code);
 
     double totalWaterSupplied = 0;
 
@@ -624,7 +624,7 @@ void Data::allPumpingStationsImpact() {
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&psCode);
+        newGraph->stationOutOfCommission(&psCode);
 
         cout << psCode << "\t >  ";
 

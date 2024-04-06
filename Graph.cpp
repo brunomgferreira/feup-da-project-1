@@ -475,18 +475,6 @@ vector<vector<Edge *>> Graph::getPaths(const string sourc, const string dest) {
     return paths;
 }
 
-void Graph::reservoirOutOfCommission(string const *code) {
-    edmondsKarp(this);
-
-    Vertex *wr = findVertex(*code);
-
-    this->deactivateVertex(wr);
-
-    edmondsKarpWithDeactivatedVertex(this, *code);
-
-    this->updateAllVerticesFlow();
-}
-
 bool Vertex::hasFlow() {
     double inFlow = 0;
     double outFlow = 0;
@@ -678,7 +666,7 @@ void Vertex::updateFlow() {
     this->flow = incomingFlow;
 }
 
-void Graph::pumpingStationOutOfCommission(string const *code) {
+void Graph::stationOutOfCommission(string const *code) {
     edmondsKarp(this);
 
     Vertex *ps = findVertex(*code);
