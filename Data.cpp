@@ -403,6 +403,69 @@ void Data::loadOptimization() {
 
 // Reservoir Impact
 
+void Data::notEssentialReservoirs() {
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "not_essential_reservoirs.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
+    double maxFlow = metrics.getMaxFlow();
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << ">> Not Essential Reservoirs: " << endl;
+
+    if(outputFileIsOpen) outputFile << "Reservoir Code" << endl;
+
+    unsigned int numNotEssentialReservoirs = 0;
+
+    Graph *newGraph = g.copyGraph();
+
+    for(auto &pair : waterReservoirs) {
+        string reservoirCode = pair.first;
+
+        newGraph->stationOutOfCommission(&reservoirCode);
+
+        // Get current max flow
+        double totalWaterSupplied = newGraph->getTotalDemandAndMaxFlow(&deliverySites).second;
+
+        if(totalWaterSupplied == maxFlow) {
+            cout << setw(10) << "" << reservoirCode << endl;
+            if(outputFileIsOpen) outputFile << reservoirCode << endl;
+            numNotEssentialReservoirs++;
+        }
+    }
+    cout << endl;
+    if(numNotEssentialReservoirs == 0)
+        cout << "All reservoirs are essential to " << endl
+             << "maintain the current max flow!" << endl;
+    else {
+        cout << "Note: A reservoir is essential when it is " << endl
+             << "necessary to maintain the current max flow." << endl;
+    }
+
+    cout << endl;
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/" << networkName << "/not_essential_reservoirs.csv" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
+    }
+
+    cout << "\033[32m";
+    cout << "----------------------------------------------------" << endl;
+    cout << "\033[0m";
+}
+
 void Data::reservoirImpact(const string &code) {
     Graph *newGraph = g.copyGraph();
 
@@ -423,7 +486,9 @@ void Data::reservoirImpact(const string &code) {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Water Reservoir out of commission: " << endl;
-    cout << "Code: " << code  << ", Name: " << reservoirName << ", Max Delivery: " << reservoirMaxDelivery << endl << endl;
+    cout << "Code: " << code << endl;
+    cout << "Name: " << reservoirName << endl;
+    cout << "Max Delivery: " << reservoirMaxDelivery << endl << endl;
     cout << "> Cities with affected water flow: " << endl;
 
     cout << setw(24) << left << "City" << " ";
@@ -459,11 +524,20 @@ void Data::reservoirImpact(const string &code) {
 
     if(totalWaterSupplied < totalDemand) {
         cout << "\033[31m";
-        cout << "Without this reservoir the network cannot meet the water needs!" << endl << endl;
+        cout << "> Without this reservoir the network cannot meet the water needs!" << endl;
         cout << "\033[0m";
     }
     else {
-        cout << "Without this reservoir the network can meet the water needs!" << endl << endl;
+        cout << "> Without this reservoir the network can meet the water needs!" << endl;
+    }
+
+    if(maxFlow == totalWaterSupplied) {
+        cout << "> This reservoir is not essential to maintain the current max flow!" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "> This reservoir is essential to maintain the current max flow!" << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";

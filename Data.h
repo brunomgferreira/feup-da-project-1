@@ -143,6 +143,8 @@ public:
      */
     void loadOptimization();
 
+    void notEssentialReservoirs();
+
     /**
      * @brief Simulates the impact of putting a water reservoir out of commission and displays the information.
      * @param code The code of the water reservoir to put out of commission.
