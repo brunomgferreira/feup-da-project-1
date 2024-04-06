@@ -29,13 +29,11 @@ void App::setState(State* state) {
 }
 
 void App::setData(const filesystem::path &dir_path) {
-    this->data = new Data();
-
     try {
-        data->readFiles(dir_path);
+        Data *newData = new Data();
+        newData->readFiles(dir_path);
+        this->data = newData;
     } catch (const exception& e) {
-        delete this->data;
-        this->data = nullptr;
         throw DataLoadError(e.what());
     }
 }

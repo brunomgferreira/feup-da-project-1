@@ -51,7 +51,11 @@ void MainMenuState::handleInput(App* app) {
         else {
                 switch (choice[0]) {
                     case '1':
-                        app->setState(this);
+                        app->setState(new GetFilesPathState(this, [&](App *app) {
+                            cout << "Network loaded successfully! " << endl;
+                            PressEnterToContinue(1);
+                            app->setState(this);
+                        }));
                         break;
                     case '2':
                         app->setState(new MaxFlowMenuState());
