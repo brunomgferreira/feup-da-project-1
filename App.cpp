@@ -39,6 +39,12 @@ void App::setData(const filesystem::path &dir_path) {
 }
 
 void App::display() const {
+    if(typeid(*currentState) == typeid(MainMenuState)) {
+        cout << "\033[32m";
+        cout << "------------------------------" << endl;
+        cout << "\033[0m";
+        cout << "> Loaded Network: " << (data != nullptr ? data->getNetworkName() : ("\033[31mNone\033[30m")) << endl;
+    }
     currentState->display();
 }
 

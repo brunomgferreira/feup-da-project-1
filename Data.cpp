@@ -3,6 +3,10 @@
 
 Data::Data() = default;
 
+string Data::getNetworkName() const {
+    return networkName;
+}
+
 void Data::readFiles(const filesystem::path &dir_path) {
     filesystem::path reservoirPath;
     filesystem::path stationsPath;
@@ -54,6 +58,8 @@ void Data::readFiles(const filesystem::path &dir_path) {
         readFileStations(stationsFile);
         readFileCities(citiesFile);
         readFilePipes(pipesFile);
+
+        networkName = dir_path.stem();
 
         g.maxFlow(&waterReservoirs, &deliverySites);
         metrics = g.calculateMetrics(&deliverySites);
