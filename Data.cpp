@@ -423,7 +423,9 @@ void Data::reservoirImpact(const string &code) {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Water Reservoir out of commission: " << endl;
-    cout << "Code: " << code  << ", Name: " << reservoirName << ", Max Delivery: " << reservoirMaxDelivery << endl << endl;
+    cout << "Code: " << code << endl;
+    cout << "Name: " << reservoirName << endl;
+    cout << "Max Delivery: " << reservoirMaxDelivery << endl << endl;
     cout << "> Cities with affected water flow: " << endl;
 
     cout << setw(24) << left << "City" << " ";
@@ -459,11 +461,20 @@ void Data::reservoirImpact(const string &code) {
 
     if(totalWaterSupplied < totalDemand) {
         cout << "\033[31m";
-        cout << "Without this reservoir the network cannot meet the water needs!" << endl << endl;
+        cout << "> Without this reservoir the network cannot meet the water needs!" << endl;
         cout << "\033[0m";
     }
     else {
-        cout << "Without this reservoir the network can meet the water needs!" << endl << endl;
+        cout << "> Without this reservoir the network can meet the water needs!" << endl;
+    }
+
+    if(maxFlow == totalWaterSupplied) {
+        cout << "> This reservoir is not essential to maintain the current max flow!" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "> This reservoir is essential to maintain the current max flow!" << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
