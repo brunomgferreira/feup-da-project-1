@@ -41,7 +41,17 @@ void MainMenuState::handleInput(App* app) {
                     }));
                     break;
                 case 'q':
-                    cout << "Exiting the program..." << endl;
+                    cout << "\033[32m";
+                    cout << "========================================" << endl;
+                    cout << "\033[0m";
+                    cout << "Exiting the program..." << endl << endl;
+                    cout << "System Developed by:" << endl;
+                    cout << "  > António Santos" << " - " << "up201705558@fe.up.pt" << endl;
+                    cout << "  > Bruno Ferreira" << " - " << "up202207863@fe.up.pt" << endl;
+                    cout << "  > Gonçalo Ferros" << " - " << "up202207592@fe.up.pt" << endl;
+                    cout << "\033[32m";
+                    cout << "========================================" << endl;
+                    cout << "\033[0m";
                     app->setState(nullptr);
                     break;
                 default:
@@ -80,7 +90,17 @@ void MainMenuState::handleInput(App* app) {
                         app->setState(new PipelineImpactMenuState());
                         break;
                     case 'q':
-                        cout << "Exiting the program..." << endl;
+                        cout << "\033[32m";
+                        cout << "========================================" << endl;
+                        cout << "\033[0m";
+                        cout << "Exiting the program..." << endl << endl;
+                        cout << "System Developed by:" << endl;
+                        cout << "  > António Santos" << " - " << "up201705558@fe.up.pt" << endl;
+                        cout << "  > Bruno Ferreira" << " - " << "up202207863@fe.up.pt" << endl;
+                        cout << "  > Gonçalo Ferros" << " - " << "up202207592@fe.up.pt" << endl;
+                        cout << "\033[32m";
+                        cout << "========================================" << endl;
+                        cout << "\033[0m";
                         app->setState(nullptr);
                         break;
                     default:
