@@ -827,12 +827,12 @@ void Data::pipelineImpact(const string &code) {
         it = pipes.find(code.substr(dashPos + 1)+"-"+code.substr(0, dashPos));
     }
 
-    string pipeCode = (*it).first;
-    Pipe *pipe = (*it).second;
-    string servicePointA = pipe->getServicePointA();
-    string servicePointB = pipe->getServicePointB();
-    bool unidirectional = pipe->getUnidirectional();
-    double capacity = pipe->getCapacity();
+    string pipelineCode = (*it).first;
+    Pipe *pipeline = (*it).second;
+    string servicePointA = pipeline->getServicePointA();
+    string servicePointB = pipeline->getServicePointB();
+    bool unidirectional = pipeline->getUnidirectional();
+    double capacity = pipeline->getCapacity();
 
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
@@ -905,16 +905,27 @@ void Data::pipelineImpact(const string &code) {
 }
 
 void Data::allPipelinesImpact() {
+    filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output" / networkName);
+
+    if (!filesystem::exists(dir_path))
+        filesystem::create_directory(dir_path);
+
+    ofstream outputFile(dir_path / "pipelines_impact.csv");
+
+    bool outputFileIsOpen = outputFile.is_open();
+
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> All Pipelines Impact: " << endl;
     cout << "(Pipeline Code) > (City Code, Demand, Old Flow, New Flow)" << endl << endl;
 
+    if(outputFileIsOpen) outputFile << "Pipeline Code,City Code,Demand,Old Flow,New Flow" << endl;
+
     Graph *newGraph = g.copyGraph();
 
     for(auto &pair : pipes) {
-        string pipeCode = pair.first;
+        string pipelineCode = pair.first;
         Pipe *pipeline = pair.second;
 
         string servicePointA = pipeline->getServicePointA();
@@ -923,7 +934,7 @@ void Data::allPipelinesImpact() {
 
         newGraph->pipelineOutOfCommission(&servicePointA, &servicePointB, unidirectional);
 
-        cout << "(" << pipeCode << ")  >  ";
+        cout << "(" << pipelineCode << ")  >  ";
 
         for(auto &dsPair : deliverySites) {
             const string cityCode = dsPair.first;
@@ -935,12 +946,25 @@ void Data::allPipelinesImpact() {
 
             if (oldFlow == newFlow) continue;
 
+            if(outputFileIsOpen) outputFile << pipelineCode << "," << cityCode << "," << demand << "," << oldFlow << "," << newFlow << endl;
+
             cout << "(" << cityCode << ", "
                  << fixed << setprecision(0) << demand << ", "
                  << fixed << setprecision(0) << oldFlow << ", "
                  << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
+    }
+    cout << endl;
+
+    if(outputFileIsOpen) {
+        outputFile.close();
+        cout << ">> Output file is at: ./output/" << networkName << "/pipelines_impact.csv" << endl;
+    }
+    else {
+        cout << "\033[31m";
+        cout << "There was an error creating/writing the output file." << endl;
+        cout << "\033[0m";
     }
 
     cout << "\033[32m";
