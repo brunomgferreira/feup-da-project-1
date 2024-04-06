@@ -1,4 +1,3 @@
-#include <iostream>
 #include "MainMenuState.h"
 #include "States/MaxFlow/MaxFlowMenuState.h"
 #include "States/PumpingStationImpact/PumpingStationImpactMenuState.h"
@@ -6,7 +5,7 @@
 #include "States/ReservoirImpact/ReservoirImpactMenuState.h"
 #include "States/Utils/GetFilesPathState.h"
 
-MainMenuState::MainMenuState() {}
+MainMenuState::MainMenuState() = default;
 
 void MainMenuState::display() const {
     cout << "\033[32m";

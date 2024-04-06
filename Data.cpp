@@ -1,7 +1,7 @@
 #include <set>
 #include "Data.h"
 
-Data::Data() {}
+Data::Data() = default;
 
 void Data::readFiles(const filesystem::path &dir_path) {
     filesystem::path reservoirPath;
@@ -68,7 +68,7 @@ void Data::readFileReservoir(ifstream &file) {
 
     while(getline(file,line)) {
         // Remove carriage return characters if present
-        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
 
         string reservoir, municipality, code;
         double id, maxDelivery;
@@ -81,9 +81,9 @@ void Data::readFileReservoir(ifstream &file) {
         ss >> maxDelivery;
         ss.ignore();
 
-        if(reservoir == "" | municipality == "" | code == "") continue;
+        if(reservoir.empty() | municipality.empty() | code.empty()) continue;
 
-        WaterReservoir* wr = new WaterReservoir(reservoir, municipality, id, code, maxDelivery);
+        auto* wr = new WaterReservoir(reservoir, municipality, id, code, maxDelivery);
         g.addVertex(code, VertexType::WaterReservoir);
         this->waterReservoirs.insert({code, wr});
     }
@@ -95,7 +95,7 @@ void Data::readFileStations(ifstream &file) {
 
     while(getline(file,line)) {
         // Remove carriage return characters if present
-        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
 
         string code;
         double id;
@@ -104,9 +104,9 @@ void Data::readFileStations(ifstream &file) {
         ss.ignore();
         getline(ss, code,',');
 
-        if(code == "") continue;
+        if(code.empty()) continue;
 
-        PumpingStation* ps = new PumpingStation(id, code);
+        auto* ps = new PumpingStation(id, code);
         g.addVertex(code, VertexType::PumpingStation);
         this->pumpingStations.insert({code, ps});
     }
@@ -118,7 +118,7 @@ void Data::readFileCities(ifstream &file) {
 
     while(getline(file,line)) {
         // Remove carriage return characters if present
-        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
 
         string city, code;
         double id, demand, population;
@@ -132,9 +132,9 @@ void Data::readFileCities(ifstream &file) {
         ss >> population;
         ss.ignore();
 
-        if(code == "" || city == "") continue;
+        if(code.empty() || city.empty()) continue;
 
-        DeliverySite* ds = new DeliverySite(city, id, code, demand, population);
+        auto* ds = new DeliverySite(city, id, code, demand, population);
         g.addVertex(code, VertexType::DeliverySite);
         this->deliverySites.insert({code, ds});
     }
@@ -146,7 +146,7 @@ void Data::readFilePipes(ifstream &file) {
 
     while(getline(file,line)) {
         // Remove carriage return characters if present
-        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(remove(line.begin(), line.end(), '\r'), line.end());
 
         string servicePointA, servicePointB;
         double capacity, direction;
@@ -158,12 +158,14 @@ void Data::readFilePipes(ifstream &file) {
         ss >> direction;
         ss.ignore();
 
-        if(servicePointA == "" || servicePointB == "") continue;
+        if(servicePointA.empty() || servicePointB.empty()) continue;
 
-        bool unidirectional = direction == 1 ? true : false;
+        bool unidirectional = direction == 1;
 
         Pipe* pipe = new Pipe(servicePointA, servicePointB, capacity, unidirectional);
-        string key = servicePointA+"-"+servicePointB;
+        string key = servicePointA;
+        key += "-";
+        key += servicePointB;
         this->pipes.insert({key, pipe});
 
         if(unidirectional) g.addEdge(servicePointA, servicePointB, capacity);
@@ -231,7 +233,6 @@ void Data::cityMaxFlow(const string &code) {
 }
 
 void Data::allCitiesMaxFlow() {
-
     filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
     // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
 
@@ -249,30 +250,27 @@ void Data::allCitiesMaxFlow() {
 
     if(outputFileIsOpen) outputFile << "City,Code,Demand,Flow Value" << endl;
 
-    cout << setw(24) << left << "City";
-    cout << setw(10) << left << "Code";
-    cout << setw(11) << left << "Demand";
+    cout << setw(24) << left << "City" << " ";
+    cout << setw(10) << left << "Code" << " ";
+    cout << setw(11) << left << "Demand" << " ";
     cout << setw(15) << left << "Flow Value" << endl << endl;
 
     double maxFlow = metrics.getMaxFlow();
 
     for(auto &pair : deliverySites) {
-        const string code = pair.first;
+        const string cityCode = pair.first;
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = g.findVertex(code)->getFlow();
+        double flow = g.findVertex(cityCode)->getFlow();
 
-        ostringstream ss;
-        ss << fixed << setprecision(0) << demand;
-
-        cout << setw(24) << left << cityName + ",";
-        cout << setw(10) << left << code + ",";
-        cout << setw(11) << left << ss.str() + ",";
+        cout << setw(24) << left << cityName << " ";
+        cout << setw(10) << left << cityCode << " ";
+        cout << setw(11) << left << fixed << setprecision(0) << demand << " ";
         cout << setw(15) << left << fixed << setprecision(0) << flow << endl;
 
-        if(outputFileIsOpen) outputFile << cityName << "," << code << "," << demand << "," << flow << endl;
+        if(outputFileIsOpen) outputFile << cityName << "," << cityCode << "," << demand << "," << flow << endl;
     }
     cout << endl;
     cout << "Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl << endl;
@@ -292,8 +290,9 @@ void Data::allCitiesMaxFlow() {
     cout << "\033[0m";
 }
 
-void Data::verifyWaterSupply() {
+// Verify Water Supply
 
+void Data::verifyWaterSupply() {
     filesystem::path dir_path = filesystem::path(filesystem::current_path() / ".." / "output");
     // This way the folder is inside the cmake-build-debug folder: filesystem::path(filesystem::current_path() / "output);
 
@@ -314,27 +313,27 @@ void Data::verifyWaterSupply() {
 
     if(outputFileIsOpen) outputFile << "City,Code,Deficit Value" << endl;
 
-    cout << setw(24) << left << "City";
-    cout << setw(10) << left << "Code";
+    cout << setw(24) << left << "City" << " ";
+    cout << setw(10) << left << "Code" << " ";
     cout << setw(11) << left << "Deficit Value" << endl << endl;
 
     for(auto &pair : deliverySites) {
-        const string code = pair.first;
+        const string cityCode = pair.first;
         DeliverySite *ds = pair.second;
 
         string cityName = ds->getCity();
         double demand = ds->getDemand();
-        double flow = g.findVertex(code)->getFlow();
+        double flow = g.findVertex(cityCode)->getFlow();
 
         if (demand <= flow) continue;
 
-        double difference = demand-flow;
+        double difference = demand - flow;
 
-        cout << setw(24) << left << fixed << setprecision(0) << cityName + ",";
-        cout << setw(10) << left << fixed << setprecision(0) << code + ",";
+        cout << setw(24) << left << fixed << setprecision(0) << cityName << " ";
+        cout << setw(10) << left << fixed << setprecision(0) << cityCode << " ";
         cout << setw(11) << left << fixed << setprecision(0) << difference << endl;
 
-        if(outputFileIsOpen) outputFile << cityName << "," << code << "," << difference << endl;
+        if(outputFileIsOpen) outputFile << cityName << "," << cityCode << "," << difference << endl;
     }
 
     cout << endl;
@@ -365,6 +364,8 @@ void Data::verifyWaterSupply() {
     cout << "\033[0m";
 }
 
+// Load Optimization
+
 void Data::loadOptimization() {
     Graph *newGraph = g.copyGraph();
     newGraph->optimizeLoad(&deliverySites);
@@ -394,17 +395,21 @@ void Data::loadOptimization() {
     cout << "\033[0m";
 }
 
+// Resilience Functions
+
+// Reservoir Impact
+
 void Data::reservoirImpact(const string &code) {
     Graph *newGraph = g.copyGraph();
 
-    newGraph->reservoirOutOfCommission(&code);
+    newGraph->stationOutOfCommission(&code);
 
     auto it = waterReservoirs.find(code);
 
     WaterReservoir *wr = (*it).second;
 
-    string name = wr->getName();
-    double maxDelivery = wr->getMaxDelivery();
+    string reservoirName = wr->getName();
+    double reservoirMaxDelivery = wr->getMaxDelivery();
 
     double totalDemand = metrics.getTotalDemand();
     double maxFlow = metrics.getMaxFlow();
@@ -414,7 +419,7 @@ void Data::reservoirImpact(const string &code) {
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
     cout << ">> Water Reservoir out of commission: " << endl;
-    cout << "Code: " << code  << ", Name: " << name << ", Max Delivery: " << maxDelivery << endl << endl;
+    cout << "Code: " << code  << ", Name: " << reservoirName << ", Max Delivery: " << reservoirMaxDelivery << endl << endl;
     cout << "> Cities with affected water flow: " << endl;
 
     cout << setw(24) << left << "City" << " ";
@@ -432,7 +437,7 @@ void Data::reservoirImpact(const string &code) {
         double oldFlow = g.findVertex(cityCode)->getFlow();
         double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
-        totalWaterSupplied+=newFlow;
+        totalWaterSupplied += newFlow;
 
         if (oldFlow == newFlow) continue;
 
@@ -448,7 +453,7 @@ void Data::reservoirImpact(const string &code) {
     cout << "Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
     cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
 
-    if(totalDemand > totalWaterSupplied) {
+    if(totalWaterSupplied < totalDemand) {
         cout << "\033[31m";
         cout << "Without this reservoir the network cannot meet the water needs!" << endl << endl;
         cout << "\033[0m";
@@ -472,27 +477,26 @@ void Data::allReservoirsImpact() {
     Graph *newGraph = g.copyGraph();
 
     for(auto &pair : waterReservoirs) {
-        string code = pair.first;
+        string reservoirCode = pair.first;
 
-        newGraph->reservoirOutOfCommission(&code);
+        newGraph->stationOutOfCommission(&reservoirCode);
 
-        cout << code << "\t >  ";
+        cout << reservoirCode << "\t >  ";
 
         for(auto &dsPair : deliverySites) {
             const string cityCode = dsPair.first;
             DeliverySite *ds = dsPair.second;
 
-            string cityName = ds->getCity();
             double demand = ds->getDemand();
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
             if (oldFlow == newFlow) continue;
 
-            cout << "(" << cityCode + ", "
-                << fixed << setprecision(0) << demand << ", "
-                << fixed << setprecision(0) << oldFlow << ", "
-                << fixed << setprecision(0) << newFlow << ")   ";
+            cout << "(" << cityCode + ", ";
+            cout << fixed << setprecision(0) << demand << ", ";
+            cout << fixed << setprecision(0) << oldFlow << ", ";
+            cout << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
     }
@@ -502,6 +506,8 @@ void Data::allReservoirsImpact() {
     cout << "\033[0m";
 }
 
+// Pumping Station Impact
+
 void Data::notEssentialPumpingStations() {
     double maxFlow = metrics.getMaxFlow();
 
@@ -510,25 +516,25 @@ void Data::notEssentialPumpingStations() {
     cout << "\033[0m";
     cout << ">> Not Essential Pumping Stations: " << endl;
 
-    unsigned int count = 0;
+    unsigned int numNotEssentialPumpingStations = 0;
 
     Graph *newGraph = g.copyGraph();
 
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&psCode);
+        newGraph->stationOutOfCommission(&psCode);
 
         // Get current max flow
         double totalWaterSupplied = newGraph->getTotalDemandAndMaxFlow(&deliverySites).second;
 
         if(totalWaterSupplied == maxFlow) {
             cout << setw(10) << "" << psCode << endl;
-            count++;
+            numNotEssentialPumpingStations++;
         }
     }
     cout << endl;
-    if(count == 0)
+    if(numNotEssentialPumpingStations == 0)
         cout << "All pumping stations are essential to " << endl
              << "maintain the current max flow!" << endl;
     else {
@@ -540,14 +546,13 @@ void Data::notEssentialPumpingStations() {
     cout << "\033[0m";
 }
 
-void Data::pumpingStationImpact(const std::string &code) {
-
+void Data::pumpingStationImpact(const string &code) {
     double maxFlow = metrics.getMaxFlow();
     double totalDemand = metrics.getTotalDemand();
 
     Graph *newGraph = g.copyGraph();
 
-    newGraph->pumpingStationOutOfCommission(&code);
+    newGraph->stationOutOfCommission(&code);
 
     double totalWaterSupplied = 0;
 
@@ -589,7 +594,7 @@ void Data::pumpingStationImpact(const std::string &code) {
     cout << "Current Max Flow: " << fixed << setprecision(0) << maxFlow << " m3/s" << endl;
     cout << "Total Water Supplied: " << fixed << setprecision(0) << totalWaterSupplied << " m3/s" << endl;
 
-    if(totalDemand > totalWaterSupplied) {
+    if(totalWaterSupplied < totalDemand) {
         cout << "\033[31m";
         cout << "> Without this pumping station the network cannot meet the water needs!" << endl;
         cout << "\033[0m";
@@ -624,7 +629,7 @@ void Data::allPumpingStationsImpact() {
     for(auto &pair : pumpingStations) {
         string psCode = pair.first;
 
-        newGraph->pumpingStationOutOfCommission(&psCode);
+        newGraph->stationOutOfCommission(&psCode);
 
         cout << psCode << "\t >  ";
 
@@ -632,17 +637,16 @@ void Data::allPumpingStationsImpact() {
             const string cityCode = dsPair.first;
             DeliverySite *ds = dsPair.second;
 
-            string cityName = ds->getCity();
             double demand = ds->getDemand();
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
             if (oldFlow == newFlow) continue;
 
-            cout << "(" << cityCode << ", "
-                 << fixed << setprecision(0) << demand << ", "
-                 << fixed << setprecision(0) << oldFlow << ", "
-                 << fixed << setprecision(0) << newFlow << ")   ";
+            cout << "(" << cityCode << ", ";
+            cout << fixed << setprecision(0) << demand << ", ";
+            cout << fixed << setprecision(0) << oldFlow << ", ";
+            cout << fixed << setprecision(0) << newFlow << ")   ";
         }
         cout << endl;
     }
@@ -652,13 +656,14 @@ void Data::allPumpingStationsImpact() {
     cout << "\033[0m";
 }
 
+// Pipeline Impact
+
 void Data::essentialPipelines() {
     unordered_map<string, set<string>> cityToEssentialPipelines;
-
     Graph *newGraph = g.copyGraph();
 
     for(auto &pair : pipes) {
-        string pipeCode = pair.first;
+        string pipelineCode = pair.first;
         Pipe *pipeline = pair.second;
 
         string servicePointA = pipeline->getServicePointA();
@@ -669,9 +674,7 @@ void Data::essentialPipelines() {
 
         for(auto &dsPair : deliverySites) {
             const string cityCode = dsPair.first;
-            DeliverySite *ds = dsPair.second;
 
-            string cityName = ds->getCity();
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();
 
@@ -680,10 +683,10 @@ void Data::essentialPipelines() {
             auto it = cityToEssentialPipelines.find(cityCode);
 
             if(it == cityToEssentialPipelines.end()) {
-                cityToEssentialPipelines.insert({cityCode, {pipeCode}});
+                cityToEssentialPipelines.insert({cityCode, {pipelineCode}});
             }
             else {
-                (*it).second.insert(pipeCode);
+                (*it).second.insert(pipelineCode);
             }
         }
     }
@@ -694,14 +697,16 @@ void Data::essentialPipelines() {
     cout << ">> Essential Pipelines for each city: " << endl;
     cout << "(City Code, City Name) > (Pipeline Code)" << endl << endl;
 
-    for(auto pair : cityToEssentialPipelines) {
+    for(const auto &pair : cityToEssentialPipelines) {
         string code = pair.first;
         DeliverySite *ds = deliverySites.at(code);
 
-        cout << "(" << code << "," << ds->getCity() << ")  >  ";
+        string cityName = ds->getCity();
 
-        for(string pipeCode : pair.second) {
-            cout << "(" << pipeCode << ") ";
+        cout << "(" << code << ", " << cityName << ")  >  ";
+
+        for(const string &pipelineCode : pair.second) {
+            cout << "(" << pipelineCode << ") ";
         }
 
         cout << endl;
@@ -713,7 +718,6 @@ void Data::essentialPipelines() {
 }
 
 void Data::pipelineImpact(const string &code) {
-
     double maxFlow = metrics.getMaxFlow();
     double totalDemand = metrics.getTotalDemand();
 
@@ -798,11 +802,9 @@ void Data::pipelineImpact(const string &code) {
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
-
 }
 
 void Data::allPipelinesImpact() {
-
     cout << "\033[32m";
     cout << "----------------------------------------------------" << endl;
     cout << "\033[0m";
@@ -827,7 +829,6 @@ void Data::allPipelinesImpact() {
             const string cityCode = dsPair.first;
             DeliverySite *ds = dsPair.second;
 
-            string cityName = ds->getCity();
             double demand = ds->getDemand();
             double oldFlow = g.findVertex(cityCode)->getFlow();
             double newFlow = newGraph->findVertex(cityCode)->getFlow();

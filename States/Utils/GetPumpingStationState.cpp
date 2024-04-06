@@ -1,9 +1,8 @@
-#include <iostream>
 #include "GetPumpingStationState.h"
 #include "TryAgainState.h"
 
 GetPumpingStationState::GetPumpingStationState(State* backState, function<void(App*, const string&)> nextStateCallback)
-        : backState(backState), nextStateCallback(nextStateCallback) {}
+        : backState(backState), nextStateCallback(std::move(nextStateCallback)) {}
 
 void GetPumpingStationState::display() const {
     cout << "Insert pumping station code (Ex: PS_1): ";

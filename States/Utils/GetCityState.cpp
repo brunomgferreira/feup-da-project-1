@@ -1,9 +1,8 @@
-#include <iostream>
 #include "GetCityState.h"
 #include "TryAgainState.h"
 
 GetCityState::GetCityState(State* backState, function<void(App*, const string&)> nextStateCallback)
-        : backState(backState), nextStateCallback(nextStateCallback) {}
+        : backState(backState), nextStateCallback(std::move(nextStateCallback)) {}
 
 void GetCityState::display() const {
     cout << "Insert city code (Ex: C_1): ";

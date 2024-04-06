@@ -1,8 +1,9 @@
-#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H
-#define WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H
+#ifndef WATER_SUPPLY_ANALYSIS_SYSTEM_WATER_RESERVOIR_H
+#define WATER_SUPPLY_ANALYSIS_SYSTEM_WATER_RESERVOIR_H
 
 
 #include <string>
+#include <utility>
 using namespace std;
 
 /**
@@ -22,7 +23,7 @@ public:
     /**
     * @brief Constructs a water reservoir object with the provided details.
     *
-    * @details This constructor initializes a water reservoir object with the specified water reservoir code, name, callsign, and country.
+    * @details This constructor initializes a water reservoir object with the specified water reservoir name, municipality, id, code and maxDelivery.
     * The parameters represent essential information about an water reservoir, including its name, municipality, id, code and maxDelivery
     *
     * @param name The name of the water reservoir.
@@ -37,4 +38,4 @@ public:
     string getName();
 };
 
-#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_WATERRESERVOIR_H
+#endif //WATER_SUPPLY_ANALYSIS_SYSTEM_WATER_RESERVOIR_H

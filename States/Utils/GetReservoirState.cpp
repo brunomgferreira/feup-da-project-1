@@ -1,9 +1,8 @@
-#include <iostream>
 #include "GetReservoirState.h"
 #include "TryAgainState.h"
 
 GetReservoirState::GetReservoirState(State* backState, function<void(App*, const string&)> nextStateCallback)
-: backState(backState), nextStateCallback(nextStateCallback) {}
+: backState(backState), nextStateCallback(std::move(nextStateCallback)) {}
 
 void GetReservoirState::display() const {
     cout << "Insert reservoir code (Ex: R_1): ";

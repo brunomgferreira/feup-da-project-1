@@ -3,7 +3,7 @@
 #include "DataLoadError.h"
 
 GetFilesPathState::GetFilesPathState(State* backState, function<void(App*)> nextStateCallback)
-        : backState(backState), nextStateCallback(nextStateCallback) {}
+        : backState(backState), nextStateCallback(std::move(nextStateCallback)) {}
 
 void GetFilesPathState::display() const {
     cout << "Insert path to the files (Ex: \"./dataset/Project1DataSetSmall\"): ";

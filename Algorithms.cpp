@@ -81,10 +81,10 @@ void augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarp(Graph *g, string source, string target) {
+void edmondsKarp(Graph *g) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
 
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)
@@ -97,7 +97,7 @@ void edmondsKarp(Graph *g, string source, string target) {
     }
 
     // Calculate and save incoming flow for each vertex
-    for (auto pair : g->getVertexSet()) {
+    for (auto &pair : g->getVertexSet()) {
         Vertex *v = pair.second;
         double incomingFlow = 0;
         for (auto e: v->getIncoming()) {
@@ -148,10 +148,10 @@ bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Ver
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const string target, const string deactivated) {
+void edmondsKarpWithDeactivatedVertex(Graph *g, const string &deactivated) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
     Vertex* deactivatedVertex = g->findVertex(deactivated);
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)
@@ -164,7 +164,7 @@ void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const strin
     }
 
     // Calculate and save incoming flow for each vertex
-    for (auto pair : g->getVertexSet()) {
+    for (auto &pair : g->getVertexSet()) {
         Vertex *v = pair.second;
         double incomingFlow = 0;
         for (auto e: v->getIncoming()) {
@@ -177,7 +177,7 @@ void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const strin
 // EDMONDS KARP WITH DEACTIVATED EDGE
 
 // Function to test the given vertex 'w' and visit it if conditions are met
-void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, const string servicePointA, const string servicePointB, bool unidirectional) {
+void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual, const string &servicePointA, const string &servicePointB, bool unidirectional) {
     // Check if the vertex 'w' is not visited and there is residual capacity
     if (! w->isVisited() && residual > 0 && !(e->getOrig()->getCode() == servicePointA && e->getDest()->getCode() == servicePointB) ) {
 
@@ -198,7 +198,7 @@ void testAndVisitWithDeactivatedEdge(std::queue< Vertex*> &q, Edge *e, Vertex *w
 }
 
 // Function to find an augmenting path using Breadth-First Search
-bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const string servicePointA, const string servicePointB, bool unidirectional) {
+bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const string &servicePointA, const string &servicePointB, bool unidirectional) {
     // Mark all vertices as not visited
     for(auto v : g->getVertexSet()) {
         v.second->setVisited(false);
@@ -225,10 +225,10 @@ bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarpWithDeactivatedEdge(Graph *g, const string source, const string target, const string servicePointA, const string servicePointB, bool unidirectional) {
+void edmondsKarpWithDeactivatedEdge(Graph *g, const string &servicePointA, const string &servicePointB, bool unidirectional) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
 
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)

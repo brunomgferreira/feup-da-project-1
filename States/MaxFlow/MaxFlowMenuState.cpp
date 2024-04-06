@@ -1,9 +1,8 @@
-#include <iostream>
 #include "States/MainMenuState.h"
 #include "MaxFlowMenuState.h"
 #include "States/Utils/GetCityState.h"
 
-MaxFlowMenuState::MaxFlowMenuState() {}
+MaxFlowMenuState::MaxFlowMenuState() = default;
 
 void MaxFlowMenuState::display() const {
     cout << "\033[32m";

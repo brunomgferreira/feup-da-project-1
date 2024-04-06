@@ -1,25 +1,11 @@
+#include <utility>
 #include <valarray>
 #include "Graph.h"
 #include "Algorithms.h"
 
 /************************* Vertex  **************************/
 
-void Vertex::deleteEdge(Edge *edge) {
-    Vertex *dest = edge->getDest();
-    // Remove the corresponding edge from the incoming list
-    auto it = dest->incoming.begin();
-    while (it != dest->incoming.end()) {
-        if ((*it)->getOrig()->getCode() == this->code) {
-            it = dest->incoming.erase(it);
-        }
-        else {
-            it++;
-        }
-    }
-    delete edge;
-}
-
-Vertex::Vertex(string code, VertexType type) : code(code), type(type) {}
+Vertex::Vertex(string code, VertexType type) : code(std::move(code)), type(type) {}
 
 bool Vertex::operator<(Vertex & vertex) const {
     return this->dist < vertex.dist;
@@ -53,24 +39,42 @@ double Vertex::getFlow() const {
     return this->flow;
 }
 
+bool Vertex::hasFlow() const {
+    double inFlow = 0;
+    double outFlow = 0;
+
+    for (auto e: this->getIncoming()) inFlow += e->getFlow();
+    for (auto e: this->getAdj()) outFlow += e->getFlow();
+
+    if((inFlow > 0) || (outFlow > 0)) return true;
+    return false;
+}
+
 void Vertex::setFlow(double value) {
     this->flow = value;
 }
 
-void Vertex::setCode(string code) {
-    this->code = code;
+void Vertex::updateFlow() {
+    double incomingFlow = 0;
+    if(this->incoming.empty()) {
+        for (auto e: this->adj) {
+            incomingFlow += e->getFlow();
+        }
+    }
+    else {
+        for (auto e: this->incoming) {
+            incomingFlow += e->getFlow();
+        }
+    }
+    this->flow = incomingFlow;
 }
 
-void Vertex::setType(VertexType type) {
-    this->type = type;
+void Vertex::setVisited(bool isVisited) {
+    this->visited = isVisited;
 }
 
-void Vertex::setVisited(bool visited) {
-    this->visited = visited;
-}
-
-void Vertex::setPath(Edge *path) {
-    this->path = path;
+void Vertex::setPath(Edge *newPath) {
+    this->path = newPath;
 }
 
 Edge * Vertex::addEdge(Vertex *dest, double c, double f) {
@@ -89,24 +93,6 @@ Edge * Vertex::findEdge(Vertex *destVertex) {
         }
     }
     return nullptr;
-}
-
-bool Vertex::removeEdge(string code) {
-    bool removedEdge = false;
-    auto it = adj.begin();
-    while (it != adj.end()) {
-        Edge *edge = *it;
-        Vertex *dest = edge->getDest();
-        if (dest->getCode() == code) {
-            it = adj.erase(it);
-            deleteEdge(edge);
-            removedEdge = true; // allows for multiple edges to connect the same pair of vertices (multigraph)
-        }
-        else {
-            it++;
-        }
-    }
-    return removedEdge;
 }
 
 /********************** Edge  ****************************/
@@ -133,144 +119,51 @@ double Edge::getFlow() const {
     return this->flow;
 }
 
-void Edge::setReverse(Edge *reverse) {
-    this->reverse = reverse;
+void Edge::setReverse(Edge *reverseEdge) {
+    this->reverse = reverseEdge;
 }
 
-void Edge::setFlow(double flow) {
-    this->flow = flow;
+void Edge::setFlow(double newFlow) {
+    this->flow = newFlow;
 }
 
 
 /********************** Graph  ****************************/
 
-Vertex *Graph::findVertex(const string &code) const {
-    auto it = this->vertices.find(code);
-    if (it != this->vertices.end()) {
-        return it->second;
+// Copy Graph
+
+Graph *Graph::copyGraph() {
+    auto *newGraph = new Graph();
+
+    // Copy vertices
+    for(auto &pair : vertices) {
+        string code = pair.first;
+        Vertex *v = pair.second;
+
+        newGraph->addVertex(code, v->getType());
     }
-    return nullptr;
-}
 
-bool Graph::addVertex(const string &code, const VertexType &type) {
-    if(findVertex(code) == nullptr) {
-        Vertex *newVertex = new Vertex(code, type);
-        this->vertices.insert({code, newVertex});
-        return true;
-    }
-    return false;
-}
+    // Copy edges
+    for(auto &pair : vertices) {
+        string code = pair.first;
+        Vertex *v = pair.second;
 
-bool Graph::addEdge(const string &sourc, const string &dest, double c, double f) {
-    Vertex *originVertex = findVertex(sourc);
-    Vertex *destVertex = findVertex(dest);
+        for(auto e : v->getAdj()) {
+            string origin = e->getOrig()->getCode();
+            string dest = e->getDest()->getCode();
+            double capacity = e->getCapacity();
+            double flow = e->getFlow();
 
-    if (originVertex && destVertex) {
-        auto e1 = originVertex->addEdge(destVertex, c, f);
-        auto e2 = destVertex->findEdge(originVertex);
-
-        if(e2 != nullptr) {
-            if(e1->getCapacity() == e2->getCapacity()) {
-                e1->setReverse(e2);
-                e2->setReverse(e1);
-            }
+            newGraph->addEdge(origin, dest, capacity, flow);
         }
-        return true;
     }
-
-    return false;
+    newGraph->updateAllVerticesFlow();
+    return newGraph;
 }
 
-bool Graph::removeEdge(const string &source, const string &dest) {
-    Vertex * srcVertex = findVertex(source);
-    if (srcVertex == nullptr) {
-        return false;
-    }
-    return srcVertex->removeEdge(dest);
-}
-
-bool Graph::addBidirectionalEdge(const string &sourc, const string &dest, double c, double flow, double reverseFlow) {
-    auto v1 = findVertex(sourc);
-    auto v2 = findVertex(dest);
-    if (v1 == nullptr || v2 == nullptr)
-        return false;
-    auto e1 = v1->addEdge(v2, c, flow);
-    auto e2 = v2->addEdge(v1, c, reverseFlow);
-    e1->setReverse(e2);
-    e2->setReverse(e1);
-    return true;
-}
-
-unordered_map<string, Vertex *> Graph::getVertexSet() const {
-    return this->vertices;
-}
-
-void Graph::createMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
-    this->addVertex(code, VertexType::MainSource);
-
-    for (auto& pair : *waterReservoirs) {
-        string wrCode = pair.first;
-        WaterReservoir* wr = pair.second;
-        double maxDelivery = wr->getMaxDelivery();
-
-        auto it = this->findVertex(wrCode);
-        double f = (*it).getFlow();
-
-        this->addEdge(code, wrCode, maxDelivery, f);
-
-    }
-}
-
-void Graph::deleteMainSource(const string &code, const unordered_map<string, WaterReservoir *> *waterReservoirs) {
-    for (auto& pair : *waterReservoirs) {
-        string wrCode = pair.first;
-        this->removeEdge(code, wrCode);
-    }
-
-    auto it = vertices.find(code);
-    this->vertices.erase(it);
-}
-
-void Graph::createMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
-    this->addVertex(code, VertexType::MainTarget);
-
-    for (auto& pair : *deliverySites) {
-        string dsCode = pair.first;
-        DeliverySite* ds = pair.second;
-        double demand = ds->getDemand();
-
-        auto it = this->findVertex(dsCode);
-        double f = (*it).getFlow();
-
-        this->addEdge(dsCode, code, demand, f);
-    }
-}
-
-void Graph::deleteMainTarget(const string &code, const unordered_map<string, DeliverySite *> *deliverySites) {
-    for (auto& pair : *deliverySites) {
-        string dsCode = pair.first;
-        this->removeEdge(dsCode, code);
-    }
-
-    auto it = vertices.find(code);
-    this->vertices.erase(it);
-}
-
-void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
-
-    createMainSource(mainSourceCode, waterReservoirs);
-    createMainTarget(mainTargetCode, deliverySites);
-
-    this->setAllEdgesFlow(0);
-    this->setAllVerticesFlow(0);
-
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
-}
+// Metrics
 
 GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites) {
-
     // Absolute metrics
     double absoluteAverage;
     double absoluteVariance;
@@ -292,9 +185,6 @@ GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *>
     auto totalDemandAndMaxFlow = getTotalDemandAndMaxFlow(deliverySites);
     double totalDemand = totalDemandAndMaxFlow.first;
     double maxFlow = totalDemandAndMaxFlow.second;
-
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
 
     // Determine average
     for(auto &pair : vertices) {
@@ -348,22 +238,22 @@ GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *>
     relativeStandardDeviation = sqrt(relativeVariance);
 
     GraphMetrics metrics(
-        absoluteAverage,
-        absoluteVariance,
-        absoluteStandardDeviation,
-        absoluteMaxDifference,
-        relativeAverage,
-        relativeVariance,
-        relativeStandardDeviation,
-        relativeMaxDifference,
-        maxFlow,
-        totalDemand);
+            absoluteAverage,
+            absoluteVariance,
+            absoluteStandardDeviation,
+            absoluteMaxDifference,
+            relativeAverage,
+            relativeVariance,
+            relativeStandardDeviation,
+            relativeMaxDifference,
+            maxFlow,
+            totalDemand);
 
     return metrics;
 }
 
 // Determine total demand and the max flow
-pair<double, double> Graph::getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites) {
+pair<double, double> Graph::getTotalDemandAndMaxFlow(const unordered_map<string, DeliverySite *> *deliverySites) const {
     double maxFlow = 0;
     double totalDemand = 0;
 
@@ -376,6 +266,139 @@ pair<double, double> Graph::getTotalDemandAndMaxFlow(const unordered_map<string,
 
     return {totalDemand, maxFlow};
 }
+
+string Graph::getMainSourceCode() {
+    return mainSourceCode;
+}
+
+string Graph::getMainTargetCode() {
+    return mainTargetCode;
+}
+
+Vertex *Graph::findVertex(const string &code) const {
+    auto it = this->vertices.find(code);
+    if (it != this->vertices.end()) {
+        return it->second;
+    }
+    return nullptr;
+}
+
+bool Graph::addVertex(const string &code, const VertexType &type) {
+    if(findVertex(code) == nullptr) {
+        auto *newVertex = new Vertex(code, type);
+        this->vertices.insert({code, newVertex});
+        return true;
+    }
+    return false;
+}
+
+bool Graph::addEdge(const string &source, const string &dest, double c, double f) const {
+    Vertex *originVertex = findVertex(source);
+    Vertex *destVertex = findVertex(dest);
+
+    if (originVertex && destVertex) {
+        auto e1 = originVertex->addEdge(destVertex, c, f);
+        auto e2 = destVertex->findEdge(originVertex);
+
+        if(e2 != nullptr) {
+            if(e1->getCapacity() == e2->getCapacity()) {
+                e1->setReverse(e2);
+                e2->setReverse(e1);
+            }
+        }
+        return true;
+    }
+
+    return false;
+}
+
+bool Graph::addBidirectionalEdge(const string &source, const string &dest, double c, double flow, double reverseFlow) const {
+    auto v1 = findVertex(source);
+    auto v2 = findVertex(dest);
+    if (v1 == nullptr || v2 == nullptr)
+        return false;
+    auto e1 = v1->addEdge(v2, c, flow);
+    auto e2 = v2->addEdge(v1, c, reverseFlow);
+    e1->setReverse(e2);
+    e2->setReverse(e1);
+    return true;
+}
+
+unordered_map<string, Vertex *> Graph::getVertexSet() const {
+    return this->vertices;
+}
+
+// All Vertices/Edges Flow
+
+void Graph::setAllEdgesFlow(double f) {
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        for(auto e : v->getAdj()) {
+            e->setFlow(f);
+        }
+    }
+}
+
+void Graph::setAllVerticesFlow(double f) {
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setFlow(f);
+    }
+}
+
+void Graph::updateAllVerticesFlow() {
+    for (auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->updateFlow();
+    }
+}
+
+// Main Source & Main Target
+
+void Graph::createMainSource(const unordered_map<string, WaterReservoir *> *waterReservoirs) {
+    this->addVertex(mainSourceCode, VertexType::MainSource);
+
+    for (auto& pair : *waterReservoirs) {
+        string wrCode = pair.first;
+        WaterReservoir* wr = pair.second;
+        double maxDelivery = wr->getMaxDelivery();
+
+        auto it = this->findVertex(wrCode);
+        double f = (*it).getFlow();
+
+        this->addEdge(mainSourceCode, wrCode, maxDelivery, f);
+
+    }
+}
+
+void Graph::createMainTarget(const unordered_map<string, DeliverySite *> *deliverySites) {
+    this->addVertex(mainTargetCode, VertexType::MainTarget);
+
+    for (auto& pair : *deliverySites) {
+        string dsCode = pair.first;
+        DeliverySite* ds = pair.second;
+        double demand = ds->getDemand();
+
+        auto it = this->findVertex(dsCode);
+        double f = (*it).getFlow();
+
+        this->addEdge(dsCode, mainTargetCode, demand, f);
+    }
+}
+
+// Max Flow
+
+void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoirs, const unordered_map<string, DeliverySite *> *deliverySites) {
+    createMainSource(waterReservoirs);
+    createMainTarget(deliverySites);
+
+    this->setAllEdgesFlow(0);
+    this->setAllVerticesFlow(0);
+
+    edmondsKarp(this);
+}
+
+// Load Optimization & Auxiliary Functions
 
 void Graph::optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySites) {
     GraphMetrics initialMetrics = this->calculateMetrics(deliverySites);
@@ -413,7 +436,7 @@ void Graph::optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySi
 
             double maxDiff = -1;
 
-            for(vector<Edge *> p : paths) {
+            for(const vector<Edge *>& p : paths) {
                 double minDiff = INF;
                 for(Edge *e : p) {
                     minDiff = min(minDiff, e->getCapacity() - e->getFlow());
@@ -440,15 +463,31 @@ void Graph::optimizeLoad(const unordered_map<string, DeliverySite *> *deliverySi
     this->updateAllVerticesFlow();
 }
 
-void Graph::dfs(const string current, const string dest, vector<Edge *> &path, vector<vector<Edge *>> &paths) {
-    Vertex *sourc = findVertex(current);
-    sourc->setVisited(true);
+// Load Optimization Auxiliary Functions
+
+vector<vector<Edge *>> Graph::getPaths(const string& source, const string &dest) {
+    vector<vector<Edge *>> paths;
+    vector<Edge *> path;
+
+    for(auto &pair : vertices) {
+        Vertex *v = pair.second;
+        v->setVisited(false);
+    }
+
+    dfs(source, dest, path, paths);
+
+    return paths;
+}
+
+void Graph::dfs(const string &current, const string &dest, vector<Edge *> &path, vector<vector<Edge *>> &paths) {
+    Vertex *source = findVertex(current);
+    source->setVisited(true);
 
     if(current == dest) {
         paths.push_back(path);
     }
     else {
-        for(auto e : sourc->getAdj()) {
+        for(auto e : source->getAdj()) {
             Vertex *u = e->getDest();
             if(!u->isVisited() && e->getCapacity() - e->getFlow() > 0) {
                 path.push_back(e);
@@ -459,49 +498,48 @@ void Graph::dfs(const string current, const string dest, vector<Edge *> &path, v
     }
 }
 
-vector<vector<Edge *>> Graph::getPaths(const string sourc, const string dest) {
-    vector<vector<Edge *>> paths;
-    vector<Edge *> path;
+// Out of Commission Functions
 
-    for(auto pair : vertices) {
-        Vertex *v = pair.second;
-        v->setVisited(false);
-    }
+void Graph::stationOutOfCommission(string const *code) {
+    edmondsKarp(this);
 
-    dfs(sourc, dest, path, paths);
+    Vertex *ps = findVertex(*code);
 
+    this->deactivateVertex(ps);
 
-    return paths;
-}
-
-void Graph::reservoirOutOfCommission(string const *code) {
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
-
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
-
-    Vertex *wr = findVertex(*code);
-
-    this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
-
-    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+    edmondsKarpWithDeactivatedVertex(this, *code);
 
     this->updateAllVerticesFlow();
 }
 
-bool Vertex::hasFlow() {
-    double inFlow = 0;
-    double outFlow = 0;
+void Graph::pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional) {
+    edmondsKarp(this);
 
-    for (auto e: this->getIncoming()) inFlow += e->getFlow();
-    for (auto e: this->getAdj()) outFlow += e->getFlow();
+    Vertex *origin = findVertex(*servicePointA);
+    Vertex *dest = findVertex(*servicePointB);
 
-    if((inFlow > 0) || (outFlow > 0)) return true;
-    return false;
+    this->deactivateVertex(origin);
+
+    if(!unidirectional)
+        this->deactivateVertex(dest);
+
+    edmondsKarpWithDeactivatedEdge(this, *servicePointA, *servicePointB, unidirectional);
+
+    this->updateAllVerticesFlow();
+}
+
+// Deactivate Vertex & Auxiliary Functions
+
+void Graph::deactivateVertex(Vertex *deactivatedVertex) {
+    while(deactivatedVertex->hasFlow()) {
+        // Check for flow cycles
+        if(detectAndDeactivateFlowCycles(deactivatedVertex)) continue;
+        // Find a path between the Master Source and the Master Target that passes through the Deactivated Vertex
+        findAndDeactivateFlowPath(deactivatedVertex);
+    }
 }
 
 bool Graph::detectAndDeactivateFlowCycles(Vertex *deactivatedVertex) {
-
     // Initialize the vertices
     for(auto const &pair : vertices) {
         Vertex *v = pair.second;
@@ -566,7 +604,7 @@ bool Graph::detectAndDeactivateFlowCycles(Vertex *deactivatedVertex) {
     return true;
 }
 
-void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex) {
     Vertex *mainSource = findVertex(mainSourceCode);
     Vertex *mainTarget = findVertex(mainTargetCode);
 
@@ -631,114 +669,4 @@ void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string ma
         e->setFlow(flow - f);
         v = e->getOrig();
     }
-}
-
-void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
-    while(deactivatedVertex->hasFlow()) {
-        // Check for flow cycles
-        if(detectAndDeactivateFlowCycles(deactivatedVertex)) continue;
-        // Find a path between the Master Source and the Master Target that passes through the Deactivated Vertex
-        findAndDeactivateFlowPath(deactivatedVertex, mainSourceCode, mainTargetCode);
-    }
-}
-
-void Graph::setAllEdgesFlow(double f) {
-    for(auto &pair : vertices) {
-        Vertex *v = pair.second;
-        for(auto e : v->getAdj()) {
-            e->setFlow(f);
-        }
-    }
-}
-
-void Graph::setAllVerticesFlow(double f) {
-    for(auto &pair : vertices) {
-        Vertex *v = pair.second;
-        v->setFlow(0);
-    }
-}
-
-void Graph::updateAllVerticesFlow() {
-    for (auto pair : vertices) {
-        Vertex *v = pair.second;
-        v->updateFlow();
-    }
-}
-
-void Vertex::updateFlow() {
-    double incomingFlow = 0;
-    if(this->incoming.size() == 0) {
-        for (auto e: this->adj) {
-            incomingFlow += e->getFlow();
-        }
-    }
-    else {
-        for (auto e: this->incoming) {
-            incomingFlow += e->getFlow();
-        }
-    }
-    this->flow = incomingFlow;
-}
-
-void Graph::pumpingStationOutOfCommission(string const *code) {
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
-
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
-
-    Vertex *ps = findVertex(*code);
-
-    this->deactivateVertex(ps, mainSourceCode, mainTargetCode);
-
-    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
-
-    this->updateAllVerticesFlow();
-}
-
-Graph *Graph::copyGraph() {
-    Graph *newGraph = new Graph();
-
-    // Copy vertices
-    for(auto &pair : vertices) {
-        string code = pair.first;
-        Vertex *v = pair.second;
-
-        newGraph->addVertex(code, v->getType());
-    }
-
-    // Copy edges
-    for(auto &pair : vertices) {
-        string code = pair.first;
-        Vertex *v = pair.second;
-
-        for(auto e : v->getAdj()) {
-            string origin = e->getOrig()->getCode();
-            string dest = e->getDest()->getCode();
-            double capacity = e->getCapacity();
-            double flow = e->getFlow();
-
-            newGraph->addEdge(origin, dest, capacity, flow);
-        }
-    }
-    newGraph->updateAllVerticesFlow();
-    return newGraph;
-}
-
-void Graph::pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional) {
-    string mainSourceCode = "mainSource";
-    string mainTargetCode = "mainTarget";
-
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
-
-    Vertex *origin = findVertex(*servicePointA);
-    Vertex *dest = findVertex(*servicePointB);
-
-    this->deactivateVertex(origin, mainSourceCode, mainTargetCode);
-
-    if(!unidirectional)
-        this->deactivateVertex(dest, mainSourceCode, mainTargetCode);
-
-    edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB, unidirectional);
-
-    this->updateAllVerticesFlow();
 }

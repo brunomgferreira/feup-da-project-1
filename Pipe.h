@@ -3,6 +3,7 @@
 
 
 #include <string>
+#include <utility>
 using namespace std;
 
 /**
@@ -27,14 +28,14 @@ public:
     * @param servicePointA The source service that can be a water reservoir, a pumping station, or delivery site.
     * @param servicePointB The target service that can be a water reservoir, pumping station, or a delivery site.
     * @param capacity The maximum capacity of the pipe.
-    * @param unidirectional Boolean indicating whether the connection between source service and target service is undirected or bidirected
+    * @param unidirectional Boolean indicating whether the connection between source service and target service is undirected or bi-directed
     */
     Pipe(string servicePointA, string servicePointB, double capacity, bool unidirectional);
 
     string getServicePointA();
     string getServicePointB();
-    bool getUnidirectional();
-    double getCapacity();
+    [[nodiscard]] bool getUnidirectional() const;
+    [[nodiscard]] double getCapacity() const;
 };
 
 
