@@ -81,10 +81,10 @@ void augmentFlowAlongPath(Vertex *s, Vertex *t, double f) {
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarp(Graph *g, string source, string target) {
+void edmondsKarp(Graph *g) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
 
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)

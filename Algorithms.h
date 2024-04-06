@@ -46,11 +46,9 @@ void augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
  * @brief Implements the Edmonds-Karp algorithm for maximum flow.
  * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
- * @param source The code of the source vertex.
- * @param target The code of the target vertex.
  * @throws logic_error if source or target vertices are invalid.
  */
-void edmondsKarp(Graph *g, string source, string target);
+void edmondsKarp(Graph *g);
 
 
 /**

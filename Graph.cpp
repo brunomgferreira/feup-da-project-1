@@ -270,7 +270,7 @@ void Graph::maxFlow(const unordered_map<string, WaterReservoir *> *waterReservoi
     this->setAllEdgesFlow(0);
     this->setAllVerticesFlow(0);
 
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
+    edmondsKarp(this);
 }
 
 GraphMetrics Graph::calculateMetrics(const unordered_map<string, DeliverySite *> *deliverySites) {
@@ -476,7 +476,7 @@ vector<vector<Edge *>> Graph::getPaths(const string sourc, const string dest) {
 }
 
 void Graph::reservoirOutOfCommission(string const *code) {
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
+    edmondsKarp(this);
 
     Vertex *wr = findVertex(*code);
 
@@ -679,7 +679,7 @@ void Vertex::updateFlow() {
 }
 
 void Graph::pumpingStationOutOfCommission(string const *code) {
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
+    edmondsKarp(this);
 
     Vertex *ps = findVertex(*code);
 
@@ -720,7 +720,7 @@ Graph *Graph::copyGraph() {
 }
 
 void Graph::pipelineOutOfCommission(string const *servicePointA, string const *servicePointB, bool unidirectional) {
-    edmondsKarp(this, mainSourceCode, mainTargetCode);
+    edmondsKarp(this);
 
     Vertex *origin = findVertex(*servicePointA);
     Vertex *dest = findVertex(*servicePointB);
