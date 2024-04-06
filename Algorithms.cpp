@@ -148,10 +148,10 @@ bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Ver
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const string target, const string deactivated) {
+void edmondsKarpWithDeactivatedVertex(Graph *g, const string deactivated) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
     Vertex* deactivatedVertex = g->findVertex(deactivated);
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)
@@ -225,10 +225,10 @@ bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const
 }
 
 // Main function implementing the Edmonds-Karp algorithm
-void edmondsKarpWithDeactivatedEdge(Graph *g, const string source, const string target, const string servicePointA, const string servicePointB, bool unidirectional) {
+void edmondsKarpWithDeactivatedEdge(Graph *g, const string servicePointA, const string servicePointB, bool unidirectional) {
     // Find source and target vertices in the graph
-    Vertex* s = g->findVertex(source);
-    Vertex* t = g->findVertex(target);
+    Vertex* s = g->findVertex(g->getMainSourceCode());
+    Vertex* t = g->findVertex(g->getMainTargetCode());
 
     // Validate source and target vertices
     if (s == nullptr || t == nullptr || s == t)

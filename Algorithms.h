@@ -76,11 +76,9 @@ bool findAugmentingPathWithDeactivatedVertex(Graph *g, Vertex *s, Vertex *t, Ver
  * @brief Implements the Edmonds-Karp algorithm for maximum flow, now with a deactivated vertex.
  * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
- * @param source Pointer to the source vertex.
- * @param target Pointer to the target vertex.
  * @param deactivated The vertex that should be excluded from consideration.
  */
-void edmondsKarpWithDeactivatedVertex(Graph *g, const string source, const string target, const string deactivated);
+void edmondsKarpWithDeactivatedVertex(Graph *g, const string deactivated);
 
 
 /**
@@ -112,12 +110,10 @@ bool findAugmentingPathWithDeactivatedEdge(Graph *g, Vertex *s, Vertex *t, const
  * @brief Implements the Edmonds-Karp algorithm for maximum flow, now with a deactivated edge.
  * @details Time complexity: O(V E^2).
  * @param g Pointer to the graph.
- * @param source Pointer to the source vertex.
- * @param target Pointer to the target vertex.
  * @param servicePointA The code of the first service point of the deactivated edge.
  * @param servicePointB The code of the second service point of the deactivated edge.
  * @param unidirectional Flag indicating if the edge is unidirectional.
  */
-void edmondsKarpWithDeactivatedEdge(Graph *g, const string source, const string target, const string servicePointA, const string servicePointB, bool unidirectional);
+void edmondsKarpWithDeactivatedEdge(Graph *g, const string servicePointA, const string servicePointB, bool unidirectional);
 
 #endif //WATER_SUPPLY_ANALYSIS_SYSTEM_ALGORITHMS_H

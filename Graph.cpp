@@ -482,7 +482,7 @@ void Graph::reservoirOutOfCommission(string const *code) {
 
     this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
 
-    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+    edmondsKarpWithDeactivatedVertex(this, *code);
 
     this->updateAllVerticesFlow();
 }
@@ -685,7 +685,7 @@ void Graph::pumpingStationOutOfCommission(string const *code) {
 
     this->deactivateVertex(ps, mainSourceCode, mainTargetCode);
 
-    edmondsKarpWithDeactivatedVertex(this, mainSourceCode, mainTargetCode, *code);
+    edmondsKarpWithDeactivatedVertex(this, *code);
 
     this->updateAllVerticesFlow();
 }
@@ -730,7 +730,7 @@ void Graph::pipelineOutOfCommission(string const *servicePointA, string const *s
     if(!unidirectional)
         this->deactivateVertex(dest, mainSourceCode, mainTargetCode);
 
-    edmondsKarpWithDeactivatedEdge(this, mainSourceCode, mainTargetCode, *servicePointA, *servicePointB, unidirectional);
+    edmondsKarpWithDeactivatedEdge(this, *servicePointA, *servicePointB, unidirectional);
 
     this->updateAllVerticesFlow();
 }
