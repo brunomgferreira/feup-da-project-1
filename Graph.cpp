@@ -480,7 +480,7 @@ void Graph::reservoirOutOfCommission(string const *code) {
 
     Vertex *wr = findVertex(*code);
 
-    this->deactivateVertex(wr, mainSourceCode, mainTargetCode);
+    this->deactivateVertex(wr);
 
     edmondsKarpWithDeactivatedVertex(this, *code);
 
@@ -564,7 +564,7 @@ bool Graph::detectAndDeactivateFlowCycles(Vertex *deactivatedVertex) {
     return true;
 }
 
-void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex) {
     Vertex *mainSource = findVertex(mainSourceCode);
     Vertex *mainTarget = findVertex(mainTargetCode);
 
@@ -631,12 +631,12 @@ void Graph::findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string ma
     }
 }
 
-void Graph::deactivateVertex(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode) {
+void Graph::deactivateVertex(Vertex *deactivatedVertex) {
     while(deactivatedVertex->hasFlow()) {
         // Check for flow cycles
         if(detectAndDeactivateFlowCycles(deactivatedVertex)) continue;
         // Find a path between the Master Source and the Master Target that passes through the Deactivated Vertex
-        findAndDeactivateFlowPath(deactivatedVertex, mainSourceCode, mainTargetCode);
+        findAndDeactivateFlowPath(deactivatedVertex);
     }
 }
 
@@ -683,7 +683,7 @@ void Graph::pumpingStationOutOfCommission(string const *code) {
 
     Vertex *ps = findVertex(*code);
 
-    this->deactivateVertex(ps, mainSourceCode, mainTargetCode);
+    this->deactivateVertex(ps);
 
     edmondsKarpWithDeactivatedVertex(this, *code);
 
@@ -725,10 +725,10 @@ void Graph::pipelineOutOfCommission(string const *servicePointA, string const *s
     Vertex *origin = findVertex(*servicePointA);
     Vertex *dest = findVertex(*servicePointB);
 
-    this->deactivateVertex(origin, mainSourceCode, mainTargetCode);
+    this->deactivateVertex(origin);
 
     if(!unidirectional)
-        this->deactivateVertex(dest, mainSourceCode, mainTargetCode);
+        this->deactivateVertex(dest);
 
     edmondsKarpWithDeactivatedEdge(this, *servicePointA, *servicePointB, unidirectional);
 

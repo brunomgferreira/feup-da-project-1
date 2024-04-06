@@ -254,10 +254,8 @@ public:
      * @brief Deactivates a vertex and adjusts the flow in the graph.
      * @details Time complexity: O(V + E).
      * @param v Vertex to be deactivated.
-     * @param mainSourceCode Content of the main source vertex.
-     * @param mainTargetCode Content of the main target vertex.
      */
-    void deactivateVertex(Vertex *v, const string mainSourceCode, const string mainTargetCode);
+    void deactivateVertex(Vertex *v);
 
     /**
      * @brief Sets flow on all edges in the graph to the specified value.
@@ -300,10 +298,8 @@ public:
      * @brief Finds and deactivates a flow path passing through the specified deactivated vertex.
      * @details Time complexity: O(V + E).
      * @param deactivatedVertex The vertex to be deactivated.
-     * @param mainSourceCode Content of the main source vertex.
-     * @param mainTargetCode Content of the main target vertex.
      */
-    void findAndDeactivateFlowPath(Vertex *deactivatedVertex, const string mainSourceCode, const string mainTargetCode);
+    void findAndDeactivateFlowPath(Vertex *deactivatedVertex);
 
     /**
      * @brief Creates a deep copy of the graph.
