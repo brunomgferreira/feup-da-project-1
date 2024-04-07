@@ -30,14 +30,22 @@ private :
 public:
 
     /**
-    * @brief Constructs a graph metrics object with the provided details.
-    *
-    * @details This constructor initializes a graph metrics object with the specified values.
-    * The parameters represent essential information about a graph metrics, including its id and code
-    *
-    * @param id The id of the pumping station.
-    * @param code The unique code assigned to the pumping station.
-    */
+     * @brief Constructor for GraphMetrics class.
+     *
+     * @details This constructor initializes a graph metrics object with the specified values.
+     * The parameters represent essential information about a graph metrics, including its id and code
+     *
+     * @param absoluteAverage The absolute average value.
+     * @param absoluteVariance The absolute variance value.
+     * @param absoluteStandardDeviation The absolute standard deviation value.
+     * @param absoluteMaxDifference The maximum absolute difference value.
+     * @param relativeAverage The relative average value.
+     * @param relativeVariance The relative variance value.
+     * @param relativeStandardDeviation The relative standard deviation value.
+     * @param relativeMaxDifference The maximum relative difference value.
+     * @param maxFlow The maximum flow value.
+     * @param totalDemand The total demand value.
+     */
     explicit GraphMetrics(
         double absoluteAverage = 0,
         double absoluteVariance = 0,
@@ -50,15 +58,74 @@ public:
         double maxFlow = 0,
         double totalDemand = 0);
 
+    /**
+     * @brief Get the absolute average value.
+     *
+     * @return The absolute average value.
+     */
     [[nodiscard]] double getAbsoluteAverage() const;
+
+    /**
+     * @brief Get the absolute variance value.
+     *
+     * @return The absolute variance value.
+     */
     [[nodiscard]] double getAbsoluteVariance() const;
+
+    /**
+     * @brief Get the absolute standard deviation value.
+     *
+     * @return The absolute standard deviation value.
+     */
     [[nodiscard]] double getAbsoluteStandardDeviation() const;
+
+    /**
+     * @brief Get the maximum absolute difference value.
+     *
+     * @return The maximum absolute difference value.
+     */
     [[nodiscard]] double getAbsoluteMaxDifference() const;
+
+    /**
+     * @brief Get the relative average value.
+     *
+     * @return The relative average value.
+     */
     [[nodiscard]] double getRelativeAverage() const;
+
+    /**
+     * @brief Get the relative variance value.
+     *
+     * @return The relative variance value.
+     */
     [[nodiscard]] double getRelativeVariance() const;
+
+    /**
+     * @brief Get the relative standard deviation value.
+     *
+     * @return The relative standard deviation value.
+     */
     [[nodiscard]] double getRelativeStandardDeviation() const;
+
+    /**
+     * @brief Get the maximum relative difference value.
+     *
+     * @return The maximum relative difference value.
+     */
     [[nodiscard]] double getRelativeMaxDifference() const;
+
+    /**
+     * @brief Get the maximum flow value.
+     *
+     * @return The maximum flow value.
+     */
     [[nodiscard]] double getMaxFlow() const;
+
+    /**
+     * @brief Get the total demand value.
+     *
+     * @return The total demand value.
+     */
     [[nodiscard]] double getTotalDemand() const;
 };
 

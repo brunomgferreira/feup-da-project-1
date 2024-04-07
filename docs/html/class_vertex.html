@@ -71,6 +71,11 @@ $(function() {
 <div class="title">Vertex Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a vertex in the graph, corresponding to a <a class="el" href="class_water_reservoir.html" title="Class representing a water reservoir entity in the water supply analysis system.">WaterReservoir</a>, or a <a class="el" href="class_pumping_station.html" title="Class representing a pumping station entity in the water supply analysis system.">PumpingStation</a>, or a <a class="el" href="class_delivery_site.html" title="Class representing a delivery site entity in the water supply analysis system.">DeliverySite</a>, or the MainSource, or the MainTarget .  
+ <a href="class_vertex.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_graph_8h_source.html">Graph.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Vertex:</div>
 <div class="dyncontent">
@@ -79,53 +84,53 @@ Collaboration diagram for Vertex:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6a0dcb645975289ec5c0d0a0f3907821"><td class="memItemLeft" align="right" valign="top"><a id="a6a0dcb645975289ec5c0d0a0f3907821"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Vertex</b> (string code, VertexType type)</td></tr>
+<tr class="memitem:a6a0dcb645975289ec5c0d0a0f3907821"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a6a0dcb645975289ec5c0d0a0f3907821">Vertex</a> (string code, VertexType type)</td></tr>
+<tr class="memdesc:a6a0dcb645975289ec5c0d0a0f3907821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_vertex.html" title="Represents a vertex in the graph, corresponding to a WaterReservoir, or a PumpingStation,...">Vertex</a> class.  <a href="class_vertex.html#a6a0dcb645975289ec5c0d0a0f3907821">More...</a><br /></td></tr>
 <tr class="separator:a6a0dcb645975289ec5c0d0a0f3907821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4ccd48170a1530ec1db5eb306357a74"><td class="memItemLeft" align="right" valign="top"><a id="ad4ccd48170a1530ec1db5eb306357a74"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (<a class="el" href="class_vertex.html">Vertex</a> &amp;vertex) const</td></tr>
+<tr class="memitem:ad4ccd48170a1530ec1db5eb306357a74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#ad4ccd48170a1530ec1db5eb306357a74">operator&lt;</a> (<a class="el" href="class_vertex.html">Vertex</a> &amp;vertex) const</td></tr>
+<tr class="memdesc:ad4ccd48170a1530ec1db5eb306357a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less-than comparison operator for vertices based on distance.  <a href="class_vertex.html#ad4ccd48170a1530ec1db5eb306357a74">More...</a><br /></td></tr>
 <tr class="separator:ad4ccd48170a1530ec1db5eb306357a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad535d46dc4a5c2569b87b72ad0cbd2d3"><td class="memItemLeft" align="right" valign="top"><a id="ad535d46dc4a5c2569b87b72ad0cbd2d3"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>getCode</b> () const</td></tr>
+<tr class="memitem:ad535d46dc4a5c2569b87b72ad0cbd2d3"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#ad535d46dc4a5c2569b87b72ad0cbd2d3">getCode</a> () const</td></tr>
+<tr class="memdesc:ad535d46dc4a5c2569b87b72ad0cbd2d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the code associated with the vertex.  <a href="class_vertex.html#ad535d46dc4a5c2569b87b72ad0cbd2d3">More...</a><br /></td></tr>
 <tr class="separator:ad535d46dc4a5c2569b87b72ad0cbd2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c108e91ff65d2c1e568c682a821a3c4"><td class="memItemLeft" align="right" valign="top"><a id="a7c108e91ff65d2c1e568c682a821a3c4"></a>
-VertexType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> () const</td></tr>
+<tr class="memitem:a7c108e91ff65d2c1e568c682a821a3c4"><td class="memItemLeft" align="right" valign="top">VertexType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a7c108e91ff65d2c1e568c682a821a3c4">getType</a> () const</td></tr>
+<tr class="memdesc:a7c108e91ff65d2c1e568c682a821a3c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the vertex.  <a href="class_vertex.html#a7c108e91ff65d2c1e568c682a821a3c4">More...</a><br /></td></tr>
 <tr class="separator:a7c108e91ff65d2c1e568c682a821a3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a843f1e651c3ee0f3bcbaa11420b29282"><td class="memItemLeft" align="right" valign="top"><a id="a843f1e651c3ee0f3bcbaa11420b29282"></a>
-vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAdj</b> () const</td></tr>
+<tr class="memitem:a843f1e651c3ee0f3bcbaa11420b29282"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a843f1e651c3ee0f3bcbaa11420b29282">getAdj</a> () const</td></tr>
+<tr class="memdesc:a843f1e651c3ee0f3bcbaa11420b29282"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the adjacent edges of the vertex.  <a href="class_vertex.html#a843f1e651c3ee0f3bcbaa11420b29282">More...</a><br /></td></tr>
 <tr class="separator:a843f1e651c3ee0f3bcbaa11420b29282"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4bd82105b85ee53a917391f4811cd8a"><td class="memItemLeft" align="right" valign="top"><a id="aa4bd82105b85ee53a917391f4811cd8a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isVisited</b> () const</td></tr>
+<tr class="memitem:aa4bd82105b85ee53a917391f4811cd8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#aa4bd82105b85ee53a917391f4811cd8a">isVisited</a> () const</td></tr>
+<tr class="memdesc:aa4bd82105b85ee53a917391f4811cd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the vertex has been visited.  <a href="class_vertex.html#aa4bd82105b85ee53a917391f4811cd8a">More...</a><br /></td></tr>
 <tr class="separator:aa4bd82105b85ee53a917391f4811cd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e120e57da6af94892fae44e05868794"><td class="memItemLeft" align="right" valign="top"><a id="a6e120e57da6af94892fae44e05868794"></a>
-<a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getPath</b> () const</td></tr>
+<tr class="memitem:a6e120e57da6af94892fae44e05868794"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a6e120e57da6af94892fae44e05868794">getPath</a> () const</td></tr>
+<tr class="memdesc:a6e120e57da6af94892fae44e05868794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path associated with the vertex.  <a href="class_vertex.html#a6e120e57da6af94892fae44e05868794">More...</a><br /></td></tr>
 <tr class="separator:a6e120e57da6af94892fae44e05868794"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe9510eca16890ce358c1f67f8102861"><td class="memItemLeft" align="right" valign="top"><a id="afe9510eca16890ce358c1f67f8102861"></a>
-vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getIncoming</b> () const</td></tr>
+<tr class="memitem:afe9510eca16890ce358c1f67f8102861"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#afe9510eca16890ce358c1f67f8102861">getIncoming</a> () const</td></tr>
+<tr class="memdesc:afe9510eca16890ce358c1f67f8102861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the incoming edges of the vertex.  <a href="class_vertex.html#afe9510eca16890ce358c1f67f8102861">More...</a><br /></td></tr>
 <tr class="separator:afe9510eca16890ce358c1f67f8102861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2270d909b8d491d5b5e38bf74b4b6f5e"><td class="memItemLeft" align="right" valign="top"><a id="a2270d909b8d491d5b5e38bf74b4b6f5e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getFlow</b> () const</td></tr>
+<tr class="memitem:a2270d909b8d491d5b5e38bf74b4b6f5e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a2270d909b8d491d5b5e38bf74b4b6f5e">getFlow</a> () const</td></tr>
+<tr class="memdesc:a2270d909b8d491d5b5e38bf74b4b6f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the flow value associated with the vertex.  <a href="class_vertex.html#a2270d909b8d491d5b5e38bf74b4b6f5e">More...</a><br /></td></tr>
 <tr class="separator:a2270d909b8d491d5b5e38bf74b4b6f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97bc53db81694cce56c2438fbba348e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a97bc53db81694cce56c2438fbba348e6">hasFlow</a> () const</td></tr>
-<tr class="memdesc:a97bc53db81694cce56c2438fbba348e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the vertex has flow.  <a href="class_vertex.html#a97bc53db81694cce56c2438fbba348e6">More...</a><br /></td></tr>
+<tr class="memdesc:a97bc53db81694cce56c2438fbba348e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the vertex has non-zero flow.  <a href="class_vertex.html#a97bc53db81694cce56c2438fbba348e6">More...</a><br /></td></tr>
 <tr class="separator:a97bc53db81694cce56c2438fbba348e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb04afeef3cb28ebea87edc0bdee4c0b"><td class="memItemLeft" align="right" valign="top"><a id="abb04afeef3cb28ebea87edc0bdee4c0b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setFlow</b> (double value)</td></tr>
+<tr class="memitem:abb04afeef3cb28ebea87edc0bdee4c0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#abb04afeef3cb28ebea87edc0bdee4c0b">setFlow</a> (double value)</td></tr>
+<tr class="memdesc:abb04afeef3cb28ebea87edc0bdee4c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the flow value associated with the vertex.  <a href="class_vertex.html#abb04afeef3cb28ebea87edc0bdee4c0b">More...</a><br /></td></tr>
 <tr class="separator:abb04afeef3cb28ebea87edc0bdee4c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a19294f6ec562fac02af3cb3223a509"><td class="memItemLeft" align="right" valign="top"><a id="a5a19294f6ec562fac02af3cb3223a509"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateFlow</b> ()</td></tr>
+<tr class="memitem:a5a19294f6ec562fac02af3cb3223a509"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a5a19294f6ec562fac02af3cb3223a509">updateFlow</a> ()</td></tr>
+<tr class="memdesc:a5a19294f6ec562fac02af3cb3223a509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the flow value associated with the vertex based on incoming edges.  <a href="class_vertex.html#a5a19294f6ec562fac02af3cb3223a509">More...</a><br /></td></tr>
 <tr class="separator:a5a19294f6ec562fac02af3cb3223a509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac29125ddca49e8c53f43cc03b103f0e4"><td class="memItemLeft" align="right" valign="top"><a id="ac29125ddca49e8c53f43cc03b103f0e4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setVisited</b> (bool isVisited)</td></tr>
+<tr class="memitem:ac29125ddca49e8c53f43cc03b103f0e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#ac29125ddca49e8c53f43cc03b103f0e4">setVisited</a> (bool <a class="el" href="class_vertex.html#aa4bd82105b85ee53a917391f4811cd8a">isVisited</a>)</td></tr>
+<tr class="memdesc:ac29125ddca49e8c53f43cc03b103f0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the visited status of the vertex.  <a href="class_vertex.html#ac29125ddca49e8c53f43cc03b103f0e4">More...</a><br /></td></tr>
 <tr class="separator:ac29125ddca49e8c53f43cc03b103f0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91581ece4cb3c4efa158a2e5df54649a"><td class="memItemLeft" align="right" valign="top"><a id="a91581ece4cb3c4efa158a2e5df54649a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPath</b> (<a class="el" href="class_edge.html">Edge</a> *newPath)</td></tr>
+<tr class="memitem:a91581ece4cb3c4efa158a2e5df54649a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a91581ece4cb3c4efa158a2e5df54649a">setPath</a> (<a class="el" href="class_edge.html">Edge</a> *newPath)</td></tr>
+<tr class="memdesc:a91581ece4cb3c4efa158a2e5df54649a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the path associated with the vertex.  <a href="class_vertex.html#a91581ece4cb3c4efa158a2e5df54649a">More...</a><br /></td></tr>
 <tr class="separator:a91581ece4cb3c4efa158a2e5df54649a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23e78099e5a8b65139752624e32ec497"><td class="memItemLeft" align="right" valign="top"><a id="a23e78099e5a8b65139752624e32ec497"></a>
-<a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (<a class="el" href="class_vertex.html">Vertex</a> *dest, double c, double f=0)</td></tr>
+<tr class="memitem:a23e78099e5a8b65139752624e32ec497"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a23e78099e5a8b65139752624e32ec497">addEdge</a> (<a class="el" href="class_vertex.html">Vertex</a> *dest, double c, double f=0)</td></tr>
+<tr class="memdesc:a23e78099e5a8b65139752624e32ec497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an edge between this vertex and a destination vertex.  <a href="class_vertex.html#a23e78099e5a8b65139752624e32ec497">More...</a><br /></td></tr>
 <tr class="separator:a23e78099e5a8b65139752624e32ec497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a063524e44d77d38d795013fc60ca935c"><td class="memItemLeft" align="right" valign="top"><a id="a063524e44d77d38d795013fc60ca935c"></a>
-<a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>findEdge</b> (<a class="el" href="class_vertex.html">Vertex</a> *destVertex)</td></tr>
+<tr class="memitem:a063524e44d77d38d795013fc60ca935c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a063524e44d77d38d795013fc60ca935c">findEdge</a> (<a class="el" href="class_vertex.html">Vertex</a> *destVertex)</td></tr>
+<tr class="memdesc:a063524e44d77d38d795013fc60ca935c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find an edge between this vertex and a destination vertex.  <a href="class_vertex.html#a063524e44d77d38d795013fc60ca935c">More...</a><br /></td></tr>
 <tr class="separator:a063524e44d77d38d795013fc60ca935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -155,7 +160,239 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>dist</b> = 0</td></
 vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>incoming</b></td></tr>
 <tr class="separator:a6774ef7c5d75b662d58b9099e02a9159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a vertex in the graph, corresponding to a <a class="el" href="class_water_reservoir.html" title="Class representing a water reservoir entity in the water supply analysis system.">WaterReservoir</a>, or a <a class="el" href="class_pumping_station.html" title="Class representing a pumping station entity in the water supply analysis system.">PumpingStation</a>, or a <a class="el" href="class_delivery_site.html" title="Class representing a delivery site entity in the water supply analysis system.">DeliverySite</a>, or the MainSource, or the MainTarget . </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6a0dcb645975289ec5c0d0a0f3907821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a0dcb645975289ec5c0d0a0f3907821">&#9670;&nbsp;</a></span>Vertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vertex::Vertex </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexType&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_vertex.html" title="Represents a vertex in the graph, corresponding to a WaterReservoir, or a PumpingStation,...">Vertex</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code associated with the vertex. </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a23e78099e5a8b65139752624e32ec497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e78099e5a8b65139752624e32ec497">&#9670;&nbsp;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">Edge</a> * Vertex::addEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>f</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an edge between this vertex and a destination vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Pointer to the destination vertex. </td></tr>
+    <tr><td class="paramname">c</td><td>Capacity of the edge. </td></tr>
+    <tr><td class="paramname">f</td><td>Flow of the edge.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the newly added edge. </dd></dl>
+
+</div>
+</div>
+<a id="a063524e44d77d38d795013fc60ca935c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063524e44d77d38d795013fc60ca935c">&#9670;&nbsp;</a></span>findEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">Edge</a> * Vertex::findEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>destVertex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find an edge between this vertex and a destination vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destVertex</td><td>Pointer to the destination vertex.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the found edge if exists, otherwise nullptr. </dd></dl>
+
+</div>
+</div>
+<a id="a843f1e651c3ee0f3bcbaa11420b29282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843f1e651c3ee0f3bcbaa11420b29282">&#9670;&nbsp;</a></span>getAdj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; Vertex::getAdj </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the adjacent edges of the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of pointers to adjacent edges. </dd></dl>
+
+</div>
+</div>
+<a id="ad535d46dc4a5c2569b87b72ad0cbd2d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad535d46dc4a5c2569b87b72ad0cbd2d3">&#9670;&nbsp;</a></span>getCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Vertex::getCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the code associated with the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>The code of the vertex. </dd></dl>
+
+</div>
+</div>
+<a id="a2270d909b8d491d5b5e38bf74b4b6f5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2270d909b8d491d5b5e38bf74b4b6f5e">&#9670;&nbsp;</a></span>getFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vertex::getFlow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the flow value associated with the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>The flow value of the vertex. </dd></dl>
+
+</div>
+</div>
+<a id="afe9510eca16890ce358c1f67f8102861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe9510eca16890ce358c1f67f8102861">&#9670;&nbsp;</a></span>getIncoming()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; Vertex::getIncoming </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the incoming edges of the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of pointers to incoming edges. </dd></dl>
+
+</div>
+</div>
+<a id="a6e120e57da6af94892fae44e05868794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e120e57da6af94892fae44e05868794">&#9670;&nbsp;</a></span>getPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">Edge</a> * Vertex::getPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the path associated with the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the path edge. </dd></dl>
+
+</div>
+</div>
+<a id="a7c108e91ff65d2c1e568c682a821a3c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c108e91ff65d2c1e568c682a821a3c4">&#9670;&nbsp;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertexType Vertex::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the type of the vertex. </p>
+<dl class="section return"><dt>Returns</dt><dd>The type of the vertex. </dd></dl>
+
+</div>
+</div>
 <a id="a97bc53db81694cce56c2438fbba348e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97bc53db81694cce56c2438fbba348e6">&#9670;&nbsp;</a></span>hasFlow()</h2>
 
@@ -171,8 +408,156 @@ vector&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td cl
       </table>
 </div><div class="memdoc">
 
-<p>Checks if the vertex has flow. </p>
-<p>Time complexity: O(E). </p><dl class="section return"><dt>Returns</dt><dd>true if the vertex has flow, false otherwise. </dd></dl>
+<p>Check if the vertex has non-zero flow. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex has non-zero flow, otherwise false.</dd></dl>
+<p><b>Time Complexity:</b><br  />
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; O(E) </p>
+
+</div>
+</div>
+<a id="aa4bd82105b85ee53a917391f4811cd8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4bd82105b85ee53a917391f4811cd8a">&#9670;&nbsp;</a></span>isVisited()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Vertex::isVisited </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the vertex has been visited. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex has been visited, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="ad4ccd48170a1530ec1db5eb306357a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ccd48170a1530ec1db5eb306357a74">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Vertex::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> &amp;&#160;</td>
+          <td class="paramname"><em>vertex</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Less-than comparison operator for vertices based on distance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertex</td><td>The vertex to compare against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this vertex's distance is less than the other vertex's distance, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="abb04afeef3cb28ebea87edc0bdee4c0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb04afeef3cb28ebea87edc0bdee4c0b">&#9670;&nbsp;</a></span>setFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vertex::setFlow </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the flow value associated with the vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The flow value to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a91581ece4cb3c4efa158a2e5df54649a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91581ece4cb3c4efa158a2e5df54649a">&#9670;&nbsp;</a></span>setPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vertex::setPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_edge.html">Edge</a> *&#160;</td>
+          <td class="paramname"><em>newPath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the path associated with the vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newPath</td><td>Pointer to the new path edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac29125ddca49e8c53f43cc03b103f0e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29125ddca49e8c53f43cc03b103f0e4">&#9670;&nbsp;</a></span>setVisited()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vertex::setVisited </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isVisited</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the visited status of the vertex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">isVisited</td><td>True if the vertex is visited, otherwise false. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a19294f6ec562fac02af3cb3223a509"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a19294f6ec562fac02af3cb3223a509">&#9670;&nbsp;</a></span>updateFlow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vertex::updateFlow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the flow value associated with the vertex based on incoming edges. </p>
+<p><b>Time Complexity:</b><br  />
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; O(n) where n is the number of incoming edges or, if there's no incoming edges the number of out edges. </p>
 
 </div>
 </div>

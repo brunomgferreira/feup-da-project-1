@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadoptimization_135',['loadOptimization',['../class_data.html#af486c4151d67d15c6b41016357773329',1,'Data']]]
+  ['isvisited_208',['isVisited',['../class_vertex.html#aa4bd82105b85ee53a917391f4811cd8a',1,'Vertex']]]
 ];

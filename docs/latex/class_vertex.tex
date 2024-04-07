@@ -2,58 +2,52 @@
 \label{class_vertex}\index{Vertex@{Vertex}}
 
 
+Represents a vertex in the graph, corresponding to a \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}}, or a \mbox{\hyperlink{class_pumping_station}{Pumping\+Station}}, or a \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}}, or the Main\+Source, or the Main\+Target .  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+
+
 Collaboration diagram for Vertex\+:
 % FIG 0
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}\label{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}} 
-{\bfseries Vertex} (string code, Vertex\+Type type)
-\item 
-\mbox{\Hypertarget{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}\label{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}} 
-bool {\bfseries operator$<$} (\mbox{\hyperlink{class_vertex}{Vertex}} \&vertex) const
-\item 
-\mbox{\Hypertarget{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}\label{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}} 
-string {\bfseries get\+Code} () const
-\item 
-\mbox{\Hypertarget{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}\label{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}} 
-Vertex\+Type {\bfseries get\+Type} () const
-\item 
-\mbox{\Hypertarget{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}\label{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}} 
-vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries get\+Adj} () const
-\item 
-\mbox{\Hypertarget{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}\label{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}} 
-bool {\bfseries is\+Visited} () const
-\item 
-\mbox{\Hypertarget{class_vertex_a6e120e57da6af94892fae44e05868794}\label{class_vertex_a6e120e57da6af94892fae44e05868794}} 
-\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries get\+Path} () const
-\item 
-\mbox{\Hypertarget{class_vertex_afe9510eca16890ce358c1f67f8102861}\label{class_vertex_afe9510eca16890ce358c1f67f8102861}} 
-vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries get\+Incoming} () const
-\item 
-\mbox{\Hypertarget{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}\label{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}} 
-double {\bfseries get\+Flow} () const
-\item 
+\mbox{\hyperlink{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}{Vertex}} (string code, Vertex\+Type type)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_vertex}{Vertex}} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}{operator$<$}} (\mbox{\hyperlink{class_vertex}{Vertex}} \&vertex) const
+\begin{DoxyCompactList}\small\item\em Less-\/than comparison operator for vertices based on distance. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}{get\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Get the code associated with the vertex. \end{DoxyCompactList}\item 
+Vertex\+Type \mbox{\hyperlink{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the type of the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}{get\+Adj}} () const
+\begin{DoxyCompactList}\small\item\em Get the adjacent edges of the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}} () const
+\begin{DoxyCompactList}\small\item\em Check if the vertex has been visited. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_vertex_a6e120e57da6af94892fae44e05868794}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Get the path associated with the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{class_vertex_afe9510eca16890ce358c1f67f8102861}{get\+Incoming}} () const
+\begin{DoxyCompactList}\small\item\em Get the incoming edges of the vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}{get\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Get the flow value associated with the vertex. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_vertex_a97bc53db81694cce56c2438fbba348e6}{has\+Flow}} () const
-\begin{DoxyCompactList}\small\item\em Checks if the vertex has flow. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}\label{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}} 
-void {\bfseries set\+Flow} (double value)
-\item 
-\mbox{\Hypertarget{class_vertex_a5a19294f6ec562fac02af3cb3223a509}\label{class_vertex_a5a19294f6ec562fac02af3cb3223a509}} 
-void {\bfseries update\+Flow} ()
-\item 
-\mbox{\Hypertarget{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}\label{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}} 
-void {\bfseries set\+Visited} (bool is\+Visited)
-\item 
-\mbox{\Hypertarget{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}\label{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}} 
-void {\bfseries set\+Path} (\mbox{\hyperlink{class_edge}{Edge}} $\ast$new\+Path)
-\item 
-\mbox{\Hypertarget{class_vertex_a23e78099e5a8b65139752624e32ec497}\label{class_vertex_a23e78099e5a8b65139752624e32ec497}} 
-\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries add\+Edge} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest, double c, double f=0)
-\item 
-\mbox{\Hypertarget{class_vertex_a063524e44d77d38d795013fc60ca935c}\label{class_vertex_a063524e44d77d38d795013fc60ca935c}} 
-\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries find\+Edge} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest\+Vertex)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the vertex has non-\/zero flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}{set\+Flow}} (double value)
+\begin{DoxyCompactList}\small\item\em Set the flow value associated with the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_a5a19294f6ec562fac02af3cb3223a509}{update\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Update the flow value associated with the vertex based on incoming edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}{set\+Visited}} (bool \mbox{\hyperlink{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}})
+\begin{DoxyCompactList}\small\item\em Set the visited status of the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}{set\+Path}} (\mbox{\hyperlink{class_edge}{Edge}} $\ast$new\+Path)
+\begin{DoxyCompactList}\small\item\em Set the path associated with the vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_vertex_a23e78099e5a8b65139752624e32ec497}{add\+Edge}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest, double c, double f=0)
+\begin{DoxyCompactList}\small\item\em Add an edge between this vertex and a destination vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_vertex_a063524e44d77d38d795013fc60ca935c}{find\+Edge}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest\+Vertex)
+\begin{DoxyCompactList}\small\item\em Find an edge between this vertex and a destination vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -83,7 +77,148 @@ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries incoming}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Represents a vertex in the graph, corresponding to a \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}}, or a \mbox{\hyperlink{class_pumping_station}{Pumping\+Station}}, or a \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}}, or the Main\+Source, or the Main\+Target . 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}\label{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex\+::\+Vertex (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{Vertex\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_vertex}{Vertex}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code associated with the vertex. \\
+\hline
+{\em type} & The type of the vertex. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vertex_a23e78099e5a8b65139752624e32ec497}\label{class_vertex_a23e78099e5a8b65139752624e32ec497}} 
+\index{Vertex@{Vertex}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{dest,  }\item[{double}]{c,  }\item[{double}]{f = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Add an edge between this vertex and a destination vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em c} & Capacity of the edge. \\
+\hline
+{\em f} & Flow of the edge.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly added edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a063524e44d77d38d795013fc60ca935c}\label{class_vertex_a063524e44d77d38d795013fc60ca935c}} 
+\index{Vertex@{Vertex}!findEdge@{findEdge}}
+\index{findEdge@{findEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{findEdge()}{findEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Vertex\+::find\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{dest\+Vertex }\end{DoxyParamCaption})}
+
+
+
+Find an edge between this vertex and a destination vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Vertex} & Pointer to the destination vertex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the found edge if exists, otherwise nullptr. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}\label{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}} 
+\index{Vertex@{Vertex}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the adjacent edges of the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Vector of pointers to adjacent edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}\label{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}} 
+\index{Vertex@{Vertex}!getCode@{getCode}}
+\index{getCode@{getCode}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Vertex\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the code associated with the vertex. 
+
+\begin{DoxyReturn}{Returns}
+The code of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}\label{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}} 
+\index{Vertex@{Vertex}!getFlow@{getFlow}}
+\index{getFlow@{getFlow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
+{\footnotesize\ttfamily double Vertex\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the flow value associated with the vertex. 
+
+\begin{DoxyReturn}{Returns}
+The flow value of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_afe9510eca16890ce358c1f67f8102861}\label{class_vertex_afe9510eca16890ce358c1f67f8102861}} 
+\index{Vertex@{Vertex}!getIncoming@{getIncoming}}
+\index{getIncoming@{getIncoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getIncoming()}{getIncoming()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the incoming edges of the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Vector of pointers to incoming edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a6e120e57da6af94892fae44e05868794}\label{class_vertex_a6e120e57da6af94892fae44e05868794}} 
+\index{Vertex@{Vertex}!getPath@{getPath}}
+\index{getPath@{getPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the path associated with the vertex. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the path edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}\label{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}} 
+\index{Vertex@{Vertex}!getType@{getType}}
+\index{getType@{getType}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily Vertex\+Type Vertex\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the type of the vertex. 
+
+\begin{DoxyReturn}{Returns}
+The type of the vertex. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_vertex_a97bc53db81694cce56c2438fbba348e6}\label{class_vertex_a97bc53db81694cce56c2438fbba348e6}} 
 \index{Vertex@{Vertex}!hasFlow@{hasFlow}}
 \index{hasFlow@{hasFlow}!Vertex@{Vertex}}
@@ -92,12 +227,100 @@ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries incoming}
 
 
 
-Checks if the vertex has flow. 
+Check if the vertex has non-\/zero flow. 
 
-Time complexity\+: O(\+E). \begin{DoxyReturn}{Returns}
-true if the vertex has flow, false otherwise. 
+\begin{DoxyReturn}{Returns}
+True if the vertex has non-\/zero flow, otherwise false.
 \end{DoxyReturn}
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ O(\+E) \mbox{\Hypertarget{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}\label{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}} 
+\index{Vertex@{Vertex}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Check if the vertex has been visited. 
+
+\begin{DoxyReturn}{Returns}
+True if the vertex has been visited, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}\label{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}} 
+\index{Vertex@{Vertex}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Vertex\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} \&}]{vertex }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than comparison operator for vertices based on distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & The vertex to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this vertex\textquotesingle{}s distance is less than the other vertex\textquotesingle{}s distance, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}\label{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}} 
+\index{Vertex@{Vertex}!setFlow@{setFlow}}
+\index{setFlow@{setFlow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Flow (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the flow value associated with the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The flow value to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}\label{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}} 
+\index{Vertex@{Vertex}!setPath@{setPath}}
+\index{setPath@{setPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{Edge}} $\ast$}]{new\+Path }\end{DoxyParamCaption})}
+
+
+
+Set the path associated with the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Path} & Pointer to the new path edge. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}\label{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}} 
+\index{Vertex@{Vertex}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{is\+Visited }\end{DoxyParamCaption})}
+
+
+
+Set the visited status of the vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Visited} & True if the vertex is visited, otherwise false. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_a5a19294f6ec562fac02af3cb3223a509}\label{class_vertex_a5a19294f6ec562fac02af3cb3223a509}} 
+\index{Vertex@{Vertex}!updateFlow@{updateFlow}}
+\index{updateFlow@{updateFlow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{updateFlow()}{updateFlow()}}
+{\footnotesize\ttfamily void Vertex\+::update\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the flow value associated with the vertex based on incoming edges. 
+
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ O(n) where n is the number of incoming edges or, if there\textquotesingle{}s no incoming edges the number of out edges. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

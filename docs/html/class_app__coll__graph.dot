@@ -7,7 +7,7 @@ digraph "App"
   Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data" ,fontname="Helvetica"];
   Node2 [label="Data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_data.html",tooltip="Class that saves all the program data."];
   Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g" ,fontname="Helvetica"];
-  Node3 [label="Graph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graph.html",tooltip=" "];
+  Node3 [label="Graph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graph.html",tooltip="Class representing a graph."];
   Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" metrics" ,fontname="Helvetica"];
   Node4 [label="GraphMetrics",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graph_metrics.html",tooltip="Class to save the metrics of a given graph."];
   Node1 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" instance" ,fontname="Helvetica"];

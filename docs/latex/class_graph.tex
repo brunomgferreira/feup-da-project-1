@@ -1,59 +1,65 @@
 \hypertarget{class_graph}{}\doxysection{Graph Class Reference}
 \label{class_graph}\index{Graph@{Graph}}
+
+
+Class representing a graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_graph}{Graph}} $\ast$ \mbox{\hyperlink{class_graph_aa0ece00411674a2d73696555cf494daf}{copy\+Graph}} ()
 \begin{DoxyCompactList}\small\item\em Creates a deep copy of the graph. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} \mbox{\hyperlink{class_graph_a5f4522e8e26a13194b45365b33694925}{calculate\+Metrics}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
-\begin{DoxyCompactList}\small\item\em Calculates various metrics for the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Calculates various metrics for the graph based on delivery site flow data. \end{DoxyCompactList}\item 
 pair$<$ double, double $>$ \mbox{\hyperlink{class_graph_a0de64474940d70519941928f8367b643}{get\+Total\+Demand\+And\+Max\+Flow}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites) const
-\begin{DoxyCompactList}\small\item\em Calculates total demand and maximum flow in the graph. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_graph_a9c2090db526062a84a9cfb25073685cf}\label{class_graph_a9c2090db526062a84a9cfb25073685cf}} 
-string {\bfseries get\+Main\+Source\+Code} ()
-\item 
-\mbox{\Hypertarget{class_graph_a42c74724f79cd6306afa588e0bd113cd}\label{class_graph_a42c74724f79cd6306afa588e0bd113cd}} 
-string {\bfseries get\+Main\+Target\+Code} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Calculates the total demand and maximum flow in the graph. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_graph_a9c2090db526062a84a9cfb25073685cf}{get\+Main\+Source\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the code of the main source vertex in the graph. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_graph_a42c74724f79cd6306afa588e0bd113cd}{get\+Main\+Target\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the code of the main target vertex in the graph. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ \mbox{\hyperlink{class_graph_a6d08c48629578407e852d2d8dcadbbd4}{find\+Vertex}} (const string \&code) const
-\begin{DoxyCompactList}\small\item\em Auxiliary function to find a vertex in the graph, given its content. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds a vertex in the graph based on its code. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}{add\+Vertex}} (const string \&code, const Vertex\+Type \&type)
-\begin{DoxyCompactList}\small\item\em Adds a vertex with a given content or info (in) to a graph (this). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a vertex to the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_graph_ab8479c5a64f0b007960e8621a3c7660c}{add\+Edge}} (const string \&source, const string \&dest, double c, double f=0) const
-\begin{DoxyCompactList}\small\item\em Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds an edge between two vertices in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_graph_a96da6414041b1a856bdff1a9e6abdb76}{add\+Bidirectional\+Edge}} (const string \&source, const string \&dest, double c, double flow=0, double reverse\+Flow=0) const
-\begin{DoxyCompactList}\small\item\em Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}\label{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}} 
-unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ $>$ {\bfseries get\+Vertex\+Set} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Adds a bidirectional edge between two vertices in the graph. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}{get\+Vertex\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the set of vertices in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_abe593ef28d5fed82f4e6118d53473b15}{set\+All\+Edges\+Flow}} (double f)
-\begin{DoxyCompactList}\small\item\em Sets flow on all edges in the graph to the specified value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the flow value of all edges in the graph to a specified value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a2e5f0d564741c6541d1f0db43df676f2}{set\+All\+Vertices\+Flow}} (double f)
-\begin{DoxyCompactList}\small\item\em Sets flow on all vertices in the graph to the specified value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the flow value of all vertices in the graph to a specified value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a9ffc84f05075b2492edc7c581bd8e883}{update\+All\+Vertices\+Flow}} ()
-\begin{DoxyCompactList}\small\item\em Updates flow on all vertices in the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the flow values of all vertices in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}{create\+Main\+Source}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$water\+Reservoirs)
-\begin{DoxyCompactList}\small\item\em Creates a main source vertex and connects it to water reservoirs. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates the main source vertex and connects it to water reservoirs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a6858292fa146e19caba11f538530893d}{create\+Main\+Target}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
-\begin{DoxyCompactList}\small\item\em Creates a main target vertex and its connections to delivery sites. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates the main target vertex and connects it to delivery sites. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}{max\+Flow}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$water\+Reservoirs, const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
 \begin{DoxyCompactList}\small\item\em Computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a488e6f0af66b7961d836fbdfcd775477}{optimize\+Load}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
-\begin{DoxyCompactList}\small\item\em Optimizes the load distribution in the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Optimizes the load distribution in the graph to improve flow characteristics. \end{DoxyCompactList}\item 
 vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ $>$ \mbox{\hyperlink{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}{get\+Paths}} (const string \&source, const string \&dest)
-\begin{DoxyCompactList}\small\item\em Finds all paths between two vertices of the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds all paths from a source vertex to a destination vertex in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a936c7892f6bbef325d2151dfe0309d2e}{dfs}} (const string \&current, const string \&dest, vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \&path, vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$$>$ \&paths)
-\begin{DoxyCompactList}\small\item\em Performs depth-\/first search (DFS) to find all paths from a source to a destination vertex. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs depth-\/first search (DFS) to find paths from a source vertex to a destination vertex in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}{station\+Out\+Of\+Commission}} (string const $\ast$code)
-\begin{DoxyCompactList}\small\item\em Marks a station as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Marks a pumping station or reservoir as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_adb025c5c980901d2be35503cb3ea6726}{pipeline\+Out\+Of\+Commission}} (string const $\ast$service\+PointA, string const $\ast$service\+PointB, bool unidirectional)
-\begin{DoxyCompactList}\small\item\em Marks a pipeline as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Marks a pipeline between two service points as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_a20e6637316cccc7ea45ea52b86a2814d}{deactivate\+Vertex}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$v)
 \begin{DoxyCompactList}\small\item\em Deactivates a vertex and adjusts the flow in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_graph_aead61bcc1a44b6440713b34c9a6cff99}{detect\+And\+Deactivate\+Flow\+Cycles}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$deactivated\+Vertex)
-\begin{DoxyCompactList}\small\item\em Detects and deactivates flow cycles containing the specified vertex. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Detects and deactivates flow cycles originating from a specified vertex. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}{find\+And\+Deactivate\+Flow\+Path}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$deactivated\+Vertex)
-\begin{DoxyCompactList}\small\item\em Finds and deactivates a flow path passing through the specified deactivated vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Finds and deactivates a flow path originating from a specified vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,6 +74,9 @@ string {\bfseries main\+Target\+Code} = \char`\"{}main\+Target\char`\"{}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Class representing a graph. 
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_graph_a96da6414041b1a856bdff1a9e6abdb76}\label{class_graph_a96da6414041b1a856bdff1a9e6abdb76}} 
 \index{Graph@{Graph}!addBidirectionalEdge@{addBidirectionalEdge}}
@@ -77,25 +86,28 @@ string {\bfseries main\+Target\+Code} = \char`\"{}main\+Target\char`\"{}
 
 
 
-Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c). 
+Adds a bidirectional edge between two vertices in the graph. 
 
-Time complexity\+: O(1). 
+This function adds a bidirectional edge between the vertices with the given source and destination codes. If either of the vertices does not exist in the graph, the function returns false, indicating that the edge could not be added. Otherwise, it creates two edges\+: one from source to dest and another from dest to source, each with the specified capacity and flow. Additionally, it sets the reverse pointers for the edges to maintain bidirectionality.
+
+
 \begin{DoxyParams}{Parameters}
-{\em source} & The source vertex of the edge. \\
+{\em source} & The code of the source vertex. \\
 \hline
-{\em dest} & The destination vertex of the edge. \\
+{\em dest} & The code of the destination vertex. \\
 \hline
 {\em c} & The capacity of the edge. \\
 \hline
-{\em flow} & The flow of the edge. Default is 0. \\
+{\em flow} & The flow through the edge from source to dest. \\
 \hline
-{\em reverse\+Flow} & The flow of the reverse edge. Default is 0. \\
+{\em reverse\+Flow} & The flow through the reverse edge from dest to source.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the edge was successfully added, false otherwise. 
+True if the bidirectional edge is successfully added, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_ab8479c5a64f0b007960e8621a3c7660c}\label{class_graph_ab8479c5a64f0b007960e8621a3c7660c}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the time complexity of finding vertices in the graph, adding edges to the vertices, and setting reverse pointers, all of which are O(1) in the worst case. \mbox{\Hypertarget{class_graph_ab8479c5a64f0b007960e8621a3c7660c}\label{class_graph_ab8479c5a64f0b007960e8621a3c7660c}} 
 \index{Graph@{Graph}!addEdge@{addEdge}}
 \index{addEdge@{addEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
@@ -103,23 +115,26 @@ true if the edge was successfully added, false otherwise.
 
 
 
-Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c). 
+Adds an edge between two vertices in the graph. 
 
-Time complexity\+: O(1). 
+This function adds an edge from the vertex with the source code to the vertex with the destination code. If either of the vertices does not exist in the graph, the function returns false, indicating that the edge could not be added. Otherwise, it adds the edge to the origin vertex and checks if there is a corresponding reverse edge in the destination vertex. If a reverse edge exists and has the same capacity as the newly added edge, it sets the reverse pointers for both edges to maintain bidirectionality.
+
+
 \begin{DoxyParams}{Parameters}
-{\em source} & The source vertex of the edge. \\
+{\em source} & The code of the source vertex. \\
 \hline
-{\em dest} & The destination vertex of the edge. \\
+{\em dest} & The code of the destination vertex. \\
 \hline
 {\em c} & The capacity of the edge. \\
 \hline
-{\em f} & The flow of the edge. Default is 0. \\
+{\em f} & The flow through the edge from source to dest.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if successful, and false if the source or destination vertex does not exist. 
+True if the edge is successfully added, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}\label{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the time complexity of finding vertices in the graph, adding edges to the vertices, and setting reverse pointers, all of which are O(1) in the worst case. \mbox{\Hypertarget{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}\label{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}} 
 \index{Graph@{Graph}!addVertex@{addVertex}}
 \index{addVertex@{addVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
@@ -127,19 +142,22 @@ true if successful, and false if the source or destination vertex does not exist
 
 
 
-Adds a vertex with a given content or info (in) to a graph (this). 
+Adds a vertex to the graph. 
 
-Time complexity\+: O(1). 
+This function adds a vertex with the given code and type to the graph. If a vertex with the same code already exists in the graph, the function returns false, indicating that the vertex could not be added. Otherwise, it creates a new vertex, inserts it into the graph\textquotesingle{}s vertex set, and returns true to indicate a successful addition.
+
+
 \begin{DoxyParams}{Parameters}
-{\em code} & Content of the vertex. \\
+{\em code} & The code of the vertex to be added. \\
 \hline
-{\em type} & Type of the vertex (e.\+g. \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}}). \\
+{\em type} & The type of the vertex to be added.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if successful, and false if a vertex with that content already exists. 
+True if the vertex is successfully added, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a5f4522e8e26a13194b45365b33694925}\label{class_graph_a5f4522e8e26a13194b45365b33694925}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the time complexity of finding a vertex in the graph, which is O(1) in the worst case, and inserting a new vertex into the vertex set, which is also O(1) in the worst case. \mbox{\Hypertarget{class_graph_a5f4522e8e26a13194b45365b33694925}\label{class_graph_a5f4522e8e26a13194b45365b33694925}} 
 \index{Graph@{Graph}!calculateMetrics@{calculateMetrics}}
 \index{calculateMetrics@{calculateMetrics}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{calculateMetrics()}{calculateMetrics()}}
@@ -147,19 +165,20 @@ true if successful, and false if a vertex with that content already exists.
 
 
 
-Calculates various metrics for the graph. 
+Calculates various metrics for the graph based on delivery site flow data. 
 
-This function calculates metrics including absolute and relative average, variance, standard deviation and maximum difference in capacity and flow for edges in the graph.
+This function calculates absolute and relative metrics for the graph based on the flow values of the delivery sites. Absolute metrics include average absolute difference, absolute variance, absolute standard deviation, and maximum absolute difference. Relative metrics include average relative difference, relative variance, relative standard deviation, and maximum relative difference. It also determines the maximum flow and total demand in the graph. The calculated metrics are encapsulated in a \mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} object and returned.
 
-Time complexity\+: O(\+V $\ast$ E). 
+
 \begin{DoxyParams}{Parameters}
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em delivery\+Sites} & A pointer to an unordered map containing delivery site objects.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an \textquotesingle{}\mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}}\textquotesingle{} object containing all calculated metrics. 
+A \mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} object containing various metrics calculated for the graph.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_aa0ece00411674a2d73696555cf494daf}\label{class_graph_aa0ece00411674a2d73696555cf494daf}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of edges in the graph. Let, E be the total number of edges. The worst-\/case time complexity is O(V + E) due to the nested loops iterating over vertices and edges. \mbox{\Hypertarget{class_graph_aa0ece00411674a2d73696555cf494daf}\label{class_graph_aa0ece00411674a2d73696555cf494daf}} 
 \index{Graph@{Graph}!copyGraph@{copyGraph}}
 \index{copyGraph@{copyGraph}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{copyGraph()}{copyGraph()}}
@@ -169,10 +188,13 @@ an \textquotesingle{}\mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}}\text
 
 Creates a deep copy of the graph. 
 
-Time complexity\+: O(V + E). \begin{DoxyReturn}{Returns}
-A pointer to the created copy of the graph. 
+This function creates a new graph that is an exact copy of the original graph, including all vertices and edges. It iterates over all vertices in the original graph, copies them, and adds them to the new graph. Then, it iterates over all edges in the original graph, copies them along with their attributes, and adds them to the new graph. After copying, it updates the flow of all vertices in the new graph to match the original graph. Finally, it returns a pointer to the newly created graph.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created copy of the graph.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}\label{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of vertices and edges in the original graph. Let V be the number of vertices and E be the number of edges in the original graph. The worst-\/case time complexity is O(E + V) due to the two loops iterating over vertices and edges, respectively. Additionally, updating the flow of vertices has a time complexity of O(\+V). \mbox{\Hypertarget{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}\label{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}} 
 \index{Graph@{Graph}!createMainSource@{createMainSource}}
 \index{createMainSource@{createMainSource}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{createMainSource()}{createMainSource()}}
@@ -180,14 +202,17 @@ A pointer to the created copy of the graph.
 
 
 
-Creates a main source vertex and connects it to water reservoirs. 
+Creates the main source vertex and connects it to water reservoirs. 
 
-Time complexity\+: O(n). 
+This function creates the main source vertex in the graph and connects it to each water reservoir with an edge representing the maximum delivery capacity of the reservoir. It iterates through the water reservoirs provided in the unordered map and adds an edge from the main source vertex to each water reservoir, with the capacity equal to the maximum delivery capacity of the reservoir and the current flow in the corresponding edge.
+
+
 \begin{DoxyParams}{Parameters}
-{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+{\em water\+Reservoirs} & A pointer to the unordered map containing water reservoir data.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a6858292fa146e19caba11f538530893d}\label{class_graph_a6858292fa146e19caba11f538530893d}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of water reservoirs in the input unordered map. If there are n water reservoirs, the time complexity is O(n). \mbox{\Hypertarget{class_graph_a6858292fa146e19caba11f538530893d}\label{class_graph_a6858292fa146e19caba11f538530893d}} 
 \index{Graph@{Graph}!createMainTarget@{createMainTarget}}
 \index{createMainTarget@{createMainTarget}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{createMainTarget()}{createMainTarget()}}
@@ -195,14 +220,17 @@ Time complexity\+: O(n).
 
 
 
-Creates a main target vertex and its connections to delivery sites. 
+Creates the main target vertex and connects it to delivery sites. 
 
-Time complexity\+: O(n). 
+This function creates the main target vertex in the graph and connects it to each delivery site with an edge representing the demand of the delivery site. It iterates through the delivery sites provided in the unordered map and adds an edge from each delivery site to the main target vertex, with the capacity equal to the demand of the delivery site and the current flow in the corresponding edge.
+
+
 \begin{DoxyParams}{Parameters}
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em delivery\+Sites} & A pointer to the unordered map containing delivery site data.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a20e6637316cccc7ea45ea52b86a2814d}\label{class_graph_a20e6637316cccc7ea45ea52b86a2814d}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of delivery sites in the input unordered map. If there are n delivery sites, the time complexity is O(n). \mbox{\Hypertarget{class_graph_a20e6637316cccc7ea45ea52b86a2814d}\label{class_graph_a20e6637316cccc7ea45ea52b86a2814d}} 
 \index{Graph@{Graph}!deactivateVertex@{deactivateVertex}}
 \index{deactivateVertex@{deactivateVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{deactivateVertex()}{deactivateVertex()}}
@@ -212,12 +240,15 @@ Time complexity\+: O(n).
 
 Deactivates a vertex and adjusts the flow in the graph. 
 
-Time complexity\+: O(V + E). 
+This function deactivates a vertex and adjusts the flow in the graph. It iteratively checks for flow cycles involving the deactivated vertex and deactivates them by reducing the flow along the cycle. If no flow cycles are detected, it finds and deactivates flow paths originating from the deactivated vertex. This process continues until the deactivated vertex has no more flow.
+
+
 \begin{DoxyParams}{Parameters}
-{\em v} & \mbox{\hyperlink{class_vertex}{Vertex}} to be deactivated. \\
+{\em deactivated\+Vertex} & The vertex to deactivate.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_aead61bcc1a44b6440713b34c9a6cff99}\label{class_graph_aead61bcc1a44b6440713b34c9a6cff99}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size and structure of the graph, as well as the number of flow cycles and flow paths involving the deactivated vertex. In the worst case, where the deactivated vertex has flow connected to all other vertices in the graph, and there are many flow cycles and paths, the function\textquotesingle{}s time complexity can be O(\+V $\ast$ (\+E$^\wedge$2)), where V is the number of vertices and E is the number of edges. However, in practice, it often performs efficiently since it terminates once the deactivated vertex has no more flow. \mbox{\Hypertarget{class_graph_aead61bcc1a44b6440713b34c9a6cff99}\label{class_graph_aead61bcc1a44b6440713b34c9a6cff99}} 
 \index{Graph@{Graph}!detectAndDeactivateFlowCycles@{detectAndDeactivateFlowCycles}}
 \index{detectAndDeactivateFlowCycles@{detectAndDeactivateFlowCycles}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{detectAndDeactivateFlowCycles()}{detectAndDeactivateFlowCycles()}}
@@ -225,17 +256,20 @@ Time complexity\+: O(V + E).
 
 
 
-Detects and deactivates flow cycles containing the specified vertex. 
+Detects and deactivates flow cycles originating from a specified vertex. 
 
-Time complexity\+: O(V + E) 
+This function detects and deactivates flow cycles in the graph originating from the specified vertex. It performs a breadth-\/first search (BFS) starting from the deactivated vertex to identify cycles with positive flow. If a cycle is found, it deactivates the flow along the cycle by updating the flow values of the edges. The function returns true if a cycle is detected and deactivated; otherwise, it returns false.
+
+
 \begin{DoxyParams}{Parameters}
-{\em deactivated\+Vertex} & The vertex to be deactivated. \\
+{\em deactivated\+Vertex} & The vertex from which to start detecting flow cycles.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if a flow cycle is found and deactivated, false otherwise. 
+True if a flow cycle is detected and deactivated, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a936c7892f6bbef325d2151dfe0309d2e}\label{class_graph_a936c7892f6bbef325d2151dfe0309d2e}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size of the graph and the presence of flow cycles. In the worst case, where there are flow cycles originating from the deactivated vertex, the function performs a BFS traversal, which has a time complexity of O(V + E), where V is the number of vertices and E is the number of edges in the graph. Additionally, the function updates flow values along the cycle, which adds additional time complexity proportional to the number of edges in the cycle. \mbox{\Hypertarget{class_graph_a936c7892f6bbef325d2151dfe0309d2e}\label{class_graph_a936c7892f6bbef325d2151dfe0309d2e}} 
 \index{Graph@{Graph}!dfs@{dfs}}
 \index{dfs@{dfs}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
@@ -243,20 +277,23 @@ true if a flow cycle is found and deactivated, false otherwise.
 
 
 
-Performs depth-\/first search (DFS) to find all paths from a source to a destination vertex. 
+Performs depth-\/first search (DFS) to find paths from a source vertex to a destination vertex in the graph. 
 
-Time complexity\+: O(V + E) 
+This function recursively performs depth-\/first search (DFS) starting from the current vertex to find paths from a source vertex to a destination vertex in the graph. It marks visited vertices to avoid infinite loops and maintains a vector of edges representing the current path being explored. If the destination vertex is reached, the current path is added to the vector of paths. Otherwise, it continues exploring adjacent vertices that have available capacity for flow. This function is used to find all possible paths from a source to a destination in the graph.
+
+
 \begin{DoxyParams}{Parameters}
-{\em current} & Content of the current vertex. \\
+{\em current} & The code of the current vertex being visited. \\
 \hline
-{\em dest} & Content of the destination vertex. \\
+{\em dest} & The code of the destination vertex. \\
 \hline
-{\em path} & Vector containing the current path being explored. \\
+{\em path} & The vector of edges representing the current path being explored. \\
 \hline
-{\em paths} & Vector of vectors to store all found paths. \\
+{\em paths} & The vector of vectors of edges representing all found paths from the source to the destination.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}\label{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ A DFS has a time complexity of O(V+E). Where V is the number of vertices and E is the number of edges. \mbox{\Hypertarget{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}\label{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}} 
 \index{Graph@{Graph}!findAndDeactivateFlowPath@{findAndDeactivateFlowPath}}
 \index{findAndDeactivateFlowPath@{findAndDeactivateFlowPath}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{findAndDeactivateFlowPath()}{findAndDeactivateFlowPath()}}
@@ -264,14 +301,17 @@ Time complexity\+: O(V + E)
 
 
 
-Finds and deactivates a flow path passing through the specified deactivated vertex. 
+Finds and deactivates a flow path originating from a specified vertex. 
 
-Time complexity\+: O(V + E). 
+This function finds and deactivates a flow path in the graph originating from the specified vertex. It first performs a BFS traversal from the deactivated vertex to find a path to the main target vertex. Then, it performs another BFS traversal from the main source vertex to the deactivated vertex. Finally, it identifies the common path between the two traversals and deactivates the flow along this path. The function updates the flow values of the edges along the path to reduce the flow. If no path is found or the path has no positive flow, no action is taken.
+
+
 \begin{DoxyParams}{Parameters}
-{\em deactivated\+Vertex} & The vertex to be deactivated. \\
+{\em deactivated\+Vertex} & The vertex from which to start searching for a flow path.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a6d08c48629578407e852d2d8dcadbbd4}\label{class_graph_a6d08c48629578407e852d2d8dcadbbd4}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size of the graph and the length of the flow path from the deactivated vertex to the main target vertex. In the worst case, where the flow path covers the entire graph, the function performs two BFS traversals, each with a time complexity of O(V + E), where V is the number of vertices and E is the number of edges in the graph. Additionally, the function updates flow values along the identified path, which adds additional time complexity proportional to the number of edges in the path. \mbox{\Hypertarget{class_graph_a6d08c48629578407e852d2d8dcadbbd4}\label{class_graph_a6d08c48629578407e852d2d8dcadbbd4}} 
 \index{Graph@{Graph}!findVertex@{findVertex}}
 \index{findVertex@{findVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
@@ -279,17 +319,52 @@ Time complexity\+: O(V + E).
 
 
 
-Auxiliary function to find a vertex in the graph, given its content. 
+Finds a vertex in the graph based on its code. 
 
-Time complexity\+: O(1). 
+This function searches for a vertex with the given code in the graph\textquotesingle{}s vertex set. If the vertex is found, a pointer to it is returned; otherwise, nullptr is returned to indicate that the vertex could not be found.
+
+
 \begin{DoxyParams}{Parameters}
-{\em code} & The content of the vertex to be found. \\
+{\em code} & The code of the vertex to be found.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A pointer to the vertex if found, nullptr otherwise. 
+A pointer to the vertex if found, nullptr otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}\label{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the time complexity of finding an element in an unordered\+\_\+map, which is O(1) in the worst case. \mbox{\Hypertarget{class_graph_a9c2090db526062a84a9cfb25073685cf}\label{class_graph_a9c2090db526062a84a9cfb25073685cf}} 
+\index{Graph@{Graph}!getMainSourceCode@{getMainSourceCode}}
+\index{getMainSourceCode@{getMainSourceCode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getMainSourceCode()}{getMainSourceCode()}}
+{\footnotesize\ttfamily string Graph\+::get\+Main\+Source\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the code of the main source vertex in the graph. 
+
+This function returns the code of the main source vertex, which is a specific vertex used in flow algorithms such as max flow.
+
+\begin{DoxyReturn}{Returns}
+The code of the main source vertex.
+\end{DoxyReturn}
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ This function has a time complexity of O(1) as it performs a simple retrieval operation. \mbox{\Hypertarget{class_graph_a42c74724f79cd6306afa588e0bd113cd}\label{class_graph_a42c74724f79cd6306afa588e0bd113cd}} 
+\index{Graph@{Graph}!getMainTargetCode@{getMainTargetCode}}
+\index{getMainTargetCode@{getMainTargetCode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getMainTargetCode()}{getMainTargetCode()}}
+{\footnotesize\ttfamily string Graph\+::get\+Main\+Target\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the code of the main target vertex in the graph. 
+
+This function returns the code of the main target vertex, which is a specific vertex used in flow algorithms such as max flow.
+
+\begin{DoxyReturn}{Returns}
+The code of the main target vertex.
+\end{DoxyReturn}
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ This function has a time complexity of O(1) as it performs a simple retrieval operation. \mbox{\Hypertarget{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}\label{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}} 
 \index{Graph@{Graph}!getPaths@{getPaths}}
 \index{getPaths@{getPaths}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getPaths()}{getPaths()}}
@@ -297,19 +372,22 @@ A pointer to the vertex if found, nullptr otherwise.
 
 
 
-Finds all paths between two vertices of the graph. 
+Finds all paths from a source vertex to a destination vertex in the graph. 
 
-Time complexity\+: O(V + P), \textquotesingle{}P\textquotesingle{} is the number of paths. 
+This function finds all paths from a given source vertex to a destination vertex in the graph. It initializes a vector of vectors of edges to store the paths found. Then, it initializes an empty vector representing the current path and marks all vertices as unvisited. Next, it invokes the depth-\/first search (DFS) algorithm to explore paths from the source to the destination. Finally, it returns the vector of paths found.
+
+
 \begin{DoxyParams}{Parameters}
-{\em source} & Content of the source vertex. \\
+{\em source} & The code of the source vertex. \\
 \hline
-{\em dest} & Content of the destination vertex. \\
+{\em dest} & The code of the destination vertex. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of vectors containing all found paths. 
+A vector of vectors of edges representing all paths from the source to the destination.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a0de64474940d70519941928f8367b643}\label{class_graph_a0de64474940d70519941928f8367b643}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size and structure of the graph, as well as the number of paths found. It calls the DFS function, which has a time complexity of O(V + E), where V is the number of vertices and E is the number of edges. Therefore, the overall time complexity is also O(V + E) in the worst case. However, in practice, it often performs efficiently, especially if the graph is sparse or there are a limited number of paths from the source to the destination. \mbox{\Hypertarget{class_graph_a0de64474940d70519941928f8367b643}\label{class_graph_a0de64474940d70519941928f8367b643}} 
 \index{Graph@{Graph}!getTotalDemandAndMaxFlow@{getTotalDemandAndMaxFlow}}
 \index{getTotalDemandAndMaxFlow@{getTotalDemandAndMaxFlow}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getTotalDemandAndMaxFlow()}{getTotalDemandAndMaxFlow()}}
@@ -317,17 +395,36 @@ Vector of vectors containing all found paths.
 
 
 
-Calculates total demand and maximum flow in the graph. 
+Calculates the total demand and maximum flow in the graph. 
 
-Time complexity\+: O(m), \textquotesingle{}m\textquotesingle{} is the number of delivery sites. 
+This function iterates over all delivery sites in the provided unordered map and calculates the total demand and maximum flow in the graph based on the flow values of the delivery sites. It sums up the demand of each delivery site to calculate the total demand and adds the flow of each delivery site to calculate the maximum flow. It returns a pair containing the total demand and maximum flow.
+
+
 \begin{DoxyParams}{Parameters}
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em delivery\+Sites} & A pointer to an unordered map containing delivery site objects.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a pair containing the total demand and the maximum flow. 
+A pair containing the total demand and maximum flow in the graph.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}\label{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of delivery sites in the provided unordered map. In the worst case, it iterates over all delivery sites once, resulting in a time complexity of O(n), where n is the number of delivery sites. \mbox{\Hypertarget{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}\label{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}} 
+\index{Graph@{Graph}!getVertexSet@{getVertexSet}}
+\index{getVertexSet@{getVertexSet}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the set of vertices in the graph. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map containing the vertices of the graph, where the keys are vertex codes and the values are pointers to the corresponding vertices.
+\end{DoxyReturn}
+This function returns a copy of the unordered map containing all vertices in the graph. It does not modify the original graph.
+
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ O(1) \mbox{\Hypertarget{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}\label{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}} 
 \index{Graph@{Graph}!maxFlow@{maxFlow}}
 \index{maxFlow@{maxFlow}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{maxFlow()}{maxFlow()}}
@@ -337,14 +434,17 @@ a pair containing the total demand and the maximum flow.
 
 Computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. 
 
-Time complexity\+: O(\+V E$^\wedge$2). 
+This function computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. It first creates the main source and main target vertices based on the provided water reservoirs and delivery sites. Then, it initializes the flow of all edges and vertices to zero. Finally, it applies the Edmonds-\/\+Karp algorithm to compute the maximum flow.
+
+
 \begin{DoxyParams}{Parameters}
-{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+{\em water\+Reservoirs} & A pointer to the unordered map containing water reservoir data. \\
 \hline
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em delivery\+Sites} & A pointer to the unordered map containing delivery site data.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a488e6f0af66b7961d836fbdfcd775477}\label{class_graph_a488e6f0af66b7961d836fbdfcd775477}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the implementation of the Edmonds-\/\+Karp algorithm, which has a worst-\/case time complexity of O(\+V $\ast$ E$^\wedge$2), where V is the number of vertices and E is the number of edges in the graph. \mbox{\Hypertarget{class_graph_a488e6f0af66b7961d836fbdfcd775477}\label{class_graph_a488e6f0af66b7961d836fbdfcd775477}} 
 \index{Graph@{Graph}!optimizeLoad@{optimizeLoad}}
 \index{optimizeLoad@{optimizeLoad}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{optimizeLoad()}{optimizeLoad()}}
@@ -352,14 +452,17 @@ Time complexity\+: O(\+V E$^\wedge$2).
 
 
 
-Optimizes the load distribution in the graph. 
+Optimizes the load distribution in the graph to improve flow characteristics. 
 
-Time complexity\+: O(E $\ast$ (P + Q)), \textquotesingle{}P\textquotesingle{} is the number of paths and \textquotesingle{}Q\textquotesingle{} is the maximum number of edges in a path. 
+This function optimizes the load distribution in the graph to improve flow characteristics. It calculates the initial metrics of the graph using the provided delivery sites, initializes the final metrics to be the same as the initial metrics, and retrieves all edges in the graph. Then, it iteratively performs load optimization until convergence criteria are met or the maximum number of iterations is reached. In each iteration, it sorts the edges based on the difference between capacity and flow, and then for each edge, it finds paths between its source and destination vertices. It selects the path with the maximum minimum residual capacity and adjusts the flow along the path accordingly. After each iteration, it updates the final metrics and checks for convergence. The optimization process continues until convergence criteria are met or the maximum number of iterations is reached. Finally, it updates the flow values of all vertices in the graph.
+
+
 \begin{DoxyParams}{Parameters}
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em delivery\+Sites} & Pointer to the unordered map containing delivery sites information.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_adb025c5c980901d2be35503cb3ea6726}\label{class_graph_adb025c5c980901d2be35503cb3ea6726}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of edges in the graph, the number of delivery sites, and the efficiency of the path-\/finding algorithm. Let V be the number of vertices and E be the number of edges. The worst-\/case time complexity is O(n(E $\ast$ (V + E))), where n is the number of iterations. \mbox{\Hypertarget{class_graph_adb025c5c980901d2be35503cb3ea6726}\label{class_graph_adb025c5c980901d2be35503cb3ea6726}} 
 \index{Graph@{Graph}!pipelineOutOfCommission@{pipelineOutOfCommission}}
 \index{pipelineOutOfCommission@{pipelineOutOfCommission}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{pipelineOutOfCommission()}{pipelineOutOfCommission()}}
@@ -367,22 +470,21 @@ Time complexity\+: O(E $\ast$ (P + Q)), \textquotesingle{}P\textquotesingle{} is
 
 
 
-Marks a pipeline as out of commission and adjusts the flow in the graph. 
+Marks a pipeline between two service points as out of commission and adjusts the flow in the graph. 
 
-Time complexity\+: O(\+V E$^\wedge$2). 
+This function marks a pipeline between two service points as out of commission by deactivating the corresponding vertices and and adjusts the flow in the graph. Then, it deactivates the vertex corresponding to the origin service point. If the pipeline is bidirectional, it also deactivates the vertex corresponding to the destination service point. After deactivating the vertices, it recalculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm with the deactivated edges. Finally, it updates the flow values of all vertices in the graph.
+
+
 \begin{DoxyParams}{Parameters}
-{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+{\em service\+PointA} & Pointer to the code of the first service point. \\
 \hline
-{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+{\em service\+PointB} & Pointer to the code of the second service point. \\
 \hline
-{\em service\+PointA} & Code of the first service point of the pipeline to be marked as out of commission. \\
-\hline
-{\em service\+PointB} & Code of the second service point of the pipeline to be marked as out of commission. \\
-\hline
-{\em unidirectional} & A flag indicating if the pipeline is unidirectional. \\
+{\em unidirectional} & Indicates whether the pipeline is unidirectional (true) or bidirectional (false).\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_abe593ef28d5fed82f4e6118d53473b15}\label{class_graph_abe593ef28d5fed82f4e6118d53473b15}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size and structure of the graph, as well as the efficiency of the Edmonds-\/\+Karp algorithm. In the worst case, where the graph is dense and the Edmonds-\/\+Karp algorithm has to run multiple times, the time complexity can be O(\+V $\ast$ (\+E$^\wedge$2)), where V is the number of vertices and E is the number of edges. However, in practice, it performs efficiently, because it does not execute the Edmonds-\/\+Karp from the beginning. \mbox{\Hypertarget{class_graph_abe593ef28d5fed82f4e6118d53473b15}\label{class_graph_abe593ef28d5fed82f4e6118d53473b15}} 
 \index{Graph@{Graph}!setAllEdgesFlow@{setAllEdgesFlow}}
 \index{setAllEdgesFlow@{setAllEdgesFlow}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{setAllEdgesFlow()}{setAllEdgesFlow()}}
@@ -390,14 +492,17 @@ Time complexity\+: O(\+V E$^\wedge$2).
 
 
 
-Sets flow on all edges in the graph to the specified value. 
+Sets the flow value of all edges in the graph to a specified value. 
 
-Time complexity\+: O(V + E). 
+This function iterates through all vertices in the graph and for each vertex, it iterates through its adjacent edges. It then sets the flow value of each edge to the specified value \textquotesingle{}f\textquotesingle{} by calling the set\+Flow() function of the \mbox{\hyperlink{class_edge}{Edge}} class for each edge.
+
+
 \begin{DoxyParams}{Parameters}
-{\em f} & The flow value to be set on all edges. \\
+{\em f} & The flow value to set for all edges.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a2e5f0d564741c6541d1f0db43df676f2}\label{class_graph_a2e5f0d564741c6541d1f0db43df676f2}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of vertices and edges in the graph. Let V be the number of vertices and E be the number of edges. The worst-\/case time complexity is O(V + E), as it iterates through all vertices and edges once to set the flow value of each edge. \mbox{\Hypertarget{class_graph_a2e5f0d564741c6541d1f0db43df676f2}\label{class_graph_a2e5f0d564741c6541d1f0db43df676f2}} 
 \index{Graph@{Graph}!setAllVerticesFlow@{setAllVerticesFlow}}
 \index{setAllVerticesFlow@{setAllVerticesFlow}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{setAllVerticesFlow()}{setAllVerticesFlow()}}
@@ -405,14 +510,17 @@ Time complexity\+: O(V + E).
 
 
 
-Sets flow on all vertices in the graph to the specified value. 
+Sets the flow value of all vertices in the graph to a specified value. 
 
-Time complexity\+: O(\+V). 
+This function iterates through all vertices in the graph and sets the flow value of each vertex to the specified value \textquotesingle{}f\textquotesingle{} by calling the set\+Flow() function of the \mbox{\hyperlink{class_vertex}{Vertex}} class for each vertex.
+
+
 \begin{DoxyParams}{Parameters}
-{\em f} & The flow value to be set on all vertices. \\
+{\em f} & The flow value to set for all vertices.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}\label{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of vertices in the graph. Let V be the number of vertices. The time complexity is O(\+V), as it iterates through all vertices once and sets the flow value of each vertex. \mbox{\Hypertarget{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}\label{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}} 
 \index{Graph@{Graph}!stationOutOfCommission@{stationOutOfCommission}}
 \index{stationOutOfCommission@{stationOutOfCommission}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{stationOutOfCommission()}{stationOutOfCommission()}}
@@ -420,14 +528,17 @@ Time complexity\+: O(\+V).
 
 
 
-Marks a station as out of commission and adjusts the flow in the graph. 
+Marks a pumping station or reservoir as out of commission and adjusts the flow in the graph. 
 
-Time complexity\+: O(\+V E$^\wedge$2). 
+This function marks a pumping station or reservoir as out of commission by deactivating the corresponding vertex and adjusts the flow in the graph. It first runs the Edmonds-\/\+Karp algorithm to find the maximum flow in the graph. Then, it deactivates the vertex corresponding to the provided code. After deactivating the vertex, it recalculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm with the deactivated vertex. Finally, it updates the flow values of all vertices in the graph.
+
+
 \begin{DoxyParams}{Parameters}
-{\em code} & The code of the pumping station. \\
+{\em code} & Pointer to the code of the pumping station or reservoir to be deactivated.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_graph_a9ffc84f05075b2492edc7c581bd8e883}\label{class_graph_a9ffc84f05075b2492edc7c581bd8e883}} 
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the size and structure of the graph, as well as the efficiency of the Edmonds-\/\+Karp algorithm. In the worst case, where the graph is dense and the Edmonds-\/\+Karp algorithm has to run multiple times, the time complexity can be O(\+V $\ast$ (\+E$^\wedge$2)), where V is the number of vertices and E is the number of edges. However, in practice, it performs efficiently, because it does not execute the Edmonds-\/\+Karp from the beginning. \mbox{\Hypertarget{class_graph_a9ffc84f05075b2492edc7c581bd8e883}\label{class_graph_a9ffc84f05075b2492edc7c581bd8e883}} 
 \index{Graph@{Graph}!updateAllVerticesFlow@{updateAllVerticesFlow}}
 \index{updateAllVerticesFlow@{updateAllVerticesFlow}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{updateAllVerticesFlow()}{updateAllVerticesFlow()}}
@@ -435,9 +546,12 @@ Time complexity\+: O(\+V E$^\wedge$2).
 
 
 
-Updates flow on all vertices in the graph. 
+Updates the flow values of all vertices in the graph. 
 
-Time complexity\+: O(\+V). 
+This function iterates through all vertices in the graph and updates the flow value of each vertex by calling the update\+Flow() function of the \mbox{\hyperlink{class_vertex}{Vertex}} class for each vertex.
+
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ The time complexity of this function depends on the number of vertices in the graph. Let V be the number of vertices. The time complexity is O(\+V), as it iterates through all vertices once and updates the flow value of each vertex. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

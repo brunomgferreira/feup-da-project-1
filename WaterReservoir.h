@@ -34,7 +34,18 @@ public:
     */
     WaterReservoir(string name, string municipality, double id, string code, double maxDelivery = 0);
 
+    /**
+     * @brief Get the maximum delivery capacity of the water reservoir.
+     *
+     * @return The maximum delivery capacity.
+     */
     double getMaxDelivery();
+
+    /**
+     * @brief Get the name of the water reservoir.
+     *
+     * @return The name of the water reservoir.
+     */
     string getName();
 };
 
