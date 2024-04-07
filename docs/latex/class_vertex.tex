@@ -1,0 +1,105 @@
+\hypertarget{class_vertex}{}\doxysection{Vertex Class Reference}
+\label{class_vertex}\index{Vertex@{Vertex}}
+
+
+Collaboration diagram for Vertex\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}\label{class_vertex_a6a0dcb645975289ec5c0d0a0f3907821}} 
+{\bfseries Vertex} (string code, Vertex\+Type type)
+\item 
+\mbox{\Hypertarget{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}\label{class_vertex_ad4ccd48170a1530ec1db5eb306357a74}} 
+bool {\bfseries operator$<$} (\mbox{\hyperlink{class_vertex}{Vertex}} \&vertex) const
+\item 
+\mbox{\Hypertarget{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}\label{class_vertex_ad535d46dc4a5c2569b87b72ad0cbd2d3}} 
+string {\bfseries get\+Code} () const
+\item 
+\mbox{\Hypertarget{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}\label{class_vertex_a7c108e91ff65d2c1e568c682a821a3c4}} 
+Vertex\+Type {\bfseries get\+Type} () const
+\item 
+\mbox{\Hypertarget{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}\label{class_vertex_a843f1e651c3ee0f3bcbaa11420b29282}} 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries get\+Adj} () const
+\item 
+\mbox{\Hypertarget{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}\label{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}} 
+bool {\bfseries is\+Visited} () const
+\item 
+\mbox{\Hypertarget{class_vertex_a6e120e57da6af94892fae44e05868794}\label{class_vertex_a6e120e57da6af94892fae44e05868794}} 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries get\+Path} () const
+\item 
+\mbox{\Hypertarget{class_vertex_afe9510eca16890ce358c1f67f8102861}\label{class_vertex_afe9510eca16890ce358c1f67f8102861}} 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries get\+Incoming} () const
+\item 
+\mbox{\Hypertarget{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}\label{class_vertex_a2270d909b8d491d5b5e38bf74b4b6f5e}} 
+double {\bfseries get\+Flow} () const
+\item 
+bool \mbox{\hyperlink{class_vertex_a97bc53db81694cce56c2438fbba348e6}{has\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the vertex has flow. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}\label{class_vertex_abb04afeef3cb28ebea87edc0bdee4c0b}} 
+void {\bfseries set\+Flow} (double value)
+\item 
+\mbox{\Hypertarget{class_vertex_a5a19294f6ec562fac02af3cb3223a509}\label{class_vertex_a5a19294f6ec562fac02af3cb3223a509}} 
+void {\bfseries update\+Flow} ()
+\item 
+\mbox{\Hypertarget{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}\label{class_vertex_ac29125ddca49e8c53f43cc03b103f0e4}} 
+void {\bfseries set\+Visited} (bool is\+Visited)
+\item 
+\mbox{\Hypertarget{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}\label{class_vertex_a91581ece4cb3c4efa158a2e5df54649a}} 
+void {\bfseries set\+Path} (\mbox{\hyperlink{class_edge}{Edge}} $\ast$new\+Path)
+\item 
+\mbox{\Hypertarget{class_vertex_a23e78099e5a8b65139752624e32ec497}\label{class_vertex_a23e78099e5a8b65139752624e32ec497}} 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries add\+Edge} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest, double c, double f=0)
+\item 
+\mbox{\Hypertarget{class_vertex_a063524e44d77d38d795013fc60ca935c}\label{class_vertex_a063524e44d77d38d795013fc60ca935c}} 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries find\+Edge} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest\+Vertex)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vertex_a7c3108c98034cd0bd6c0e5a32c7834fc}\label{class_vertex_a7c3108c98034cd0bd6c0e5a32c7834fc}} 
+string {\bfseries code}
+\item 
+\mbox{\Hypertarget{class_vertex_a9ffe6d14cbd961ec755048b417622865}\label{class_vertex_a9ffe6d14cbd961ec755048b417622865}} 
+Vertex\+Type {\bfseries type}
+\item 
+\mbox{\Hypertarget{class_vertex_a413487c6b71d6edb14a02057b4bc0c1f}\label{class_vertex_a413487c6b71d6edb14a02057b4bc0c1f}} 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries adj}
+\item 
+\mbox{\Hypertarget{class_vertex_a3503f71421c38779e774ca8fda26ccb4}\label{class_vertex_a3503f71421c38779e774ca8fda26ccb4}} 
+double {\bfseries flow} = 0
+\item 
+\mbox{\Hypertarget{class_vertex_aaef9f7de91b4b8f1752d391a1aae9c2e}\label{class_vertex_aaef9f7de91b4b8f1752d391a1aae9c2e}} 
+bool {\bfseries visited} = false
+\item 
+\mbox{\Hypertarget{class_vertex_a11d98611f5101fe7f46785d8b9c53f44}\label{class_vertex_a11d98611f5101fe7f46785d8b9c53f44}} 
+double {\bfseries dist} = 0
+\item 
+\mbox{\Hypertarget{class_vertex_a4e83821f961f6eb63ad210260ba0e1e2}\label{class_vertex_a4e83821f961f6eb63ad210260ba0e1e2}} 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries path} = nullptr
+\item 
+\mbox{\Hypertarget{class_vertex_a6774ef7c5d75b662d58b9099e02a9159}\label{class_vertex_a6774ef7c5d75b662d58b9099e02a9159}} 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ {\bfseries incoming}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vertex_a97bc53db81694cce56c2438fbba348e6}\label{class_vertex_a97bc53db81694cce56c2438fbba348e6}} 
+\index{Vertex@{Vertex}!hasFlow@{hasFlow}}
+\index{hasFlow@{hasFlow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{hasFlow()}{hasFlow()}}
+{\footnotesize\ttfamily bool Vertex\+::has\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the vertex has flow. 
+
+Time complexity\+: O(\+E). \begin{DoxyReturn}{Returns}
+true if the vertex has flow, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

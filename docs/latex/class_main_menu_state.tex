@@ -1,0 +1,89 @@
+\hypertarget{class_main_menu_state}{}\doxysection{Main\+Menu\+State Class Reference}
+\label{class_main_menu_state}\index{MainMenuState@{MainMenuState}}
+
+
+Class representing the main menu state of the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$Main\+Menu\+State.\+h$>$}
+
+
+
+Inheritance diagram for Main\+Menu\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Menu\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_menu_state_a9ff22a53faa1760cfbb44d4e35c2ea27}{Main\+Menu\+State}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_main_menu_state}{Main\+Menu\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_state_ae228477fc7a407ec7f97e2b723b4b6c4}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the Main Menu options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_menu_state_a4971793b5d6fbeca738f6e3efd1c183d}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for the Main Menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing the main menu state of the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_main_menu_state_a9ff22a53faa1760cfbb44d4e35c2ea27}\label{class_main_menu_state_a9ff22a53faa1760cfbb44d4e35c2ea27}} 
+\index{MainMenuState@{MainMenuState}!MainMenuState@{MainMenuState}}
+\index{MainMenuState@{MainMenuState}!MainMenuState@{MainMenuState}}
+\doxysubsubsection{\texorpdfstring{MainMenuState()}{MainMenuState()}}
+{\footnotesize\ttfamily Main\+Menu\+State\+::\+Main\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \mbox{\hyperlink{class_main_menu_state}{Main\+Menu\+State}}. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_main_menu_state}{Main\+Menu\+State}} class. It doesn\textquotesingle{}t require any parameters, as it represents the main menu state of the application, allowing users to navigate to different functionalities and sections of the program. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_menu_state_ae228477fc7a407ec7f97e2b723b4b6c4}\label{class_main_menu_state_ae228477fc7a407ec7f97e2b723b4b6c4}} 
+\index{MainMenuState@{MainMenuState}!display@{display}}
+\index{display@{display}!MainMenuState@{MainMenuState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the Main Menu options. 
+
+This method prints the Main Menu options to the console, allowing users to choose from different functionalities. Users input a single character corresponding to their desired option (1-\/7 for sections, \textquotesingle{}q\textquotesingle{} to exit). The method provides a visual representation of the Main Menu and prompts the user to enter their choice. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_main_menu_state_a4971793b5d6fbeca738f6e3efd1c183d}\label{class_main_menu_state_a4971793b5d6fbeca738f6e3efd1c183d}} 
+\index{MainMenuState@{MainMenuState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!MainMenuState@{MainMenuState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Main\+Menu\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for the Main Menu. 
+
+This method prompts the user to input a single character representing their choice in the Main Menu. It uses a switch statement to determine the action corresponding to the user\textquotesingle{}s choice. If the input is valid, the method transitions to the appropriate state based on the user\textquotesingle{}s choice. If the input is invalid, the method notifies the user and prompts them to try again. The \textquotesingle{}q\textquotesingle{} option exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/Main\+Menu\+State.\+h\item 
+States/Main\+Menu\+State.\+cpp\end{DoxyCompactItemize}

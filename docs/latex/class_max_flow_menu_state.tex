@@ -1,0 +1,89 @@
+\hypertarget{class_max_flow_menu_state}{}\doxysection{Max\+Flow\+Menu\+State Class Reference}
+\label{class_max_flow_menu_state}\index{MaxFlowMenuState@{MaxFlowMenuState}}
+
+
+Class representing the Find Max Water Flow Menu state of the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$Max\+Flow\+Menu\+State.\+h$>$}
+
+
+
+Inheritance diagram for Max\+Flow\+Menu\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Max\+Flow\+Menu\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_max_flow_menu_state_ab3863b18751db15afb388e642dba85c1}{Max\+Flow\+Menu\+State}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_max_flow_menu_state}{Max\+Flow\+Menu\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_max_flow_menu_state_a91fe006a0488738a462747b3aad72d82}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the Find Max Water Flow Menu options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_max_flow_menu_state_ad044c9befc387185661b40e883749e86}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for the Find Max Water Flow Menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing the Find Max Water Flow Menu state of the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_max_flow_menu_state_ab3863b18751db15afb388e642dba85c1}\label{class_max_flow_menu_state_ab3863b18751db15afb388e642dba85c1}} 
+\index{MaxFlowMenuState@{MaxFlowMenuState}!MaxFlowMenuState@{MaxFlowMenuState}}
+\index{MaxFlowMenuState@{MaxFlowMenuState}!MaxFlowMenuState@{MaxFlowMenuState}}
+\doxysubsubsection{\texorpdfstring{MaxFlowMenuState()}{MaxFlowMenuState()}}
+{\footnotesize\ttfamily Max\+Flow\+Menu\+State\+::\+Max\+Flow\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \mbox{\hyperlink{class_max_flow_menu_state}{Max\+Flow\+Menu\+State}}. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_max_flow_menu_state}{Max\+Flow\+Menu\+State}} class. It doesn\textquotesingle{}t require any parameters, as it represents the Find Max Water Flow Menu state of the application, allowing users to navigate to different functionalities and sections of the program. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_max_flow_menu_state_a91fe006a0488738a462747b3aad72d82}\label{class_max_flow_menu_state_a91fe006a0488738a462747b3aad72d82}} 
+\index{MaxFlowMenuState@{MaxFlowMenuState}!display@{display}}
+\index{display@{display}!MaxFlowMenuState@{MaxFlowMenuState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Max\+Flow\+Menu\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the Find Max Water Flow Menu options. 
+
+This method prints the Find Max Water Flow Menu options to the console, allowing users to choose from different functionalities. Users input a single character corresponding to their desired option (1-\/2 for sections, \textquotesingle{}q\textquotesingle{} to exit). The method provides a visual representation of the Find Max Water Flow Menu and prompts the user to enter their choice. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_max_flow_menu_state_ad044c9befc387185661b40e883749e86}\label{class_max_flow_menu_state_ad044c9befc387185661b40e883749e86}} 
+\index{MaxFlowMenuState@{MaxFlowMenuState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!MaxFlowMenuState@{MaxFlowMenuState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Max\+Flow\+Menu\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for the Find Max Water Flow Menu. 
+
+This method prompts the user to input a single character representing their choice in the Find Max Water Flow Menu. It uses a switch statement to determine the action corresponding to the user\textquotesingle{}s choice. If the input is valid, the method transitions to the appropriate state based on the user\textquotesingle{}s choice. If the input is invalid, the method notifies the user and prompts them to try again. The \textquotesingle{}q\textquotesingle{} option exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Max\+Flow/Max\+Flow\+Menu\+State.\+h\item 
+States/\+Max\+Flow/Max\+Flow\+Menu\+State.\+cpp\end{DoxyCompactItemize}

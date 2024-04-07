@@ -1,0 +1,107 @@
+\hypertarget{class_get_reservoir_state}{}\doxysection{Get\+Reservoir\+State Class Reference}
+\label{class_get_reservoir_state}\index{GetReservoirState@{GetReservoirState}}
+
+
+Class that represents a state for obtaining the network reservoirs.  
+
+
+
+
+{\ttfamily \#include $<$Get\+Reservoir\+State.\+h$>$}
+
+
+
+Inheritance diagram for Get\+Reservoir\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Get\+Reservoir\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_get_reservoir_state_ab60b2b360c88d626f5039e19ad50b883}{Get\+Reservoir\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$back\+State, function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ next\+State\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructs an instance of \mbox{\hyperlink{class_get_reservoir_state}{Get\+Reservoir\+State}} with specified back state and callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_reservoir_state_aed114c38a0053adbdcac5f2b57d390ca}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays a prompt for inserting a reservoir code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_reservoir_state_ab51fef03150b6f8b7e433943630ee4ae}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for obtaining a reservoir code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_get_reservoir_state_a27a6bb5bfba8e91f2c262b60f6a32ee7}\label{class_get_reservoir_state_a27a6bb5bfba8e91f2c262b60f6a32ee7}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries back\+State}
+\item 
+\mbox{\Hypertarget{class_get_reservoir_state_a55578296b3bc09a0ed1a51b3976b9648}\label{class_get_reservoir_state_a55578296b3bc09a0ed1a51b3976b9648}} 
+function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ {\bfseries next\+State\+Callback}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a state for obtaining the network reservoirs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_get_reservoir_state_ab60b2b360c88d626f5039e19ad50b883}\label{class_get_reservoir_state_ab60b2b360c88d626f5039e19ad50b883}} 
+\index{GetReservoirState@{GetReservoirState}!GetReservoirState@{GetReservoirState}}
+\index{GetReservoirState@{GetReservoirState}!GetReservoirState@{GetReservoirState}}
+\doxysubsubsection{\texorpdfstring{GetReservoirState()}{GetReservoirState()}}
+{\footnotesize\ttfamily Get\+Reservoir\+State\+::\+Get\+Reservoir\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{back\+State,  }\item[{function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$}]{next\+State\+Callback }\end{DoxyParamCaption})}
+
+
+
+Constructs an instance of \mbox{\hyperlink{class_get_reservoir_state}{Get\+Reservoir\+State}} with specified back state and callback function. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_get_reservoir_state}{Get\+Reservoir\+State}} class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing the reservoir code from user input and proceeding to the next state with the captured information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em back\+State} & A pointer to the state to which the application should return when the user chooses to go back. \\
+\hline
+{\em next\+State\+Callback} & A function defining the action to be performed in the next state, usually involving a reservoir code. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_get_reservoir_state_aed114c38a0053adbdcac5f2b57d390ca}\label{class_get_reservoir_state_aed114c38a0053adbdcac5f2b57d390ca}} 
+\index{GetReservoirState@{GetReservoirState}!display@{display}}
+\index{display@{display}!GetReservoirState@{GetReservoirState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Get\+Reservoir\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays a prompt for inserting a reservoir code. 
+
+This method prints a prompt to the console, asking the user to insert a reservoir code. The displayed prompt guides the user on the expected format for entering the reservoir code. The user is expected to input a valid reservoir code based on the specified format. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_get_reservoir_state_ab51fef03150b6f8b7e433943630ee4ae}\label{class_get_reservoir_state_ab51fef03150b6f8b7e433943630ee4ae}} 
+\index{GetReservoirState@{GetReservoirState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GetReservoirState@{GetReservoirState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Get\+Reservoir\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for obtaining a reservoir code. 
+
+This method reads a line of input from the console, representing a reservoir code. The method validates the existence of the entered reservoir code in the application\textquotesingle{}s data. If the reservoir code is valid, the callback function is invoked with the captured reservoir code, and the application transitions to the next state accordingly. If the reservoir code is invalid, the user is prompted with an error message, and the state transitions to a \char`\"{}\+Try Again\char`\"{} state, allowing the user to make another attempt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Utils/Get\+Reservoir\+State.\+h\item 
+States/\+Utils/Get\+Reservoir\+State.\+cpp\end{DoxyCompactItemize}

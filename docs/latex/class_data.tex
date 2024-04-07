@@ -1,0 +1,359 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+
+
+Class that saves all the program data.  
+
+
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+
+
+Collaboration diagram for Data\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{class_data}{Data}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_af9e38cfb7e14bc19193445df248d64bd}\label{class_data_af9e38cfb7e14bc19193445df248d64bd}} 
+string {\bfseries get\+Network\+Name} () const
+\item 
+void \mbox{\hyperlink{class_data_a030e2a756c0642bdff0edafe8551f4d0}{read\+Files}} (const filesystem\+::path \&dir\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Reads files from the specified directory path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a694d969726d9c4f4db7b1ba658e2a186}{read\+File\+Reservoir}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads data from the specified input file stream and processes it as reservoir information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a7dd863cfca4f938dde6d745ffd627f91}{read\+File\+Stations}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads data from the specified input file stream and processes it as station information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_abe4f40bd6af4d27fe1b0c352d37e2737}{read\+File\+Cities}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads data from the specified input file stream and processes it as city information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_acb44a0975e75e8cd3a52232208a06512}{read\+File\+Pipes}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads data from the specified input file stream and processes it as pipe information. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_a168d0b0c338e586c0c5d28818da532e1}{delivery\+Site\+Exists}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Check if a delivery site with the given code exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_a2c868977f513554adae07db7b21d9a88}{water\+Reservoir\+Exists}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Check if a water reservoir with the given code exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_aaf49b1de5f169aad3089c668a3c0fb18}{pumping\+Station\+Exists}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Check if a pumping station with the given code exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_a45315e9987d5b5364bec6f53b37eb28c}{pipeline\+Exists}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Check if a pipeline with the given code exists. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a4173c0d7428e8fb871c3e862b4595075}{city\+Max\+Flow}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Displays information about the maximum flow for a specific city. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_a49ee53f49927f8f8e05522c6e5515a8f}\label{class_data_a49ee53f49927f8f8e05522c6e5515a8f}} 
+void \mbox{\hyperlink{class_data_a49ee53f49927f8f8e05522c6e5515a8f}{all\+Cities\+Max\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the maximum flow for all cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a3fcd83652fc0e46d1d99330b7b1ee9b6}{verify\+Water\+Supply}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the water supply status. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_af486c4151d67d15c6b41016357773329}\label{class_data_af486c4151d67d15c6b41016357773329}} 
+void \mbox{\hyperlink{class_data_af486c4151d67d15c6b41016357773329}{load\+Optimization}} ()
+\begin{DoxyCompactList}\small\item\em Loads the optimization of the network and displays information about initial and final values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_a7672d7ff46542f6a60aff1fe43cd3135}\label{class_data_a7672d7ff46542f6a60aff1fe43cd3135}} 
+void {\bfseries not\+Essential\+Reservoirs} ()
+\item 
+void \mbox{\hyperlink{class_data_a8fc1de8e08dc768cd6d687efec0cdb1c}{reservoir\+Impact}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting a water reservoir out of commission and displays the information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_ae3672f82d9f7119d040100e48af910c7}\label{class_data_ae3672f82d9f7119d040100e48af910c7}} 
+void \mbox{\hyperlink{class_data_ae3672f82d9f7119d040100e48af910c7}{all\+Reservoirs\+Impact}} ()
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting each reservoir out of commission and displays the information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_ae96672fc873f346ffcf86740c2fef61b}\label{class_data_ae96672fc873f346ffcf86740c2fef61b}} 
+void \mbox{\hyperlink{class_data_ae96672fc873f346ffcf86740c2fef61b}{not\+Essential\+Pumping\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about pumping stations that are not essential to maintain the current maximum flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_aff9dcf326145afda0db2c5a88862f695}{pumping\+Station\+Impact}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting a pumping station out of commission and displays the information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_a22c7170e9f708acf06b63004a9284379}\label{class_data_a22c7170e9f708acf06b63004a9284379}} 
+void \mbox{\hyperlink{class_data_a22c7170e9f708acf06b63004a9284379}{all\+Pumping\+Stations\+Impact}} ()
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting each pumping station out of commission and displays the information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_a4a90ab75e7ef6e822d543e60934cffbc}\label{class_data_a4a90ab75e7ef6e822d543e60934cffbc}} 
+void \mbox{\hyperlink{class_data_a4a90ab75e7ef6e822d543e60934cffbc}{essential\+Pipelines}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about pipelines that are essential to maintain the current maximum flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_afb9b81962efa94ff7eb4e2d1d31422f3}{pipeline\+Impact}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting a pipeline out of commission and displays the information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_data_a20688ff94a930130aca6167dce8bd1e8}\label{class_data_a20688ff94a930130aca6167dce8bd1e8}} 
+void \mbox{\hyperlink{class_data_a20688ff94a930130aca6167dce8bd1e8}{all\+Pipelines\+Impact}} ()
+\begin{DoxyCompactList}\small\item\em Simulates the impact of putting each pipeline out of commission and displays the information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_data_a79290d8fe9f04e581fcb834b3bf4221b}\label{class_data_a79290d8fe9f04e581fcb834b3bf4221b}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ {\bfseries water\+Reservoirs}
+\item 
+\mbox{\Hypertarget{class_data_a9a24c35a05b7de3ba5f89ccc6f33176c}\label{class_data_a9a24c35a05b7de3ba5f89ccc6f33176c}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_pumping_station}{Pumping\+Station}} $\ast$ $>$ {\bfseries pumping\+Stations}
+\item 
+\mbox{\Hypertarget{class_data_a3db4a303f50bef07a0151279afb5c237}\label{class_data_a3db4a303f50bef07a0151279afb5c237}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ {\bfseries delivery\+Sites}
+\item 
+\mbox{\Hypertarget{class_data_a3eb9e4bc02d71c6f7e290aaa56b9e9ef}\label{class_data_a3eb9e4bc02d71c6f7e290aaa56b9e9ef}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_pipe}{Pipe}} $\ast$ $>$ {\bfseries pipes}
+\item 
+\mbox{\Hypertarget{class_data_a32e9922d6ba60841d208cb705a44e9c6}\label{class_data_a32e9922d6ba60841d208cb705a44e9c6}} 
+string {\bfseries network\+Name}
+\item 
+\mbox{\Hypertarget{class_data_a7ff2cbd4ce464653b30ac17a1bc7f2e6}\label{class_data_a7ff2cbd4ce464653b30ac17a1bc7f2e6}} 
+\mbox{\hyperlink{class_graph}{Graph}} {\bfseries g}
+\item 
+\mbox{\Hypertarget{class_data_a143acf0c54aff154f7503f4d5134e430}\label{class_data_a143acf0c54aff154f7503f4d5134e430}} 
+\mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} {\bfseries metrics}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that saves all the program data. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for the \mbox{\hyperlink{class_data}{Data}} class. 
+
+This default constructor creates a new instance of the \mbox{\hyperlink{class_data}{Data}} class without specifying any initial values. It initializes the \mbox{\hyperlink{class_data}{Data}} object with default values.
+
+Time complexity\+: O(1) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_a4173c0d7428e8fb871c3e862b4595075}\label{class_data_a4173c0d7428e8fb871c3e862b4595075}} 
+\index{Data@{Data}!cityMaxFlow@{cityMaxFlow}}
+\index{cityMaxFlow@{cityMaxFlow}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{cityMaxFlow()}{cityMaxFlow()}}
+{\footnotesize\ttfamily void Data\+::city\+Max\+Flow (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Displays information about the maximum flow for a specific city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the city to check the maximum flow. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a168d0b0c338e586c0c5d28818da532e1}\label{class_data_a168d0b0c338e586c0c5d28818da532e1}} 
+\index{Data@{Data}!deliverySiteExists@{deliverySiteExists}}
+\index{deliverySiteExists@{deliverySiteExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{deliverySiteExists()}{deliverySiteExists()}}
+{\footnotesize\ttfamily bool Data\+::delivery\+Site\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Check if a delivery site with the given code exists. 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the delivery site to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the delivery site exists, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a45315e9987d5b5364bec6f53b37eb28c}\label{class_data_a45315e9987d5b5364bec6f53b37eb28c}} 
+\index{Data@{Data}!pipelineExists@{pipelineExists}}
+\index{pipelineExists@{pipelineExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{pipelineExists()}{pipelineExists()}}
+{\footnotesize\ttfamily bool Data\+::pipeline\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Check if a pipeline with the given code exists. 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the pipeline to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the pipeline exists, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_afb9b81962efa94ff7eb4e2d1d31422f3}\label{class_data_afb9b81962efa94ff7eb4e2d1d31422f3}} 
+\index{Data@{Data}!pipelineImpact@{pipelineImpact}}
+\index{pipelineImpact@{pipelineImpact}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{pipelineImpact()}{pipelineImpact()}}
+{\footnotesize\ttfamily void Data\+::pipeline\+Impact (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Simulates the impact of putting a pipeline out of commission and displays the information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the pipeline to put out of commission. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_aaf49b1de5f169aad3089c668a3c0fb18}\label{class_data_aaf49b1de5f169aad3089c668a3c0fb18}} 
+\index{Data@{Data}!pumpingStationExists@{pumpingStationExists}}
+\index{pumpingStationExists@{pumpingStationExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{pumpingStationExists()}{pumpingStationExists()}}
+{\footnotesize\ttfamily bool Data\+::pumping\+Station\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Check if a pumping station with the given code exists. 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the pumping station to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the pumping station exists, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_aff9dcf326145afda0db2c5a88862f695}\label{class_data_aff9dcf326145afda0db2c5a88862f695}} 
+\index{Data@{Data}!pumpingStationImpact@{pumpingStationImpact}}
+\index{pumpingStationImpact@{pumpingStationImpact}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{pumpingStationImpact()}{pumpingStationImpact()}}
+{\footnotesize\ttfamily void Data\+::pumping\+Station\+Impact (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Simulates the impact of putting a pumping station out of commission and displays the information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the pumping station to put out of commission. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_abe4f40bd6af4d27fe1b0c352d37e2737}\label{class_data_abe4f40bd6af4d27fe1b0c352d37e2737}} 
+\index{Data@{Data}!readFileCities@{readFileCities}}
+\index{readFileCities@{readFileCities}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFileCities()}{readFileCities()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+Cities (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads data from the specified input file stream and processes it as city information. 
+
+This method reads data from the file stream and extracts city information from each line of the file, and then creates a \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} object and adds it to the graph.
+
+Time complexity\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em file} & The input file stream containing city information. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_acb44a0975e75e8cd3a52232208a06512}\label{class_data_acb44a0975e75e8cd3a52232208a06512}} 
+\index{Data@{Data}!readFilePipes@{readFilePipes}}
+\index{readFilePipes@{readFilePipes}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFilePipes()}{readFilePipes()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+Pipes (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads data from the specified input file stream and processes it as pipe information. 
+
+This method reads data from the file stream and extracts pipe information from each line of the file, and then creates a \mbox{\hyperlink{class_pipe}{Pipe}} object and adds it to the graph.
+
+Time complexity\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em file} & The input file stream containing pipe information. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a694d969726d9c4f4db7b1ba658e2a186}\label{class_data_a694d969726d9c4f4db7b1ba658e2a186}} 
+\index{Data@{Data}!readFileReservoir@{readFileReservoir}}
+\index{readFileReservoir@{readFileReservoir}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFileReservoir()}{readFileReservoir()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+Reservoir (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads data from the specified input file stream and processes it as reservoir information. 
+
+This method reads data from the file stream and extracts reservoir information from each line of the file, and then creates a \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} object and adds it to the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The input file stream containing reservoir information. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a030e2a756c0642bdff0edafe8551f4d0}\label{class_data_a030e2a756c0642bdff0edafe8551f4d0}} 
+\index{Data@{Data}!readFiles@{readFiles}}
+\index{readFiles@{readFiles}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFiles()}{readFiles()}}
+{\footnotesize\ttfamily void Data\+::read\+Files (\begin{DoxyParamCaption}\item[{const filesystem\+::path \&}]{dir\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Reads files from the specified directory path. 
+
+This method reads files from the specified directory path and processes them. Then for each file type a specific method is called to parse the data. 
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+path} & The directory path containing the files. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em runtime\+\_\+error} & if multiple files of the same category are found or if there´s any error reading or finding the files. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_data_a7dd863cfca4f938dde6d745ffd627f91}\label{class_data_a7dd863cfca4f938dde6d745ffd627f91}} 
+\index{Data@{Data}!readFileStations@{readFileStations}}
+\index{readFileStations@{readFileStations}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFileStations()}{readFileStations()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+Stations (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads data from the specified input file stream and processes it as station information. 
+
+This method reads data from the file stream and extracts station information from each line of the file, and then creates a \mbox{\hyperlink{class_pumping_station}{Pumping\+Station}} object and adds it to the graph.
+
+Time complexity\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em file} & The input file stream containing station information. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a8fc1de8e08dc768cd6d687efec0cdb1c}\label{class_data_a8fc1de8e08dc768cd6d687efec0cdb1c}} 
+\index{Data@{Data}!reservoirImpact@{reservoirImpact}}
+\index{reservoirImpact@{reservoirImpact}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{reservoirImpact()}{reservoirImpact()}}
+{\footnotesize\ttfamily void Data\+::reservoir\+Impact (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Simulates the impact of putting a water reservoir out of commission and displays the information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the water reservoir to put out of commission. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a3fcd83652fc0e46d1d99330b7b1ee9b6}\label{class_data_a3fcd83652fc0e46d1d99330b7b1ee9b6}} 
+\index{Data@{Data}!verifyWaterSupply@{verifyWaterSupply}}
+\index{verifyWaterSupply@{verifyWaterSupply}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{verifyWaterSupply()}{verifyWaterSupply()}}
+{\footnotesize\ttfamily void Data\+::verify\+Water\+Supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays information about the water supply status. 
+
+Time complexity\+: O(n).
+
+{\bfseries{Time Complexity\+:}}~\newline
+~~~~~~~~ O(1) \mbox{\Hypertarget{class_data_a2c868977f513554adae07db7b21d9a88}\label{class_data_a2c868977f513554adae07db7b21d9a88}} 
+\index{Data@{Data}!waterReservoirExists@{waterReservoirExists}}
+\index{waterReservoirExists@{waterReservoirExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{waterReservoirExists()}{waterReservoirExists()}}
+{\footnotesize\ttfamily bool Data\+::water\+Reservoir\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Check if a water reservoir with the given code exists. 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the water reservoir to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the water reservoir exists, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data.\+h\item 
+Data.\+cpp\end{DoxyCompactItemize}

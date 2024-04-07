@@ -1,0 +1,107 @@
+\hypertarget{class_get_files_path_state}{}\doxysection{Get\+Files\+Path\+State Class Reference}
+\label{class_get_files_path_state}\index{GetFilesPathState@{GetFilesPathState}}
+
+
+Class that represents a state for obtaining the network files path.  
+
+
+
+
+{\ttfamily \#include $<$Get\+Files\+Path\+State.\+h$>$}
+
+
+
+Inheritance diagram for Get\+Files\+Path\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Get\+Files\+Path\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_get_files_path_state_ae1e02e9cee05332a46868f628469a077}{Get\+Files\+Path\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$back\+State, function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$)$>$ next\+State\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructs an instance of \mbox{\hyperlink{class_get_files_path_state}{Get\+Files\+Path\+State}} with specified back state and callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_files_path_state_a1b94b319ff68a57c2ba4096141887eee}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays a prompt for inserting the path of the network csv files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_files_path_state_ad2dc089982f9ce8c17d5e1307c58b816}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for obtaining the path of the network csv files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_get_files_path_state_a57cde4378ff5eff1c2ac3aa3b314fdf8}\label{class_get_files_path_state_a57cde4378ff5eff1c2ac3aa3b314fdf8}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries back\+State}
+\item 
+\mbox{\Hypertarget{class_get_files_path_state_a71a8dc6910c2f26905530d22046be2df}\label{class_get_files_path_state_a71a8dc6910c2f26905530d22046be2df}} 
+function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$)$>$ {\bfseries next\+State\+Callback}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a state for obtaining the network files path. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_get_files_path_state_ae1e02e9cee05332a46868f628469a077}\label{class_get_files_path_state_ae1e02e9cee05332a46868f628469a077}} 
+\index{GetFilesPathState@{GetFilesPathState}!GetFilesPathState@{GetFilesPathState}}
+\index{GetFilesPathState@{GetFilesPathState}!GetFilesPathState@{GetFilesPathState}}
+\doxysubsubsection{\texorpdfstring{GetFilesPathState()}{GetFilesPathState()}}
+{\footnotesize\ttfamily Get\+Files\+Path\+State\+::\+Get\+Files\+Path\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{back\+State,  }\item[{function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$)$>$}]{next\+State\+Callback }\end{DoxyParamCaption})}
+
+
+
+Constructs an instance of \mbox{\hyperlink{class_get_files_path_state}{Get\+Files\+Path\+State}} with specified back state and callback function. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_get_files_path_state}{Get\+Files\+Path\+State}} class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing a top number from user input and proceeding to the next state with the captured information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em back\+State} & A pointer to the state to which the application should return when the user chooses to go back. \\
+\hline
+{\em next\+State\+Callback} & A function defining the action to be performed in the next state, usually involving a top number. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_get_files_path_state_a1b94b319ff68a57c2ba4096141887eee}\label{class_get_files_path_state_a1b94b319ff68a57c2ba4096141887eee}} 
+\index{GetFilesPathState@{GetFilesPathState}!display@{display}}
+\index{display@{display}!GetFilesPathState@{GetFilesPathState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Get\+Files\+Path\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays a prompt for inserting the path of the network csv files. 
+
+This method prints a prompt to the console, asking the user to insert the path of the network csv files. The displayed prompt guides the user on the expected format for entering the path of the network csv files. The user is expected to input a valid path representing the desired path of the network csv files. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_get_files_path_state_ad2dc089982f9ce8c17d5e1307c58b816}\label{class_get_files_path_state_ad2dc089982f9ce8c17d5e1307c58b816}} 
+\index{GetFilesPathState@{GetFilesPathState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GetFilesPathState@{GetFilesPathState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Get\+Files\+Path\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for obtaining the path of the network csv files. 
+
+This method reads a line of input from the console, representing the desired path of the network csv files for a specific operation. The method validates the entered input, ensuring it is a valid path. If the input is valid, the callback function is invoked with the captured number of top elements, and the application transitions to the next state accordingly. If the input is invalid, the user is prompted with an error message, and the state transitions to a \char`\"{}\+Try Again\char`\"{} state, allowing the user to make another attempt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Utils/Get\+Files\+Path\+State.\+h\item 
+States/\+Utils/Get\+Files\+Path\+State.\+cpp\end{DoxyCompactItemize}

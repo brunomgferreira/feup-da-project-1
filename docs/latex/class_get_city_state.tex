@@ -1,0 +1,107 @@
+\hypertarget{class_get_city_state}{}\doxysection{Get\+City\+State Class Reference}
+\label{class_get_city_state}\index{GetCityState@{GetCityState}}
+
+
+Class that represents a state for obtaining the network cities.  
+
+
+
+
+{\ttfamily \#include $<$Get\+City\+State.\+h$>$}
+
+
+
+Inheritance diagram for Get\+City\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Get\+City\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_get_city_state_ac34e52e8cb0668b90905f794100351f9}{Get\+City\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$back\+State, function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ next\+State\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructs an instance of \mbox{\hyperlink{class_get_city_state}{Get\+City\+State}} with specified back state and callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_city_state_aa1264aa11a7b50d76423200dde5147a6}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays a prompt for inserting a city code/name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_city_state_a8a5455ca2221193a0dfdb325a8cd7431}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for obtaining a city code/name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_get_city_state_a2cbe02ce46e1404482d0da40e621e4ff}\label{class_get_city_state_a2cbe02ce46e1404482d0da40e621e4ff}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries back\+State}
+\item 
+\mbox{\Hypertarget{class_get_city_state_ae67760fe0a5f3adf575b532212af7742}\label{class_get_city_state_ae67760fe0a5f3adf575b532212af7742}} 
+function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ {\bfseries next\+State\+Callback}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a state for obtaining the network cities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_get_city_state_ac34e52e8cb0668b90905f794100351f9}\label{class_get_city_state_ac34e52e8cb0668b90905f794100351f9}} 
+\index{GetCityState@{GetCityState}!GetCityState@{GetCityState}}
+\index{GetCityState@{GetCityState}!GetCityState@{GetCityState}}
+\doxysubsubsection{\texorpdfstring{GetCityState()}{GetCityState()}}
+{\footnotesize\ttfamily Get\+City\+State\+::\+Get\+City\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{back\+State,  }\item[{function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$}]{next\+State\+Callback }\end{DoxyParamCaption})}
+
+
+
+Constructs an instance of \mbox{\hyperlink{class_get_city_state}{Get\+City\+State}} with specified back state and callback function. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_get_city_state}{Get\+City\+State}} class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing an city code or name from user input and proceeding to the next state with the captured information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em back\+State} & A pointer to the state to which the application should return when the user chooses to go back. \\
+\hline
+{\em next\+State\+Callback} & A function defining the action to be performed in the next state, usually involving a city code/name. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_get_city_state_aa1264aa11a7b50d76423200dde5147a6}\label{class_get_city_state_aa1264aa11a7b50d76423200dde5147a6}} 
+\index{GetCityState@{GetCityState}!display@{display}}
+\index{display@{display}!GetCityState@{GetCityState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Get\+City\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays a prompt for inserting a city code/name. 
+
+This method prints a prompt to the console, asking the user to insert a city code/name. The displayed prompt guides the user on the expected format for entering the city code/name. The user is expected to input a valid city code/name based on the specified format. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_get_city_state_a8a5455ca2221193a0dfdb325a8cd7431}\label{class_get_city_state_a8a5455ca2221193a0dfdb325a8cd7431}} 
+\index{GetCityState@{GetCityState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GetCityState@{GetCityState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Get\+City\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for obtaining a city code/name. 
+
+This method reads a line of input from the console, representing a city code/name. The method validates the existence of the entered city code/name in the application\textquotesingle{}s data. If the city code/name is valid, the callback function is invoked with the captured city code/name, and the application transitions to the next state accordingly. If the city code/name is invalid, the user is prompted with an error message, and the state transitions to a \char`\"{}\+Try Again\char`\"{} state, allowing the user to make another attempt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Utils/Get\+City\+State.\+h\item 
+States/\+Utils/Get\+City\+State.\+cpp\end{DoxyCompactItemize}

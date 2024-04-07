@@ -1,0 +1,78 @@
+\hypertarget{class_pipe}{}\doxysection{Pipe Class Reference}
+\label{class_pipe}\index{Pipe@{Pipe}}
+
+
+Class representing a pipe entity in the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$Pipe.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pipe_ab3b9b4baec2f6ad02224b317328b6792}{Pipe}} (string service\+PointA, string service\+PointB, double capacity, bool unidirectional)
+\begin{DoxyCompactList}\small\item\em Constructs a pipe object with the provided details. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pipe_a0ae7ff8f1b9808316a99341fe5561181}\label{class_pipe_a0ae7ff8f1b9808316a99341fe5561181}} 
+string {\bfseries get\+Service\+PointA} ()
+\item 
+\mbox{\Hypertarget{class_pipe_a7efe60e7614df13bdfd131a9b9f5b99f}\label{class_pipe_a7efe60e7614df13bdfd131a9b9f5b99f}} 
+string {\bfseries get\+Service\+PointB} ()
+\item 
+\mbox{\Hypertarget{class_pipe_a2834420270d0eaa37f13f44f9b3c9362}\label{class_pipe_a2834420270d0eaa37f13f44f9b3c9362}} 
+bool {\bfseries get\+Unidirectional} () const
+\item 
+\mbox{\Hypertarget{class_pipe_a65a6084868ecdf7ac60a945b343eff25}\label{class_pipe_a65a6084868ecdf7ac60a945b343eff25}} 
+double {\bfseries get\+Capacity} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pipe_a927c19946876d6290282b2350e15076c}\label{class_pipe_a927c19946876d6290282b2350e15076c}} 
+string {\bfseries service\+PointA}
+\item 
+\mbox{\Hypertarget{class_pipe_ac5264a89d5d2e3eccf85c9d5afb0288e}\label{class_pipe_ac5264a89d5d2e3eccf85c9d5afb0288e}} 
+string {\bfseries service\+PointB}
+\item 
+\mbox{\Hypertarget{class_pipe_a67fa0b6c2695587efd0def523e5ef6b5}\label{class_pipe_a67fa0b6c2695587efd0def523e5ef6b5}} 
+double {\bfseries capacity}
+\item 
+\mbox{\Hypertarget{class_pipe_a35e6933ac6f2c9bac3994940374a8c3b}\label{class_pipe_a35e6933ac6f2c9bac3994940374a8c3b}} 
+bool {\bfseries unidirectional}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a pipe entity in the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pipe_ab3b9b4baec2f6ad02224b317328b6792}\label{class_pipe_ab3b9b4baec2f6ad02224b317328b6792}} 
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{Pipe()}{Pipe()}}
+{\footnotesize\ttfamily Pipe\+::\+Pipe (\begin{DoxyParamCaption}\item[{string}]{service\+PointA,  }\item[{string}]{service\+PointB,  }\item[{double}]{capacity,  }\item[{bool}]{unidirectional }\end{DoxyParamCaption})}
+
+
+
+Constructs a pipe object with the provided details. 
+
+This constructor initializes a pipe object with the specified pipe id and code. The parameters represent essential information about a pipe, including its id and code
+
+
+\begin{DoxyParams}{Parameters}
+{\em service\+PointA} & The source service that can be a water reservoir, a pumping station, or delivery site. \\
+\hline
+{\em service\+PointB} & The target service that can be a water reservoir, pumping station, or a delivery site. \\
+\hline
+{\em capacity} & The maximum capacity of the pipe. \\
+\hline
+{\em unidirectional} & Boolean indicating whether the connection between source service and target service is undirected or bi-\/directed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Pipe.\+h\item 
+Pipe.\+cpp\end{DoxyCompactItemize}

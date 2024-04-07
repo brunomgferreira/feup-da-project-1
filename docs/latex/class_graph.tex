@@ -1,0 +1,445 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph}{Graph}} $\ast$ \mbox{\hyperlink{class_graph_aa0ece00411674a2d73696555cf494daf}{copy\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Creates a deep copy of the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} \mbox{\hyperlink{class_graph_a5f4522e8e26a13194b45365b33694925}{calculate\+Metrics}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
+\begin{DoxyCompactList}\small\item\em Calculates various metrics for the graph. \end{DoxyCompactList}\item 
+pair$<$ double, double $>$ \mbox{\hyperlink{class_graph_a0de64474940d70519941928f8367b643}{get\+Total\+Demand\+And\+Max\+Flow}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites) const
+\begin{DoxyCompactList}\small\item\em Calculates total demand and maximum flow in the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a9c2090db526062a84a9cfb25073685cf}\label{class_graph_a9c2090db526062a84a9cfb25073685cf}} 
+string {\bfseries get\+Main\+Source\+Code} ()
+\item 
+\mbox{\Hypertarget{class_graph_a42c74724f79cd6306afa588e0bd113cd}\label{class_graph_a42c74724f79cd6306afa588e0bd113cd}} 
+string {\bfseries get\+Main\+Target\+Code} ()
+\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ \mbox{\hyperlink{class_graph_a6d08c48629578407e852d2d8dcadbbd4}{find\+Vertex}} (const string \&code) const
+\begin{DoxyCompactList}\small\item\em Auxiliary function to find a vertex in the graph, given its content. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}{add\+Vertex}} (const string \&code, const Vertex\+Type \&type)
+\begin{DoxyCompactList}\small\item\em Adds a vertex with a given content or info (in) to a graph (this). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_ab8479c5a64f0b007960e8621a3c7660c}{add\+Edge}} (const string \&source, const string \&dest, double c, double f=0) const
+\begin{DoxyCompactList}\small\item\em Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a96da6414041b1a856bdff1a9e6abdb76}{add\+Bidirectional\+Edge}} (const string \&source, const string \&dest, double c, double flow=0, double reverse\+Flow=0) const
+\begin{DoxyCompactList}\small\item\em Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}\label{class_graph_af7c6157baf3250a0780c7a9a34ffde7c}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ $>$ {\bfseries get\+Vertex\+Set} () const
+\item 
+void \mbox{\hyperlink{class_graph_abe593ef28d5fed82f4e6118d53473b15}{set\+All\+Edges\+Flow}} (double f)
+\begin{DoxyCompactList}\small\item\em Sets flow on all edges in the graph to the specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a2e5f0d564741c6541d1f0db43df676f2}{set\+All\+Vertices\+Flow}} (double f)
+\begin{DoxyCompactList}\small\item\em Sets flow on all vertices in the graph to the specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a9ffc84f05075b2492edc7c581bd8e883}{update\+All\+Vertices\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Updates flow on all vertices in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}{create\+Main\+Source}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$water\+Reservoirs)
+\begin{DoxyCompactList}\small\item\em Creates a main source vertex and connects it to water reservoirs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a6858292fa146e19caba11f538530893d}{create\+Main\+Target}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
+\begin{DoxyCompactList}\small\item\em Creates a main target vertex and its connections to delivery sites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}{max\+Flow}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$water\+Reservoirs, const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
+\begin{DoxyCompactList}\small\item\em Computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a488e6f0af66b7961d836fbdfcd775477}{optimize\+Load}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$delivery\+Sites)
+\begin{DoxyCompactList}\small\item\em Optimizes the load distribution in the graph. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ $>$ \mbox{\hyperlink{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}{get\+Paths}} (const string \&source, const string \&dest)
+\begin{DoxyCompactList}\small\item\em Finds all paths between two vertices of the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a936c7892f6bbef325d2151dfe0309d2e}{dfs}} (const string \&current, const string \&dest, vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \&path, vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$$>$ \&paths)
+\begin{DoxyCompactList}\small\item\em Performs depth-\/first search (DFS) to find all paths from a source to a destination vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}{station\+Out\+Of\+Commission}} (string const $\ast$code)
+\begin{DoxyCompactList}\small\item\em Marks a station as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_adb025c5c980901d2be35503cb3ea6726}{pipeline\+Out\+Of\+Commission}} (string const $\ast$service\+PointA, string const $\ast$service\+PointB, bool unidirectional)
+\begin{DoxyCompactList}\small\item\em Marks a pipeline as out of commission and adjusts the flow in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a20e6637316cccc7ea45ea52b86a2814d}{deactivate\+Vertex}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Deactivates a vertex and adjusts the flow in the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_aead61bcc1a44b6440713b34c9a6cff99}{detect\+And\+Deactivate\+Flow\+Cycles}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$deactivated\+Vertex)
+\begin{DoxyCompactList}\small\item\em Detects and deactivates flow cycles containing the specified vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}{find\+And\+Deactivate\+Flow\+Path}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$deactivated\+Vertex)
+\begin{DoxyCompactList}\small\item\em Finds and deactivates a flow path passing through the specified deactivated vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a790c8dc16a2e1f3e5ae05d2a3ff4f03f}\label{class_graph_a790c8dc16a2e1f3e5ae05d2a3ff4f03f}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ $>$ {\bfseries vertices}
+\item 
+\mbox{\Hypertarget{class_graph_a89054f2bcbd89b5b69bebbd4bf427329}\label{class_graph_a89054f2bcbd89b5b69bebbd4bf427329}} 
+string {\bfseries main\+Source\+Code} = \char`\"{}main\+Source\char`\"{}
+\item 
+\mbox{\Hypertarget{class_graph_aae4520514c9213a22c622e6c51c7a071}\label{class_graph_aae4520514c9213a22c622e6c51c7a071}} 
+string {\bfseries main\+Target\+Code} = \char`\"{}main\+Target\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a96da6414041b1a856bdff1a9e6abdb76}\label{class_graph_a96da6414041b1a856bdff1a9e6abdb76}} 
+\index{Graph@{Graph}!addBidirectionalEdge@{addBidirectionalEdge}}
+\index{addBidirectionalEdge@{addBidirectionalEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addBidirectionalEdge()}{addBidirectionalEdge()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Bidirectional\+Edge (\begin{DoxyParamCaption}\item[{const string \&}]{source,  }\item[{const string \&}]{dest,  }\item[{double}]{c,  }\item[{double}]{flow = {\ttfamily 0},  }\item[{double}]{reverse\+Flow = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Adds an bidirectional edge to the graph, given the source and destination vertices and the edge capacity (c). 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em source} & The source vertex of the edge. \\
+\hline
+{\em dest} & The destination vertex of the edge. \\
+\hline
+{\em c} & The capacity of the edge. \\
+\hline
+{\em flow} & The flow of the edge. Default is 0. \\
+\hline
+{\em reverse\+Flow} & The flow of the reverse edge. Default is 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge was successfully added, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ab8479c5a64f0b007960e8621a3c7660c}\label{class_graph_ab8479c5a64f0b007960e8621a3c7660c}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const string \&}]{source,  }\item[{const string \&}]{dest,  }\item[{double}]{c,  }\item[{double}]{f = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge capacity (c). 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em source} & The source vertex of the edge. \\
+\hline
+{\em dest} & The destination vertex of the edge. \\
+\hline
+{\em c} & The capacity of the edge. \\
+\hline
+{\em f} & The flow of the edge. Default is 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, and false if the source or destination vertex does not exist. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}\label{class_graph_a2cd653d89f9fbddcbab4a9ba1b70dcc7}} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const string \&}]{code,  }\item[{const Vertex\+Type \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Adds a vertex with a given content or info (in) to a graph (this). 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & Content of the vertex. \\
+\hline
+{\em type} & Type of the vertex (e.\+g. \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, and false if a vertex with that content already exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a5f4522e8e26a13194b45365b33694925}\label{class_graph_a5f4522e8e26a13194b45365b33694925}} 
+\index{Graph@{Graph}!calculateMetrics@{calculateMetrics}}
+\index{calculateMetrics@{calculateMetrics}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{calculateMetrics()}{calculateMetrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}} Graph\+::calculate\+Metrics (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$}]{delivery\+Sites }\end{DoxyParamCaption})}
+
+
+
+Calculates various metrics for the graph. 
+
+This function calculates metrics including absolute and relative average, variance, standard deviation and maximum difference in capacity and flow for edges in the graph.
+
+Time complexity\+: O(\+V $\ast$ E). 
+\begin{DoxyParams}{Parameters}
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an \textquotesingle{}\mbox{\hyperlink{class_graph_metrics}{Graph\+Metrics}}\textquotesingle{} object containing all calculated metrics. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_aa0ece00411674a2d73696555cf494daf}\label{class_graph_aa0ece00411674a2d73696555cf494daf}} 
+\index{Graph@{Graph}!copyGraph@{copyGraph}}
+\index{copyGraph@{copyGraph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{copyGraph()}{copyGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph}{Graph}} $\ast$ Graph\+::copy\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a deep copy of the graph. 
+
+Time complexity\+: O(V + E). \begin{DoxyReturn}{Returns}
+A pointer to the created copy of the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}\label{class_graph_a45b0af4f1a7f170decfdbdaa110d434b}} 
+\index{Graph@{Graph}!createMainSource@{createMainSource}}
+\index{createMainSource@{createMainSource}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{createMainSource()}{createMainSource()}}
+{\footnotesize\ttfamily void Graph\+::create\+Main\+Source (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$}]{water\+Reservoirs }\end{DoxyParamCaption})}
+
+
+
+Creates a main source vertex and connects it to water reservoirs. 
+
+Time complexity\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a6858292fa146e19caba11f538530893d}\label{class_graph_a6858292fa146e19caba11f538530893d}} 
+\index{Graph@{Graph}!createMainTarget@{createMainTarget}}
+\index{createMainTarget@{createMainTarget}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{createMainTarget()}{createMainTarget()}}
+{\footnotesize\ttfamily void Graph\+::create\+Main\+Target (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$}]{delivery\+Sites }\end{DoxyParamCaption})}
+
+
+
+Creates a main target vertex and its connections to delivery sites. 
+
+Time complexity\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a20e6637316cccc7ea45ea52b86a2814d}\label{class_graph_a20e6637316cccc7ea45ea52b86a2814d}} 
+\index{Graph@{Graph}!deactivateVertex@{deactivateVertex}}
+\index{deactivateVertex@{deactivateVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{deactivateVertex()}{deactivateVertex()}}
+{\footnotesize\ttfamily void Graph\+::deactivate\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Deactivates a vertex and adjusts the flow in the graph. 
+
+Time complexity\+: O(V + E). 
+\begin{DoxyParams}{Parameters}
+{\em v} & \mbox{\hyperlink{class_vertex}{Vertex}} to be deactivated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aead61bcc1a44b6440713b34c9a6cff99}\label{class_graph_aead61bcc1a44b6440713b34c9a6cff99}} 
+\index{Graph@{Graph}!detectAndDeactivateFlowCycles@{detectAndDeactivateFlowCycles}}
+\index{detectAndDeactivateFlowCycles@{detectAndDeactivateFlowCycles}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{detectAndDeactivateFlowCycles()}{detectAndDeactivateFlowCycles()}}
+{\footnotesize\ttfamily bool Graph\+::detect\+And\+Deactivate\+Flow\+Cycles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{deactivated\+Vertex }\end{DoxyParamCaption})}
+
+
+
+Detects and deactivates flow cycles containing the specified vertex. 
+
+Time complexity\+: O(V + E) 
+\begin{DoxyParams}{Parameters}
+{\em deactivated\+Vertex} & The vertex to be deactivated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a flow cycle is found and deactivated, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a936c7892f6bbef325d2151dfe0309d2e}\label{class_graph_a936c7892f6bbef325d2151dfe0309d2e}} 
+\index{Graph@{Graph}!dfs@{dfs}}
+\index{dfs@{dfs}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily void Graph\+::dfs (\begin{DoxyParamCaption}\item[{const string \&}]{current,  }\item[{const string \&}]{dest,  }\item[{vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \&}]{path,  }\item[{vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$$>$ \&}]{paths }\end{DoxyParamCaption})}
+
+
+
+Performs depth-\/first search (DFS) to find all paths from a source to a destination vertex. 
+
+Time complexity\+: O(V + E) 
+\begin{DoxyParams}{Parameters}
+{\em current} & Content of the current vertex. \\
+\hline
+{\em dest} & Content of the destination vertex. \\
+\hline
+{\em path} & Vector containing the current path being explored. \\
+\hline
+{\em paths} & Vector of vectors to store all found paths. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}\label{class_graph_aa4c082a4fb3f273b26cfb1ee520e0dfb}} 
+\index{Graph@{Graph}!findAndDeactivateFlowPath@{findAndDeactivateFlowPath}}
+\index{findAndDeactivateFlowPath@{findAndDeactivateFlowPath}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findAndDeactivateFlowPath()}{findAndDeactivateFlowPath()}}
+{\footnotesize\ttfamily void Graph\+::find\+And\+Deactivate\+Flow\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{deactivated\+Vertex }\end{DoxyParamCaption})}
+
+
+
+Finds and deactivates a flow path passing through the specified deactivated vertex. 
+
+Time complexity\+: O(V + E). 
+\begin{DoxyParams}{Parameters}
+{\em deactivated\+Vertex} & The vertex to be deactivated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a6d08c48629578407e852d2d8dcadbbd4}\label{class_graph_a6d08c48629578407e852d2d8dcadbbd4}} 
+\index{Graph@{Graph}!findVertex@{findVertex}}
+\index{findVertex@{findVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption}) const}
+
+
+
+Auxiliary function to find a vertex in the graph, given its content. 
+
+Time complexity\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The content of the vertex to be found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the vertex if found, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}\label{class_graph_a91e1f6937bba59a7222dadfbbed5c8d6}} 
+\index{Graph@{Graph}!getPaths@{getPaths}}
+\index{getPaths@{getPaths}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getPaths()}{getPaths()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ $>$ Graph\+::get\+Paths (\begin{DoxyParamCaption}\item[{const string \&}]{source,  }\item[{const string \&}]{dest }\end{DoxyParamCaption})}
+
+
+
+Finds all paths between two vertices of the graph. 
+
+Time complexity\+: O(V + P), \textquotesingle{}P\textquotesingle{} is the number of paths. 
+\begin{DoxyParams}{Parameters}
+{\em source} & Content of the source vertex. \\
+\hline
+{\em dest} & Content of the destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of vectors containing all found paths. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a0de64474940d70519941928f8367b643}\label{class_graph_a0de64474940d70519941928f8367b643}} 
+\index{Graph@{Graph}!getTotalDemandAndMaxFlow@{getTotalDemandAndMaxFlow}}
+\index{getTotalDemandAndMaxFlow@{getTotalDemandAndMaxFlow}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getTotalDemandAndMaxFlow()}{getTotalDemandAndMaxFlow()}}
+{\footnotesize\ttfamily pair$<$ double, double $>$ Graph\+::get\+Total\+Demand\+And\+Max\+Flow (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$}]{delivery\+Sites }\end{DoxyParamCaption}) const}
+
+
+
+Calculates total demand and maximum flow in the graph. 
+
+Time complexity\+: O(m), \textquotesingle{}m\textquotesingle{} is the number of delivery sites. 
+\begin{DoxyParams}{Parameters}
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair containing the total demand and the maximum flow. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}\label{class_graph_aa9f8981fc2b4d9b9c802e2c5a4d2c8d0}} 
+\index{Graph@{Graph}!maxFlow@{maxFlow}}
+\index{maxFlow@{maxFlow}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{maxFlow()}{maxFlow()}}
+{\footnotesize\ttfamily void Graph\+::max\+Flow (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} $\ast$ $>$ $\ast$}]{water\+Reservoirs,  }\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$}]{delivery\+Sites }\end{DoxyParamCaption})}
+
+
+
+Computes the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. 
+
+Time complexity\+: O(\+V E$^\wedge$2). 
+\begin{DoxyParams}{Parameters}
+{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+\hline
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a488e6f0af66b7961d836fbdfcd775477}\label{class_graph_a488e6f0af66b7961d836fbdfcd775477}} 
+\index{Graph@{Graph}!optimizeLoad@{optimizeLoad}}
+\index{optimizeLoad@{optimizeLoad}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{optimizeLoad()}{optimizeLoad()}}
+{\footnotesize\ttfamily void Graph\+::optimize\+Load (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_delivery_site}{Delivery\+Site}} $\ast$ $>$ $\ast$}]{delivery\+Sites }\end{DoxyParamCaption})}
+
+
+
+Optimizes the load distribution in the graph. 
+
+Time complexity\+: O(E $\ast$ (P + Q)), \textquotesingle{}P\textquotesingle{} is the number of paths and \textquotesingle{}Q\textquotesingle{} is the maximum number of edges in a path. 
+\begin{DoxyParams}{Parameters}
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_adb025c5c980901d2be35503cb3ea6726}\label{class_graph_adb025c5c980901d2be35503cb3ea6726}} 
+\index{Graph@{Graph}!pipelineOutOfCommission@{pipelineOutOfCommission}}
+\index{pipelineOutOfCommission@{pipelineOutOfCommission}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{pipelineOutOfCommission()}{pipelineOutOfCommission()}}
+{\footnotesize\ttfamily void Graph\+::pipeline\+Out\+Of\+Commission (\begin{DoxyParamCaption}\item[{string const $\ast$}]{service\+PointA,  }\item[{string const $\ast$}]{service\+PointB,  }\item[{bool}]{unidirectional }\end{DoxyParamCaption})}
+
+
+
+Marks a pipeline as out of commission and adjusts the flow in the graph. 
+
+Time complexity\+: O(\+V E$^\wedge$2). 
+\begin{DoxyParams}{Parameters}
+{\em water\+Reservoirs} & unordered\+\_\+map containing water reservoirs. \\
+\hline
+{\em delivery\+Sites} & unordered\+\_\+map containing delivery sites. \\
+\hline
+{\em service\+PointA} & Code of the first service point of the pipeline to be marked as out of commission. \\
+\hline
+{\em service\+PointB} & Code of the second service point of the pipeline to be marked as out of commission. \\
+\hline
+{\em unidirectional} & A flag indicating if the pipeline is unidirectional. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_abe593ef28d5fed82f4e6118d53473b15}\label{class_graph_abe593ef28d5fed82f4e6118d53473b15}} 
+\index{Graph@{Graph}!setAllEdgesFlow@{setAllEdgesFlow}}
+\index{setAllEdgesFlow@{setAllEdgesFlow}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{setAllEdgesFlow()}{setAllEdgesFlow()}}
+{\footnotesize\ttfamily void Graph\+::set\+All\+Edges\+Flow (\begin{DoxyParamCaption}\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Sets flow on all edges in the graph to the specified value. 
+
+Time complexity\+: O(V + E). 
+\begin{DoxyParams}{Parameters}
+{\em f} & The flow value to be set on all edges. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a2e5f0d564741c6541d1f0db43df676f2}\label{class_graph_a2e5f0d564741c6541d1f0db43df676f2}} 
+\index{Graph@{Graph}!setAllVerticesFlow@{setAllVerticesFlow}}
+\index{setAllVerticesFlow@{setAllVerticesFlow}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{setAllVerticesFlow()}{setAllVerticesFlow()}}
+{\footnotesize\ttfamily void Graph\+::set\+All\+Vertices\+Flow (\begin{DoxyParamCaption}\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Sets flow on all vertices in the graph to the specified value. 
+
+Time complexity\+: O(\+V). 
+\begin{DoxyParams}{Parameters}
+{\em f} & The flow value to be set on all vertices. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}\label{class_graph_a3f5b77141277fd38c0ff0a1b1be2eb33}} 
+\index{Graph@{Graph}!stationOutOfCommission@{stationOutOfCommission}}
+\index{stationOutOfCommission@{stationOutOfCommission}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{stationOutOfCommission()}{stationOutOfCommission()}}
+{\footnotesize\ttfamily void Graph\+::station\+Out\+Of\+Commission (\begin{DoxyParamCaption}\item[{string const $\ast$}]{code }\end{DoxyParamCaption})}
+
+
+
+Marks a station as out of commission and adjusts the flow in the graph. 
+
+Time complexity\+: O(\+V E$^\wedge$2). 
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the pumping station. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a9ffc84f05075b2492edc7c581bd8e883}\label{class_graph_a9ffc84f05075b2492edc7c581bd8e883}} 
+\index{Graph@{Graph}!updateAllVerticesFlow@{updateAllVerticesFlow}}
+\index{updateAllVerticesFlow@{updateAllVerticesFlow}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{updateAllVerticesFlow()}{updateAllVerticesFlow()}}
+{\footnotesize\ttfamily void Graph\+::update\+All\+Vertices\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates flow on all vertices in the graph. 
+
+Time complexity\+: O(\+V). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}
