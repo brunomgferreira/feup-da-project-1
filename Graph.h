@@ -45,7 +45,7 @@ private:
 public:
 
     /**
-     * @brief Constructor for Vertex class.
+     * @brief Constructor forS Vertex class.
      *
      * @param code The code associated with the vertex.
      * @param type The type of the vertex.

@@ -231,7 +231,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>networkName</b></td
 <p>Calculates and displays the maximum flow for each city in the network. </p>
 <p>This function calculates and displays the maximum flow for each city in the network. It iterates over all delivery sites, retrieves the demand and flow values for each city, and prints them to the console. If specified, the results are also written to an output file. Additionally, it displays the overall maximum flow value for the network.</p>
 <p><b>Time Complexity:</b><br  />
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; The time complexity of this function is O(n), where n is the number of delivery sites (cities) in the network. This complexity arises from iterating over all delivery sites to retrieve their demand and flow values. </p>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; The time complexity of this function is O(1). </p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>networkName</b></td
 <p>Performs a load optimization on the network to improve the distribution of water resources. </p>
 <p>This function optimizes the load distribution in the network by adjusting the flow of water through different pipelines. It computes the initial metrics of the network and then applies optimization techniques to achieve better load balancing. After optimization, it calculates the final metrics and compares them with the initial metrics to evaluate the effectiveness of the optimization process. The function outputs the results to the console, providing insights into the improvement achieved in load balancing and the impact on the total maximum flow in the network.</p>
 <p><b>Time Complexity:</b><br  />
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; The time complexity of this function directly depends on the time complexity of the optimize load algorithm. And the time complexity of this algorithm depends on the number of edges in the graph, the number of delivery sites, and the efficiency of the path-finding algorithm. Let V be the number of vertices and E be the number of edges. The worst-case time complexity is O(n(E * (V + E))), where n is the number of iterations. </p>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; The time complexity of this function depends on the size of the network graph and the number of delivery sites. It involves traversing the graph and performing calculations for each delivery site, resulting in a time complexity proportional to the number of delivery sites. This means O(n) where n is the number of delivery sites. </p>
 
 </div>
 </div>

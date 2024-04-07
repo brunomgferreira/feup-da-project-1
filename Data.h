@@ -225,8 +225,7 @@ public:
      * all delivery sites, retrieves the demand and flow values for each city, and prints them to the console. If specified,
      * the results are also written to an output file. Additionally, it displays the overall maximum flow value for the network.
      *
-     * @complexity The time complexity of this function is O(n), where n is the number of delivery sites (cities) in the network.
-     * This complexity arises from iterating over all delivery sites to retrieve their demand and flow values.
+     * @complexity The time complexity of this function is O(1).
      */
     void allCitiesMaxFlow();
 
@@ -255,10 +254,9 @@ public:
      * the results to the console, providing insights into the improvement achieved in load balancing and the
      * impact on the total maximum flow in the network.
      *
-     * @complexity The time complexity of this function directly depends on the time complexity of the optimize load algorithm.
-     * And the time complexity of this algorithm depends on the number of edges in the graph, the number of
-     * delivery sites, and the efficiency of the path-finding algorithm. Let V be the number of vertices and E be
-     * the number of edges. The worst-case time complexity is O(n(E * (V + E))), where n is the number of iterations.
+     * @complexity The time complexity of this function depends on the size of the network graph and the number of
+     * delivery sites. It involves traversing the graph and performing calculations for each delivery site, resulting
+     * in a time complexity proportional to the number of delivery sites. This means O(n) where n is the number of delivery sites.
      */
     void loadOptimization();
 
