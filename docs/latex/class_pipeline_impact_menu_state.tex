@@ -1,0 +1,89 @@
+\hypertarget{class_pipeline_impact_menu_state}{}\doxysection{Pipeline\+Impact\+Menu\+State Class Reference}
+\label{class_pipeline_impact_menu_state}\index{PipelineImpactMenuState@{PipelineImpactMenuState}}
+
+
+Class representing the Pipeline Impact Menu state of the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$Pipeline\+Impact\+Menu\+State.\+h$>$}
+
+
+
+Inheritance diagram for Pipeline\+Impact\+Menu\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Pipeline\+Impact\+Menu\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pipeline_impact_menu_state_a662c4e7faa4073c2ddc756c1886c9d2a}{Pipeline\+Impact\+Menu\+State}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_pipeline_impact_menu_state}{Pipeline\+Impact\+Menu\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pipeline_impact_menu_state_a1c65dc756ab3a466b0326f3ec27e3c5c}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the Pipeline Impact Menu options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pipeline_impact_menu_state_aed5a837976d5d3e303c80883b6c99781}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for the Pipeline Impact Menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing the Pipeline Impact Menu state of the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pipeline_impact_menu_state_a662c4e7faa4073c2ddc756c1886c9d2a}\label{class_pipeline_impact_menu_state_a662c4e7faa4073c2ddc756c1886c9d2a}} 
+\index{PipelineImpactMenuState@{PipelineImpactMenuState}!PipelineImpactMenuState@{PipelineImpactMenuState}}
+\index{PipelineImpactMenuState@{PipelineImpactMenuState}!PipelineImpactMenuState@{PipelineImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{PipelineImpactMenuState()}{PipelineImpactMenuState()}}
+{\footnotesize\ttfamily Pipeline\+Impact\+Menu\+State\+::\+Pipeline\+Impact\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \mbox{\hyperlink{class_pipeline_impact_menu_state}{Pipeline\+Impact\+Menu\+State}}. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_pipeline_impact_menu_state}{Pipeline\+Impact\+Menu\+State}} class. It doesn\textquotesingle{}t require any parameters, as it represents the Pipeline Impact Menu state of the application, allowing users to navigate to different functionalities and sections of the program. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pipeline_impact_menu_state_a1c65dc756ab3a466b0326f3ec27e3c5c}\label{class_pipeline_impact_menu_state_a1c65dc756ab3a466b0326f3ec27e3c5c}} 
+\index{PipelineImpactMenuState@{PipelineImpactMenuState}!display@{display}}
+\index{display@{display}!PipelineImpactMenuState@{PipelineImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Pipeline\+Impact\+Menu\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the Pipeline Impact Menu options. 
+
+This method prints the Pipeline Impact Menu options to the console, allowing users to choose from different functionalities. Users input a single character corresponding to their desired option (1-\/3 for sections, \textquotesingle{}q\textquotesingle{} to exit). The method provides a visual representation of the Find Max Water Flow Menu and prompts the user to enter their choice. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_pipeline_impact_menu_state_aed5a837976d5d3e303c80883b6c99781}\label{class_pipeline_impact_menu_state_aed5a837976d5d3e303c80883b6c99781}} 
+\index{PipelineImpactMenuState@{PipelineImpactMenuState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!PipelineImpactMenuState@{PipelineImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Pipeline\+Impact\+Menu\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for the Pipeline Impact Menu. 
+
+This method prompts the user to input a single character representing their choice in the Pipeline Impact Menu. It uses a switch statement to determine the action corresponding to the user\textquotesingle{}s choice. If the input is valid, the method transitions to the appropriate state based on the user\textquotesingle{}s choice. If the input is invalid, the method notifies the user and prompts them to try again. The \textquotesingle{}q\textquotesingle{} option exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Pipeline\+Impact/Pipeline\+Impact\+Menu\+State.\+h\item 
+States/\+Pipeline\+Impact/Pipeline\+Impact\+Menu\+State.\+cpp\end{DoxyCompactItemize}

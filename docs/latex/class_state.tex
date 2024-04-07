@@ -1,0 +1,91 @@
+\hypertarget{class_state}{}\doxysection{State Class Reference}
+\label{class_state}\index{State@{State}}
+
+
+Abstract base class representing an app state within the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+
+
+Inheritance diagram for State\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{display}} () const =0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to display the state-\/specific menu or information. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to handle user input specific to the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_state_abb96eee18b14b41589b7163b83902463}{Press\+Enter\+To\+Continue}} (int num\+Presses=2)
+\begin{DoxyCompactList}\small\item\em Waits for user to press ENTER to continue execution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing an app state within the water supply analysis system. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_state_adf38e0648b7705d04c39f40b763632bb}\label{class_state_adf38e0648b7705d04c39f40b763632bb}} 
+\index{State@{State}!display@{display}}
+\index{display@{display}!State@{State}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily virtual void State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to display the state-\/specific menu or information. 
+
+This function is declared as virtual and pure in the base class, indicating that it must be implemented by derived classes. Each derived class should provide its own implementation to display the state-\/specific menu or information when called. The \textquotesingle{}const\textquotesingle{} qualifier indicates that the function does not modify the state of the object. The \textquotesingle{}= 0\textquotesingle{} signifies that this is a pure virtual function, and any class inheriting from this base class must provide an implementation for this function. 
+
+Implemented in \mbox{\hyperlink{class_try_again_state_a2b8612db5038083dc4bb80e7b1dd46f8}{Try\+Again\+State}}, \mbox{\hyperlink{class_get_reservoir_state_aed114c38a0053adbdcac5f2b57d390ca}{Get\+Reservoir\+State}}, \mbox{\hyperlink{class_get_pumping_station_state_ad4f572778777f1e5491805582bbcd67e}{Get\+Pumping\+Station\+State}}, \mbox{\hyperlink{class_get_pipeline_state_aa20181dcf36ec33214e05a978b2fc45a}{Get\+Pipeline\+State}}, \mbox{\hyperlink{class_get_files_path_state_a1b94b319ff68a57c2ba4096141887eee}{Get\+Files\+Path\+State}}, \mbox{\hyperlink{class_get_city_state_aa1264aa11a7b50d76423200dde5147a6}{Get\+City\+State}}, \mbox{\hyperlink{class_reservoir_impact_menu_state_a1c3773641b10168a08421a7b62f365b7}{Reservoir\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_pumping_station_impact_menu_state_a541097ebba9dd68ac456a2ff3b3040bf}{Pumping\+Station\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_pipeline_impact_menu_state_a1c65dc756ab3a466b0326f3ec27e3c5c}{Pipeline\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_max_flow_menu_state_a91fe006a0488738a462747b3aad72d82}{Max\+Flow\+Menu\+State}}, and \mbox{\hyperlink{class_main_menu_state_ae228477fc7a407ec7f97e2b723b4b6c4}{Main\+Menu\+State}}.
+
+\mbox{\Hypertarget{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}\label{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}} 
+\index{State@{State}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!State@{State}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily virtual void State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to handle user input specific to the state. 
+
+This function is declared as virtual and pure in the base class, indicating that it must be implemented by derived classes. Each derived class should provide its own implementation to handle user input specific to the state when called. The \textquotesingle{}app\textquotesingle{} parameter represents the application context and can be used to access and manipulate application data or state. The \textquotesingle{}= 0\textquotesingle{} signifies that this is a pure virtual function, and any class inheriting from this base class must provide an implementation for this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & Pointer to the application context, allowing access to application data and state. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_try_again_state_a8dc71bc7136f5afcbe0a0097920a4813}{Try\+Again\+State}}, \mbox{\hyperlink{class_get_reservoir_state_ab51fef03150b6f8b7e433943630ee4ae}{Get\+Reservoir\+State}}, \mbox{\hyperlink{class_get_pumping_station_state_a413238e45cb10ece44be96e98f6d6281}{Get\+Pumping\+Station\+State}}, \mbox{\hyperlink{class_get_pipeline_state_a4c8568d2225acbb791e1e1e4480eeb6a}{Get\+Pipeline\+State}}, \mbox{\hyperlink{class_get_files_path_state_ad2dc089982f9ce8c17d5e1307c58b816}{Get\+Files\+Path\+State}}, \mbox{\hyperlink{class_get_city_state_a8a5455ca2221193a0dfdb325a8cd7431}{Get\+City\+State}}, \mbox{\hyperlink{class_reservoir_impact_menu_state_a9eb086a443cdff84f80c81c6dabcab5f}{Reservoir\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_pumping_station_impact_menu_state_abd835dc528d04947e898437f01760ef7}{Pumping\+Station\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_pipeline_impact_menu_state_aed5a837976d5d3e303c80883b6c99781}{Pipeline\+Impact\+Menu\+State}}, \mbox{\hyperlink{class_max_flow_menu_state_ad044c9befc387185661b40e883749e86}{Max\+Flow\+Menu\+State}}, and \mbox{\hyperlink{class_main_menu_state_a4971793b5d6fbeca738f6e3efd1c183d}{Main\+Menu\+State}}.
+
+\mbox{\Hypertarget{class_state_abb96eee18b14b41589b7163b83902463}\label{class_state_abb96eee18b14b41589b7163b83902463}} 
+\index{State@{State}!PressEnterToContinue@{PressEnterToContinue}}
+\index{PressEnterToContinue@{PressEnterToContinue}!State@{State}}
+\doxysubsubsection{\texorpdfstring{PressEnterToContinue()}{PressEnterToContinue()}}
+{\footnotesize\ttfamily void State\+::\+Press\+Enter\+To\+Continue (\begin{DoxyParamCaption}\item[{int}]{num\+Presses = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Waits for user to press ENTER to continue execution. 
+
+This function displays a prompt instructing the user to press ENTER to continue and waits until the user presses the ENTER key. This function uses \textquotesingle{}cin.\+ignore()\textquotesingle{} to clear the input buffer, allowing the user to press ENTER without any unintended effects on subsequent input operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Presses} & Number of times the user must press ENTER. Defaults to 2 if not specified. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/State.\+h\item 
+States/State.\+cpp\end{DoxyCompactItemize}

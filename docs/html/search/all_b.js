@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['optimizeload_0',['optimizeLoad',['../class_graph.html#a488e6f0af66b7961d836fbdfcd775477',1,'Graph']]]
+  ['operator_3c_78',['operator&lt;',['../class_vertex.html#ad4ccd48170a1530ec1db5eb306357a74',1,'Vertex']]],
+  ['optimizeload_79',['optimizeLoad',['../class_graph.html#a488e6f0af66b7961d836fbdfcd775477',1,'Graph']]]
 ];

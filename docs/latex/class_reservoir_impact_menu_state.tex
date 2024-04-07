@@ -1,0 +1,89 @@
+\hypertarget{class_reservoir_impact_menu_state}{}\doxysection{Reservoir\+Impact\+Menu\+State Class Reference}
+\label{class_reservoir_impact_menu_state}\index{ReservoirImpactMenuState@{ReservoirImpactMenuState}}
+
+
+Class representing the Reservoir Impact Menu state of the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$Reservoir\+Impact\+Menu\+State.\+h$>$}
+
+
+
+Inheritance diagram for Reservoir\+Impact\+Menu\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Reservoir\+Impact\+Menu\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_reservoir_impact_menu_state_a299e03dc4d31f30d8d0c526c74a97556}{Reservoir\+Impact\+Menu\+State}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_reservoir_impact_menu_state}{Reservoir\+Impact\+Menu\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reservoir_impact_menu_state_a1c3773641b10168a08421a7b62f365b7}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the Reservoir Impact Menu options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reservoir_impact_menu_state_a9eb086a443cdff84f80c81c6dabcab5f}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for the Reservoir Impact Menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing the Reservoir Impact Menu state of the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_reservoir_impact_menu_state_a299e03dc4d31f30d8d0c526c74a97556}\label{class_reservoir_impact_menu_state_a299e03dc4d31f30d8d0c526c74a97556}} 
+\index{ReservoirImpactMenuState@{ReservoirImpactMenuState}!ReservoirImpactMenuState@{ReservoirImpactMenuState}}
+\index{ReservoirImpactMenuState@{ReservoirImpactMenuState}!ReservoirImpactMenuState@{ReservoirImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{ReservoirImpactMenuState()}{ReservoirImpactMenuState()}}
+{\footnotesize\ttfamily Reservoir\+Impact\+Menu\+State\+::\+Reservoir\+Impact\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \mbox{\hyperlink{class_reservoir_impact_menu_state}{Reservoir\+Impact\+Menu\+State}}. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_reservoir_impact_menu_state}{Reservoir\+Impact\+Menu\+State}} class. It doesn\textquotesingle{}t require any parameters, as it represents the Reservoir Impact Menu state of the application, allowing users to navigate to different functionalities and sections of the program. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_reservoir_impact_menu_state_a1c3773641b10168a08421a7b62f365b7}\label{class_reservoir_impact_menu_state_a1c3773641b10168a08421a7b62f365b7}} 
+\index{ReservoirImpactMenuState@{ReservoirImpactMenuState}!display@{display}}
+\index{display@{display}!ReservoirImpactMenuState@{ReservoirImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Reservoir\+Impact\+Menu\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the Reservoir Impact Menu options. 
+
+This method prints the Reservoir Impact Menu options to the console, allowing users to choose from different functionalities. Users input a single character corresponding to their desired option (1-\/2 for sections, \textquotesingle{}q\textquotesingle{} to exit). The method provides a visual representation of the Find Max Water Flow Menu and prompts the user to enter their choice. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_reservoir_impact_menu_state_a9eb086a443cdff84f80c81c6dabcab5f}\label{class_reservoir_impact_menu_state_a9eb086a443cdff84f80c81c6dabcab5f}} 
+\index{ReservoirImpactMenuState@{ReservoirImpactMenuState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!ReservoirImpactMenuState@{ReservoirImpactMenuState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Reservoir\+Impact\+Menu\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for the Reservoir Impact Menu. 
+
+This method prompts the user to input a single character representing their choice in the Reservoir Impact Menu. It uses a switch statement to determine the action corresponding to the user\textquotesingle{}s choice. If the input is valid, the method transitions to the appropriate state based on the user\textquotesingle{}s choice. If the input is invalid, the method notifies the user and prompts them to try again. The \textquotesingle{}q\textquotesingle{} option exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Reservoir\+Impact/Reservoir\+Impact\+Menu\+State.\+h\item 
+States/\+Reservoir\+Impact/Reservoir\+Impact\+Menu\+State.\+cpp\end{DoxyCompactItemize}

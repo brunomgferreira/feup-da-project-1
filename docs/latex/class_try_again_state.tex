@@ -1,0 +1,107 @@
+\hypertarget{class_try_again_state}{}\doxysection{Try\+Again\+State Class Reference}
+\label{class_try_again_state}\index{TryAgainState@{TryAgainState}}
+
+
+Class representing a state that prompts the user to try an action again.  
+
+
+
+
+{\ttfamily \#include $<$Try\+Again\+State.\+h$>$}
+
+
+
+Inheritance diagram for Try\+Again\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Try\+Again\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_try_again_state_aa26b4079fc5a051b6b66c78e6b623cab}{Try\+Again\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$back\+State, \mbox{\hyperlink{class_state}{State}} $\ast$current\+State)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_try_again_state_a2b8612db5038083dc4bb80e7b1dd46f8}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the options for retrying or navigating back in a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_try_again_state_a8dc71bc7136f5afcbe0a0097920a4813}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input in a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_try_again_state_a661b43903c0b87f8add2022822a38c9a}\label{class_try_again_state_a661b43903c0b87f8add2022822a38c9a}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries back\+State}
+\item 
+\mbox{\Hypertarget{class_try_again_state_ab3e3d04a294837dc8cfd8289331160ce}\label{class_try_again_state_ab3e3d04a294837dc8cfd8289331160ce}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries current\+State}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a state that prompts the user to try an action again. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_try_again_state_aa26b4079fc5a051b6b66c78e6b623cab}\label{class_try_again_state_aa26b4079fc5a051b6b66c78e6b623cab}} 
+\index{TryAgainState@{TryAgainState}!TryAgainState@{TryAgainState}}
+\index{TryAgainState@{TryAgainState}!TryAgainState@{TryAgainState}}
+\doxysubsubsection{\texorpdfstring{TryAgainState()}{TryAgainState()}}
+{\footnotesize\ttfamily Try\+Again\+State\+::\+Try\+Again\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{back\+State,  }\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{current\+State }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}} instance. 
+
+This constructor initializes a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}} object with the provided back\+State and current\+State pointers. The back\+State represents the state to which the application should transition in case of a retry, and current\+State represents the state where the retry was triggered.
+
+
+\begin{DoxyParams}{Parameters}
+{\em back\+State} & A pointer to the state to which the application should transition in case of a retry. \\
+\hline
+{\em current\+State} & A pointer to the state where the retry was triggered. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_try_again_state_a2b8612db5038083dc4bb80e7b1dd46f8}\label{class_try_again_state_a2b8612db5038083dc4bb80e7b1dd46f8}} 
+\index{TryAgainState@{TryAgainState}!display@{display}}
+\index{display@{display}!TryAgainState@{TryAgainState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Try\+Again\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the options for retrying or navigating back in a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}}. 
+
+This method prints retry and navigation options to the console, allowing users to choose between trying again, going back to the previous state, or returning to the main menu. The displayed menu includes corresponding numeric options, and users can enter their choice. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_try_again_state_a8dc71bc7136f5afcbe0a0097920a4813}\label{class_try_again_state_a8dc71bc7136f5afcbe0a0097920a4813}} 
+\index{TryAgainState@{TryAgainState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!TryAgainState@{TryAgainState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Try\+Again\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input in a \mbox{\hyperlink{class_try_again_state}{Try\+Again\+State}}. 
+
+This method reads the user\textquotesingle{}s input from the console and processes it based on the chosen option. Users can input a single character corresponding to the desired action (1 for Try Again, \textquotesingle{}b\textquotesingle{} for Go Back, \textquotesingle{}q\textquotesingle{} for Main Menu). The method then transitions the application state accordingly, retrying the current state, going back to the previous state, or returning to the main menu. It provides error messages for invalid inputs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Utils/Try\+Again\+State.\+h\item 
+States/\+Utils/Try\+Again\+State.\+cpp\end{DoxyCompactItemize}

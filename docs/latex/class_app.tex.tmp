@@ -1,0 +1,169 @@
+\hypertarget{class_app}{}\doxysection{App Class Reference}
+\label{class_app}\index{App@{App}}
+
+
+Singleton class representing the main application controller for the water supply analysis system.  
+
+
+
+
+{\ttfamily \#include $<$App.\+h$>$}
+
+
+
+Collaboration diagram for App\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_app_a34f1f253b1cef5f4ecbac66eaf6964ec}{$\sim$\+App}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{class_app}{App}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_state}{State}} $\ast$ \mbox{\hyperlink{class_app_a26e3b9f6b91e8e3f25d7d42db07f9284}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current state of the application. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_app_a8b13a49d2c6cfa525cf866db1d2197c7}{set\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Sets the state of the application. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data}{Data}} $\ast$ \mbox{\hyperlink{class_app_aee6d8099b506284e3011c02236434c69}{get\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Gets the data object associated with the application. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_app_ae245ea9fb63553e630b87dbc33f74c96}{set\+Data}} (const filesystem\+::path \&dir\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Sets the data of the application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_app_ae2404f5a75c343691c1c3ec4e958a529}\label{class_app_ae2404f5a75c343691c1c3ec4e958a529}} 
+void \mbox{\hyperlink{class_app_ae2404f5a75c343691c1c3ec4e958a529}{display}} () const
+\begin{DoxyCompactList}\small\item\em Displays the current state of the application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_app_a82cf101250fcf289a59c4d4b9b847029}\label{class_app_a82cf101250fcf289a59c4d4b9b847029}} 
+void \mbox{\hyperlink{class_app_a82cf101250fcf289a59c4d4b9b847029}{handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles the user input for the current state of the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_app}{App}} $\ast$ \mbox{\hyperlink{class_app_a4d04d85bbda06ce06faad681c652f1c7}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \mbox{\hyperlink{class_app}{App}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_app_acb8cbf3e285b91d0170ffe87df5989c5}{App}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_app}{App}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_app_a4fdd9e3597c283da614e2d088914d595}\label{class_app_a4fdd9e3597c283da614e2d088914d595}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries current\+State}
+\item 
+\mbox{\Hypertarget{class_app_a147f8c29331c704563887cb228ccc257}\label{class_app_a147f8c29331c704563887cb228ccc257}} 
+\mbox{\hyperlink{class_data}{Data}} $\ast$ {\bfseries data}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_app_a969b9fc7ca4d6cba005a73fceeaf8462}\label{class_app_a969b9fc7ca4d6cba005a73fceeaf8462}} 
+static \mbox{\hyperlink{class_app}{App}} $\ast$ {\bfseries instance} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing the main application controller for the water supply analysis system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_app_acb8cbf3e285b91d0170ffe87df5989c5}\label{class_app_acb8cbf3e285b91d0170ffe87df5989c5}} 
+\index{App@{App}!App@{App}}
+\index{App@{App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{App()}{App()}}
+{\footnotesize\ttfamily App\+::\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor for the \mbox{\hyperlink{class_app}{App}} class. 
+
+Initializes an \mbox{\hyperlink{class_app}{App}} object with the main menu state and a new \mbox{\hyperlink{class_data}{Data}} object. \mbox{\Hypertarget{class_app_a34f1f253b1cef5f4ecbac66eaf6964ec}\label{class_app_a34f1f253b1cef5f4ecbac66eaf6964ec}} 
+\index{App@{App}!````~App@{$\sim$App}}
+\index{````~App@{$\sim$App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{$\sim$App()}{~App()}}
+{\footnotesize\ttfamily App\+::$\sim$\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{class_app}{App}} class. 
+
+Deallocates the memory occupied by the \mbox{\hyperlink{class_app}{App}} instance. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_app_aee6d8099b506284e3011c02236434c69}\label{class_app_aee6d8099b506284e3011c02236434c69}} 
+\index{App@{App}!getData@{getData}}
+\index{getData@{getData}!App@{App}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data}{Data}} $\ast$ App\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the data object associated with the application. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \mbox{\hyperlink{class_data}{Data}} object used by the application. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_app_a4d04d85bbda06ce06faad681c652f1c7}\label{class_app_a4d04d85bbda06ce06faad681c652f1c7}} 
+\index{App@{App}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!App@{App}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_app}{App}} $\ast$ App\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the singleton instance of the \mbox{\hyperlink{class_app}{App}} class. 
+
+If the instance is not yet created, it creates a new \mbox{\hyperlink{class_app}{App}} instance.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton instance of the \mbox{\hyperlink{class_app}{App}} class. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_app_a26e3b9f6b91e8e3f25d7d42db07f9284}\label{class_app_a26e3b9f6b91e8e3f25d7d42db07f9284}} 
+\index{App@{App}!getState@{getState}}
+\index{getState@{getState}!App@{App}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_state}{State}} $\ast$ App\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current state of the application. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the current state of the application. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_app_ae245ea9fb63553e630b87dbc33f74c96}\label{class_app_ae245ea9fb63553e630b87dbc33f74c96}} 
+\index{App@{App}!setData@{setData}}
+\index{setData@{setData}!App@{App}}
+\doxysubsubsection{\texorpdfstring{setData()}{setData()}}
+{\footnotesize\ttfamily void App\+::set\+Data (\begin{DoxyParamCaption}\item[{const filesystem\+::path \&}]{dir\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Sets the data of the application. 
+
+This method sets the data of the application to the water network in the given path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+path} & A path to the water network files. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_app_a8b13a49d2c6cfa525cf866db1d2197c7}\label{class_app_a8b13a49d2c6cfa525cf866db1d2197c7}} 
+\index{App@{App}!setState@{setState}}
+\index{setState@{setState}!App@{App}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void App\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the state of the application. 
+
+This method sets the current state of the application to the specified state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the new state of the application. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+App.\+h\item 
+App.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,107 @@
+\hypertarget{class_get_pumping_station_state}{}\doxysection{Get\+Pumping\+Station\+State Class Reference}
+\label{class_get_pumping_station_state}\index{GetPumpingStationState@{GetPumpingStationState}}
+
+
+Class that represents a state for obtaining the network pumping stations.  
+
+
+
+
+{\ttfamily \#include $<$Get\+Pumping\+Station\+State.\+h$>$}
+
+
+
+Inheritance diagram for Get\+Pumping\+Station\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Get\+Pumping\+Station\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_get_pumping_station_state_aa6524a2874dbf66d203c4d633b05aa01}{Get\+Pumping\+Station\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$back\+State, function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ next\+State\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructs an instance of \mbox{\hyperlink{class_get_pumping_station_state}{Get\+Pumping\+Station\+State}} with specified back state and callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_pumping_station_state_ad4f572778777f1e5491805582bbcd67e}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Displays a prompt for inserting a pumping station code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_get_pumping_station_state_a413238e45cb10ece44be96e98f6d6281}{handle\+Input}} (\mbox{\hyperlink{class_app}{App}} $\ast$app) override
+\begin{DoxyCompactList}\small\item\em Handles user input for obtaining a pumping station code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_get_pumping_station_state_a7dc610e89f240c089fc3ab1afef27a83}\label{class_get_pumping_station_state_a7dc610e89f240c089fc3ab1afef27a83}} 
+\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries back\+State}
+\item 
+\mbox{\Hypertarget{class_get_pumping_station_state_a111d88dead6c8dd8db8972962198f41e}\label{class_get_pumping_station_state_a111d88dead6c8dd8db8972962198f41e}} 
+function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$ {\bfseries next\+State\+Callback}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a state for obtaining the network pumping stations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_get_pumping_station_state_aa6524a2874dbf66d203c4d633b05aa01}\label{class_get_pumping_station_state_aa6524a2874dbf66d203c4d633b05aa01}} 
+\index{GetPumpingStationState@{GetPumpingStationState}!GetPumpingStationState@{GetPumpingStationState}}
+\index{GetPumpingStationState@{GetPumpingStationState}!GetPumpingStationState@{GetPumpingStationState}}
+\doxysubsubsection{\texorpdfstring{GetPumpingStationState()}{GetPumpingStationState()}}
+{\footnotesize\ttfamily Get\+Pumping\+Station\+State\+::\+Get\+Pumping\+Station\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{back\+State,  }\item[{function$<$ void(\mbox{\hyperlink{class_app}{App}} $\ast$, const string \&)$>$}]{next\+State\+Callback }\end{DoxyParamCaption})}
+
+
+
+Constructs an instance of \mbox{\hyperlink{class_get_pumping_station_state}{Get\+Pumping\+Station\+State}} with specified back state and callback function. 
+
+This constructor initializes an instance of the \mbox{\hyperlink{class_get_pumping_station_state}{Get\+Pumping\+Station\+State}} class with the given back state and a callback function for transitioning to the next state. The back state represents the state to which the application should return when the user chooses to go back from the current state. The callback function specifies the action to be performed in the next state, usually involving capturing the pumping station code from user input and proceeding to the next state with the captured information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em back\+State} & A pointer to the state to which the application should return when the user chooses to go back. \\
+\hline
+{\em next\+State\+Callback} & A function defining the action to be performed in the next state, usually involving a pumping station code. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_get_pumping_station_state_ad4f572778777f1e5491805582bbcd67e}\label{class_get_pumping_station_state_ad4f572778777f1e5491805582bbcd67e}} 
+\index{GetPumpingStationState@{GetPumpingStationState}!display@{display}}
+\index{display@{display}!GetPumpingStationState@{GetPumpingStationState}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Get\+Pumping\+Station\+State\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays a prompt for inserting a pumping station code. 
+
+This method prints a prompt to the console, asking the user to insert a pumping station code. The displayed prompt guides the user on the expected format for entering the pumping station code. The user is expected to input a valid pumping station code based on the specified format. 
+
+Implements \mbox{\hyperlink{class_state_adf38e0648b7705d04c39f40b763632bb}{State}}.
+
+\mbox{\Hypertarget{class_get_pumping_station_state_a413238e45cb10ece44be96e98f6d6281}\label{class_get_pumping_station_state_a413238e45cb10ece44be96e98f6d6281}} 
+\index{GetPumpingStationState@{GetPumpingStationState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GetPumpingStationState@{GetPumpingStationState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Get\+Pumping\+Station\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_app}{App}} $\ast$}]{app }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles user input for obtaining a pumping station code. 
+
+This method reads a line of input from the console, representing a pumping station code. The method validates the existence of the entered pumping station code in the application\textquotesingle{}s data. If the pumping station code is valid, the callback function is invoked with the captured pumping station code, and the application transitions to the next state accordingly. If the pumping station code is invalid, the user is prompted with an error message, and the state transitions to a \char`\"{}\+Try Again\char`\"{} state, allowing the user to make another attempt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & A pointer to the application instance. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_state_a2b8ab1025a5ab2252a3bfdf0597a831f}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+States/\+Utils/Get\+Pumping\+Station\+State.\+h\item 
+States/\+Utils/Get\+Pumping\+Station\+State.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,183 @@
+\hypertarget{class_edge}{}\doxysection{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+Class representing an edge in a graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+
+
+Collaboration diagram for Edge\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge_a3fbba8b36a23268b8befc72121d98df7}{Edge}} (\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$orig, \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$dest, double capacity)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_edge}{Edge}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ \mbox{\hyperlink{class_edge_a5cda44e9ba257b03963a1ac301371a59}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Get the destination vertex associated with the edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_edge_aece03ec4ebb5e0966ae09a69eaafcb23}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get the capacity associated with the edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ \mbox{\hyperlink{class_edge_a6e8b08e91c0694b40edff0432fb612eb}{get\+Orig}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin vertex associated with the edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_edge_a756d2d246aa5445d0f396626c7d4fd56}{get\+Reverse}} () const
+\begin{DoxyCompactList}\small\item\em Get reverse edge associated with the edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc}{get\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Get the flow associated with the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_ac7b7d4cc7ee09e94a8d833283922ebd0}{set\+Reverse}} (\mbox{\hyperlink{class_edge}{Edge}} $\ast$reverse\+Edge)
+\begin{DoxyCompactList}\small\item\em Set the reverse edge associated with this edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_ad785d8cedc3639834666bbc6a41aa11d}{set\+Flow}} (double newflow)
+\begin{DoxyCompactList}\small\item\em Set the flow of the edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_edge_a50339c1a85710ca827d4e3865727ffd7}\label{class_edge_a50339c1a85710ca827d4e3865727ffd7}} 
+\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ {\bfseries dest}
+\item 
+\mbox{\Hypertarget{class_edge_ad04953647fb4dd78e5aed935a811a7a2}\label{class_edge_ad04953647fb4dd78e5aed935a811a7a2}} 
+double {\bfseries capacity}
+\item 
+\mbox{\Hypertarget{class_edge_a48f1521d20ead8492fd1d184656862f5}\label{class_edge_a48f1521d20ead8492fd1d184656862f5}} 
+\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ {\bfseries orig}
+\item 
+\mbox{\Hypertarget{class_edge_abcadfaa8985d0d593a124d0fea39130a}\label{class_edge_abcadfaa8985d0d593a124d0fea39130a}} 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ {\bfseries reverse} = nullptr
+\item 
+\mbox{\Hypertarget{class_edge_adbe59333b5a49cbb85b39ce1272e6098}\label{class_edge_adbe59333b5a49cbb85b39ce1272e6098}} 
+double {\bfseries flow} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing an edge in a graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_edge_a3fbba8b36a23268b8befc72121d98df7}\label{class_edge_a3fbba8b36a23268b8befc72121d98df7}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily Edge\+::\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{orig,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}} $\ast$}]{dest,  }\item[{double}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \mbox{\hyperlink{class_edge}{Edge}} class. 
+
+Initializes an instance of the \mbox{\hyperlink{class_edge}{Edge}} class with the specified origin vertex, destination vertex and edge capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & Pointer to the origin vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em capacity} & Capacity of the edge. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_aece03ec4ebb5e0966ae09a69eaafcb23}\label{class_edge_aece03ec4ebb5e0966ae09a69eaafcb23}} 
+\index{Edge@{Edge}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily double Edge\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the capacity associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+The capacity of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a5cda44e9ba257b03963a1ac301371a59}\label{class_edge_a5cda44e9ba257b03963a1ac301371a59}} 
+\index{Edge@{Edge}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the destination vertex associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the destination vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc}\label{class_edge_a30ff9f3127097db8dce20f5e8b15e6dc}} 
+\index{Edge@{Edge}!getFlow@{getFlow}}
+\index{getFlow@{getFlow}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
+{\footnotesize\ttfamily double Edge\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the flow associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+The flow of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a6e8b08e91c0694b40edff0432fb612eb}\label{class_edge_a6e8b08e91c0694b40edff0432fb612eb}} 
+\index{Edge@{Edge}!getOrig@{getOrig}}
+\index{getOrig@{getOrig}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} $\ast$ Edge\+::get\+Orig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the origin vertex associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the origin \mbox{\hyperlink{class_vertex}{Vertex}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a756d2d246aa5445d0f396626c7d4fd56}\label{class_edge_a756d2d246aa5445d0f396626c7d4fd56}} 
+\index{Edge@{Edge}!getReverse@{getReverse}}
+\index{getReverse@{getReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get reverse edge associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the reverse edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_ad785d8cedc3639834666bbc6a41aa11d}\label{class_edge_ad785d8cedc3639834666bbc6a41aa11d}} 
+\index{Edge@{Edge}!setFlow@{setFlow}}
+\index{setFlow@{setFlow}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
+{\footnotesize\ttfamily void Edge\+::set\+Flow (\begin{DoxyParamCaption}\item[{double}]{newflow }\end{DoxyParamCaption})}
+
+
+
+Set the flow of the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Flow} & The new flow value to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_ac7b7d4cc7ee09e94a8d833283922ebd0}\label{class_edge_ac7b7d4cc7ee09e94a8d833283922ebd0}} 
+\index{Edge@{Edge}!setReverse@{setReverse}}
+\index{setReverse@{setReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
+{\footnotesize\ttfamily void Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{Edge}} $\ast$}]{reverse\+Edge }\end{DoxyParamCaption})}
+
+
+
+Set the reverse edge associated with this edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse\+Edge} & Pointer to the reverse edge to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

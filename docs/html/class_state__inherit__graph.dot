@@ -1,0 +1,30 @@
+digraph "State"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="State",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Abstract base class representing an app state within the water supply analysis system."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="GetCityState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_get_city_state.html",tooltip="Class that represents a state for obtaining the network cities."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="GetFilesPathState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_get_files_path_state.html",tooltip="Class that represents a state for obtaining the network files path."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="GetPipelineState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_get_pipeline_state.html",tooltip="Class that represents a state for obtaining the network pipelines."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="GetPumpingStationState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_get_pumping_station_state.html",tooltip="Class that represents a state for obtaining the network pumping stations."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="GetReservoirState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_get_reservoir_state.html",tooltip="Class that represents a state for obtaining the network reservoirs."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="MainMenuState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_main_menu_state.html",tooltip="Class representing the main menu state of the water supply analysis system."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="MaxFlowMenuState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_max_flow_menu_state.html",tooltip="Class representing the Find Max Water Flow Menu state of the water supply analysis system."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="PipelineImpactMenuState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_pipeline_impact_menu_state.html",tooltip="Class representing the Pipeline Impact Menu state of the water supply analysis system."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="PumpingStationImpactMenu\lState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_pumping_station_impact_menu_state.html",tooltip="Class representing the Pumping Station Impact Menu state of the water supply analysis system."];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="ReservoirImpactMenuState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_reservoir_impact_menu_state.html",tooltip="Class representing the Reservoir Impact Menu state of the water supply analysis system."];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="TryAgainState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_try_again_state.html",tooltip="Class representing a state that prompts the user to try an action again."];
+}

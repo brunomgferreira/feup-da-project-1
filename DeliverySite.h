@@ -21,18 +21,28 @@ private :
 public:
 
     /**
-    * @brief Constructs a delivery site object with the provided details.
-    *
-    * @details This constructor initializes a delivery site object with the specified delivery site id and code.
-    * The parameters represent essential information about a delivery site, including its id and code
-    *
-    * @param id The id of the pumping station.
-    * @param code The unique code assigned to the pumping station.
-    */
+     * @brief Constructor for DeliverySite class.
+     *
+     * @param city The city associated with the delivery site.
+     * @param id The ID of the delivery site.
+     * @param code The code associated with the delivery site.
+     * @param demand The demand of the delivery site.
+     * @param population The population associated with the delivery site.
+     */
     DeliverySite(string city, double id, string code, double demand, double population);
 
+    /**
+     * @brief Get the city associated with the delivery site.
+     *
+     * @return The city of the delivery site.
+     */
     string getCity();
 
+    /**
+     * @brief Get the demand of the delivery site.
+     *
+     * @return The demand of the delivery site.
+     */
     [[nodiscard]] double getDemand() const;
 };
 

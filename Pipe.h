@@ -32,9 +32,32 @@ public:
     */
     Pipe(string servicePointA, string servicePointB, double capacity, bool unidirectional);
 
+    /**
+     * @brief Get the name of service point A.
+     *
+     * @return The name of service point A.
+     */
     string getServicePointA();
+
+    /**
+     * @brief Get the name of service point B.
+     *
+     * @return The name of service point B.
+     */
     string getServicePointB();
+
+    /**
+     * @brief Check if the pipe is unidirectional.
+     *
+     * @return True if the pipe is unidirectional, otherwise false.
+     */
     [[nodiscard]] bool getUnidirectional() const;
+
+    /**
+     * @brief Get the capacity of the pipe.
+     *
+     * @return The capacity of the pipe.
+     */
     [[nodiscard]] double getCapacity() const;
 };
 
