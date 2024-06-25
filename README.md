@@ -2,7 +2,7 @@
 
 Water Supply Analysis System project developed in C++ for the **Design of Algorithms (DA)** course unit **@FEUP**
 
-Project grade: **? / 20**
+Project grade: **18.75 / 20**
 
 ### This project was developed by:
 
